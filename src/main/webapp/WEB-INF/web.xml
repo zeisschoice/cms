@@ -95,7 +95,7 @@
         <init-param>
             <!-- 密码 -->
             <param-name>loginPassword</param-name>
-            <param-value>dream</param-value>
+            <param-value>123</param-value>
         </init-param>
     </servlet>
     <servlet-mapping>

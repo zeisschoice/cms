@@ -152,7 +152,7 @@
                 </div>
             </div>
         </div>
-        <div data-options="region:'south',border:false" style="height: 30px;line-height:30px; overflow: hidden;text-align: center;background-color: #eee" >Copyright © 2015 power by <a href="http://www.dreamlu.net/" target="_blank">如梦技术</a></div>
+        <div data-options="region:'south',border:false" style="height: 30px;line-height:30px; overflow: hidden;text-align: center;background-color: #eee" >Copyright © 2015 power by 租房系统</div>
     </div>
 
     <!--[if lte IE 7]>
