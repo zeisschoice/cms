@@ -17,5 +17,17 @@ import com.zeiss.service.IBuildingService;
  */
 @Service
 public class BuildingServiceImpl extends SuperServiceImpl<BuildingMapper, Building> implements IBuildingService {
+
+	@Override
+	public void insertBuilding(Building building) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deleteBuildingById(Long id) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }
