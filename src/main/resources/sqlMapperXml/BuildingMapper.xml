@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zeiss.mapper.BuildingMapper">
+
+	<resultMap id="BaseResultMap" type="com.zeiss.entity.Building">
+		<id column="building_id" property="buildingId" />
+		<result column="building_name" property="buildingName" />
+		<result column="building_address" property="buildingAddress" />
+		<result column="building_own" property="buildingOwn" />
+		<result column="own_phone" property="ownPhone" />
+		<result column="building_manager" property="buildingManager" />
+		<result column="manager_phone" property="managerPhone" />
+		<result column="room_count" property="roomCount" />
+		<result column="remark" property="remark" />
+	</resultMap>
+
+    <!-- 通用查询结果列-->
+    <sql id="Base_Column_List">
+        building_id AS buildingId, building_name AS buildingName, building_address AS buildingAddress, building_own AS buildingOwn, own_phone AS ownPhone, building_manager AS buildingManager, manager_phone AS managerPhone, room_count AS roomCount, remark
+    </sql>
+</mapper>

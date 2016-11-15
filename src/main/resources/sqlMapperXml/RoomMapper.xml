@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zeiss.mapper.RoomMapper">
+
+	<resultMap id="BaseResultMap" type="com.zeiss.entity.Room">
+		<id column="room_id" property="roomId" />
+		<result column="room_name" property="roomName" />
+		<result column="type" property="type" />
+		<result column="mon_rent" property="monRent" />
+		<result column="status" property="status" />
+		<result column="begin_date" property="beginDate" />
+		<result column="end_date" property="endDate" />
+		<result column="liver" property="liver" />
+		<result column="remark" property="remark" />
+	</resultMap>
+
+    <!-- 通用查询结果列-->
+    <sql id="Base_Column_List">
+        room_id AS roomId, room_name AS roomName, type, mon_rent AS monRent, status, begin_date AS beginDate, end_date AS endDate, liver, remark
+    </sql>
+</mapper>

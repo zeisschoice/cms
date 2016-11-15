@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zeiss.mapper.CostMapper">
+
+	<resultMap id="BaseResultMap" type="com.zeiss.entity.Cost">
+		<id column="cost_id" property="costId" />
+		<result column="room_id" property="roomId" />
+		<result column="electric_charge" property="electricCharge" />
+		<result column="water_charge" property="waterCharge" />
+		<result column="internet_charge" property="internetCharge" />
+		<result column="tv_charge" property="tvCharge" />
+		<result column="gas_charge" property="gasCharge" />
+		<result column="equally_charge" property="equallyCharge" />
+		<result column="other_charge" property="otherCharge" />
+		<result column="year" property="year" />
+		<result column="month" property="month" />
+		<result column="remark" property="remark" />
+	</resultMap>
+
+    <!-- 通用查询结果列-->
+    <sql id="Base_Column_List">
+        cost_id AS costId, room_id AS roomId, electric_charge AS electricCharge, water_charge AS waterCharge, internet_charge AS internetCharge, tv_charge AS tvCharge, gas_charge AS gasCharge, equally_charge AS equallyCharge, other_charge AS otherCharge, year, month, remark
+    </sql>
+</mapper>
