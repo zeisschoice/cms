@@ -1,7 +1,8 @@
-package com.zeiss.mapper;
+package com.wangzhixuan.mapper;
 
 import com.baomidou.mybatisplus.mapper.AutoMapper;
-import com.zeiss.entity.Cost;
+import com.wangzhixuan.model.Room;
+
 
 /**
  * <p>
@@ -11,6 +12,6 @@ import com.zeiss.entity.Cost;
  * @author zeiss
  * @since 2016-11-15
  */
-public interface CostMapper extends AutoMapper<Cost> {
+public interface RoomMapper extends AutoMapper<Room> {
 
 }

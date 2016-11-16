@@ -1,8 +1,9 @@
-package com.zeiss.mapper;
+package com.wangzhixuan.mapper;
 
 import com.baomidou.mybatisplus.mapper.AutoMapper;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
-import com.zeiss.entity.Building;
+import com.wangzhixuan.model.Building;
+
 
 /**
  * <p>

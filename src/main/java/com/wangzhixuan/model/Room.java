@@ -1,4 +1,4 @@
-package com.zeiss.entity;
+package com.wangzhixuan.model;
 
 import com.baomidou.mybatisplus.annotations.IdType;
 import com.baomidou.mybatisplus.annotations.TableId;

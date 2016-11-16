@@ -1,7 +1,8 @@
-package com.zeiss.service;
+package com.wangzhixuan.service;
 
 import com.baomidou.framework.service.ISuperService;
-import com.zeiss.entity.Building;
+import com.wangzhixuan.model.Building;
+
 
 /**
  * <p>
@@ -13,12 +14,6 @@ import com.zeiss.entity.Building;
  */
 public interface IBuildingService extends ISuperService<Building> {
 	
-	public void insertBuilding(Building building);
-	
-	public Building selectById(Long id);
-	
-	public void deleteBuildingById(Long id);
-	
-	
+
 	
 }

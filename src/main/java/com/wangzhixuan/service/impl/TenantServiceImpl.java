@@ -1,11 +1,12 @@
-package com.zeiss.service.impl;
+package com.wangzhixuan.service.impl;
 
 import org.springframework.stereotype.Service;
 
 import com.baomidou.framework.service.impl.SuperServiceImpl;
-import com.zeiss.entity.Tenant;
-import com.zeiss.mapper.TenantMapper;
-import com.zeiss.service.ITenantService;
+import com.wangzhixuan.mapper.TenantMapper;
+import com.wangzhixuan.model.Tenant;
+import com.wangzhixuan.service.ITenantService;
+
 
 /**
  * <p>

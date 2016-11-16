@@ -1,11 +1,12 @@
-package com.zeiss.service.impl;
+package com.wangzhixuan.service.impl;
 
 import org.springframework.stereotype.Service;
 
 import com.baomidou.framework.service.impl.SuperServiceImpl;
-import com.zeiss.entity.Room;
-import com.zeiss.mapper.RoomMapper;
-import com.zeiss.service.IRoomService;
+import com.wangzhixuan.mapper.RoomMapper;
+import com.wangzhixuan.model.Room;
+import com.wangzhixuan.service.IRoomService;
+
 
 /**
  * <p>

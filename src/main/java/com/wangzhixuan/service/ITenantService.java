@@ -1,7 +1,8 @@
-package com.zeiss.service;
+package com.wangzhixuan.service;
 
 import com.baomidou.framework.service.ISuperService;
-import com.zeiss.entity.Cost;
+import com.wangzhixuan.model.Tenant;
+
 
 /**
  * <p>
@@ -11,6 +12,6 @@ import com.zeiss.entity.Cost;
  * @author zeiss
  * @since 2016-11-15
  */
-public interface ICostService extends ISuperService<Cost> {
+public interface ITenantService extends ISuperService<Tenant> {
 	
 }

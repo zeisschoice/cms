@@ -1,7 +1,8 @@
-package com.zeiss.service;
+package com.wangzhixuan.service;
 
 import com.baomidou.framework.service.ISuperService;
-import com.zeiss.entity.Room;
+import com.wangzhixuan.model.Room;
+
 
 /**
  * <p>

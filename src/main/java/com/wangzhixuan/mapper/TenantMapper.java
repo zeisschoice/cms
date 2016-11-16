@@ -1,7 +1,8 @@
-package com.zeiss.mapper;
+package com.wangzhixuan.mapper;
 
 import com.baomidou.mybatisplus.mapper.AutoMapper;
-import com.zeiss.entity.Tenant;
+import com.wangzhixuan.model.Tenant;
+
 
 /**
  * <p>

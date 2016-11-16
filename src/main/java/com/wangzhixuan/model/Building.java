@@ -1,4 +1,4 @@
-package com.zeiss.entity;
+package com.wangzhixuan.model;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
