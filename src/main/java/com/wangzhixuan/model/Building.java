@@ -22,7 +22,7 @@ public class Building implements Serializable {
 	/**
 	 * 
 	 */
-	@TableId(type = IdType.UUID)
+	//@TableId(type = IdType.UUID)
 	@TableField(value="building_id")
 	private Integer buildingId;
 

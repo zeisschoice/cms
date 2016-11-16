@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zeiss.mapper.BuildingMapper">
 
-	<resultMap id="BaseResultMap" type="com.zeiss.entity.Building">
+	<resultMap id="BaseResultMap" type="com.wangzhixuan.model.Building">
 		<id column="building_id" property="buildingId" />
 		<result column="building_name" property="buildingName" />
 		<result column="building_address" property="buildingAddress" />

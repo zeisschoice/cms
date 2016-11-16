@@ -24,6 +24,21 @@ public class BuildingController {
 	@Autowired
 	private IBuildingService buildingService;
 
+	@RequestMapping(value = "/BuildingPage", method = RequestMethod.GET)
+	public String building(Building b) {
+
+//		boolean is = buildingService.insert(b);
+//
+//		if (is) {
+//			return renderSuccess("添加成功");
+//		} else {
+//
+//			return renderError("添加失败");
+//		}
+		
+		return "tenement/addBuilding";
+	}
+
 	@RequestMapping(value = "/addBuilding", method = RequestMethod.POST)
 	public Object addBuilding(Building b) {
 
@@ -35,8 +50,10 @@ public class BuildingController {
 
 			return renderError("添加失败");
 		}
+		
+		
 	}
-
+	
 	public Object renderSuccess(String msg) {
 		Result result = new Result();
 		result.setSuccess(true);
