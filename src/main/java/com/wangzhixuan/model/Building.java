@@ -17,12 +17,13 @@ import com.baomidou.mybatisplus.annotations.TableId;
  */
 public class Building implements Serializable {
 
+	@TableField(exist = false)
     private static final long serialVersionUID = 1L;
 
 	/**
 	 * 
 	 */
-	//@TableId(type = IdType.UUID)
+	@TableId(type = IdType.AUTO)
 	@TableField(value="building_id")
 	private Integer buildingId;
 
@@ -146,5 +147,6 @@ public class Building implements Serializable {
 	public void setRemark(String remark) {
 		this.remark = remark;
 	}
+	
 
 }

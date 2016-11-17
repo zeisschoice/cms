@@ -20,7 +20,7 @@ public class Cost implements Serializable {
 	/**
 	 * 
 	 */
-	@TableId(type = IdType.UUID)
+    @TableId(type = IdType.AUTO)
 	@TableField(value="cost_id")
 	private Integer costId;
 

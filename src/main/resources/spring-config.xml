@@ -24,4 +24,10 @@
     <!-- Spring 异步event需要开启task -->
     <import resource="classpath:spring/spring-task.xml"/>
 
+     <bean id="sms" class="com.wangzhixuan.model.SMSConfig">
+        <property name="url" value="${sms.url}"/>
+        <property name="appKey" value="${sms.appKey}"/>
+        <property name="secret" value="${sms.secret}"/>
+     </bean>
+   
 </beans>

@@ -196,6 +196,14 @@
             </exclusions>
         </dependency>
         <!-- shiro end -->
+        
+        <dependency> 
+			<groupId>com.taobao</groupId> 
+			<artifactId>sms</artifactId> 
+			<version>1.0</version> 
+			<scope>system</scope> 
+			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/taobao-sdk.jar</systemPath> 
+		</dependency>
     </dependencies>
 
     <build>

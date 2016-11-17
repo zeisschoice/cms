@@ -22,7 +22,7 @@ public class Tenant implements Serializable {
 	/**
 	 * 
 	 */
-	@TableId(type = IdType.UUID)
+    @TableId(type = IdType.AUTO)
 	@TableField(value="tenant_id")
 	private Integer tenantId;
 
