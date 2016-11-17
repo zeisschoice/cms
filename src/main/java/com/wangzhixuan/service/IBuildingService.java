@@ -1,7 +1,14 @@
 package com.wangzhixuan.service;
 
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
 import com.baomidou.framework.service.ISuperService;
+import com.baomidou.mybatisplus.plugins.pagination.Pagination;
+import com.wangzhixuan.commons.utils.PageInfo;
 import com.wangzhixuan.model.Building;
+import com.wangzhixuan.model.Role;
 
 
 /**
@@ -14,6 +21,7 @@ import com.wangzhixuan.model.Building;
  */
 public interface IBuildingService extends ISuperService<Building> {
 	
-
+	 void selectDataGrid(PageInfo pageInfo);
+	 
 	
 }
