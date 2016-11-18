@@ -39,14 +39,16 @@ public class SMSUtils {
 			
 			result.setMsg("发送成功!");
 			result.setSuccess(true);
-			//result.setObj(obj);
+			result.setObj(rsp.getBody());
+			
 			System.out.println(rsp.getBody());
 		} catch (ApiException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			result.setMsg("发送失败");
-			result.setSuccess(false);
-			result.setObj(e.getErrMsg());
+			result.setSuccess(false);		
+			
+			result.setObj("errMsg:"+e.getErrMsg() +" errCode:"+ e.getErrCode()+" message:"+e.getMessage());
 		}
 		
 		return result;

@@ -2,6 +2,7 @@ package com.wangzhixuan.service.impl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.baomidou.framework.service.impl.SuperServiceImpl;
@@ -25,15 +26,19 @@ import com.wangzhixuan.service.IBuildingService;
 @Service
 public class BuildingServiceImpl extends SuperServiceImpl<BuildingMapper, Building> implements IBuildingService {
 
+	@Autowired
 	private BuildingMapper buildingMapper;
 	
 	@Override
 	public void selectDataGrid(PageInfo pageInfo) {
 		
 		    Page<Building> page = new Page<Building>(pageInfo.getNowpage(), pageInfo.getSize());
-	        List<Building> list = buildingMapper.selectBuildingList(page, pageInfo.getSort(), pageInfo.getOrder());
-	        pageInfo.setRows(list);
+	   
+		    List<Building> list = buildingMapper.selectBuildingList(page, pageInfo.getSort(), pageInfo.getOrder());
+		   
+		    pageInfo.setRows(list);
 	        pageInfo.setTotal(page.getTotal());
+	        
 		
 	}
 

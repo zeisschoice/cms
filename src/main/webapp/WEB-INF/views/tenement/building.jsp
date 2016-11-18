@@ -10,7 +10,7 @@
     var dataGrid;
     $(function() {
         dataGrid = $('#dataGrid').datagrid({
-            url : '${path }/building/dataGrid',
+            url : '${path}/building/dataGrid',
             striped : true,
             rownumbers : true,
             pagination : true,
@@ -21,48 +21,59 @@
             pageSize : 20,
             pageList : [ 10, 20, 30, 40, 50, 100, 200, 300, 400, 500 ],
             frozenColumns : [ [ {
-                width : '100',
-                title : 'id',
+                width : '50',
+                title : '编号',
                 field : 'id',
                 sortable : true
             }, {
-                width : '80',
+                width : '150',
                 title : '名称',
-                field : 'buildingName',
-                sortable : true
+                field : 'buildingName'
+               
             } , {
-                width : '100',
+                width : '300',
                 title : '地址',
-                field : 'buildingAddress',
-                sortable : true
+                field : 'buildingAddress'
+               
             }, {
                 width : '80',
                 title : '房东',
                 field : 'buildingOwn'
             } , {
-                width : '80',
+                width : '100',
                 title : '房东电话',
-                field : 'ownPhone',
-                sortable : true,
-                formatter : function(value, row, index) {
-                    switch (value) {
-                    case 0:
-                        return '正常';
-                    case 1:
-                        return '停用';
-                    }
-                }
-            }, {
+                field : 'ownPhone'
+               
+            }, 
+            {
+                width : '80',
+                title : '管理员',
+                field : 'buildingManager'
+               
+            },{
+                width : '100',
+                title : '管理员电话',
+                field : 'managerPhone'
+            },
+            {
+                width : '50',
+                title : '房间数',
+                field : 'roomCount'
+            },
+            {
+                width : '200',
+                title : '备注',
+                field : 'remark'
+            },
+            {
                 field : 'action',
                 title : '操作',
                 width : 200,
                 formatter : function(value, row, index) {
                     var str = '';
-                        <shiro:hasPermission name="/role/grant">
-                            str += $.formatString('<a href="javascript:void(0)" class="role-easyui-linkbutton-ok" data-options="plain:true,iconCls:\'icon-ok\'" onclick="grantFun(\'{0}\');" >授权</a>', row.id);
-                        </shiro:hasPermission>
+                       
                         <shiro:hasPermission name="/role/edit">
-                            str += '&nbsp;&nbsp;|&nbsp;&nbsp;';
+                           
                             str += $.formatString('<a href="javascript:void(0)" class="role-easyui-linkbutton-edit" data-options="plain:true,iconCls:\'icon-edit\'" onclick="editFun(\'{0}\');" >编辑</a>', row.id);
                         </shiro:hasPermission>
                         <shiro:hasPermission name="/role/delete">
@@ -86,7 +97,7 @@
             title : '添加',
             width : 500,
             height : 300,
-            href : '${path }/role/addPage',
+            href : '${path }/building/addPage',
             buttons : [ {
                 text : '确定',
                 handler : function() {
@@ -109,7 +120,7 @@
             title : '编辑',
             width : 500,
             height : 300,
-            href : '${path }/role/editPage?id=' + id,
+            href : '${path }/building/editPage?id=' + id,
             buttons : [ {
                 text : '确定',
                 handler : function() {
@@ -128,10 +139,10 @@
         } else {//点击操作里面的删除图标会触发这个
             dataGrid.datagrid('unselectAll').datagrid('uncheckAll');
         }
-        parent.$.messager.confirm('询问', '您是否要删除当前角色？', function(b) {
+        parent.$.messager.confirm('询问', '您是否要删除当前楼房信息？', function(b) {
             if (b) {
                 progressLoad();
-                $.post('${ctx}/role/delete', {
+                $.post('${path}/building/delete', {
                     id : id
                 }, function(result) {
                     if (result.success) {
@@ -144,7 +155,7 @@
         });
     }
 
-    function grantFun(id) {
+ /*    function grantFun(id) {
         if (id == undefined) {
             var rows = dataGrid.datagrid('getSelections');
             id = rows[0].id;
@@ -166,7 +177,7 @@
                 }
             } ]
         });
-    }
+    } */
     
     </script>
 </head>

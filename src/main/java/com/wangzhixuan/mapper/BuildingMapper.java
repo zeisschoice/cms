@@ -24,4 +24,6 @@ public interface BuildingMapper extends AutoMapper<Building> {
 	
 	  List<Building> selectBuildingList(Pagination page, @Param("sort") String sort, @Param("order") String order);
 
+	  List<Building> selectAll();
+	  
 }

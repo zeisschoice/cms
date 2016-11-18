@@ -2,8 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.wangzhixuan.mapper.BuildingMapper">
 
+ 
 	<resultMap id="BaseResultMap" type="com.wangzhixuan.model.Building">
-		<id column="building_id" property="buildingId" />
+		<id column="id" property="id" />
 		<result column="building_name" property="buildingName" />
 		<result column="building_address" property="buildingAddress" />
 		<result column="building_own" property="buildingOwn" />
@@ -16,7 +17,7 @@
 
     <!-- 通用查询结果列-->
     <sql id="Base_Column_List">
-        building_id AS buildingId, building_name AS buildingName, building_address AS buildingAddress, building_own AS buildingOwn, own_phone AS ownPhone, building_manager AS buildingManager, manager_phone AS managerPhone, room_count AS roomCount, remark
+         id , building_name AS buildingName, building_address AS buildingAddress, building_own AS buildingOwn, own_phone AS ownPhone, building_manager AS buildingManager, manager_phone AS managerPhone, room_count AS roomCount, remark
     </sql>
     
     
@@ -24,7 +25,11 @@
         select
         <include refid="Base_Column_List"/>
         from building
-        order by ${sort} ${order}
+        order by 
+       ${sort} ${order} 
     </select>
+    
+   
+    
     
 </mapper>

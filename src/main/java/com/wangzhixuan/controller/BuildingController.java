@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -34,6 +35,15 @@ public class BuildingController {
 		return "tenement/building";
 	}
 	
+	@RequestMapping(value = "/editPage", method = RequestMethod.GET)
+	public String buildingEdit(Model model,Long id) {	
+		
+		 Building building = buildingService.selectById(id);
+	     model.addAttribute("building", building);
+	      
+		
+		return "tenement/editBuiding";
+	}
 	
 	 @RequestMapping(value = "/dataGrid", method = RequestMethod.POST)
 	 @ResponseBody
@@ -62,6 +72,14 @@ public class BuildingController {
 		
 		
 	}
+	
+	@RequestMapping("/delete")
+	@ResponseBody
+	public Object delete(Long id) {
+	   buildingService.deleteById(id);
+	   return renderSuccess("删除成功！");
+	}
+	
 	
 	public Object renderSuccess(String msg) {
 		Result result = new Result();

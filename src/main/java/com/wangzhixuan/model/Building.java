@@ -24,8 +24,8 @@ public class Building implements Serializable {
 	 * 
 	 */
 	@TableId(type = IdType.AUTO)
-	@TableField(value="building_id")
-	private Integer buildingId;
+	@TableField(value="id")
+	private Integer id;
 
 	/**
 	 * 
@@ -74,14 +74,12 @@ public class Building implements Serializable {
 	 */
 	private String remark;
 
-
-
-	public Integer getBuildingId() {
-		return buildingId;
+	public Integer getId() {
+		return id;
 	}
 
-	public void setBuildingId(Integer buildingId) {
-		this.buildingId = buildingId;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public String getBuildingName() {
