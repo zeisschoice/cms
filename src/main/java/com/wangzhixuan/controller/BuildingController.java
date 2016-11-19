@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.wangzhixuan.commons.result.Result;
 import com.wangzhixuan.commons.utils.PageInfo;
 import com.wangzhixuan.model.Building;
+import com.wangzhixuan.model.Role;
 import com.wangzhixuan.service.IBuildingService;
 
 /**
@@ -56,6 +57,14 @@ public class BuildingController {
 	        return pageInfo;
 	 }
 	
+	 
+	 @RequestMapping("/edit")
+	 @ResponseBody
+	 public Object edit(Building building) {
+		 buildingService.updateSelectiveById(building);
+	    return renderSuccess("编辑成功！");
+	 }
+	 
 	
 	@ResponseBody
 	@RequestMapping(value = "/addBuilding", method = RequestMethod.POST)
@@ -72,6 +81,19 @@ public class BuildingController {
 		
 		
 	}
+	
+	@RequestMapping(value = "/addPage", method = RequestMethod.GET)
+    public String addPage() {
+        return "tenement/addBuilding";
+    }
+	
+	 @RequestMapping(value = "/add", method = RequestMethod.POST)
+	 @ResponseBody
+	 public Object add(Building building) {
+		 buildingService.insert(building);
+	     return renderSuccess("添加成功！");
+	}
+	
 	
 	@RequestMapping("/delete")
 	@ResponseBody

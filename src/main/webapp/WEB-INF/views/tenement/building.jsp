@@ -31,7 +31,7 @@
                 field : 'buildingName'
                
             } , {
-                width : '300',
+                width : '250',
                 title : '地址',
                 field : 'buildingAddress'
                
@@ -61,7 +61,7 @@
                 field : 'roomCount'
             },
             {
-                width : '200',
+                width : '100',
                 title : '备注',
                 field : 'remark'
             },
@@ -72,11 +72,11 @@
                 formatter : function(value, row, index) {
                     var str = '';
                        
-                        <shiro:hasPermission name="/role/edit">
+                        <shiro:hasPermission name="/building/edit">
                            
                             str += $.formatString('<a href="javascript:void(0)" class="role-easyui-linkbutton-edit" data-options="plain:true,iconCls:\'icon-edit\'" onclick="editFun(\'{0}\');" >编辑</a>', row.id);
                         </shiro:hasPermission>
-                        <shiro:hasPermission name="/role/delete">
+                        <shiro:hasPermission name="/building/delete">
                             str += '&nbsp;&nbsp;|&nbsp;&nbsp;';
                             str += $.formatString('<a href="javascript:void(0)" class="role-easyui-linkbutton-del" data-options="plain:true,iconCls:\'icon-del\'" onclick="deleteFun(\'{0}\');" >删除</a>', row.id);
                         </shiro:hasPermission>
@@ -96,13 +96,13 @@
         parent.$.modalDialog({
             title : '添加',
             width : 500,
-            height : 300,
+            height : 400,
             href : '${path }/building/addPage',
             buttons : [ {
                 text : '确定',
                 handler : function() {
                     parent.$.modalDialog.openner_dataGrid = dataGrid;//因为添加成功之后，需要刷新这个treeGrid，所以先预定义好
-                    var f = parent.$.modalDialog.handler.find('#roleAddForm');
+                    var f = parent.$.modalDialog.handler.find('#buildingAddForm');
                     f.submit();
                 }
             } ]
@@ -118,14 +118,14 @@
         }
         parent.$.modalDialog({
             title : '编辑',
-            width : 500,
-            height : 300,
+            width : 600,
+            height : 400,
             href : '${path }/building/editPage?id=' + id,
             buttons : [ {
                 text : '确定',
                 handler : function() {
                     parent.$.modalDialog.openner_dataGrid = dataGrid;//因为添加成功之后，需要刷新这个dataGrid，所以先预定义好
-                    var f = parent.$.modalDialog.handler.find('#roleEditForm');
+                    var f = parent.$.modalDialog.handler.find('#buildingEditForm');
                     f.submit();
                 }
             } ]
@@ -186,7 +186,7 @@
         <table id="dataGrid" data-options="fit:true,border:false"></table>
     </div>
     <div id="toolbar" style="display: none;">
-        <shiro:hasPermission name="/role/add">
+        <shiro:hasPermission name="/building/add">
             <a onclick="addFun();" href="javascript:void(0);" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-add'">添加</a>
         </shiro:hasPermission>
     </div>
