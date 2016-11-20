@@ -21,7 +21,7 @@ public class Test {
 		req.setSmsType( "normal" );
 		req.setSmsFreeSignName( "交租短信" );
 		req.setSmsParamString( "{name:'张三',room:'108',cost:'100'}" );
-		req.setRecNum( "13450761833,15919064667" );
+		req.setRecNum( "13450761833,15919064667,13682222283" );
 		req.setSmsTemplateCode( "SMS_25620786" );
 		AlibabaAliqinFcSmsNumSendResponse rsp = client.execute(req);
 		System.out.println(rsp.getBody());
