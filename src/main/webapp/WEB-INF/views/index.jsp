@@ -140,7 +140,7 @@
         <div data-options="region:'center'" style="overflow: hidden;">
             <div id="index_tabs" style="overflow: hidden;">
                 <div title="首页" data-options="border:false" style="overflow: hidden;">
-                    <script src='https://git.oschina.net/wangzhixuan/spring-shiro-training/widget_preview'></script>
+                    <script src=''></script>
                     <style>
                         .pro_name a{color: #4183c4;}
                         .osc_git_title{background-color: #d8e5f1;}
