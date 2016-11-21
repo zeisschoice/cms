@@ -14,18 +14,18 @@
 
     $(function() {
         organizationTree = $('#organizationTree').tree({
-            url : '${path }/organization/tree',
+            url : '${path }/room/tree',
             parentField : 'pid',
             lines : true,
             onClick : function(node) {
                 dataGrid.datagrid('load', {
-                    organizationId: node.id
+                    buildingId: node.id
                 });
             }
         });
 
         dataGrid = $('#dataGrid').datagrid({
-            url : '${path }/user/dataGrid',
+            url : '${path }/room/dataGrid',
             fit : true,
             striped : true,
             rownumbers : true,
@@ -39,7 +39,7 @@
             columns : [ [ {
                 width : '80',
                 title : '登录名',
-                field : 'loginName',
+                field : 'roomName',
                 sortable : true
             }, {
                 width : '80',

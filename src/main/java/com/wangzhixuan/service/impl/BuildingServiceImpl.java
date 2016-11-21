@@ -1,5 +1,6 @@
 package com.wangzhixuan.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.baomidou.framework.service.impl.SuperServiceImpl;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.plugins.pagination.Pagination;
+import com.wangzhixuan.commons.result.Tree;
 import com.wangzhixuan.commons.utils.PageInfo;
 import com.wangzhixuan.mapper.BuildingMapper;
 import com.wangzhixuan.model.Building;
@@ -40,6 +42,32 @@ public class BuildingServiceImpl extends SuperServiceImpl<BuildingMapper, Buildi
 	        pageInfo.setTotal(page.getTotal());
 	        
 		
+	}
+
+	@Override
+	public List<Tree> selectTree() {
+
+		List<Tree> trees = new ArrayList<Tree>();
+		
+		List<Building> list = buildingMapper.selectAll();
+		
+		if(list !=null && list.size()>0){
+			
+			for(int i=0;i<list.size();i++){
+				
+				Tree tree  = new Tree();
+				
+				tree.setText(list.get(i).getBuildingName());
+				tree.setIconCls("icon-company");
+				tree.setId(list.get(i).getId().longValue());
+				
+				trees.add(tree);
+				
+			}
+			
+		}
+		
+		return trees;
 	}
 
 	

@@ -16,15 +16,19 @@ import java.util.Date;
  */
 public class Room implements Serializable {
 
+	@TableField(exist = false)
     private static final long serialVersionUID = 1L;
 
 	/**
 	 * 
 	 */
-	@TableId(type = IdType.UUID)
-	@TableField(value="room_id")
-	private Integer roomId;
+	@TableId(type = IdType.AUTO)
+	@TableField(value="id")
+	private Integer id;
 
+	
+	@TableField(value="building_id")
+	private Integer buildingId;
 	/**
 	 * 
 	 */
@@ -71,12 +75,14 @@ public class Room implements Serializable {
 
 
 
-	public Integer getRoomId() {
-		return roomId;
+
+
+	public Integer getId() {
+		return id;
 	}
 
-	public void setRoomId(Integer roomId) {
-		this.roomId = roomId;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public String getRoomName() {
