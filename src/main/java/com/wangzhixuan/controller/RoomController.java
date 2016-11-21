@@ -50,7 +50,7 @@ public class RoomController {
 	    @ResponseBody
 	    public Object dataGrid(Building building, Integer page, Integer rows, String sort, String order) {
 	        PageInfo pageInfo = new PageInfo(page, rows);
-	        Map<String, Object> condition = new HashMap<String, Object>();
+	  //      Map<String, Object> condition = new HashMap<String, Object>();
 
 //	        if (StringUtils.isNotBlank(userVo.getName())) {
 //	            condition.put("name", userVo.getName());
@@ -64,7 +64,7 @@ public class RoomController {
 //	        if (userVo.getCreatedateEnd() != null) {
 //	            condition.put("endTime", userVo.getCreatedateEnd());
 //	        }
-	        pageInfo.setCondition(condition);
+	     //   pageInfo.setCondition(condition);
 	        iRoomService.selectDataGrid(pageInfo);
 	        return pageInfo;
 	    }
