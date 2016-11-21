@@ -15,14 +15,15 @@ import java.io.Serializable;
  */
 public class Cost implements Serializable {
 
+	@TableField(exist = false)
     private static final long serialVersionUID = 1L;
 
 	/**
 	 * 
 	 */
-    @TableId(type = IdType.AUTO)
-	@TableField(value="cost_id")
-	private Integer costId;
+	@TableId(type = IdType.AUTO)
+	@TableField(value="id")
+	private Integer id;
 
 	/**
 	 * 
@@ -89,12 +90,14 @@ public class Cost implements Serializable {
 
 
 
-	public Integer getCostId() {
-		return costId;
+	
+
+	public Integer getId() {
+		return id;
 	}
 
-	public void setCostId(Integer costId) {
-		this.costId = costId;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public Integer getRoomId() {

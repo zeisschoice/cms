@@ -10,22 +10,22 @@
     <script type="text/javascript">
 
     var dataGrid;
-    var organizationTree;
+    var roomTree;
 
     $(function() {
-        organizationTree = $('#organizationTree').tree({
-            url : '${path }/organization/tree',
+        organizationTree = $('#roomTree').tree({
+            url : '${path }/room/tree',
             parentField : 'pid',
             lines : true,
             onClick : function(node) {
                 dataGrid.datagrid('load', {
-                    organizationId: node.id
+                    buildingId: node.id
                 });
             }
         });
 
         dataGrid = $('#dataGrid').datagrid({
-            url : '${path }/user/dataGrid',
+            url : '${path }/room/dataGrid',
             fit : true,
             striped : true,
             rownumbers : true,
@@ -39,7 +39,7 @@
             columns : [ [ {
                 width : '80',
                 title : '登录名',
-                field : 'loginName',
+                field : 'roomName',
                 sortable : true
             }, {
                 width : '80',
@@ -151,7 +151,7 @@
             title : '添加',
             width : 500,
             height : 300,
-            href : '${path }/user/addPage',
+            href : '${path }/room/addPage',
             buttons : [ {
                 text : '添加',
                 handler : function() {
@@ -246,7 +246,7 @@
         <table id="dataGrid" data-options="fit:true,border:false"></table>
     </div>
     <div data-options="region:'west',border:true,split:false,title:'楼房'"  style="width:150px;overflow: hidden; ">
-        <ul id="organizationTree"  style="width:160px;margin: 10px 10px 10px 10px">
+        <ul id="roomTree"  style="width:160px;margin: 10px 10px 10px 10px">
         </ul>
     </div>
     <div id="toolbar" style="display: none;">

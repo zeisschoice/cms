@@ -30,6 +30,12 @@
     </select>
     
    
+     <select id="selectAll" resultType="Building">
+        select
+        <include refid="Base_Column_List"/>
+        from building
+        order by id asc
+     </select>
     
     
 </mapper>

@@ -1,6 +1,7 @@
 package com.wangzhixuan.service;
 
 import com.baomidou.framework.service.ISuperService;
+import com.wangzhixuan.commons.utils.PageInfo;
 import com.wangzhixuan.model.Room;
 
 
@@ -14,4 +15,5 @@ import com.wangzhixuan.model.Room;
  */
 public interface IRoomService extends ISuperService<Room> {
 	
+	void selectDataGrid(PageInfo pageInfo);
 }

@@ -16,6 +16,17 @@
 
     <!-- 通用查询结果列-->
     <sql id="Base_Column_List">
-        room_id AS roomId, room_name AS roomName, type, mon_rent AS monRent, status, begin_date AS beginDate, end_date AS endDate, liver, remark
+        room_id AS roomId,building_id buildingId, room_name AS roomName, type, mon_rent AS monRent, status, begin_date AS beginDate, end_date AS endDate, liver, remark
     </sql>
+    
+    <select id="selectRoomList" resultType="Room">
+       select
+        <include refid="Base_Column_List"/>
+        from room
+        order by 
+       ${sort} ${order}
+    
+    </select>
+    
+    
 </mapper>
