@@ -35,6 +35,14 @@ public class Room implements Serializable {
 	@TableField(value="room_name")
 	private String roomName;
 
+	public Integer getBuildingId() {
+		return buildingId;
+	}
+
+	public void setBuildingId(Integer buildingId) {
+		this.buildingId = buildingId;
+	}
+
 	/**
 	 * 
 	 */

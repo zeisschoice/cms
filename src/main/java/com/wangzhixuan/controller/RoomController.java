@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.wangzhixuan.commons.utils.PageInfo;
 import com.wangzhixuan.commons.utils.StringUtils;
 import com.wangzhixuan.model.Building;
+import com.wangzhixuan.model.Room;
 import com.wangzhixuan.model.vo.UserVo;
 import com.wangzhixuan.service.IBuildingService;
 import com.wangzhixuan.service.IRoomService;
@@ -31,6 +32,7 @@ public class RoomController {
 	@Autowired
 	private IBuildingService iBuildingService;
 	
+	@Autowired
 	private IRoomService iRoomService;
 	
 	@RequestMapping(value = "/roomPage", method = RequestMethod.GET)
@@ -48,13 +50,13 @@ public class RoomController {
 	 
 	 @RequestMapping(value = "/dataGrid", method = RequestMethod.POST)
 	    @ResponseBody
-	    public Object dataGrid(Building building, Integer page, Integer rows, String sort, String order) {
+	    public Object dataGrid(Room room, Integer page, Integer rows, String sort, String order) {
 	        PageInfo pageInfo = new PageInfo(page, rows);
-	  //      Map<String, Object> condition = new HashMap<String, Object>();
+	        Map<String, Object> condition = new HashMap<String, Object>();
 
-//	        if (StringUtils.isNotBlank(userVo.getName())) {
-//	            condition.put("name", userVo.getName());
-//	        }
+	        if (room.getBuildingId()!=null) {
+	            condition.put("buildingId", room.getBuildingId());
+	        }
 //	        if (userVo.getOrganizationId() != null) {
 //	            condition.put("organizationId", userVo.getOrganizationId());
 //	        }
@@ -64,7 +66,8 @@ public class RoomController {
 //	        if (userVo.getCreatedateEnd() != null) {
 //	            condition.put("endTime", userVo.getCreatedateEnd());
 //	        }
-	     //   pageInfo.setCondition(condition);
+	   //     condition.put("buildingId",1);
+	   //     pageInfo.setCondition(condition);
 	        iRoomService.selectDataGrid(pageInfo);
 	        return pageInfo;
 	    }
