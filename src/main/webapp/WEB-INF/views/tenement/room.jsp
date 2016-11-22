@@ -32,106 +32,56 @@
             pagination : true,
             singleSelect : true,
             idField : 'id',
-            sortName : 'createTime',
+            sortName : 'id',
             sortOrder : 'asc',
             pageSize : 20,
             pageList : [ 10, 20, 30, 40, 50, 100, 200, 300, 400, 500 ],
             columns : [ [ {
-                width : '80',
-                title : '登录名',
+                width : '150',
+                title : '房间名称',
                 field : 'roomName',
                 sortable : true
             }, {
-                width : '80',
+                width : '100',
                 title : '姓名',
-                field : 'name',
-                sortable : true
+                field : 'liver'
+                
             },{
                 width : '80',
-                title : '部门ID',
-                field : 'organizationId',
-                hidden : true
+                title : '创建日期',
+                field : 'beginDate'
             },{
                 width : '80',
-                title : '所属部门',
-                field : 'organizationName'
-            },{
-                width : '130s',
-                title : '创建时间',
-                field : 'createTime',
-                sortable : true
+                title : '结束日期',
+                field : 'endDate'
+              
             },  {
                 width : '40',
-                title : '性别',
-                field : 'sex',
-                sortable : true,
-                formatter : function(value, row, index) {
-                    switch (value) {
-                    case 0:
-                        return '男';
-                    case 1:
-                        return '女';
-                    }
-                }
+                title : '状态',
+                field : 'status'
+              
+               
             }, {
                 width : '40',
-                title : '年龄',
-                field : 'age',
+                title : '类型',
+                field : 'type',
                 sortable : true
-            },{
-                width : '120',
-                title : '电话',
-                field : 'phone',
-                sortable : true
-            }, 
-            {
-                width : '200',
-                title : '角色',
-                field : 'rolesList',
-                sortable : true,
-                formatter : function(value, row, index) {
-                    var roles = [];
-                    for(var i = 0; i< value.length; i++) {
-                        roles.push(value[i].name);  
-                    }
-                    return(roles.join('\n'));
-                }
-            }, {
-                width : '60',
-                title : '用户类型',
-                field : 'userType',
-                sortable : true,
-                formatter : function(value, row, index) {
-                    if(value == 0) {
-                        return "管理员";
-                    }else if(value == 1) {
-                        return "用户";
-                    }
-                    return "未知类型";
-                }
-            },{
-                width : '60',
-                title : '状态',
-                field : 'status',
-                sortable : true,
-                formatter : function(value, row, index) {
-                    switch (value) {
-                    case 0:
-                        return '正常';
-                    case 1:
-                        return '停用';
-                    }
-                }
-            } , {
+            } ,{
+            	 width : '200',
+                 title : '备注',
+                 field : 'remark'
+               
+            }
+             , {
                 field : 'action',
                 title : '操作',
                 width : 130,
                 formatter : function(value, row, index) {
                     var str = '';
-                        <shiro:hasPermission name="/user/edit">
+                        <shiro:hasPermission name="/room/edit">
                             str += $.formatString('<a href="javascript:void(0)" class="user-easyui-linkbutton-edit" data-options="plain:true,iconCls:\'icon-edit\'" onclick="editFun(\'{0}\');" >编辑</a>', row.id);
                         </shiro:hasPermission>
-                        <shiro:hasPermission name="/user/delete">
+                        <shiro:hasPermission name="/room/delete">
                             str += '&nbsp;&nbsp;|&nbsp;&nbsp;';
                             str += $.formatString('<a href="javascript:void(0)" class="user-easyui-linkbutton-del" data-options="plain:true,iconCls:\'icon-del\'" onclick="deleteFun(\'{0}\');" >删除</a>', row.id);
                         </shiro:hasPermission>

@@ -57,17 +57,8 @@ public class RoomController {
 	        if (room.getBuildingId()!=null) {
 	            condition.put("buildingId", room.getBuildingId());
 	        }
-//	        if (userVo.getOrganizationId() != null) {
-//	            condition.put("organizationId", userVo.getOrganizationId());
-//	        }
-//	        if (userVo.getCreatedateStart() != null) {
-//	            condition.put("startTime", userVo.getCreatedateStart());
-//	        }
-//	        if (userVo.getCreatedateEnd() != null) {
-//	            condition.put("endTime", userVo.getCreatedateEnd());
-//	        }
-	   //     condition.put("buildingId",1);
-	   //     pageInfo.setCondition(condition);
+	        
+	        pageInfo.setCondition(condition);
 	        iRoomService.selectDataGrid(pageInfo);
 	        return pageInfo;
 	    }

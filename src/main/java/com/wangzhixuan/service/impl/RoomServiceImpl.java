@@ -33,7 +33,7 @@ public class RoomServiceImpl extends SuperServiceImpl<RoomMapper, Room> implemen
 		
 		Page<Room> page = new Page<Room>(pageInfo.getNowpage(), pageInfo.getSize());
 		   
-	    List<Room> list = roomMapper.selectRoomList(page, pageInfo.getSort(), pageInfo.getOrder());
+	    List<Room> list = roomMapper.selectRoomPage(page, pageInfo.getCondition());
 	   
 	    pageInfo.setRows(list);
         pageInfo.setTotal(page.getTotal());

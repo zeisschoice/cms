@@ -3,7 +3,7 @@
 <mapper namespace="com.wangzhixuan.mapper.RoomMapper">
 
 	<resultMap id="BaseResultMap" type="com.wangzhixuan.model.Room">
-		<id column="room_id" property="roomId" />
+		<id column="id" property="id" />
 		<result column="room_name" property="roomName" />
 		<result column="building_id" property="buildingId" />
 		<result column="type" property="type" />
@@ -17,19 +17,18 @@
 
     <!-- 通用查询结果列-->
     <sql id="Base_Column_List">
-        room_id AS roomId,building_id buildingId, room_name AS roomName, type, mon_rent AS monRent, status, begin_date AS beginDate, end_date AS endDate, liver, remark
+        id ,building_id buildingId, room_name AS roomName, type, mon_rent AS monRent, status, begin_date AS beginDate, end_date AS endDate, liver, remark
     </sql>
     
-    <select id="selectRoomList" resultType="Room">
+    <select id="selectRoomPage" resultType="Room">
        select
         <include refid="Base_Column_List"/>
         from room
         where 1=1
         <if test="buildingId!=null">
-          and building_id = ${buildingId}
+          and building_id = #{buildingId}
         </if>
-        order by 
-       ${sort} ${order}
+      
     
     </select>
     
