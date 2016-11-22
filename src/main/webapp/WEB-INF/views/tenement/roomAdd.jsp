@@ -10,15 +10,10 @@
             panelHeight : 'auto'
         });
 
-        $('#roleIds').combotree({
-            url: '${path }/role/tree',
-            multiple: true,
-            required: true,
-            panelHeight : 'auto'
-        });
+        
 
-        $('#userAddForm').form({
-            url : '${path }/user/add',
+        $('#roomAddForm').form({
+            url : '${path }/room/add',
             onSubmit : function() {
                 progressLoad();
                 var isValid = $(this).form('validate');
@@ -29,6 +24,7 @@
             },
             success : function(result) {
                 progressClose();
+                console.log("------->>"+result);
                 result = updateStr(result);
                 result = $.parseJSON(result);
                 if (result.success) {
@@ -44,54 +40,50 @@
 </script>
 <div class="easyui-layout" data-options="fit:true,border:false">
     <div data-options="region:'center',border:false" title="" style="overflow: hidden;padding: 3px;">
-        <form id="userAddForm" method="post">
+        <form id="roomAddForm" method="post">
             <table class="grid">
                 <tr>
-                    <td>登录名</td>
-                    <td><input name="loginName" type="text" placeholder="请输入登录名称" class="easyui-validatebox" data-options="required:true" value=""></td>
-                    <td>姓名</td>
-                    <td><input name="name" type="text" placeholder="请输入姓名" class="easyui-validatebox" data-options="required:true" value=""></td>
+                    <td>房间名称</td>
+                    <td><input name="roomName" type="text" placeholder="请输入房间名称" class="easyui-validatebox" data-options="required:true" value=""></td>
+                    <td>住户姓名</td>
+                    <td><input name="liver" type="text" placeholder="请输入住户姓名" class="easyui-validatebox" data-options="required:true" value=""></td>
                 </tr>
                 <tr>
-                    <td>密码</td>
-                    <td><input name="password" type="password" placeholder="请输入密码" class="easyui-validatebox" data-options="required:true"></td>
-                    <td>性别</td>
+                    <td>出租开始日期</td>
+                    <td><input name="beginDate" type="text" placeholder="请输入参加日期" class="easyui-validatebox" data-options="required:true"></td>
+                    <td>出租结束日期</td>
                     <td>
-                        <select name="sex" class="easyui-combobox" data-options="width:140,height:29,editable:false,panelHeight:'auto'">
-                            <option value="0" selected="selected">男</option>
-                            <option value="1" >女</option>
-                        </select>
+                       <input name="endDate" type="text" placeholder="请输入结束" class="easyui-validatebox" data-options="required:true">
                     </td>
                 </tr>
                 <tr>
-                    <td>年龄</td>
-                    <td><input type="text" name="age" class="easyui-numberbox"/></td>
-                    <td>用户类型</td>
+                    
+                    <td>类型</td>
                     <td>
                         <select name="userType" class="easyui-combobox" data-options="width:140,height:29,editable:false,panelHeight:'auto'">
-                            <option value="0">管理员</option>
-                            <option value="1" selected="selected">用户</option>
+                            <option value="0">单间</option>
+                            <option value="1" selected="selected">套间</option>
                         </select>
                     </td>
-                </tr>
-                <tr>
-                    <td>部门</td>
-                    <td><select id="organizationId" name="organizationId" style="width: 140px; height: 29px;" class="easyui-validatebox" data-options="required:true"></select></td>
-                    <td>角色</td>
-                    <td><select id="roleIds" name="roleIds" style="width: 140px; height: 29px;"></select></td>
-                </tr>
-                <tr>
-                    <td>电话</td>
-                    <td>
-                        <input type="text" name="phone" class="easyui-numberbox"/>
-                    </td>
-                    <td>用户状态</td>
+                    <td>状态</td>
                     <td>
                         <select id="status" name="status" class="easyui-combobox" data-options="width:140,height:29,editable:false,panelHeight:'auto'">
-                                <option value="0">正常</option>
-                                <option value="1">停用</option>
+                                <option value="0">空置</option>
+                                <option value="1">已租</option>
                         </select>
                     </td>
+                </tr>
+                <tr>
+                    <td>所属楼房</td>
+                    <td><select id="buildingId" name="buildingId" style="width: 140px; height: 29px;" class="easyui-validatebox" data-options="required:true"></select></td>
+                    <td>月租</td>
+                    <td><input name="menRent" type="text" placeholder="月租" class="easyui-validatebox" data-options="required:true"></td>
+                </tr>
+                <tr>
+                    
+                  <td>备注</td>
+                  <td colspan="3"><textarea id="remark" name="remark" rows="" cols="" ></textarea></td>  
+                    
                 </tr>
             </table>
         </form>
