@@ -3,17 +3,8 @@
 <script type="text/javascript">
     $(function() {
 
-        $('#buildingId').combotree({
-            url : '${path }/room/tree',
-            parentField : 'pid',
-            lines : true,
-            panelHeight : 'auto'
-        });
-
-        
-
         $('#roomAddForm').form({
-            url : '${path }/room/add',
+            url:'${path}/room/add',
             onSubmit : function() {
                 progressLoad();
                 var isValid = $(this).form('validate');
@@ -24,7 +15,8 @@
             },
             success : function(result) {
                 progressClose();
-                console.log("------->>"+result);
+              
+                console.log('${path}/room/addRoom');
                 result = updateStr(result);
                 result = $.parseJSON(result);
                 if (result.success) {
@@ -34,6 +26,14 @@
                     parent.$.messager.alert('提示', result.msg, 'warning');
                 }
             }
+        });
+        
+        
+        $('#buildingId').combotree({
+            url : '${path}/room/tree',
+            parentField : 'pid',
+            lines : true,
+            panelHeight : 'auto'
         });
         
     });
@@ -50,17 +50,17 @@
                 </tr>
                 <tr>
                     <td>出租开始日期</td>
-                    <td><input name="beginDate" type="text" placeholder="请输入参加日期" class="easyui-validatebox" data-options="required:true"></td>
+                    <td><input name="beginDate" placeholder="点击选择时间" onclick="WdatePicker({readOnly:true,dateFmt:'yyyy-MM-dd HH:mm:ss'})" readonly="readonly" class="easyui-validatebox" data-options="required:true"></td>
                     <td>出租结束日期</td>
                     <td>
-                       <input name="endDate" type="text" placeholder="请输入结束" class="easyui-validatebox" data-options="required:true">
+                       <input name="endDate" placeholder="点击选择时间" onclick="WdatePicker({readOnly:true,dateFmt:'yyyy-MM-dd HH:mm:ss'})" readonly="readonly" class="easyui-validatebox" data-options="required:true">
                     </td>
                 </tr>
                 <tr>
                     
                     <td>类型</td>
                     <td>
-                        <select name="userType" class="easyui-combobox" data-options="width:140,height:29,editable:false,panelHeight:'auto'">
+                        <select name="type" class="easyui-combobox" data-options="width:140,height:29,editable:false,panelHeight:'auto'">
                             <option value="0">单间</option>
                             <option value="1" selected="selected">套间</option>
                         </select>
@@ -77,7 +77,7 @@
                     <td>所属楼房</td>
                     <td><select id="buildingId" name="buildingId" style="width: 140px; height: 29px;" class="easyui-validatebox" data-options="required:true"></select></td>
                     <td>月租</td>
-                    <td><input name="menRent" type="text" placeholder="月租" class="easyui-validatebox" data-options="required:true"></td>
+                    <td><input name="monRent" type="text" placeholder="月租" class="easyui-validatebox" data-options="required:true"></td>
                 </tr>
                 <tr>
                     

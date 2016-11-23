@@ -47,25 +47,39 @@
                 field : 'liver'
                 
             },{
-                width : '80',
+                width : '150',
                 title : '创建日期',
                 field : 'beginDate'
             },{
-                width : '80',
+                width : '150',
                 title : '结束日期',
                 field : 'endDate'
               
             },  {
                 width : '40',
                 title : '状态',
-                field : 'status'
-              
+                field : 'status',
+                formatter : function(value, row, index) {
+                         switch (value) {
+                         case 0:
+                             return '空置';
+                         case 1:
+                             return '已租';
+                         }
+                }
                
             }, {
                 width : '40',
                 title : '类型',
                 field : 'type',
-                sortable : true
+                formatter : function(value, row, index) {
+                    switch (value) {
+                    case 0:
+                        return '单间';
+                    case 1:
+                        return '套间';
+                    }
+           }
             } ,{
             	 width : '200',
                  title : '备注',
@@ -120,12 +134,12 @@
         } else {//点击操作里面的删除图标会触发这个
             dataGrid.datagrid('unselectAll').datagrid('uncheckAll');
         }
-        parent.$.messager.confirm('询问', '您是否要删除当前用户？', function(b) {
+        parent.$.messager.confirm('询问', '您是否要删除当前房间？', function(b) {
             if (b) {
                 var currentUserId = '${sessionInfo.id}';/*当前登录用户的ID*/
                 if (currentUserId != id) {
                     progressLoad();
-                    $.post('${path }/user/delete', {
+                    $.post('${path }/room/delete', {
                         id : id
                     }, function(result) {
                         if (result.success) {
@@ -155,12 +169,12 @@
             title : '编辑',
             width : 500,
             height : 300,
-            href : '${path }/user/editPage?id=' + id,
+            href : '${path }/room/editPage?id=' + id,
             buttons : [ {
                 text : '确定',
                 handler : function() {
                     parent.$.modalDialog.openner_dataGrid = dataGrid;//因为添加成功之后，需要刷新这个dataGrid，所以先预定义好
-                    var f = parent.$.modalDialog.handler.find('#userEditForm');
+                    var f = parent.$.modalDialog.handler.find('#roomEditForm');
                     f.submit();
                 }
             } ]
@@ -200,7 +214,7 @@
         </ul>
     </div>
     <div id="toolbar" style="display: none;">
-        <shiro:hasPermission name="/user/add">
+        <shiro:hasPermission name="/room/add">
             <a onclick="addFun();" href="javascript:void(0);" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-add'">添加</a>
         </shiro:hasPermission>
     </div>
