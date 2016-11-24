@@ -24,6 +24,10 @@
                     parent.$.messager.alert('错误', result.msg, 'error');
                 }
             }
+            
+           
+            
+            
         });
         
         
@@ -35,6 +39,14 @@
   // $('#status').combobox('select', '${room.status}');
  //     $('#type').combobox('setValue', $('#type')['${room.type}'].value);
      
+     $('#buildingId').combotree({
+         url : '${path}/room/tree',
+         parentField : 'pid',
+         lines : true,
+         panelHeight : 'auto'
+     });
+ 
+ 
     });
     
    
@@ -92,7 +104,7 @@
                 </tr>
                 <tr>
                     <td>所属楼房</td>
-                    <td><select id="buildingId" name="buildingId" style="width: 140px; height: 29px;" class="easyui-validatebox" data-options="required:true" value="${room.buildingId }"></select></td>
+                    <td><select id="buildingId" name="buildingId" style="width: 140px; height: 29px;" class="easyui-validatebox" data-options="required:true" value=""></select></td>
                     <td>月租</td>
                     <td><input name="monRent" type="text" placeholder="月租" class="easyui-validatebox" data-options="required:true" value="${room.monRent }"></td>
                 </tr>

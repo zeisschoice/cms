@@ -82,7 +82,7 @@
                 <tr>
                     
                   <td>备注</td>
-                  <td colspan="3"><textarea id="remark" name="remark" rows="" cols="" ></textarea></td>  
+                  <td colspan="3"><textarea id="remark" name="remark" rows="" cols="" style="margin: 0px; width: 380px; height: 53px;" ></textarea></td>  
                     
                 </tr>
             </table>
