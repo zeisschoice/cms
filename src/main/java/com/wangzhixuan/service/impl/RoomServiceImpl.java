@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.baomidou.framework.service.impl.SuperServiceImpl;
 import com.baomidou.mybatisplus.plugins.Page;
+import com.wangzhixuan.commons.result.Tree;
 import com.wangzhixuan.commons.utils.PageInfo;
 import com.wangzhixuan.mapper.RoomMapper;
 import com.wangzhixuan.model.Building;
@@ -38,5 +39,7 @@ public class RoomServiceImpl extends SuperServiceImpl<RoomMapper, Room> implemen
 	    pageInfo.setRows(list);
         pageInfo.setTotal(page.getTotal());
 	}
+
+	
 	
 }

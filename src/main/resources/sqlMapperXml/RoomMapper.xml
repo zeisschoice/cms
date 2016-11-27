@@ -32,5 +32,16 @@
     
     </select>
     
+    <select id="selectRoombyBuildId" resultType="Room" parameterType="java.lang.Long">
+    
+       select
+        <include refid="Base_Column_List"/>
+        from room
+        where 1=1
+        <if test="buildingId!=null">
+          and building_id = #{value}
+        </if>
+    
+    </select>
     
 </mapper>

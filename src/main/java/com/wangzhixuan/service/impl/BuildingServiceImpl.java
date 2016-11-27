@@ -12,8 +12,10 @@ import com.baomidou.mybatisplus.plugins.pagination.Pagination;
 import com.wangzhixuan.commons.result.Tree;
 import com.wangzhixuan.commons.utils.PageInfo;
 import com.wangzhixuan.mapper.BuildingMapper;
+import com.wangzhixuan.mapper.RoomMapper;
 import com.wangzhixuan.model.Building;
 import com.wangzhixuan.model.Role;
+import com.wangzhixuan.model.Room;
 import com.wangzhixuan.service.IBuildingService;
 
 
@@ -30,6 +32,9 @@ public class BuildingServiceImpl extends SuperServiceImpl<BuildingMapper, Buildi
 
 	@Autowired
 	private BuildingMapper buildingMapper;
+	
+	@Autowired
+	private RoomMapper roomMapper;
 	
 	@Override
 	public void selectDataGrid(PageInfo pageInfo) {
@@ -66,6 +71,52 @@ public class BuildingServiceImpl extends SuperServiceImpl<BuildingMapper, Buildi
 			}
 			
 		}
+		
+		return trees;
+	}
+
+	//查询楼房房间树
+	@Override
+	public List<Tree> selectBuildRoomTree() {
+		// TODO Auto-generated method stub
+		List<Tree> trees = new ArrayList<Tree>();
+		
+		List<Building> list = buildingMapper.selectAll();
+		
+		if(list !=null && list.size()>0){
+			
+			for(int i = 0;i<list.size();i++){
+				
+				 Tree treeOne = new Tree();
+
+	             treeOne.setId(list.get(i).getId().longValue());
+	             treeOne.setText(list.get(i).getBuildingName());
+	             treeOne.setIconCls("icon-company");
+	             
+	             List<Room> rooms = roomMapper.selectRoombyBuildId(list.get(i).getId().longValue());
+	             
+	             if(rooms!=null && rooms.size()>0){
+	            	 List<Tree> tree = new ArrayList<Tree>();
+	            	 for(int j=0;j<rooms.size();j++){
+	            		 
+	            		 Tree treeTwo = new Tree(); 
+	            		 treeTwo.setId(rooms.get(j).getId().longValue());
+	            		 treeTwo.setIconCls("icon-home");
+	            		 tree.add(treeTwo);
+	            	 }
+	            	 
+	            	 treeOne.setChildren(tree);
+	            	 
+	             }else{
+	                 treeOne.setState("closed");
+	             } 
+	             
+	             
+			}
+			
+			
+		}
+		
 		
 		return trees;
 	}

@@ -21,4 +21,6 @@ public interface IBuildingService extends ISuperService<Building> {
 	 void selectDataGrid(PageInfo pageInfo);
 	 
 	 List<Tree> selectTree();
+	 
+	 List<Tree> selectBuildRoomTree();
 }
