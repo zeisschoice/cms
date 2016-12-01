@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50634
 File Encoding         : 65001
 
-Date: 2016-11-20 22:55:01
+Date: 2016-12-01 23:17:27
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -104,7 +104,7 @@ CREATE TABLE `resource` (
   `resource_type` tinyint(2) NOT NULL DEFAULT '0' COMMENT '资源类别',
   `create_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=233 DEFAULT CHARSET=utf8 COMMENT='资源';
+) ENGINE=InnoDB AUTO_INCREMENT=237 DEFAULT CHARSET=utf8 COMMENT='资源';
 
 -- ----------------------------
 -- Records of resource
@@ -142,6 +142,10 @@ INSERT INTO `resource` VALUES ('229', '菜单测试', '', null, 'icon-company', 
 INSERT INTO `resource` VALUES ('230', '添加', '/building/add', null, 'icon-add', '224', '0', '0', '1', '2016-11-19 16:15:38');
 INSERT INTO `resource` VALUES ('231', '编辑', '/building/edit', null, 'icon-edit', '224', '1', '0', '1', '2016-11-19 16:21:55');
 INSERT INTO `resource` VALUES ('232', '删除', '/building/delete', null, 'icon-del', '224', '2', '0', '1', '2016-11-19 16:22:49');
+INSERT INTO `resource` VALUES ('233', '添加', '/room/add', null, 'icon-add', '223', '0', '0', '1', '2016-11-23 22:18:52');
+INSERT INTO `resource` VALUES ('234', '编辑', '/room/edit', null, 'icon-edit', '223', '0', '0', '1', '2016-11-23 22:22:28');
+INSERT INTO `resource` VALUES ('235', '删除', '/room/delete', null, 'icon-del', '223', '0', '0', '1', '2016-11-23 22:32:38');
+INSERT INTO `resource` VALUES ('236', '租户管理', '/tenant/tenantPage', null, 'menu_icon_datadeal', '222', '0', '0', '0', '2016-11-26 22:45:34');
 
 -- ----------------------------
 -- Table structure for role
@@ -173,7 +177,7 @@ CREATE TABLE `role_resource` (
   `role_id` bigint(19) NOT NULL COMMENT '角色id',
   `resource_id` bigint(19) NOT NULL COMMENT '资源id',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=596 DEFAULT CHARSET=utf8 COMMENT='角色资源';
+) ENGINE=InnoDB AUTO_INCREMENT=664 DEFAULT CHARSET=utf8 COMMENT='角色资源';
 
 -- ----------------------------
 -- Records of role_resource
@@ -234,37 +238,40 @@ INSERT INTO `role_resource` VALUES ('472', '8', '223');
 INSERT INTO `role_resource` VALUES ('473', '8', '224');
 INSERT INTO `role_resource` VALUES ('474', '8', '227');
 INSERT INTO `role_resource` VALUES ('475', '8', '228');
-INSERT INTO `role_resource` VALUES ('565', '1', '1');
-INSERT INTO `role_resource` VALUES ('566', '1', '11');
-INSERT INTO `role_resource` VALUES ('567', '1', '111');
-INSERT INTO `role_resource` VALUES ('568', '1', '112');
-INSERT INTO `role_resource` VALUES ('569', '1', '113');
-INSERT INTO `role_resource` VALUES ('570', '1', '114');
-INSERT INTO `role_resource` VALUES ('571', '1', '12');
-INSERT INTO `role_resource` VALUES ('572', '1', '121');
-INSERT INTO `role_resource` VALUES ('573', '1', '122');
-INSERT INTO `role_resource` VALUES ('574', '1', '123');
-INSERT INTO `role_resource` VALUES ('575', '1', '124');
-INSERT INTO `role_resource` VALUES ('576', '1', '125');
-INSERT INTO `role_resource` VALUES ('577', '1', '13');
-INSERT INTO `role_resource` VALUES ('578', '1', '131');
-INSERT INTO `role_resource` VALUES ('579', '1', '132');
-INSERT INTO `role_resource` VALUES ('580', '1', '133');
-INSERT INTO `role_resource` VALUES ('581', '1', '134');
-INSERT INTO `role_resource` VALUES ('582', '1', '14');
-INSERT INTO `role_resource` VALUES ('583', '1', '141');
-INSERT INTO `role_resource` VALUES ('584', '1', '142');
-INSERT INTO `role_resource` VALUES ('585', '1', '143');
-INSERT INTO `role_resource` VALUES ('586', '1', '144');
-INSERT INTO `role_resource` VALUES ('587', '1', '222');
-INSERT INTO `role_resource` VALUES ('588', '1', '223');
-INSERT INTO `role_resource` VALUES ('589', '1', '224');
-INSERT INTO `role_resource` VALUES ('590', '1', '230');
-INSERT INTO `role_resource` VALUES ('591', '1', '231');
-INSERT INTO `role_resource` VALUES ('592', '1', '232');
-INSERT INTO `role_resource` VALUES ('593', '1', '221');
-INSERT INTO `role_resource` VALUES ('594', '1', '227');
-INSERT INTO `role_resource` VALUES ('595', '1', '228');
+INSERT INTO `role_resource` VALUES ('630', '1', '1');
+INSERT INTO `role_resource` VALUES ('631', '1', '11');
+INSERT INTO `role_resource` VALUES ('632', '1', '111');
+INSERT INTO `role_resource` VALUES ('633', '1', '112');
+INSERT INTO `role_resource` VALUES ('634', '1', '113');
+INSERT INTO `role_resource` VALUES ('635', '1', '114');
+INSERT INTO `role_resource` VALUES ('636', '1', '12');
+INSERT INTO `role_resource` VALUES ('637', '1', '121');
+INSERT INTO `role_resource` VALUES ('638', '1', '122');
+INSERT INTO `role_resource` VALUES ('639', '1', '123');
+INSERT INTO `role_resource` VALUES ('640', '1', '124');
+INSERT INTO `role_resource` VALUES ('641', '1', '125');
+INSERT INTO `role_resource` VALUES ('642', '1', '13');
+INSERT INTO `role_resource` VALUES ('643', '1', '131');
+INSERT INTO `role_resource` VALUES ('644', '1', '132');
+INSERT INTO `role_resource` VALUES ('645', '1', '133');
+INSERT INTO `role_resource` VALUES ('646', '1', '134');
+INSERT INTO `role_resource` VALUES ('647', '1', '14');
+INSERT INTO `role_resource` VALUES ('648', '1', '141');
+INSERT INTO `role_resource` VALUES ('649', '1', '142');
+INSERT INTO `role_resource` VALUES ('650', '1', '143');
+INSERT INTO `role_resource` VALUES ('651', '1', '144');
+INSERT INTO `role_resource` VALUES ('652', '1', '222');
+INSERT INTO `role_resource` VALUES ('653', '1', '223');
+INSERT INTO `role_resource` VALUES ('654', '1', '233');
+INSERT INTO `role_resource` VALUES ('655', '1', '234');
+INSERT INTO `role_resource` VALUES ('656', '1', '235');
+INSERT INTO `role_resource` VALUES ('657', '1', '224');
+INSERT INTO `role_resource` VALUES ('658', '1', '230');
+INSERT INTO `role_resource` VALUES ('659', '1', '231');
+INSERT INTO `role_resource` VALUES ('660', '1', '232');
+INSERT INTO `role_resource` VALUES ('661', '1', '221');
+INSERT INTO `role_resource` VALUES ('662', '1', '227');
+INSERT INTO `role_resource` VALUES ('663', '1', '228');
 
 -- ----------------------------
 -- Table structure for room
@@ -272,6 +279,7 @@ INSERT INTO `role_resource` VALUES ('595', '1', '228');
 DROP TABLE IF EXISTS `room`;
 CREATE TABLE `room` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `building_id` bigint(20) NOT NULL,
   `room_name` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
   `type` int(11) DEFAULT NULL,
   `mon_rent` double DEFAULT NULL,
@@ -281,11 +289,15 @@ CREATE TABLE `room` (
   `liver` int(11) DEFAULT NULL,
   `remark` varchar(200) CHARACTER SET utf8 DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of room
 -- ----------------------------
+INSERT INTO `room` VALUES ('1', '1', 'xxx', '0', '300', '0', '2016-11-24', '2016-11-25', '4444', '888888');
+INSERT INTO `room` VALUES ('2', '2', 'xx33444', '0', '22', '0', '2016-11-23', '2016-11-23', '111', '66666');
+INSERT INTO `room` VALUES ('3', '3', 'rrrr', '1', '22', '0', '2016-11-23', '2016-11-23', '4444', 'sssss');
+INSERT INTO `room` VALUES ('4', '2', '22宿舍', '1', '200', '0', '2016-11-24', '2016-11-25', '111', '问问');
 
 -- ----------------------------
 -- Table structure for sys_log
@@ -299,7 +311,7 @@ CREATE TABLE `sys_log` (
   `client_ip` varchar(255) DEFAULT NULL COMMENT '客户端ip',
   `create_time` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=496 DEFAULT CHARSET=utf8 COMMENT='系统日志';
+) ENGINE=InnoDB AUTO_INCREMENT=536 DEFAULT CHARSET=utf8 COMMENT='系统日志';
 
 -- ----------------------------
 -- Records of sys_log
@@ -409,6 +421,46 @@ INSERT INTO `sys_log` VALUES ('492', 'admin', 'admin', '[类名]:com.wangzhixuan
 INSERT INTO `sys_log` VALUES ('493', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.BuildingController,[方法]:add,[参数]:id=&buildingName=海岸花园&buildingAddress=顺德北滘&buildingOwn=张三&ownPhone=14567832222&buildingManager=李四&managerPhone=12312312&roomCount=12&remark=test&', '0:0:0:0:0:0:0:1', null);
 INSERT INTO `sys_log` VALUES ('494', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.LoginController,[方法]:loginPost,[参数]:username=admin&password=test&', '127.0.0.1', null);
 INSERT INTO `sys_log` VALUES ('495', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.LoginController,[方法]:login,[参数]:', null, null);
+INSERT INTO `sys_log` VALUES ('496', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.UserController,[方法]:addPage,[参数]:', null, null);
+INSERT INTO `sys_log` VALUES ('497', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.RoomController,[方法]:addRoom,[参数]:', null, null);
+INSERT INTO `sys_log` VALUES ('498', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.RoomController,[方法]:addRoom,[参数]:', null, null);
+INSERT INTO `sys_log` VALUES ('499', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.RoomController,[方法]:addRoom,[参数]:', null, null);
+INSERT INTO `sys_log` VALUES ('500', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.RoomController,[方法]:addRoom,[参数]:', null, null);
+INSERT INTO `sys_log` VALUES ('501', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.RoomController,[方法]:addRoom,[参数]:', null, null);
+INSERT INTO `sys_log` VALUES ('502', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.RoomController,[方法]:addRoom,[参数]:', null, null);
+INSERT INTO `sys_log` VALUES ('503', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.RoomController,[方法]:addRoom,[参数]:', null, null);
+INSERT INTO `sys_log` VALUES ('504', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.RoomController,[方法]:addRoom,[参数]:', null, null);
+INSERT INTO `sys_log` VALUES ('505', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.ResourceController,[方法]:addPage,[参数]:', null, null);
+INSERT INTO `sys_log` VALUES ('506', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.ResourceController,[方法]:addPage,[参数]:', null, null);
+INSERT INTO `sys_log` VALUES ('507', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.ResourceController,[方法]:add,[参数]:name=添加&resourceType=1&url=/room/add&seq=0&icon=icon-add&status=0&pid=223&', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('508', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.ResourceController,[方法]:addPage,[参数]:', null, null);
+INSERT INTO `sys_log` VALUES ('509', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.ResourceController,[方法]:add,[参数]:name=编辑&resourceType=1&url=/room/edit&seq=0&icon=icon-edit&status=0&pid=223&', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('510', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.ResourceController,[方法]:addPage,[参数]:', null, null);
+INSERT INTO `sys_log` VALUES ('511', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.ResourceController,[方法]:add,[参数]:name=删除&resourceType=1&url=/room/detete&seq=0&icon=icon-del&status=0&pid=223&', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('512', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.RoleController,[方法]:grantPage,[参数]:id=1&_=1479910661113&', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('513', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.RoleController,[方法]:grant,[参数]:id=1&resourceIds=1,11,111,112,113,114,12,121,122,123,124,125,13,131,132,133,134,14,141,142,143,144,222,223,233,234,235,224,230,231,232,221,227,228&', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('514', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.ResourceController,[方法]:editPage,[参数]:id=235&_=1479911015120&', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('515', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.ResourceController,[方法]:edit,[参数]:id=235&name=删除&resourceType=1&url=/room/delete&seq=0&icon=icon-del&status=0&pid=223&', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('516', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.RoleController,[方法]:grantPage,[参数]:id=1&_=1479911565496&', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('517', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.RoleController,[方法]:grant,[参数]:id=1&resourceIds=1,11,111,112,113,114,12,121,122,123,124,125,13,131,132,133,134,14,141,142,143,144,222,223,233,234,235,224,230,231,232,221,227,228&', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('518', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.RoomController,[方法]:addRoomPage,[参数]:', null, null);
+INSERT INTO `sys_log` VALUES ('519', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.RoomController,[方法]:add,[参数]:roomName=rrrr&liver=4444&beginDate=2016-11-23 22:33:14&endDate=2016-11-23 22:33:16&type=1&status=0&buildingId=3&monRent=22&remark=sssss&', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('520', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.RoomController,[方法]:edit,[参数]:id=1&roomName=xxx&liver=4444&beginDate=2016-11-24 21:41:27&endDate=2016-11-25 21:41:29&type=0&status=0&monRent=300&remark=&', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('521', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.RoomController,[方法]:addRoomPage,[参数]:', null, null);
+INSERT INTO `sys_log` VALUES ('522', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.RoomController,[方法]:add,[参数]:roomName=22宿舍&liver=111&beginDate=2016-11-24 21:42:46&endDate=2016-11-25 21:42:48&type=1&status=0&buildingId=2&monRent=200&remark=问问&', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('523', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.RoomController,[方法]:addRoomPage,[参数]:', null, null);
+INSERT INTO `sys_log` VALUES ('524', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.RoomController,[方法]:addRoomPage,[参数]:', null, null);
+INSERT INTO `sys_log` VALUES ('525', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.RoomController,[方法]:addRoomPage,[参数]:', null, null);
+INSERT INTO `sys_log` VALUES ('526', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.RoomController,[方法]:edit,[参数]:id=2&roomName=xx33444&liver=111&beginDate=2016-11-23 22:05:54&endDate=2016-11-23 22:05:52&type=0&status=0&buildingId=2&monRent=22&remark=&', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('527', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.RoomController,[方法]:edit,[参数]:id=2&roomName=xx33444&liver=111&beginDate=2016-11-23 14:00:00&endDate=2016-11-23 14:00:00&type=0&status=0&buildingId=2&monRent=22.0&remark=66666&', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('528', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.RoomController,[方法]:edit,[参数]:id=1&roomName=xxx&liver=4444&beginDate=2016-11-24 14:00:00&endDate=2016-11-25 14:00:00&type=0&status=0&buildingId=2&monRent=300.0&remark=888888&', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('529', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.RoomController,[方法]:edit,[参数]:id=1&roomName=xxx&liver=4444&beginDate=2016-11-24 14:00:00&endDate=2016-11-25 14:00:00&type=0&status=0&buildingId=1&monRent=300.0&remark=888888&', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('530', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.RoomController,[方法]:addRoomPage,[参数]:', null, null);
+INSERT INTO `sys_log` VALUES ('531', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.ResourceController,[方法]:editPage,[参数]:id=111&_=1479996343240&', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('532', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.ResourceController,[方法]:editPage,[参数]:id=11&_=1479996343241&', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('533', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.ResourceController,[方法]:editPage,[参数]:id=111&_=1479996343242&', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('534', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.ResourceController,[方法]:editPage,[参数]:id=112&_=1479996343243&', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('535', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.ResourceController,[方法]:addPage,[参数]:', null, null);
 
 -- ----------------------------
 -- Table structure for tenant
@@ -423,11 +475,12 @@ CREATE TABLE `tenant` (
   `identity_card` decimal(10,0) DEFAULT NULL,
   `remark` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='tenant';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='tenant';
 
 -- ----------------------------
 -- Records of tenant
 -- ----------------------------
+INSERT INTO `tenant` VALUES ('1', '张三', '1', '1', '111321323', '121223123', 'test');
 
 -- ----------------------------
 -- Table structure for user
@@ -478,4 +531,10 @@ INSERT INTO `user_role` VALUES ('63', '13', '2');
 INSERT INTO `user_role` VALUES ('64', '14', '7');
 INSERT INTO `user_role` VALUES ('65', '15', '8');
 INSERT INTO `user_role` VALUES ('67', '16', '8');
+
+-- ----------------------------
+-- View structure for rentroom
+-- ----------------------------
+DROP VIEW IF EXISTS `rentroom`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `rentroom` AS select `b`.`id` AS `id`,`b`.`building_name` AS `building_name`,`b`.`building_address` AS `building_address`,`b`.`building_own` AS `building_own`,`b`.`own_phone` AS `own_phone`,`b`.`building_manager` AS `building_manager`,`b`.`manager_phone` AS `manager_phone`,`b`.`room_count` AS `room_count`,`b`.`remark` AS `remark`,`r`.`room_name` AS `room_name`,`t`.`tenant_name` AS `tenant_name` from ((`building` `b` left join `room` `r` on((`b`.`id` = `r`.`building_id`))) left join `tenant` `t` on((`r`.`id` = `t`.`room_id`))) ;
 SET FOREIGN_KEY_CHECKS=1;
