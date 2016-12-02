@@ -207,7 +207,38 @@
 			    <groupId>org.codehaus.groovy</groupId>
 			    <artifactId>groovy-all</artifactId>
 			    <version>2.3.6</version>
-	    </dependency>		    
+	    </dependency>	
+
+	
+	   <!-- pdf -->		
+					<!-- pdf -->
+		<dependency>
+			<groupId>com.lowagie</groupId>
+			<artifactId>itext</artifactId>
+			<version>2.1.7</version>
+		</dependency>
+		<dependency>
+			<groupId>com.lowagie</groupId>
+			<artifactId>itext-rtf</artifactId>
+			<version>2.1.7</version>
+		</dependency>
+		<dependency>
+			<groupId>com.lowagie</groupId>
+			<artifactId>itext-rups</artifactId>
+			<version>2.1.7</version>
+		</dependency>
+		<dependency>
+			<groupId>com.lowagie</groupId>
+			<artifactId>itext-asian</artifactId>
+			<version>5.2.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.lowagie</groupId>
+			<artifactId>iTextAsianCmaps</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+	   <!-- pdf end -->	
+	   			    
 		<dependency>
 			<groupId>com.taobao</groupId>
 			<artifactId>sms</artifactId>

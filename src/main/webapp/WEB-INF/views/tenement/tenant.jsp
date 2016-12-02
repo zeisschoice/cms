@@ -25,7 +25,7 @@
         });
 
         dataGrid = $('#dataGrid').datagrid({
-            url : '${path }/room/dataGrid',
+            url : '${path }/tenant/dataGrid',
             fit : true,
             striped : true,
             rownumbers : true,
@@ -92,10 +92,10 @@
                 width : 130,
                 formatter : function(value, row, index) {
                     var str = '';
-                        <shiro:hasPermission name="/room/edit">
+                        <shiro:hasPermission name="/tenant/edit">
                             str += $.formatString('<a href="javascript:void(0)" class="user-easyui-linkbutton-edit" data-options="plain:true,iconCls:\'icon-edit\'" onclick="editFun(\'{0}\');" >编辑</a>', row.id);
                         </shiro:hasPermission>
-                        <shiro:hasPermission name="/room/delete">
+                        <shiro:hasPermission name="/tenant/delete">
                             str += '&nbsp;&nbsp;|&nbsp;&nbsp;';
                             str += $.formatString('<a href="javascript:void(0)" class="user-easyui-linkbutton-del" data-options="plain:true,iconCls:\'icon-del\'" onclick="deleteFun(\'{0}\');" >删除</a>', row.id);
                         </shiro:hasPermission>
@@ -115,7 +115,7 @@
             title : '添加',
             width : 500,
             height : 300,
-            href : '${path }/room/addPage',
+            href : '${path }/tenant/addPage',
             buttons : [ {
                 text : '添加',
                 handler : function() {
@@ -139,7 +139,7 @@
                 var currentUserId = '${sessionInfo.id}';/*当前登录用户的ID*/
                 if (currentUserId != id) {
                     progressLoad();
-                    $.post('${path }/room/delete', {
+                    $.post('${path }/tenant/delete', {
                         id : id
                     }, function(result) {
                         if (result.success) {
@@ -169,7 +169,7 @@
             title : '编辑',
             width : 500,
             height : 300,
-            href : '${path }/room/editPage?id=' + id,
+            href : '${path }/tenant/editPage?id=' + id,
             buttons : [ {
                 text : '确定',
                 handler : function() {
@@ -209,7 +209,7 @@
     <div data-options="region:'center',border:true,title:'房间列表'" >
         <table id="dataGrid" data-options="fit:true,border:false"></table>
     </div>
-    <div data-options="region:'west',border:true,split:false,title:'楼房'"  style="width:150px;overflow: hidden; ">
+    <div data-options="region:'west',border:true,split:false,title:'楼房'"  style="width:150px;overflow-x: hidden; ">
         <ul id="roomTree"  style="width:160px;margin: 10px 10px 10px 10px">
         </ul>
     </div>

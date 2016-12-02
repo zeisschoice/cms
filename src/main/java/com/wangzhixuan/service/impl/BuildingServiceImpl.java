@@ -95,13 +95,24 @@ public class BuildingServiceImpl extends SuperServiceImpl<BuildingMapper, Buildi
 	             
 	             List<Room> rooms = roomMapper.selectRoombyBuildId(list.get(i).getId().longValue());
 	             
+	             System.out.println("房间数："+rooms.size());
+	             
 	             if(rooms!=null && rooms.size()>0){
 	            	 List<Tree> tree = new ArrayList<Tree>();
 	            	 for(int j=0;j<rooms.size();j++){
 	            		 
 	            		 Tree treeTwo = new Tree(); 
 	            		 treeTwo.setId(rooms.get(j).getId().longValue());
-	            		 treeTwo.setIconCls("icon-home");
+	            		
+	            		 if(rooms.get(j).getStatus()==0){
+	            			 treeTwo.setText(rooms.get(j).getRoomName()+"(空闲)");
+	            			 treeTwo.setIconCls("icon-home");
+	            		 }else{
+	            			 
+	            			 treeTwo.setText(rooms.get(j).getRoomName()+"(已租)");
+	            			 treeTwo.setIconCls("icon-man");
+	            		 }
+	            		
 	            		 tree.add(treeTwo);
 	            	 }
 	            	 
@@ -111,7 +122,7 @@ public class BuildingServiceImpl extends SuperServiceImpl<BuildingMapper, Buildi
 	                 treeOne.setState("closed");
 	             } 
 	             
-	             
+	             trees.add(treeOne) ;
 			}
 			
 			

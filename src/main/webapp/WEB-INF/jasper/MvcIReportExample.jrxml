@@ -14,7 +14,7 @@
 	<title>
 		<band height="40" splitType="Stretch">
 			<staticText>
-				<reportElement x="0" y="0" width="555" height="40" uuid="77313ff5-b9b9-446e-b415-b35885e73361"/>
+				<reportElement uuid="77313ff5-b9b9-446e-b415-b35885e73361" x="0" y="0" width="555" height="40"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="14" isBold="true"/>
 				</textElement>
@@ -25,7 +25,7 @@
 	<columnHeader>
 		<band height="20" splitType="Stretch">
 			<staticText>
-				<reportElement mode="Opaque" x="0" y="0" width="111" height="20" backcolor="#CCFFCC" uuid="0b3a54b3-b8ea-44c8-879b-ee92ab60ee41"/>
+				<reportElement uuid="0b3a54b3-b8ea-44c8-879b-ee92ab60ee41" mode="Opaque" x="0" y="0" width="111" height="20" backcolor="#CCFFCC"/>
 				<box>
 					<topPen lineWidth="0.5"/>
 					<leftPen lineWidth="0.5"/>
@@ -36,7 +36,7 @@
 				<text><![CDATA[name]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="111" y="0" width="111" height="20" backcolor="#CCFFCC" uuid="ddc1db2b-4a98-4ab3-8160-0c40f192b052"/>
+				<reportElement uuid="ddc1db2b-4a98-4ab3-8160-0c40f192b052" mode="Opaque" x="111" y="0" width="111" height="20" backcolor="#CCFFCC"/>
 				<box>
 					<topPen lineWidth="0.5"/>
 					<leftPen lineWidth="0.5"/>
@@ -47,7 +47,7 @@
 				<text><![CDATA[sex]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="222" y="0" width="111" height="20" backcolor="#CCFFCC" uuid="31abaa5b-3bde-4e11-8b26-957e146a3438"/>
+				<reportElement uuid="31abaa5b-3bde-4e11-8b26-957e146a3438" mode="Opaque" x="222" y="0" width="111" height="20" backcolor="#CCFFCC"/>
 				<box>
 					<topPen lineWidth="0.5"/>
 					<leftPen lineWidth="0.5"/>
@@ -58,7 +58,7 @@
 				<text><![CDATA[age]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="333" y="0" width="111" height="20" backcolor="#CCFFCC" uuid="5927a66b-71f9-4cd1-ae1d-4c340d6b975d"/>
+				<reportElement uuid="5927a66b-71f9-4cd1-ae1d-4c340d6b975d" mode="Opaque" x="333" y="0" width="111" height="20" backcolor="#CCFFCC"/>
 				<box>
 					<topPen lineWidth="0.5"/>
 					<leftPen lineWidth="0.5"/>
@@ -69,7 +69,7 @@
 				<text><![CDATA[hometown]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="444" y="0" width="111" height="20" backcolor="#CCFFCC" uuid="5fff1f35-8aed-47df-b724-194236949035"/>
+				<reportElement uuid="5fff1f35-8aed-47df-b724-194236949035" mode="Opaque" x="444" y="0" width="111" height="20" backcolor="#CCFFCC"/>
 				<box>
 					<topPen lineWidth="0.5"/>
 					<leftPen lineWidth="0.5"/>
@@ -84,7 +84,7 @@
 	<detail>
 		<band height="20" splitType="Stretch">
 			<textField>
-				<reportElement x="0" y="0" width="111" height="20" uuid="ff1f5807-7ca0-40d0-8dc1-24aa9bfcfcb0"/>
+				<reportElement uuid="ff1f5807-7ca0-40d0-8dc1-24aa9bfcfcb0" x="0" y="0" width="111" height="20"/>
 				<box>
 					<topPen lineWidth="0.5"/>
 					<leftPen lineWidth="0.5"/>
@@ -95,7 +95,7 @@
 				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="111" y="0" width="111" height="20" uuid="461fc451-d6f0-4b05-8c5f-b1533a3a0fcd"/>
+				<reportElement uuid="461fc451-d6f0-4b05-8c5f-b1533a3a0fcd" x="111" y="0" width="111" height="20"/>
 				<box>
 					<topPen lineWidth="0.5"/>
 					<leftPen lineWidth="0.5"/>
@@ -106,7 +106,7 @@
 				<textFieldExpression><![CDATA[$F{sex}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="222" y="0" width="111" height="20" uuid="b5eb353f-77da-4bf8-8fd6-5a5ee877d4aa"/>
+				<reportElement uuid="b5eb353f-77da-4bf8-8fd6-5a5ee877d4aa" x="222" y="0" width="111" height="20"/>
 				<box>
 					<topPen lineWidth="0.5"/>
 					<leftPen lineWidth="0.5"/>
@@ -117,7 +117,7 @@
 				<textFieldExpression><![CDATA[$F{age}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="333" y="0" width="111" height="20" uuid="79833268-1830-47b8-b276-baaccd5c4715"/>
+				<reportElement uuid="79833268-1830-47b8-b276-baaccd5c4715" x="333" y="0" width="111" height="20"/>
 				<box>
 					<topPen lineWidth="0.5"/>
 					<leftPen lineWidth="0.5"/>
@@ -128,7 +128,7 @@
 				<textFieldExpression><![CDATA[$F{hometown}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="444" y="0" width="111" height="20" uuid="56b2dd64-c530-4d6d-8fb0-3a2738a20a97"/>
+				<reportElement uuid="56b2dd64-c530-4d6d-8fb0-3a2738a20a97" x="444" y="0" width="111" height="20"/>
 				<box>
 					<topPen lineWidth="0.5"/>
 					<leftPen lineWidth="0.5"/>
