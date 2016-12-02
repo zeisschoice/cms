@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : MYSQL
-Source Server Version : 50634
+Source Server         : local_mysql
+Source Server Version : 50712
 Source Host           : localhost:3306
 Source Database       : shiro
 
 Target Server Type    : MYSQL
-Target Server Version : 50634
+Target Server Version : 50712
 File Encoding         : 65001
 
-Date: 2016-12-01 23:17:27
+Date: 2016-12-02 18:32:36
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -283,13 +283,13 @@ CREATE TABLE `room` (
   `room_name` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
   `type` int(11) DEFAULT NULL,
   `mon_rent` double DEFAULT NULL,
-  `status` int(11) DEFAULT NULL,
+  `status` int(11) DEFAULT '0',
   `begin_date` date DEFAULT NULL,
   `end_date` date DEFAULT NULL,
   `liver` int(11) DEFAULT NULL,
   `remark` varchar(200) CHARACTER SET utf8 DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of room
@@ -298,6 +298,32 @@ INSERT INTO `room` VALUES ('1', '1', 'xxx', '0', '300', '0', '2016-11-24', '2016
 INSERT INTO `room` VALUES ('2', '2', 'xx33444', '0', '22', '0', '2016-11-23', '2016-11-23', '111', '66666');
 INSERT INTO `room` VALUES ('3', '3', 'rrrr', '1', '22', '0', '2016-11-23', '2016-11-23', '4444', 'sssss');
 INSERT INTO `room` VALUES ('4', '2', '22宿舍', '1', '200', '0', '2016-11-24', '2016-11-25', '111', '问问');
+INSERT INTO `room` VALUES ('5', '2', '123', null, null, '0', null, null, null, null);
+INSERT INTO `room` VALUES ('6', '2', '1234', null, null, '0', null, null, null, null);
+INSERT INTO `room` VALUES ('7', '2', '333', null, null, '0', null, null, null, null);
+INSERT INTO `room` VALUES ('8', '2', '444', null, null, '0', null, null, null, null);
+INSERT INTO `room` VALUES ('9', '2', '555', null, null, '1', null, null, null, null);
+INSERT INTO `room` VALUES ('10', '2', '666', null, null, '0', null, null, null, null);
+INSERT INTO `room` VALUES ('11', '2', '777', null, null, '1', null, null, null, null);
+INSERT INTO `room` VALUES ('12', '2', '888', null, null, '0', null, null, null, null);
+INSERT INTO `room` VALUES ('13', '2', '999', null, null, '1', null, null, null, null);
+INSERT INTO `room` VALUES ('14', '2', '1212', null, null, '0', null, null, null, null);
+INSERT INTO `room` VALUES ('15', '2', '1313', null, null, '0', null, null, null, null);
+INSERT INTO `room` VALUES ('16', '2', '1414', null, null, '0', null, null, null, null);
+INSERT INTO `room` VALUES ('17', '2', '1515', null, null, '0', null, null, null, null);
+INSERT INTO `room` VALUES ('18', '2', '1616', null, null, '0', null, null, null, null);
+INSERT INTO `room` VALUES ('19', '2', '1717', null, null, '0', null, null, null, null);
+INSERT INTO `room` VALUES ('20', '2', '1818', null, null, '0', null, null, null, null);
+INSERT INTO `room` VALUES ('21', '2', '1919', null, null, '0', null, null, null, null);
+INSERT INTO `room` VALUES ('22', '2', '111222', null, null, '0', null, null, null, null);
+INSERT INTO `room` VALUES ('23', '2', '2121', null, null, '0', null, null, null, null);
+INSERT INTO `room` VALUES ('24', '2', '112233', null, null, '0', null, null, null, null);
+INSERT INTO `room` VALUES ('25', '2', '13141', null, null, '0', null, null, null, null);
+INSERT INTO `room` VALUES ('26', '2', '12323', null, null, '0', null, null, null, null);
+INSERT INTO `room` VALUES ('27', '2', '223344', null, null, '0', null, null, null, null);
+INSERT INTO `room` VALUES ('28', '2', '5555', null, null, '0', null, null, null, null);
+INSERT INTO `room` VALUES ('29', '2', '666', null, null, '0', null, null, null, null);
+INSERT INTO `room` VALUES ('30', '2', '777999', null, null, '0', null, null, null, null);
 
 -- ----------------------------
 -- Table structure for sys_log
@@ -311,7 +337,7 @@ CREATE TABLE `sys_log` (
   `client_ip` varchar(255) DEFAULT NULL COMMENT '客户端ip',
   `create_time` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=536 DEFAULT CHARSET=utf8 COMMENT='系统日志';
+) ENGINE=InnoDB AUTO_INCREMENT=537 DEFAULT CHARSET=utf8 COMMENT='系统日志';
 
 -- ----------------------------
 -- Records of sys_log
@@ -461,6 +487,7 @@ INSERT INTO `sys_log` VALUES ('532', 'admin', 'admin', '[类名]:com.wangzhixuan
 INSERT INTO `sys_log` VALUES ('533', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.ResourceController,[方法]:editPage,[参数]:id=111&_=1479996343242&', '0:0:0:0:0:0:0:1', null);
 INSERT INTO `sys_log` VALUES ('534', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.ResourceController,[方法]:editPage,[参数]:id=112&_=1479996343243&', '0:0:0:0:0:0:0:1', null);
 INSERT INTO `sys_log` VALUES ('535', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.ResourceController,[方法]:addPage,[参数]:', null, null);
+INSERT INTO `sys_log` VALUES ('536', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.RoomController,[方法]:addRoomPage,[参数]:', null, null);
 
 -- ----------------------------
 -- Table structure for tenant
@@ -536,5 +563,4 @@ INSERT INTO `user_role` VALUES ('67', '16', '8');
 -- View structure for rentroom
 -- ----------------------------
 DROP VIEW IF EXISTS `rentroom`;
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `rentroom` AS select `b`.`id` AS `id`,`b`.`building_name` AS `building_name`,`b`.`building_address` AS `building_address`,`b`.`building_own` AS `building_own`,`b`.`own_phone` AS `own_phone`,`b`.`building_manager` AS `building_manager`,`b`.`manager_phone` AS `manager_phone`,`b`.`room_count` AS `room_count`,`b`.`remark` AS `remark`,`r`.`room_name` AS `room_name`,`t`.`tenant_name` AS `tenant_name` from ((`building` `b` left join `room` `r` on((`b`.`id` = `r`.`building_id`))) left join `tenant` `t` on((`r`.`id` = `t`.`room_id`))) ;
-SET FOREIGN_KEY_CHECKS=1;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER  VIEW `rentroom` AS select `b`.`id` AS `id`,`b`.`building_name` AS `building_name`,`b`.`building_address` AS `building_address`,`b`.`building_own` AS `building_own`,`b`.`own_phone` AS `own_phone`,`b`.`building_manager` AS `building_manager`,`b`.`manager_phone` AS `manager_phone`,`b`.`room_count` AS `room_count`,`b`.`remark` AS `remark`,`r`.`room_name` AS `room_name`,`t`.`tenant_name` AS `tenant_name` from ((`building` `b` left join `room` `r` on((`b`.`id` = `r`.`building_id`))) left join `tenant` `t` on((`r`.`id` = `t`.`room_id`))) ;
