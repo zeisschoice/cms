@@ -114,9 +114,11 @@ public class BuildingServiceImpl extends SuperServiceImpl<BuildingMapper, Buildi
 	            		 }
 	            		
 	            		 tree.add(treeTwo);
+	            	
 	            	 }
 	            	 
 	            	 treeOne.setChildren(tree);
+	            	 treeOne.setState("closed");
 	            	 
 	             }else{
 	                 treeOne.setState("closed");

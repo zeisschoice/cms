@@ -58,7 +58,11 @@ $(function () {
             
             var d = result.substring(0,result.indexOf("<"));
             
-            var data = eval('(' + d + ')'); 
+            console.log(result);
+            console.log(d);
+         //   var data = eval('(' + d + ')'); 
+            console.log("--------------------------");
+            var data = $.parseJSON(d);
             
             if (data.success) {
             	

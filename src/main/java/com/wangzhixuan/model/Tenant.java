@@ -23,8 +23,8 @@ public class Tenant implements Serializable {
 	 * 
 	 */
     @TableId(type = IdType.AUTO)
-	@TableField(value="tenant_id")
-	private Integer tenantId;
+	@TableField(value="id")
+	private Integer id;
 
 	/**
 	 * 
@@ -61,12 +61,14 @@ public class Tenant implements Serializable {
 
 
 
-	public Integer getTenantId() {
-		return tenantId;
+	
+
+	public Integer getId() {
+		return id;
 	}
 
-	public void setTenantId(Integer tenantId) {
-		this.tenantId = tenantId;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public String getTenantName() {

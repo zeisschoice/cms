@@ -62,8 +62,8 @@ public class TenantController extends BaseController{
 		PageInfo pageInfo = new PageInfo(page, rows);
 		Map<String, Object> condition = new HashMap<String, Object>();
 
-		if (room.getBuildingId() != null) {
-			condition.put("roomId", room.getBuildingId());
+		if (room.getId() != null) {
+			condition.put("roomId", room.getId());
 		}
 
 		pageInfo.setCondition(condition);

@@ -11,16 +11,20 @@
 
     var dataGrid;
     var roomTree;
-
+    
     $(function() {
         organizationTree = $('#roomTree').tree({
             url : '${path }/tenant/tree',
             parentField : 'pid',
             lines : true,
             onClick : function(node) {
-                dataGrid.datagrid('load', {
-                    buildingId: node.id
-                });
+            	console.log(node);
+            	if(node.children==null){
+            		 dataGrid.datagrid('load', {
+                         id: node.id
+                     });
+            	}
+               
             }
         });
 
@@ -38,49 +42,24 @@
             pageList : [ 10, 20, 30, 40, 50, 100, 200, 300, 400, 500 ],
             columns : [ [ {
                 width : '150',
-                title : '房间名称',
-                field : 'roomName',
+                title : '住户名称',
+                field : 'tenantName',
                 sortable : true
             }, {
                 width : '100',
-                title : '姓名',
-                field : 'liver'
+                title : '性别',
+                field : 'sex'
                 
             },{
                 width : '150',
-                title : '创建日期',
-                field : 'beginDate'
+                title : '电话',
+                field : 'tel'
             },{
                 width : '150',
-                title : '结束日期',
-                field : 'endDate'
+                title : '身份证号',
+                field : 'identityCard'
               
-            },  {
-                width : '40',
-                title : '状态',
-                field : 'status',
-                formatter : function(value, row, index) {
-                         switch (value) {
-                         case 0:
-                             return '空置';
-                         case 1:
-                             return '已租';
-                         }
-                }
-               
-            }, {
-                width : '40',
-                title : '类型',
-                field : 'type',
-                formatter : function(value, row, index) {
-                    switch (value) {
-                    case 0:
-                        return '单间';
-                    case 1:
-                        return '套间';
-                    }
-           }
-            } ,{
+            },{
             	 width : '200',
                  title : '备注',
                  field : 'remark'
@@ -89,7 +68,7 @@
              , {
                 field : 'action',
                 title : '操作',
-                width : 130,
+                width : 280,
                 formatter : function(value, row, index) {
                     var str = '';
                         <shiro:hasPermission name="/tenant/edit">
@@ -99,6 +78,14 @@
                             str += '&nbsp;&nbsp;|&nbsp;&nbsp;';
                             str += $.formatString('<a href="javascript:void(0)" class="user-easyui-linkbutton-del" data-options="plain:true,iconCls:\'icon-del\'" onclick="deleteFun(\'{0}\');" >删除</a>', row.id);
                         </shiro:hasPermission>
+                        <shiro:hasPermission name="/tenant/print">
+                          str += '&nbsp;&nbsp;|&nbsp;&nbsp;';
+                          str += $.formatString('<a href="javascript:void(0)" class="easyui-linkbutton" data-options="plain:true,iconCls:\'icon-print\'" onclick="printFun(\'{0}\');" >打印</a>', row.id);
+                       </shiro:hasPermission>
+                       <shiro:hasPermission name="/tenant/sendMsg">
+                          str += '&nbsp;&nbsp;|&nbsp;&nbsp;';
+                          str += $.formatString('<a href="javascript:void(0)" class="easyui-linkbutton" plain="true" iconCls="icon-redo" onclick="sendMsgFun(\'{0}\');" >发送短信</a>', row.id);
+                       </shiro:hasPermission>
                     return str;
                 }
             }] ],
@@ -188,6 +175,21 @@
         $('#searchForm input').val('');
         dataGrid.datagrid('load', {});
     }
+    
+    function printFun(id){
+    	
+    	alert("print:"+id);
+    	
+    }
+    
+   function sendMsgFun(id){
+    	
+	   alert("sendMsg"+id);
+    	
+    }
+   
+  
+    
     </script>
 </head>
 <body class="easyui-layout" data-options="fit:true,border:false">
@@ -206,7 +208,7 @@
             </table>
         </form>
     </div>
-    <div data-options="region:'center',border:true,title:'房间列表'" >
+    <div data-options="region:'center',border:true,title:'住户'" >
         <table id="dataGrid" data-options="fit:true,border:false"></table>
     </div>
     <div data-options="region:'west',border:true,split:false,title:'楼房'"  style="width:150px;overflow-x: hidden; ">
@@ -214,7 +216,7 @@
         </ul>
     </div>
     <div id="toolbar" style="display: none;">
-        <shiro:hasPermission name="/room/add">
+        <shiro:hasPermission name="/tenant/add">
             <a onclick="addFun();" href="javascript:void(0);" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-add'">添加</a>
         </shiro:hasPermission>
     </div>
