@@ -23,6 +23,9 @@
             		 dataGrid.datagrid('load', {
                          id: node.id
                      });
+            		
+            	//加载租户信息	 
+            		 
             	}
                
             }
@@ -41,31 +44,68 @@
             pageSize : 20,
             pageList : [ 10, 20, 30, 40, 50, 100, 200, 300, 400, 500 ],
             columns : [ [ {
-                width : '150',
-                title : '住户名称',
-                field : 'tenantName',
+                width : '50',
+                title : '年份',
+                field : 'year',
                 sortable : true
             }, {
-                width : '100',
-                title : '性别',
-                field : 'sex'
+                width : '50',
+                title : '月份',
+                field : 'month'
                 
             },{
-                width : '150',
-                title : '电话',
-                field : 'tel'
+                width : '50',
+                title : '电费',
+                field : 'electricCharge'
             },{
-                width : '150',
-                title : '身份证号',
-                field : 'identityCard'
+                width : '50',
+                title : '水费',
+                field : 'waterCharge'
+              
+            }
+            ,{
+                width : '50',
+                title : '电视费',
+                field : 'tvCharge'
+              
+            },
+            {
+                width : '50',
+                title : '网络费',
+                field : 'internetCharge'
               
             },{
+                width : '50',
+                title : '煤气费',
+                field : 'gasCharge'
+              
+            }
+            
+            ,{
+                width : '50',
+                title : '分摊费',
+                field : 'equallyCharge'
+              
+            }
+            ,{
+                width : '50',
+                title : '燃气费',
+                field : 'gasCharge'
+              
+            },
+            {
+                width : '80',
+                title : '其他费用',
+                field : 'otherCharge'
+              
+            },
+            {
             	 width : '200',
                  title : '备注',
                  field : 'remark'
                
             }
-             , {
+             /* , {
                 field : 'action',
                 title : '操作',
                 width : 280,
@@ -88,7 +128,8 @@
                        </shiro:hasPermission>
                     return str;
                 }
-            }] ],
+            } */
+             ] ],
             onLoadSuccess:function(data){
                 $('.user-easyui-linkbutton-edit').linkbutton({text:'编辑',plain:true,iconCls:'icon-edit'});
                 $('.user-easyui-linkbutton-del').linkbutton({text:'删除',plain:true,iconCls:'icon-del'});
@@ -258,6 +299,10 @@
          <shiro:hasPermission name="/tenant/delete">
             <a onclick="deleteFun();" href="javascript:void(0);" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-del'">删除</a>
         </shiro:hasPermission>
+        
+         <a onclick="deleteFun();" href="javascript:void(0);" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-print'">打印</a>
+         
+          <a onclick="deleteFun();" href="javascript:void(0);" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-redo'">短信通知</a>
     </div> 
     
 </body>
