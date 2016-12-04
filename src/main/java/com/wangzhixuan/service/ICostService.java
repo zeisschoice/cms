@@ -1,6 +1,7 @@
 package com.wangzhixuan.service;
 
 import com.baomidou.framework.service.ISuperService;
+import com.wangzhixuan.commons.utils.PageInfo;
 import com.wangzhixuan.model.Cost;
 
 
@@ -14,4 +15,5 @@ import com.wangzhixuan.model.Cost;
  */
 public interface ICostService extends ISuperService<Cost> {
 	
+	void selectDataGrid(PageInfo pageInfo);
 }

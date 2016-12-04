@@ -1,7 +1,12 @@
 package com.wangzhixuan.mapper;
 
+import java.util.List;
+import java.util.Map;
+
 import com.baomidou.mybatisplus.mapper.AutoMapper;
+import com.baomidou.mybatisplus.plugins.pagination.Pagination;
 import com.wangzhixuan.model.Cost;
+
 
 
 /**
@@ -14,4 +19,6 @@ import com.wangzhixuan.model.Cost;
  */
 public interface CostMapper extends AutoMapper<Cost> {
 
+	 List<Cost> selectCostPage(Pagination page, Map<String, Object> params);
+	
 }

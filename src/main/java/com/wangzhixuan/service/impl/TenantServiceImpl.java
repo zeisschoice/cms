@@ -38,5 +38,12 @@ public class TenantServiceImpl extends SuperServiceImpl<TenantMapper, Tenant> im
 	    pageInfo.setRows(list);
         pageInfo.setTotal(page.getTotal());
 	}
+
+	@Override
+	public Tenant selectTenantByRoomId(Long id) {
+		// TODO Auto-generated method stub
+		
+		return null;
+	}
 	
 }

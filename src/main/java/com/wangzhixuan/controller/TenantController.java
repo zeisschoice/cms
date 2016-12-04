@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.wangzhixuan.commons.base.BaseController;
 import com.wangzhixuan.commons.utils.PageInfo;
+import com.wangzhixuan.model.Building;
 import com.wangzhixuan.model.Room;
 import com.wangzhixuan.model.Tenant;
 import com.wangzhixuan.service.IBuildingService;
@@ -58,16 +59,27 @@ public class TenantController extends BaseController{
 
 	@RequestMapping(value = "/dataGrid", method = RequestMethod.POST)
 	@ResponseBody
-	public Object dataGrid(Room room, Integer page, Integer rows, String sort, String order) {
+	public Object dataGrid(Room room, Integer page, Integer rows, String sort, String order,Model model) {
 		PageInfo pageInfo = new PageInfo(page, rows);
 		Map<String, Object> condition = new HashMap<String, Object>();
 
 		if (room.getId() != null) {
 			condition.put("roomId", room.getId());
+			
+		     
 		}
 
 		pageInfo.setCondition(condition);
 		iTenantService.selectDataGrid(pageInfo);
+		
+		if(pageInfo.getRows()!=null && pageInfo.getRows().size()>0){
+			
+			model.addAttribute("tenant", pageInfo.getRows().get(0));
+		}
+		
+		
+		
+		
 		return pageInfo;
 	}
 

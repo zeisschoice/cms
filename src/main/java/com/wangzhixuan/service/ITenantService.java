@@ -16,4 +16,6 @@ import com.wangzhixuan.model.Tenant;
 public interface ITenantService extends ISuperService<Tenant> {
 		
 	void selectDataGrid(PageInfo pageInfo);
+	
+	Tenant selectTenantByRoomId(Long id);
 }

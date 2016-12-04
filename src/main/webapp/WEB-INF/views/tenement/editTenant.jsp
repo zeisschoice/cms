@@ -3,7 +3,7 @@
 <script type="text/javascript">
     $(function() {
         $('#roomEditForm').form({
-            url:'${path}/room/edit',
+            url:'${path}/tenant/edit',
             onSubmit : function() {
             	
                 progressLoad();
@@ -31,9 +31,9 @@
         });
         
         
-     $("#remark").val('${room.remark}');
-     $("#beginDate").val('${room.beginDate}'==null||'${room.beginDate}'==''?"":myformatter(new Date('${room.beginDate}')));
-     $("#endDate").val('${room.endDate }'==null || '${room.endDate }'== ''?"":myformatter(new Date('${room.endDate }')));
+//     $("#remark").val('${room.remark}');
+//     $("#beginDate").val('${room.beginDate}'==null||'${room.beginDate}'==''?"":myformatter(new Date('${room.beginDate}')));
+//     $("#endDate").val('${room.endDate }'==null || '${room.endDate }'== ''?"":myformatter(new Date('${room.endDate }')));
        
      
   // $('#status').combobox('select', '${room.status}');
@@ -71,11 +71,11 @@
         <form id="roomEditForm" method="post">
           <table class="grid">
                 <tr>
-                    <td>房间名称</td>
-                    <td><input name="id" type="hidden"  value="${room.id}">
-                    <input name="roomName" type="text" placeholder="请输入房间名称" class="easyui-validatebox" data-options="required:true" value="${room.roomName}"></td>
                     <td>住户姓名</td>
-                    <td><input name="liver" type="text" placeholder="请输入住户姓名" class="easyui-validatebox" data-options="required:true" value="${room.liver}"></td>
+                    <td><input name="id" type="hidden"  value="${tenant.id}">
+                    <input name="tenantName" type="text" placeholder="请输入房间名称" class="easyui-validatebox" data-options="required:true" value="${room.roomName}"></td>
+                    <td>性别</td>
+                    <td><input name="" type="text" placeholder="请输入住户姓名" class="easyui-validatebox" data-options="required:true" value="${room.liver}"></td>
                 </tr>
                 <tr>
                     <td>出租开始日期</td>

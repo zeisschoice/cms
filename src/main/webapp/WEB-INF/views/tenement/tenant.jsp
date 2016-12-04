@@ -29,7 +29,7 @@
         });
 
         dataGrid = $('#dataGrid').datagrid({
-            url : '${path }/tenant/dataGrid',
+            url : '${path }/cost/dataGrid',
             fit : true,
             striped : true,
             rownumbers : true,
@@ -80,11 +80,11 @@
                         </shiro:hasPermission>
                         <shiro:hasPermission name="/tenant/print">
                           str += '&nbsp;&nbsp;|&nbsp;&nbsp;';
-                          str += $.formatString('<a href="javascript:void(0)" class="easyui-linkbutton" data-options="plain:true,iconCls:\'icon-print\'" onclick="printFun(\'{0}\');" >打印</a>', row.id);
+                          str += $.formatString('<a href="javascript:void(0)" class="user-easyui-linkbutton-print" data-options="plain:true,iconCls:\'icon-print\'" onclick="printFun(\'{0}\');" >打印</a>', row.id);
                        </shiro:hasPermission>
                        <shiro:hasPermission name="/tenant/sendMsg">
                           str += '&nbsp;&nbsp;|&nbsp;&nbsp;';
-                          str += $.formatString('<a href="javascript:void(0)" class="easyui-linkbutton" plain="true" iconCls="icon-redo" onclick="sendMsgFun(\'{0}\');" >发送短信</a>', row.id);
+                          str += $.formatString('<a href="javascript:void(0)" class="user-easyui-linkbutton-redo" plain="true" iconCls="icon-redo" onclick="sendMsgFun(\'{0}\');" >发送短信</a>', row.id);
                        </shiro:hasPermission>
                     return str;
                 }
@@ -208,17 +208,57 @@
             </table>
         </form>
     </div>
-    <div data-options="region:'center',border:true,title:'住户'" >
-        <table id="dataGrid" data-options="fit:true,border:false"></table>
+    
+    
+    
+    <div data-options="region:'center',border:true,title:'住户信息'" >
+      
+        <div id="formToolbar">
+            <a onclick="saveFun();" href="javascript:void(0);" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-save'">保存</a>
+            <a onclick="editFun();" href="javascript:void(0);" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-edit'">编辑</a>
+        </div>
+         <form id="ff" method="post" title="租户信息">
+		     <table style="margin:5px">
+                <tr>
+                    <td>住户名称:</td>
+                    <td><input name="tenantName" class="f1 easyui-textbox" value="${tenant.tenantName }"></input></td>
+                    <td>性别:</td>
+                    <td><input name="sex" class="f1 easyui-textbox" value="${tenant.sex }"></input></td>
+                    <td>电话:</td>
+                    <td><input name="tel" class="f1 easyui-textbox" value="${tenant.tel }"></input></td>
+                    <td>身份证号:</td>
+                    <td><input name="identityCard" class="f1 easyui-textbox" value="${tenant.identityCard }"></input></td>
+                </tr>
+                <tr>
+                    <td>备注</td>
+                     <td colspan="7"><textarea id="remark" name="remark" rows="" cols="" style="margin: 0px; width:100%; height: 30px;" value="${tenant.remark }"></textarea></td>
+                </tr>
+            </table>
+   
+         </form>
+         
+      
+         <table id="dataGrid" data-options="fit:true,border:false"></table> 
     </div>
+    
+    
+    
     <div data-options="region:'west',border:true,split:false,title:'楼房'"  style="width:150px;overflow-x: hidden; ">
         <ul id="roomTree"  style="width:160px;margin: 10px 10px 10px 10px">
         </ul>
     </div>
+    
     <div id="toolbar" style="display: none;">
         <shiro:hasPermission name="/tenant/add">
             <a onclick="addFun();" href="javascript:void(0);" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-add'">添加</a>
         </shiro:hasPermission>
-    </div>
+        <shiro:hasPermission name="/tenant/edit">
+            <a onclick="editFun();" href="javascript:void(0);" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-edit'">编辑</a>
+        </shiro:hasPermission>
+         <shiro:hasPermission name="/tenant/delete">
+            <a onclick="deleteFun();" href="javascript:void(0);" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-del'">删除</a>
+        </shiro:hasPermission>
+    </div> 
+    
 </body>
 </html>
