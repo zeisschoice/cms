@@ -28,4 +28,15 @@
     
     </select>
     
+    <select id="selectTenantByRoomId" resultType="Tenant">
+    
+     select
+        <include refid="Base_Column_List"/>
+        from tenant
+        where
+        room_id = #{roomId}
+    
+    </select>
+    
+    
 </mapper>

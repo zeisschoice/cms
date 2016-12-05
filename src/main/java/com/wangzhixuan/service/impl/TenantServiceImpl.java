@@ -42,8 +42,8 @@ public class TenantServiceImpl extends SuperServiceImpl<TenantMapper, Tenant> im
 	@Override
 	public Tenant selectTenantByRoomId(Long id) {
 		// TODO Auto-generated method stub
-		
-		return null;
+		Tenant tenant = tenantMapper.selectTenantByRoomId(id);
+		return tenant;
 	}
 	
 }

@@ -2,6 +2,7 @@
 <%@ include file="/commons/global.jsp" %>
 <!DOCTYPE html>
 <html>
+<meta http-equiv="X-UA-Compatible" content="IE=8" />
 <head>
     <title>用户登录-租房系统平台</title>
     <meta name="keywords" content="租房系统">

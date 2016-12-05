@@ -65,19 +65,10 @@ public class TenantController extends BaseController{
 
 		if (room.getId() != null) {
 			condition.put("roomId", room.getId());
-			
-		     
 		}
 
 		pageInfo.setCondition(condition);
 		iTenantService.selectDataGrid(pageInfo);
-		
-		if(pageInfo.getRows()!=null && pageInfo.getRows().size()>0){
-			
-			model.addAttribute("tenant", pageInfo.getRows().get(0));
-		}
-		
-		
 		
 		
 		return pageInfo;
@@ -111,7 +102,7 @@ public class TenantController extends BaseController{
 		 return renderSuccess("删除成功！");
 	 }
 	 
-	 @RequestMapping(value = "/editPage", method = RequestMethod.GET)
+	   @RequestMapping(value = "/editPage", method = RequestMethod.GET)
 		public String roomEdit(Model model,Long id) {	
 			
 		     Tenant tenant = iTenantService.selectById(id);
@@ -120,5 +111,22 @@ public class TenantController extends BaseController{
 			
 			return "tenement/editTenant";
 	 }
+	 
+	    @RequestMapping(value = "/getTenant", method = RequestMethod.GET)
+	    @ResponseBody
+	    public Object getTenant(Long id) {	
+			
+	    	
+	    	//  Model model =  Model.;
+	    	
+		     Tenant tenant = iTenantService.selectTenantByRoomId(id);
+		   //  model.addAttribute("tenant", tenant);
+		      
+		    
+			 return tenant;
+		    // return renderSuccess("查询成功！");
+	 }
+	 
+	 
 	
 }

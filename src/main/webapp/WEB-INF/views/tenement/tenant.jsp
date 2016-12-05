@@ -18,14 +18,42 @@
             parentField : 'pid',
             lines : true,
             onClick : function(node) {
-            	console.log(node);
+            	
             	if(node.children==null){
             		 dataGrid.datagrid('load', {
                          id: node.id
                      });
             		
-            	//加载租户信息	 
-            		 
+            	var d = {};
+            	d.id = node.id;
+            	//加载租户信息	
+            	  $('#ff').form('clear');
+	               $.ajax({
+						   type: "GET",
+						   url: "${path }/tenant/getTenant",
+						   data: d,
+						   success: function(msg){
+						      
+							   $('#ff').form('load',JSON.parse(msg)); 
+							   
+							   $('#ff').form({disabled: true });
+							
+							   //$("#ff").attr("disabled", "disabled");
+						      
+						       //$("#suburb").removeAttr("disabled");
+							   
+							   
+						   },
+						   error:function(){
+							  alert("加载租户信息失败！");
+						   }
+					});
+	            	
+            	
+            		/*  $('#ff').form('load',{
+            			 url:'${path }/tenant/getTenant',
+            		 }); */	
+            	
             	}
                
             }
@@ -38,12 +66,19 @@
             rownumbers : true,
             pagination : true,
             singleSelect : true,
+         /*    checkbox:true, */
             idField : 'id',
             sortName : 'id',
             sortOrder : 'asc',
-            pageSize : 20,
+            pageSize : 10,
             pageList : [ 10, 20, 30, 40, 50, 100, 200, 300, 400, 500 ],
-            columns : [ [ {
+            columns : [ [ 
+             {
+            	 width : '20',
+            	 field:'checkbox',
+            	 checkbox: true
+             },            
+            {
                 width : '50',
                 title : '年份',
                 field : 'year',
@@ -252,13 +287,14 @@
     
     
     
-    <div data-options="region:'center',border:true,title:'住户信息'" >
-      
+    <div data-options="region:'center',border:true,title:'住户信息'">
+        
+        <div style="width:100%;height:20%;">
         <div id="formToolbar">
             <a onclick="saveFun();" href="javascript:void(0);" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-save'">保存</a>
             <a onclick="editFun();" href="javascript:void(0);" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-edit'">编辑</a>
         </div>
-         <form id="ff" method="post" title="租户信息">
+        <form id="ff" method="post" title="租户信息">
 		     <table style="margin:5px">
                 <tr>
                     <td>住户名称:</td>
@@ -276,10 +312,11 @@
                 </tr>
             </table>
    
-         </form>
-         
-      
-         <table id="dataGrid" data-options="fit:true,border:false"></table> 
+         </form> 
+         </div >
+         <div style="width:100%;height:80%;">
+            <table id="dataGrid" data-options="fit:true,border:false"></table> 
+         </div>
     </div>
     
     

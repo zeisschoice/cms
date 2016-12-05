@@ -53,16 +53,14 @@ $(function () {
         success:function(result){
         	
             progressClose();
-            
+         
+            result = updateStr(result);
+             
+            var data = eval('(' + result + ')'); 
            
+       //     var data = $.parseJSON(d);
             
-            var d = result.substring(0,result.indexOf("<"));
-            
-            console.log(result);
-            console.log(d);
-         //   var data = eval('(' + d + ')'); 
-            console.log("--------------------------");
-            var data = $.parseJSON(d);
+       //     var data = JSON.parse(d);
             
             if (data.success) {
             	
