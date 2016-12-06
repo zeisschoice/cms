@@ -40,7 +40,7 @@
 </script>
 <div class="easyui-layout" data-options="fit:true,border:false">
     <div data-options="region:'center',border:false" title="" style="overflow: hidden;padding: 3px;">
-        <form id="roomAddForm" method="post">
+        <form id="tenantAddForm" method="post">
             <table class="grid">
                 <tr>
                     <td>房间名称</td>
@@ -67,9 +67,9 @@
                     </td>
                     <td>状态</td>
                     <td>
-                        <select id="status" name="status" class="easyui-combobox" data-options="width:140,height:29,editable:false,panelHeight:'auto'">
-                                <option value="0">空置</option>
-                                <option value="1">已租</option>
+                        <select id="status" name="sex" class="easyui-combobox" data-options="width:140,height:29,editable:false,panelHeight:'auto'">
+                                <option value="0">女</option>
+                                <option value="1">男</option>
                         </select>
                     </td>
                 </tr>

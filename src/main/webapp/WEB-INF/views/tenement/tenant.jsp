@@ -109,11 +109,6 @@
                 title : '网络费',
                 field : 'internetCharge'
               
-            },{
-                width : '50',
-                title : '煤气费',
-                field : 'gasCharge'
-              
             }
             
             ,{
@@ -178,12 +173,12 @@
             title : '添加',
             width : 500,
             height : 300,
-            href : '${path }/tenant/addPage',
+            href : '${path }/cost/addPage',
             buttons : [ {
                 text : '添加',
                 handler : function() {
                     parent.$.modalDialog.openner_dataGrid = dataGrid;//因为添加成功之后，需要刷新这个dataGrid，所以先预定义好
-                    var f = parent.$.modalDialog.handler.find('#roomAddForm');
+                    var f = parent.$.modalDialog.handler.find('#costAddForm');
                     f.submit();
                 }
             } ]
@@ -232,12 +227,12 @@
             title : '编辑',
             width : 500,
             height : 300,
-            href : '${path }/tenant/editPage?id=' + id,
+            href : '${path }/cost/editPage?id=' + id,
             buttons : [ {
                 text : '确定',
                 handler : function() {
                     parent.$.modalDialog.openner_dataGrid = dataGrid;//因为添加成功之后，需要刷新这个dataGrid，所以先预定义好
-                    var f = parent.$.modalDialog.handler.find('#roomEditForm');
+                    var f = parent.$.modalDialog.handler.find('#costEditForm');
                     f.submit();
                 }
             } ]

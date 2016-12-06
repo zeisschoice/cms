@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.baomidou.mybatisplus.plugins.Page;
+import com.wangzhixuan.commons.base.BaseController;
 import com.wangzhixuan.commons.utils.PageInfo;
 import com.wangzhixuan.mapper.CostMapper;
 import com.wangzhixuan.model.Cost;
@@ -29,11 +30,8 @@ import com.wangzhixuan.service.ICostService;
  */
 @Controller
 @RequestMapping("/cost")
-public class CostController {
-	
-	@Autowired
-	private CostMapper costMapper;
-	
+public class CostController extends BaseController{
+		
 	@Autowired
 	private ICostService iCostService;
 	
@@ -56,5 +54,50 @@ public class CostController {
 		
 		return pageInfo;
 	}
+	
+	@RequestMapping(value = "/addPage", method = RequestMethod.GET)
+	public String addRoomPage() {
+		return "cost/addCost";
+	}
+	
+	 @RequestMapping(value = "/editPage", method = RequestMethod.GET)
+		public String roomEdit(Model model,Long id) {	
+			
+			 Cost room = iCostService.selectById(id);
+		     model.addAttribute("room", room);
+		      
+			
+			return "cost/editCost";
+		}
+	
+	
+	@RequestMapping(value = "/add", method = RequestMethod.POST)
+	@ResponseBody
+	public Object add(Cost cost) {
+		// User u = userService.selectByLoginName(userVo.getLoginName());
+		// if (u != null) {
+		// return renderError("用户名已存在!");
+		// }
+		// userVo.setPassword(DigestUtils.md5Hex(userVo.getPassword()));
+	//	Room room = new Room();
+	//	room.setRoomName("测试用的");
+		iCostService.insert(cost);
+		return renderSuccess("添加成功");
+	}
+
+	 @RequestMapping("/edit")
+	 @ResponseBody
+	 public Object edit(Cost cost) {
+		 iCostService.updateSelectiveById(cost);
+	    return renderSuccess("编辑成功！");
+	 }
+	
+	 @RequestMapping("/delete")
+	 @ResponseBody
+	 public Object delete(Long id) {
+		 iCostService.deleteById(id);
+		 return renderSuccess("删除成功！");
+	 } 
+	
 	
 }
