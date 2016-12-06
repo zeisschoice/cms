@@ -172,7 +172,7 @@
         parent.$.modalDialog({
             title : '添加',
             width : 500,
-            height : 300,
+            height : 400,
             href : '${path }/cost/addPage',
             buttons : [ {
                 text : '添加',

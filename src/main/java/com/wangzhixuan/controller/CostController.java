@@ -57,7 +57,7 @@ public class CostController extends BaseController{
 	
 	@RequestMapping(value = "/addPage", method = RequestMethod.GET)
 	public String addRoomPage() {
-		return "cost/addCost";
+		return "tenement/addCost";
 	}
 	
 	 @RequestMapping(value = "/editPage", method = RequestMethod.GET)
@@ -67,7 +67,7 @@ public class CostController extends BaseController{
 		     model.addAttribute("room", room);
 		      
 			
-			return "cost/editCost";
+			return "tenement/editCost";
 		}
 	
 	

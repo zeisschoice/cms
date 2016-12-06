@@ -43,40 +43,40 @@
             <table class="grid">
                 <tr>
                     <td>年份</td>
-                    <td><input name="year" type="text" placeholder="请输入房间名称" class="easyui-validatebox" data-options="required:true" value=""></td>
+                    <td><input name="year" type="text" placeholder="请输入房间名称" type="text" class="easyui-validatebox" data-options="required:true" value=""></td>
                     <td>月份</td>
-                    <td><input name="liver" type="text" placeholder="请输入住户姓名" class="easyui-validatebox" data-options="required:true" value=""></td>
+                    <td><input name="liver" type="text" placeholder="请输入住户姓名" type="text" class="easyui-validatebox" data-options="required:true" value=""></td>
                 </tr>
                 <tr>
                     <td>电费</td>
-                    <td><input name="electricCharge" placeholder="点击选择时间" onclick="WdatePicker({readOnly:true,dateFmt:'yyyy-MM-dd HH:mm:ss'})" readonly="readonly" class="easyui-validatebox" data-options="required:true"></td>
+                    <td><input name="electricCharge" placeholder="点击选择时间"  data-options="required:true"></td>
                     <td>水费</td>
                     <td>
-                       <input name="waterCharge" placeholder="点击选择时间" onclick="WdatePicker({readOnly:true,dateFmt:'yyyy-MM-dd HH:mm:ss'})" readonly="readonly" class="easyui-validatebox" data-options="required:true">
+                       <input name="waterCharge" placeholder="点击选择时间"  type="text" class="easyui-validatebox" data-options="required:true">
                     </td>
                 </tr>
                 <tr>
                     <td>电费</td>
-                    <td><input name="electricCharge" placeholder="点击选择时间" onclick="WdatePicker({readOnly:true,dateFmt:'yyyy-MM-dd HH:mm:ss'})" readonly="readonly" class="easyui-validatebox" data-options="required:true"></td>
+                    <td><input name="electricCharge" placeholder="点击选择时间"  readonly="readonly" type="text" class="easyui-validatebox" data-options="required:true"></td>
                     <td>水费</td>
                     <td>
-                       <input name="waterCharge" placeholder="点击选择时间" onclick="WdatePicker({readOnly:true,dateFmt:'yyyy-MM-dd HH:mm:ss'})" readonly="readonly" class="easyui-validatebox" data-options="required:true">
+                       <input name="waterCharge" placeholder="点击选择时间"  type="text" class="easyui-validatebox" data-options="required:true">
                     </td>
                 </tr>
                  <tr>
                     <td>电视费</td>
-                    <td><input name="tvCharge" placeholder="点击选择时间"  class="easyui-validatebox" data-options="required:true"></td>
+                    <td><input name="tvCharge" placeholder="点击选择时间"  type="text" class="easyui-validatebox" data-options="required:true"></td>
                     <td>网络费</td>
                     <td>
-                       <input name="internetCharge" placeholder="点击选择时间"  class="easyui-validatebox" data-options="required:true">
+                       <input name="internetCharge" placeholder="点击选择时间"  type="text" class="easyui-validatebox" data-options="required:true">
                     </td>
                 </tr>
                  <tr>
                     <td>煤气费</td>
-                    <td><input name="gasCharge" placeholder="点击选择时间" onclick="WdatePicker({readOnly:true,dateFmt:'yyyy-MM-dd HH:mm:ss'})" readonly="readonly" class="easyui-validatebox" data-options="required:true"></td>
+                    <td><input name="gasCharge" placeholder="点击选择时间"  readonly="readonly" type="text" class="easyui-validatebox" data-options="required:true"></td>
                     <td>分摊费</td>
                     <td>
-                       <input name=equallyCharge placeholder="点击选择时间" onclick="WdatePicker({readOnly:true,dateFmt:'yyyy-MM-dd HH:mm:ss'})" readonly="readonly" class="easyui-validatebox" data-options="required:true">
+                       <input name=equallyCharge placeholder="点击选择时间"  readonly="readonly" class="easyui-validatebox" data-options="required:true">
                     </td>
                 </tr>
                  <tr>
