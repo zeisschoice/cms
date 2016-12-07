@@ -12,6 +12,7 @@
     var dataGrid;
     var roomTree;
     var roomId ;
+    var tenant_Id ="" ;
     
     $(function() {
         organizationTree = $('#roomTree').tree({
@@ -38,9 +39,20 @@
 						      
 							   console.log(msg)
 							   
-							   $('#ff').form('load',JSON.parse(msg)); 
+							
 							   
-							   $('#ff').form({disabled: true });
+							   if(msg){
+								   
+								   tenant_Id = msg.id ;
+								   alert(tenant_Id);
+								   console.log("tenantId"+tenant_Id);
+								   
+								   $('#ff').form('load',JSON.parse(msg)); 
+								   
+								   $('#ff').form({disabled: true });
+							   }
+							   
+							  
 							
 							   
 							   
@@ -272,7 +284,7 @@
    function saveTenantFun(){
 	  
 	   var url;
-	   
+	   alert(tenant_Id);
 	   if(roomId == null || roomId==""){
    		
    		alert("请先选择要添加费用的房间!");
@@ -282,10 +294,16 @@
 	   console.log('${tenant.id}');
 	   console.log("--------1------------");
 	  
-	   
+	   if(tenant_Id == null || tenant_Id ==''){
+		   url = '${path }/tenant/add';
+	   }else{
+		   
+		   url = '${path }/tenant/edit';
+	   }
 	  
 	   console.log(url); 
 	   console.log("--------2-------------");
+	   console.log("--------2-------------"+tenant_Id);
 	   
 	   $('#ff').form({
            url:url,
@@ -310,7 +328,7 @@
                } else {
                    $.messager.alert('提示', result.msg, 'warning');
                } */
-               alert("成功了!");
+            //   alert("成功了!");
            },
            error:function(e){
         	   
