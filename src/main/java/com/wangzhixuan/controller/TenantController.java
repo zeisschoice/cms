@@ -88,7 +88,7 @@ public class TenantController extends BaseController{
 		return renderSuccess("添加成功");
 	}
 
-	 @RequestMapping("/edit")
+	 @RequestMapping(value = "/edit",method = RequestMethod.POST)
 	 @ResponseBody
 	 public Object edit(Tenant tenant) {
 		 iTenantService.updateSelectiveById(tenant);
@@ -114,13 +114,13 @@ public class TenantController extends BaseController{
 	 
 	    @RequestMapping(value = "/getTenant", method = RequestMethod.GET)
 	    @ResponseBody
-	    public Object getTenant(Long id) {	
+	    public Object getTenant(Model model,Long id) {	
 			
 	    	
-	    	//  Model model =  Model.;
+	         
 	    	
 		     Tenant tenant = iTenantService.selectTenantByRoomId(id);
-		   //  model.addAttribute("tenant", tenant);
+		     model.addAttribute("tenant", tenant);
 		      
 		    
 			 return tenant;

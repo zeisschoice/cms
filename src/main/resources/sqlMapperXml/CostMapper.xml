@@ -29,7 +29,7 @@
         where
         room_id = #{roomId}
        
-      
+        order by create_time desc
     
     </select>
     

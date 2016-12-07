@@ -56,7 +56,10 @@ public class CostController extends BaseController{
 	}
 	
 	@RequestMapping(value = "/addPage", method = RequestMethod.GET)
-	public String addRoomPage() {
+	public String addRoomPage(Model model,Long id) {
+		
+		 model.addAttribute("roomId", id);
+		
 		return "tenement/addCost";
 	}
 	

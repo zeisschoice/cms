@@ -2,7 +2,7 @@
 <%@ include file="/commons/global.jsp" %>
 <script type="text/javascript">
     $(function() {
-
+       
         $('#costAddForm').form({
             url:'${path}/cost/add',
             onSubmit : function() {
@@ -49,15 +49,7 @@
                 </tr>
                 <tr>
                     <td>电费</td>
-                    <td><input name="electricCharge" placeholder="点击选择时间"  data-options="required:true"></td>
-                    <td>水费</td>
-                    <td>
-                       <input name="waterCharge" placeholder="点击选择时间"  type="text" class="easyui-validatebox" data-options="required:true">
-                    </td>
-                </tr>
-                <tr>
-                    <td>电费</td>
-                    <td><input name="electricCharge" placeholder="点击选择时间"  readonly="readonly" type="text" class="easyui-validatebox" data-options="required:true"></td>
+                    <td><input name="electricCharge" placeholder="点击选择时间" class="easyui-validatebox" data-options="required:true"></td>
                     <td>水费</td>
                     <td>
                        <input name="waterCharge" placeholder="点击选择时间"  type="text" class="easyui-validatebox" data-options="required:true">
@@ -73,15 +65,16 @@
                 </tr>
                  <tr>
                     <td>煤气费</td>
-                    <td><input name="gasCharge" placeholder="点击选择时间"  readonly="readonly" type="text" class="easyui-validatebox" data-options="required:true"></td>
+                    <td><input name="gasCharge" placeholder="点击选择时间"   type="text" class="easyui-validatebox" data-options="required:true"></td>
                     <td>分摊费</td>
                     <td>
-                       <input name=equallyCharge placeholder="点击选择时间"  readonly="readonly" class="easyui-validatebox" data-options="required:true">
+                       <input name=equallyCharge placeholder="点击选择时间"   class="easyui-validatebox" data-options="required:true">
                     </td>
                 </tr>
                  <tr>
                     <td>其他费用</td>
-                    <td><input name="otherCharge" placeholder="点击选择时间" onclick="WdatePicker({readOnly:true,dateFmt:'yyyy-MM-dd HH:mm:ss'})" readonly="readonly" class="easyui-validatebox" data-options="required:true"></td>
+                    <td><input name="otherCharge" placeholder="点击选择时间"  class="easyui-validatebox" data-options="required:true"></td>
+                    <td><input name="roomId" type="hidden"  value="${roomId}"></td>
                 </tr>
                 <tr>
                     

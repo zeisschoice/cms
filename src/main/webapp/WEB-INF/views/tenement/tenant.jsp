@@ -11,6 +11,7 @@
 
     var dataGrid;
     var roomTree;
+    var roomId ;
     
     $(function() {
         organizationTree = $('#roomTree').tree({
@@ -20,6 +21,7 @@
             onClick : function(node) {
             	
             	if(node.children==null){
+            		 roomId = node.id;
             		 dataGrid.datagrid('load', {
                          id: node.id
                      });
@@ -34,13 +36,12 @@
 						   data: d,
 						   success: function(msg){
 						      
+							   console.log(msg)
+							   
 							   $('#ff').form('load',JSON.parse(msg)); 
 							   
 							   $('#ff').form({disabled: true });
 							
-							   //$("#ff").attr("disabled", "disabled");
-						      
-						       //$("#suburb").removeAttr("disabled");
 							   
 							   
 						   },
@@ -169,11 +170,18 @@
     });
     
     function addFun() {
+    	
+    	if(roomId == null || roomId==""){
+    		
+    		alert("请先选择要添加费用的房间!");
+    		return;
+    	}
+    	
         parent.$.modalDialog({
             title : '添加',
             width : 500,
             height : 400,
-            href : '${path }/cost/addPage',
+            href : '${path }/cost/addPage?id='+roomId,
             buttons : [ {
                 text : '添加',
                 handler : function() {
@@ -247,6 +255,7 @@
         dataGrid.datagrid('load', {});
     }
     
+       
     function printFun(id){
     	
     	alert("print:"+id);
@@ -259,6 +268,59 @@
     	
     }
    
+   
+   function saveTenantFun(){
+	  
+	   var url;
+	   
+	   if(roomId == null || roomId==""){
+   		
+   		alert("请先选择要添加费用的房间!");
+   		return;
+     	}
+	 
+	   console.log('${tenant.id}');
+	   console.log("--------1------------");
+	  
+	   
+	  
+	   console.log(url); 
+	   console.log("--------2-------------");
+	   
+	   $('#ff').form({
+           url:url,
+           onSubmit : function() {
+               progressLoad();
+               var isValid = $(this).form('validate');
+               if (!isValid) {
+                   progressClose();
+               }
+               return isValid;
+           },
+           success : function(result) {
+               progressClose();
+             
+               $.messager.alert('提示',result.msg,'info');
+               
+             /*   result = updateStr(result);
+               result = $.parseJSON(result);
+               if (result.success) {
+            	   $.messager.alert('提示',result.msg,'info');
+                  
+               } else {
+                   $.messager.alert('提示', result.msg, 'warning');
+               } */
+               alert("成功了!");
+           },
+           error:function(e){
+        	   
+        	   alert("error!!");
+           }
+       });
+	   
+	
+	   $('#ff').submit();
+   }
   
     
     </script>
@@ -286,24 +348,28 @@
         
         <div style="width:100%;height:20%;">
         <div id="formToolbar">
-            <a onclick="saveFun();" href="javascript:void(0);" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-save'">保存</a>
-            <a onclick="editFun();" href="javascript:void(0);" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-edit'">编辑</a>
+            <a onclick="saveTenantFun();" href="javascript:void(0);" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-save'">保存</a>
+            <a onclick="editTenantFun();" href="javascript:void(0);" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-edit'">编辑</a>
         </div>
         <form id="ff" method="post" title="租户信息">
 		     <table style="margin:5px">
                 <tr>
                     <td>住户名称:</td>
-                    <td><input name="tenantName" class="f1 easyui-textbox" value="${tenant.tenantName }"></input></td>
+                    <td><input name="tenantName" type="text" class="easyui-validatebox" value="${tenant.tenantName }"></input></td>
                     <td>性别:</td>
-                    <td><input name="sex" class="f1 easyui-textbox" value="${tenant.sex }"></input></td>
+                    <td><input name="sex" type="text" class="easyui-validatebox" value="${tenant.sex }"></input></td>
                     <td>电话:</td>
-                    <td><input name="tel" class="f1 easyui-textbox" value="${tenant.tel }"></input></td>
+                    <td><input name="tel" type="text" class="easyui-validatebox" value="${tenant.tel }"></input></td>
                     <td>身份证号:</td>
-                    <td><input name="identityCard" class="f1 easyui-textbox" value="${tenant.identityCard }"></input></td>
+                    <td><input name="identityCard" type="text" class="easyui-validatebox" value="${tenant.identityCard }"></input></td>
                 </tr>
                 <tr>
                     <td>备注</td>
                      <td colspan="7"><textarea id="remark" name="remark" rows="" cols="" style="margin: 0px; width:100%; height: 30px;" value="${tenant.remark }"></textarea></td>
+                </tr>
+                <tr>
+                 <td><input name="roomId" type="hidden"  value="${tenant.roomId}"></td>
+                 <td><input name="id" type="hidden"  value="${tenant.id}"></td>
                 </tr>
             </table>
    
