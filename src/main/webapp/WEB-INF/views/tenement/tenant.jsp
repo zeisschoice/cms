@@ -10,12 +10,12 @@
     <script type="text/javascript">
 
     var dataGrid;
-    var roomTree;
+    var buildRoomTree;
     var roomId ;
-    var tenant_Id ="" ;
+  
     
     $(function() {
-        organizationTree = $('#roomTree').tree({
+    	buildRoomTree = $('#roomTree').tree({
             url : '${path }/tenant/tree',
             parentField : 'pid',
             lines : true,
@@ -37,19 +37,9 @@
 						   data: d,
 						   success: function(msg){
 						      
-							   console.log(msg)
-							   
-							
-							   
 							   if(msg){
 								   
-								   tenant_Id = msg.id ;
-								   alert(tenant_Id);
-								   console.log("tenantId"+tenant_Id);
-								   
 								   $('#ff').form('load',JSON.parse(msg)); 
-								   
-								   $('#ff').form({disabled: true });
 							   }
 							   
 							  
@@ -268,7 +258,7 @@
     }
     
        
-    function printFun(id){
+    function printFun(){
     	
     	alert("print:"+id);
     	
@@ -284,26 +274,29 @@
    function saveTenantFun(){
 	  
 	   var url;
-	   alert(tenant_Id);
+	
 	   if(roomId == null || roomId==""){
    		
    		alert("请先选择要添加费用的房间!");
    		return;
      	}
 	 
-	   console.log('${tenant.id}');
-	   console.log("--------1------------");
+
 	  
-	   if(tenant_Id == null || tenant_Id ==''){
+	   if($('#id').val() == null || $('#id').val() ==''){
+		   
+		   $('#roomId').val(roomId);
+		   
 		   url = '${path }/tenant/add';
+		   
 	   }else{
 		   
 		   url = '${path }/tenant/edit';
 	   }
 	  
-	   console.log(url); 
-	   console.log("--------2-------------");
-	   console.log("--------2-------------"+tenant_Id);
+	 
+	
+	
 	   
 	   $('#ff').form({
            url:url,
@@ -317,22 +310,21 @@
            },
            success : function(result) {
                progressClose();
-             
-               $.messager.alert('提示',result.msg,'info');
-               
-             /*   result = updateStr(result);
+                         
+               result = updateStr(result);
                result = $.parseJSON(result);
                if (result.success) {
             	   $.messager.alert('提示',result.msg,'info');
+            	   $("#roomTree").tree("reload");
                   
                } else {
                    $.messager.alert('提示', result.msg, 'warning');
-               } */
-            //   alert("成功了!");
+               } 
+          
            },
            error:function(e){
         	   
-        	   alert("error!!");
+        	   $.messager.alert('错误',e,'error');
            }
        });
 	   
@@ -373,21 +365,21 @@
 		     <table style="margin:5px">
                 <tr>
                     <td>住户名称:</td>
-                    <td><input name="tenantName" type="text" class="easyui-validatebox" value="${tenant.tenantName }"></input></td>
+                    <td><input name="tenantName" type="text" class="easyui-validatebox" data-options="required:true" value="${tenant.tenantName }"></input></td>
                     <td>性别:</td>
-                    <td><input name="sex" type="text" class="easyui-validatebox" value="${tenant.sex }"></input></td>
+                    <td><input name="sex" type="text" class="easyui-validatebox" data-options="required:true" value="${tenant.sex }"></input></td>
                     <td>电话:</td>
-                    <td><input name="tel" type="text" class="easyui-validatebox" value="${tenant.tel }"></input></td>
+                    <td><input name="tel" type="text" class="easyui-validatebox" data-options="required:true" value="${tenant.tel }"></input></td>
                     <td>身份证号:</td>
-                    <td><input name="identityCard" type="text" class="easyui-validatebox" value="${tenant.identityCard }"></input></td>
+                    <td><input name="identityCard" type="text" class="easyui-validatebox" data-options="required:true" value="${tenant.identityCard }"></input></td>
                 </tr>
                 <tr>
                     <td>备注</td>
                      <td colspan="7"><textarea id="remark" name="remark" rows="" cols="" style="margin: 0px; width:100%; height: 30px;" value="${tenant.remark }"></textarea></td>
                 </tr>
                 <tr>
-                 <td><input name="roomId" type="hidden"  value="${tenant.roomId}"></td>
-                 <td><input name="id" type="hidden"  value="${tenant.id}"></td>
+                 <td><input name="roomId" id="roomId" type="hidden"  value="${tenant.roomId}"></td>
+                 <td><input name="id" id="id" type="hidden"  value="${tenant.id}"></td>
                 </tr>
             </table>
    
@@ -416,9 +408,9 @@
             <a onclick="deleteFun();" href="javascript:void(0);" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-del'">删除</a>
         </shiro:hasPermission>
         
-         <a onclick="deleteFun();" href="javascript:void(0);" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-print'">打印</a>
+         <a onclick="printFun();" href="javascript:void(0);" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-print'">打印</a>
          
-          <a onclick="deleteFun();" href="javascript:void(0);" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-redo'">短信通知</a>
+          <a onclick="sendMsgFun();" href="javascript:void(0);" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-redo'">短信通知</a>
     </div> 
     
 </body>

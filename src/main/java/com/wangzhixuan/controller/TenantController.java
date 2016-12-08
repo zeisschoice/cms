@@ -38,6 +38,8 @@ public class TenantController extends BaseController{
 	@Autowired
 	private IBuildingService iBuildingService;
 	
+	@Autowired
+	private IRoomService iRoomService;
 	
 	@RequestMapping(value = "/tenantPage", method = RequestMethod.GET)
 	public String building() {
@@ -82,8 +84,11 @@ public class TenantController extends BaseController{
 		// return renderError("用户名已存在!");
 		// }
 		// userVo.setPassword(DigestUtils.md5Hex(userVo.getPassword()));
-	//	Room room = new Room();
-	//	room.setRoomName("测试用的");
+		Room room = iRoomService.selectById(tenant.getRoomId());
+		room.setStatus(1);
+		boolean isUpdate = iRoomService.updateById(room);
+		System.out.println("isUpdate:"+isUpdate);
+		
 		iTenantService.insert(tenant);
 		return renderSuccess("添加成功");
 	}
