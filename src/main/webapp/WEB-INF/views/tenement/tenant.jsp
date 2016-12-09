@@ -12,7 +12,21 @@
     var dataGrid;
     var buildRoomTree;
     var roomId ;
-  
+
+    var selectedNodeId;
+   /*  t.tree({
+    	onLoadSuccess:function(){
+    		var node = t.tree('find', selectedNodeId);
+    		if (node){
+    			t.tree('select', node.target);
+    		}
+    	},
+    	onSelect:function(node){
+    		selectedNodeId = node.id;
+    	}
+    }); */
+    
+    
     
     $(function() {
     	buildRoomTree = $('#roomTree').tree({
@@ -59,7 +73,16 @@
             	
             	}
                
-            }
+            },
+            onLoadSuccess:function(){
+        		var node = buildRoomTree.tree('find', selectedNodeId);
+        		if (node){
+        			buildRoomTree.tree('select', node.target);
+        		}
+        	},
+        	onSelect:function(node){
+        		selectedNodeId = node.id;
+        	}
         });
 
         dataGrid = $('#dataGrid').datagrid({
@@ -170,6 +193,7 @@
             toolbar : '#toolbar'
         });
     });
+
     
     function addFun() {
     	
@@ -260,7 +284,13 @@
        
     function printFun(){
     	
-    	alert("print:"+id);
+    	 var rows = dataGrid.datagrid('getSelections');
+    
+    	 if(rows){
+    	
+    		 window.open('${path }/print/cost1');
+    		 
+    	 }
     	
     }
     
@@ -315,7 +345,8 @@
                result = $.parseJSON(result);
                if (result.success) {
             	   $.messager.alert('提示',result.msg,'info');
-            	   $("#roomTree").tree("reload");
+            	   $("#roomTree").tree("reload");//刷新树
+            	 //    buildRoomTree.tree('reload');
                   
                } else {
                    $.messager.alert('提示', result.msg, 'warning');

@@ -10,9 +10,10 @@
 		<property name="reportDataKey" value="jrMainDataSource"/>
 	</bean>
 	
-	<bean id="cost" class="com.wangzhixuan.commons.base.ApplicationIReportView">
-		<!-- <property name="url" value="/WEB-INF/jasper/report2.jasper"/> -->
-		<!-- <property name="reportDataKey" value="jrMainDataSource"/> -->
-	</bean>
+	 <bean id="cost" class="org.springframework.web.servlet.view.jasperreports.JasperReportsPdfView">
+		<property name="url" value="/WEB-INF/jasper/cost.jasper"/>
+		 <property name="reportDataKey" value="costData"/> 
+	</bean> 
+	
 	
 </beans>
