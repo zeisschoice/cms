@@ -294,9 +294,29 @@
     	
     }
     
-   function sendMsgFun(id){
+   function sendMsgFun(){
     	
-	   alert("sendMsg"+id);
+	   $.ajax({
+		   type: "GET",
+		   url: "${path }/sms/send",
+		   
+		   success: function(msg){
+		      
+			   if(msg){
+				   
+				   alert("22222");
+				 //  $('#ff').form('load',JSON.parse(msg)); 
+			   }
+			   
+			  
+			
+			   
+			   
+		   },
+		   error:function(){
+			  alert("加载租户信息失败！");
+		   }
+	});
     	
     }
    

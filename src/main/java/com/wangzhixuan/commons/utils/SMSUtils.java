@@ -11,7 +11,7 @@ import com.wangzhixuan.commons.result.Result;
 public class SMSUtils {
 	
 	
-	public Result sendMsg(String url ,String appKey,String secret,String smsSignName,String smsParaString,String recNum,String smstmp){
+	public static Result sendMsg(String url ,String appKey,String secret,String smsSignName,String smsParaString,String recNum,String smstmp){
 		
 		Result result = new Result();
 		
@@ -34,6 +34,7 @@ public class SMSUtils {
 		
 		try {
 			
+			System.out.println("sending....");
 			
 			rsp = client.execute(req);
 			
@@ -41,7 +42,15 @@ public class SMSUtils {
 			result.setSuccess(true);
 			result.setObj(rsp.getBody());
 			
+			System.out.println(rsp.isSuccess());
+			System.out.println(rsp.getErrorCode());
+			System.out.println(rsp.getResult());
+			System.out.println(rsp.getSubCode());
+			System.out.println(rsp.getSubMsg());
+			System.out.println(rsp.getParams());
+			
 			System.out.println(rsp.getBody());
+			System.out.println("finish....");
 		} catch (ApiException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -49,8 +58,9 @@ public class SMSUtils {
 			result.setSuccess(false);		
 			
 			result.setObj("errMsg:"+e.getErrMsg() +" errCode:"+ e.getErrCode()+" message:"+e.getMessage());
+			System.out.println("error....");
 		}
-		
+		System.out.println("finally....");
 		return result;
 	}
 
