@@ -24,7 +24,15 @@
     	onSelect:function(node){
     		selectedNodeId = node.id;
     	}
-    }); */
+    }); 
+   
+   //-----
+   $("#Form :input").attr("readonly", "readonly");
+   
+   //http://blog.csdn.net/jin_guang/article/details/36905387
+   
+   
+   */
     
     
     
@@ -296,6 +304,11 @@
     
    function sendMsgFun(){
     	
+	   $.messager.progress({
+		    title:'Please waiting',
+		    msg:'Loading data...'
+		});
+	   
 	   $.ajax({
 		   type: "GET",
 		   url: "${path }/sms/send",
@@ -304,17 +317,19 @@
 		      
 			   if(msg){
 				   
-				   alert("22222");
+				   $.messager.alert('发送成功！', msg.msg, 'info');
 				 //  $('#ff').form('load',JSON.parse(msg)); 
 			   }
 			   
 			  
-			
+			   $.messager.progress('close');
 			   
 			   
 		   },
 		   error:function(){
-			  alert("加载租户信息失败！");
+			  
+			  $.messager.progress('close');
+			  $.messager.alert('发送失败！', msg.msg, 'error');
 		   }
 	});
     	
