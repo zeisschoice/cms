@@ -3,6 +3,14 @@
 <script type="text/javascript">
     $(function() {
        
+    	var dateObj = new Date();
+    	var month = dateObj.getUTCMonth() + 1; //months from 1-12
+    	var day = dateObj.getUTCDate();
+    	var year = dateObj.getUTCFullYear();
+    	
+    	$('#year').val(year);
+    	$('#month').val(month);
+    	
         $('#costAddForm').form({
             url:'${path}/cost/add',
             onSubmit : function() {
@@ -43,9 +51,9 @@
             <table class="grid">
                 <tr>
                     <td>年份</td>
-                    <td><input name="year" type="text" placeholder="请输入房间名称" type="text" class="easyui-validatebox" data-options="required:true" value=""></td>
+                    <td><input name="year" id="year" type="text" placeholder="请输入房间名称" type="text" class="easyui-validatebox" data-options="required:true" value=""></td>
                     <td>月份</td>
-                    <td><input name="liver" type="text" placeholder="请输入住户姓名" type="text" class="easyui-validatebox" data-options="required:true" value=""></td>
+                    <td><input name="month" id="month" type="text" placeholder="请输入住户姓名" type="text" class="easyui-validatebox" data-options="required:true" value=""></td>
                 </tr>
                 <tr>
                     <td>电费</td>

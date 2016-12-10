@@ -19,9 +19,9 @@ public class SMSController extends BaseController {
 	@Autowired
 	private SMSConfig smsConifg;
 	
-	@RequestMapping(value = "/send", method = RequestMethod.GET)
+	@RequestMapping(value = "/send", method = RequestMethod.POST)
     @ResponseBody
-	public Object smsCurrentMonCost(Cost cost){
+	public Object smsCurrentMonCost(Cost cost,String phone){
 		
 		 
 		 Result rs = SMSUtils.sendMsg(smsConifg.getUrl(), smsConifg.getAppKey(), smsConifg.getSecret(), "交租短信", "{name:'张三',room:'108',cost:'100'}", "13450761833", "SMS_25620786");

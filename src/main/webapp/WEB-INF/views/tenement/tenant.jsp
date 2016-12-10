@@ -63,11 +63,7 @@
 								   
 								   $('#ff').form('load',JSON.parse(msg)); 
 							   }
-							   
-							  
-							
-							   
-							   
+	   							   
 						   },
 						   error:function(){
 							  alert("加载租户信息失败！");
@@ -169,19 +165,19 @@
                  field : 'remark'
                
             }
-             /* , {
+              , {
                 field : 'action',
                 title : '操作',
-                width : 280,
+                width : 300,
                 formatter : function(value, row, index) {
                     var str = '';
-                        <shiro:hasPermission name="/tenant/edit">
+                       /*  <shiro:hasPermission name="/tenant/edit">
                             str += $.formatString('<a href="javascript:void(0)" class="user-easyui-linkbutton-edit" data-options="plain:true,iconCls:\'icon-edit\'" onclick="editFun(\'{0}\');" >编辑</a>', row.id);
                         </shiro:hasPermission>
                         <shiro:hasPermission name="/tenant/delete">
                             str += '&nbsp;&nbsp;|&nbsp;&nbsp;';
                             str += $.formatString('<a href="javascript:void(0)" class="user-easyui-linkbutton-del" data-options="plain:true,iconCls:\'icon-del\'" onclick="deleteFun(\'{0}\');" >删除</a>', row.id);
-                        </shiro:hasPermission>
+                        </shiro:hasPermission> */
                         <shiro:hasPermission name="/tenant/print">
                           str += '&nbsp;&nbsp;|&nbsp;&nbsp;';
                           str += $.formatString('<a href="javascript:void(0)" class="user-easyui-linkbutton-print" data-options="plain:true,iconCls:\'icon-print\'" onclick="printFun(\'{0}\');" >打印</a>', row.id);
@@ -192,11 +188,13 @@
                        </shiro:hasPermission>
                     return str;
                 }
-            } */
+            } 
              ] ],
             onLoadSuccess:function(data){
-                $('.user-easyui-linkbutton-edit').linkbutton({text:'编辑',plain:true,iconCls:'icon-edit'});
-                $('.user-easyui-linkbutton-del').linkbutton({text:'删除',plain:true,iconCls:'icon-del'});
+            	$('.user-easyui-linkbutton-edit').linkbutton({text:'编辑',plain:true,iconCls:'icon-del'});
+                $('.user-easyui-linkbutton-del').linkbutton({text:'删除',plain:true,iconCls:'icon-edit'});
+                $('.user-easyui-linkbutton-print').linkbutton({text:'打印',plain:true,iconCls:'icon-print'});
+                $('.user-easyui-linkbutton-redo').linkbutton({text:'发送短信',plain:true,iconCls:'icon-redo'});
             },
             toolbar : '#toolbar'
         });
@@ -304,20 +302,34 @@
     
    function sendMsgFun(){
     	
+	   var rows = dataGrid.datagrid('getSelections');
+	   var data = {}; 
+	  
+  	 if(rows){
+  	
+  		 data.cost = rows[0];
+  		 data.phone = $('#tel').val();
+  		 
+  	  }else{
+  		  
+  		  alert("请选择一条记录！");
+  		  return;
+  	  }
+	   
 	   $.messager.progress({
 		    title:'Please waiting',
 		    msg:'Loading data...'
 		});
 	   
 	   $.ajax({
-		   type: "GET",
+		   type: "POST",
 		   url: "${path }/sms/send",
-		   
+		   data:data,
 		   success: function(msg){
-		      
+		//	 var  result =  JSON.pare(msg);
 			   if(msg){
 				   
-				   $.messager.alert('发送成功！', msg.msg, 'info');
+				   $.messager.alert('发送成功！', result.msg, 'info');
 				 //  $('#ff').form('load',JSON.parse(msg)); 
 			   }
 			   
@@ -400,6 +412,11 @@
   
     
     </script>
+    <style type="text/css">
+        .datagrid-header-rownumber,.datagrid-cell-rownumber{
+            width:40px;
+        }
+    </style>
 </head>
 <body class="easyui-layout" data-options="fit:true,border:false">
     <div data-options="region:'north',border:false" style="height: 30px; overflow: hidden;background-color: #fff">
