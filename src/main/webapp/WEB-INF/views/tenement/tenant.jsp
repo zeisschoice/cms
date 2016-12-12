@@ -211,8 +211,8 @@
     	
         parent.$.modalDialog({
             title : '添加',
-            width : 500,
-            height : 400,
+            width : 750,
+            height : 500,
             href : '${path }/cost/addPage?id='+roomId,
             buttons : [ {
                 text : '添加',

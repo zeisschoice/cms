@@ -102,5 +102,11 @@ public class CostController extends BaseController{
 		 return renderSuccess("删除成功！");
 	 } 
 	
-	
+	 @RequestMapping(value = "/getLastMon",method = RequestMethod.POST)
+	 @ResponseBody
+	 public Object selectLastMon(Cost cost) {
+		 Cost rs = iCostService.selectOne(cost);
+		 
+		 return rs;
+	 } 
 }

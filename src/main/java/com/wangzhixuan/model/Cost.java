@@ -88,9 +88,125 @@ public class Cost implements Serializable {
 	 */
 	private String remark;
 
+	/**
+	 * 当月水表数
+	 */
+	@TableField(value="current_water_num")
+	private Double currentWaterNum;
+	/**
+	 * 上个月水表数
+	 */
+	@TableField(value="last_water_num")
+	private Double lastWaterNum;
+	/**
+	 * 
+	 */
+	@TableField(value="current_gas_num")
+	private Double currentGasNum;
+	/**
+	 * 
+	 */
+	@TableField(value="last_gas_num")
+	private Double lastGasNum;
+	/**
+	 * 
+	 */
+	@TableField(value="current_electric_num")
+	private Double currentElectricNum;
+	/**
+	 * 
+	 */
+	@TableField(value="last_electric_num")
+	private Double lastElectricNum;
 
-
+	/**
+	 * 
+	 */
+	@TableField(value="water_unit_price")
+	private Double waterUnitPrice;
+	/**
+	 * 
+	 */
+	@TableField(value="gas_unit_price")
+	private Double gasUnitPrice;
+	/**
+	 * 
+	 */
+	@TableField(value="electric_unit_price")
+	private Double electricUnitPrice;
 	
+
+	public Double getWaterUnitPrice() {
+		return waterUnitPrice;
+	}
+
+	public void setWaterUnitPrice(Double waterUnitPrice) {
+		this.waterUnitPrice = waterUnitPrice;
+	}
+
+	public Double getGasUnitPrice() {
+		return gasUnitPrice;
+	}
+
+	public void setGasUnitPrice(Double gasUnitPrice) {
+		this.gasUnitPrice = gasUnitPrice;
+	}
+
+	public Double getElectricUnitPrice() {
+		return electricUnitPrice;
+	}
+
+	public void setElectricUnitPrice(Double electricUnitPrice) {
+		this.electricUnitPrice = electricUnitPrice;
+	}
+
+	public Double getCurrentWaterNum() {
+		return currentWaterNum;
+	}
+
+	public void setCurrentWaterNum(Double currentWaterNum) {
+		this.currentWaterNum = currentWaterNum;
+	}
+
+	public Double getLastWaterNum() {
+		return lastWaterNum;
+	}
+
+	public void setLastWaterNum(Double lastWaterNum) {
+		this.lastWaterNum = lastWaterNum;
+	}
+
+	public Double getCurrentGasNum() {
+		return currentGasNum;
+	}
+
+	public void setCurrentGasNum(Double currentGasNum) {
+		this.currentGasNum = currentGasNum;
+	}
+
+	public Double getLastGasNum() {
+		return lastGasNum;
+	}
+
+	public void setLastGasNum(Double lastGasNum) {
+		this.lastGasNum = lastGasNum;
+	}
+
+	public Double getCurrentElectricNum() {
+		return currentElectricNum;
+	}
+
+	public void setCurrentElectricNum(Double currentElectricNum) {
+		this.currentElectricNum = currentElectricNum;
+	}
+
+	public Double getLastElectricNum() {
+		return lastElectricNum;
+	}
+
+	public void setLastElectricNum(Double lastElectricNum) {
+		this.lastElectricNum = lastElectricNum;
+	}
 
 	public Integer getId() {
 		return id;
