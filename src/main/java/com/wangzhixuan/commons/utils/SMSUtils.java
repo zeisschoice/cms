@@ -40,7 +40,8 @@ public class SMSUtils {
 			
 			result.setMsg("发送成功!");
 			result.setSuccess(true);
-			result.setObj(rsp.getBody());
+			result.setObj(rsp);
+			
 			
 			System.out.println(rsp.isSuccess());
 			System.out.println(rsp.getErrorCode());

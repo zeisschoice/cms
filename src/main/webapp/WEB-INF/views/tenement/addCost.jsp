@@ -7,20 +7,26 @@
     	var month = dateObj.getUTCMonth() + 1; //months from 1-12
     	var day = dateObj.getUTCDate();
     	var year = dateObj.getUTCFullYear();
-    	
+    	var roomId = <%= request.getParameter("id") %>;
+        var tenantName = '<%= request.getParameter("tenantName") %>';
     	$('#year').val(year);
     	$('#month').val(month);
-    	
+    	$('#tenantName').val(tenantName);
+  
     	var data = {};
     	if(month==0)
         {
             month=12;
             year=year-1;
+        }else{
+        	
+        	month = month -1;
+        	
         }
     	
     	data.month = month;
     	data.year = year;
-    	data.roomId = 2 ;
+    	data.roomId = roomId ;
     	
     	$.ajax({
  		   type: "POST",
@@ -29,10 +35,16 @@
  		   success: function(msg){
  		//	 var  result =  JSON.pare(msg);
  	    	console.log(msg);
+ 	    	console.log(typeof(msg));
  			   if(msg){
- 				   
- 				   $.messager.alert('发送成功！', result.msg, 'info');
- 				 //  $('#ff').form('load',JSON.parse(msg)); 
+ 				  
+ 				  var msg = JSON.parse(msg);
+ 				 
+ 				  $('#lastElectricNum').val(msg.currentElectricNum);
+ 				  $('#lastWaterNum').val(msg.currentWaterNum);
+ 				  $('#lastGasNum').val(msg.currentGasNum);
+ 				  
+ 				 console.log(msg.currentGasNum);
  			   }
  			   
  			  
@@ -100,7 +112,7 @@
                     <td><input name="currentElectricNum" placeholder="点击选择时间" class="easyui-validatebox" data-options="required:true"></td>
                     <td>上月电表数</td>
                     <td>
-                       <input name="lastElectricNum" placeholder="点击选择时间"  type="text" class="easyui-validatebox" data-options="required:true">
+                       <input name="lastElectricNum" id="lastElectricNum" placeholder="点击选择时间"  type="text" class="easyui-validatebox" data-options="required:true">
                     </td>
                     <td>电费</td>
                     <td>
@@ -112,11 +124,11 @@
                     <td><input name="currentWaterNum" placeholder="点击选择时间"  type="text" class="easyui-validatebox" data-options="required:true"></td>
                     <td>上月水表数</td>
                     <td>
-                       <input name="lastWaterNum" placeholder="点击选择时间"  type="text" class="easyui-validatebox" data-options="required:true">
+                       <input name="lastWaterNum" id="lastWaterNum" placeholder="点击选择时间"  type="text" class="easyui-validatebox" data-options="required:true">
                     </td>
                     <td>水费</td>
                     <td>
-                       <input name="waterCharge" placeholder="点击选择时间"  type="text" class="easyui-validatebox" data-options="required:true">
+                       <input name="waterCharge"  placeholder="点击选择时间"  type="text" class="easyui-validatebox" data-options="required:true">
                     </td>
                 </tr>
                  <tr>
@@ -124,7 +136,7 @@
                     <td><input name="currentGasNum" placeholder="点击选择时间"   type="text" class="easyui-validatebox" data-options="required:true"></td>
                     <td>上月煤气数</td>
                     <td>
-                       <input name=lastGasNum placeholder="点击选择时间"   class="easyui-validatebox" data-options="required:true">
+                       <input name=lastGasNum id="lastGasNum" placeholder="点击选择时间"   class="easyui-validatebox" data-options="required:true">
                     </td>
                      <td>煤气费</td>
                     <td>

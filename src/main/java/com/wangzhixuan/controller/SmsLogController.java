@@ -15,4 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/smsLog")
 public class SmsLogController {
 	
+	
+	public void saveSmsLog(){
+		
+	}
+	
 }

@@ -179,7 +179,6 @@
                             str += $.formatString('<a href="javascript:void(0)" class="user-easyui-linkbutton-del" data-options="plain:true,iconCls:\'icon-del\'" onclick="deleteFun(\'{0}\');" >删除</a>', row.id);
                         </shiro:hasPermission> */
                         <shiro:hasPermission name="/tenant/print">
-                          str += '&nbsp;&nbsp;|&nbsp;&nbsp;';
                           str += $.formatString('<a href="javascript:void(0)" class="user-easyui-linkbutton-print" data-options="plain:true,iconCls:\'icon-print\'" onclick="printFun(\'{0}\');" >打印</a>', row.id);
                        </shiro:hasPermission>
                        <shiro:hasPermission name="/tenant/sendMsg">
@@ -213,7 +212,7 @@
             title : '添加',
             width : 750,
             height : 500,
-            href : '${path }/cost/addPage?id='+roomId,
+            href : '${path }/cost/addPage?id='+roomId +"&tenantName="+$('#tenantName').val(),
             buttons : [ {
                 text : '添加',
                 handler : function() {
@@ -448,13 +447,13 @@
 		     <table style="margin:5px">
                 <tr>
                     <td>住户名称:</td>
-                    <td><input name="tenantName" type="text" class="easyui-validatebox" data-options="required:true" value="${tenant.tenantName }"></input></td>
+                    <td><input name="tenantName" id="tenantName" type="text" class="easyui-validatebox" data-options="required:true"   value="${tenant.tenantName }"></input></td>
                     <td>性别:</td>
                     <td><input name="sex" type="text" class="easyui-validatebox" data-options="required:true" value="${tenant.sex }"></input></td>
                     <td>电话:</td>
-                    <td><input name="tel" type="text" class="easyui-validatebox" data-options="required:true" value="${tenant.tel }"></input></td>
+                    <td><input name="tel" type="text" class="easyui-validatebox" data-options="required:true" validType="mobile" value="${tenant.tel }"></input></td>
                     <td>身份证号:</td>
-                    <td><input name="identityCard" type="text" class="easyui-validatebox" data-options="required:true" value="${tenant.identityCard }"></input></td>
+                    <td><input name="identityCard" type="text" class="easyui-validatebox" data-options="required:true" validType="idcard" value="${tenant.identityCard }"></input></td>
                 </tr>
                 <tr>
                     <td>备注</td>
