@@ -39,8 +39,7 @@
  		   async: false,
  		   success: function(msg){
  		//	 var  result =  JSON.pare(msg);
- 	    	console.log(msg);
- 	    	console.log(typeof(msg));
+
  			   if(msg){
  				  
  				  var msg = JSON.parse(msg);
@@ -52,14 +51,10 @@
  				 $('#electricUnitPrice').val(msg.electricUnitPrice);
  				 $('#gasUnitPrice').val(msg.gasUnitPrice);
  				 $('#waterUnitPrice').val(msg.waterUnitPrice);
- 				  
- 			
- 				 console.log(msg);
+
  			
  			   }
- 			   
- 			  
- 			//   $.messager.progress('close');
+
  			   
  			   
  		   },
@@ -80,6 +75,8 @@
                 if (!isValid) {
                     progressClose();
                 }
+                
+               alert($('#otherCharge').val()); 
                 return isValid;
             },
             success : function(result) {
@@ -97,12 +94,22 @@
         });
         
         
-       /*  $('#buildingId').combotree({
-            url : '${path}/room/tree',
-            parentField : 'pid',
-            lines : true,
-            panelHeight : 'auto'
-        }); */
+        function totalCost(){
+      	  
+    	    var gasCharge = $('#gasCharge').val();
+    	    var waterCharge= $('#waterCharge').val();
+    	    var electricCharge = $('#electricCharge').val();
+    	    var internetCharge = $('#internetCharge').val();
+    	    var tvCharge = $('#tvCharge').val();
+    	    var equallyCharge = $('#equallyCharge').val();
+    	    var otherCharge = $('#otherCharge').val();
+    	    
+    	    var total = (parseFloat(gasCharge) + parseFloat(waterCharge) + parseFloat(electricCharge) + parseFloat(internetCharge) + parseFloat(tvCharge) + parseFloat(equallyCharge) + parseFloat(otherCharge)).toFixed(2);
+    	    
+    	    console.log("total:"+total);
+       
+    	    $('#total').numberbox('setValue',total);
+        }
         
         //当前电数
         $('#currentElectricNum').numberbox({  
@@ -222,7 +229,58 @@
       	  }  
       	});  
         
+    
+        $('#electricCharge').numberbox({  
+        	  onChange: function(value){ 
+        		  totalCost();  
+        	  }
+        });   
+        
+        $('#waterCharge').numberbox({  
+      	  onChange: function(value){ 
+      		  totalCost();  
+      	  }
+      }); 
+        
+        
+        $('#gasCharge').numberbox({  
+      	  onChange: function(value){ 
+      		  totalCost();  
+      	  }
+      }); 
+      
+        $('#internetCharge').numberbox({  
+        	  onChange: function(value){ 
+        		  totalCost();  
+        	  }
+        }); 
+        
+        
+        $('#tvCharge').numberbox({  
+        	  onChange: function(value){ 
+        		  totalCost();  
+        	  }
+        }); 
+        
+        
+        $('#equallyCharge').numberbox({  
+        	  onChange: function(value){ 
+        		  totalCost();  
+        	  }
+        }); 
+        
+        $('#otherCharge').numberbox({  
+      	  onChange: function(value){ 
+      		  totalCost();  
+      	  }
+        }); 
+        
     });
+    
+   
+    
+    
+    
 </script>
 <div class="easyui-layout" data-options="fit:true,border:false">
     <div data-options="region:'center',border:false" title="" style="overflow: hidden;padding: 3px;">
@@ -249,11 +307,11 @@
                     </td>
                      <td>度 /元</td>
                     <td>
-                       <input name="electricUnitPrice" id="electricUnitPrice" placeholder="输入"  type="text" class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2" style="width:80px">
+                       <input name="electricUnitPrice" id="electricUnitPrice" placeholder="输入"  type="text" class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2" style="width:80px" value="0">
                     </td>
                     <td>电费(元)</td>
                     <td>
-                       <input name="electricCharge"  id="electricCharge"   type="text" class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2" readonly="true" style="width:80px">
+                       <input name="electricCharge"  id="electricCharge"   type="text" class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2" readonly="true" style="width:80px" value="0">
                     </td>
                 </tr>
                  <tr>
@@ -269,11 +327,11 @@
                     </td>
                      <td>顿 /元</td>
                     <td>
-                       <input name="waterUnitPrice" id="waterUnitPrice" placeholder="点击选择时间"  type="text" class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2" style="width:80px">
+                       <input name="waterUnitPrice" id="waterUnitPrice" placeholder="点击选择时间"  type="text" class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2" style="width:80px" value="0">
                     </td>
                     <td>水费(元)</td>
                     <td>
-                       <input name="waterCharge" id="waterCharge" placeholder="点击选择时间"  type="text" class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2" style="width:80px" readonly="true">
+                       <input name="waterCharge" id="waterCharge" placeholder="点击选择时间"  type="text" class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2" style="width:80px" readonly="true" value="0">
                     </td>
                 </tr>
                  <tr>
@@ -289,25 +347,25 @@
                     </td>
                      <td>方 /元</td>
                     <td>
-                       <input name="gasUnitPrice" id="gasUnitPrice" placeholder="点击选择时间"  type="text" class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2" style="width:80px">
+                       <input name="gasUnitPrice" id="gasUnitPrice" placeholder="点击选择时间"  type="text" class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2" style="width:80px" value="0">
                     </td>
                      <td>燃气费(元)</td>
                     <td>
-                       <input name="gasCharge" id="gasCharge" placeholder="点击选择时间"  type="text" class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2" style="width:80px" readonly="true">
+                       <input name="gasCharge" id="gasCharge" placeholder="点击选择时间"  type="text" class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2" style="width:80px" readonly="true" value="0">
                     </td>
                 </tr>
                  <tr>
                    
                     <td>网络费</td>
-                    <td><input name="internetCharge" placeholder="点击选择时间"  class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2" style="width:80px"></td>
+                    <td><input name="internetCharge" id="internetCharge" placeholder="点击选择时间"  class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2" style="width:80px" value="0"></td>
                     <td>电视费</td>
-                    <td><input name="tvCharge" placeholder="点击选择时间"  class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2" style="width:80px"></td>
+                    <td><input name="tvCharge" id="tvCharge" placeholder="点击选择时间"  class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2" style="width:80px" value="0"></td>
                     <td>分摊费</td>
-                    <td><input name="equallyCharge" placeholder="点击选择时间"  class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2" style="width:80px"></td>
+                    <td><input name="equallyCharge" id="equallyCharge" placeholder="点击选择时间"  class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2" style="width:80px" value="0"></td>
                      <td>其他费用</td>
-                    <td><input name="otherCharge" placeholder="点击选择时间"  class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2" style="width:80px"></td>
+                    <td><input name="otherCharge" id="otherCharge" placeholder="点击选择时间"  class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2" style="width:80px" value="0"></td>
                     <td>合计(元)</td>
-                    <td><input name="total" placeholder="点击选择时间"  class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2" style="width:80px"></td>
+                    <td><input name="total" id="total" placeholder="点击选择时间"  class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2" style="width:80px" readonly="true"></td>
                     <td><input name="roomId" type="hidden"  value="${roomId}"></td>
                 </tr>
                 <tr>

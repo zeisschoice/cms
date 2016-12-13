@@ -127,6 +127,11 @@
                 title : '水费',
                 field : 'waterCharge'
               
+            },{
+                width : '50',
+                title : '燃气费',
+                field : 'gasCharge'
+              
             }
             ,{
                 width : '50',
@@ -147,16 +152,17 @@
                 field : 'equallyCharge'
               
             }
-            ,{
-                width : '50',
-                title : '燃气费',
-                field : 'gasCharge'
-              
-            },
+            ,
             {
                 width : '80',
                 title : '其他费用',
                 field : 'otherCharge'
+              
+            },
+            {
+                width : '80',
+                title : '合计',
+                field : 'total'
               
             },
             {
