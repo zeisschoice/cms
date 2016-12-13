@@ -31,87 +31,219 @@
         });
         
         
-//     $("#remark").val('${room.remark}');
-//     $("#beginDate").val('${room.beginDate}'==null||'${room.beginDate}'==''?"":myformatter(new Date('${room.beginDate}')));
-//     $("#endDate").val('${room.endDate }'==null || '${room.endDate }'== ''?"":myformatter(new Date('${room.endDate }')));
-       
-     
-  // $('#status').combobox('select', '${room.status}');
- //     $('#type').combobox('setValue', $('#type')['${room.type}'].value);
-     
-     $('#buildingId').combotree({
-         url : '${path}/room/tree',
-         parentField : 'pid',
-         lines : true,
-         panelHeight : 'auto'
-     });
- 
+        //当前电数
+        $('#currentElectricNum').numberbox({  
+        	  onChange: function(value){ 
+        	
+        		  
+        	//  var _trim = $.trim(value);  
+        	var a = $('#currentElectricNum').val();
+        	var b = $('#lastElectricNum').val();
+        	var c = (parseFloat(a) - parseFloat(b)).toFixed(2);
+            var d = $('#electricUnitPrice').val();
+          
+        	$('#electricNum').numberbox('setValue', c);
+        	
+        	var e =  (c * d).toFixed(2);
+        	    
+        	$('#electricCharge').numberbox('setValue',e);
+        	
+        	  }  
+        	});  
+        
+      
+        $('#lastElectricNum').numberbox({  
+      	  onChange: function(value){ 
+      	
+      		  
+      	//  var _trim = $.trim(value);  
+      	var a = $('#currentElectricNum').val();
+      	var b = $('#lastElectricNum').val();
+      	var c = (parseFloat(a) - parseFloat(b)).toFixed(2);
+          var d = $('#electricUnitPrice').val();
+        
+      	$('#electricNum').numberbox('setValue', c);
+      	
+      	var e =  (c * d).toFixed(2);
+      	    
+      	$('#electricCharge').numberbox('setValue',e);
+      	
+      	  }  
+      	});  
+        
+        
+        $('#currentWaterNum').numberbox({  
+        	  onChange: function(value){ 
+        	
+        		  
+        	//  var _trim = $.trim(value);  
+        	var a = $('#currentWaterNum').val();
+        	var b = $('#lastWaterNum').val();
+        	var c = (parseFloat(a) - parseFloat(b)).toFixed(2);
+            var d = $('#waterUnitPrice').val();
+          
+        	$('#waterNum').numberbox('setValue', c);
+        	
+        	var e =  (c * d).toFixed(2);
+        	    
+        	$('#waterCharge').numberbox('setValue',e);
+        	
+        	  }  
+        	});  
+        
+        $('#lastWaterNum').numberbox({  
+      	  onChange: function(value){ 
+      	
+      		  
+      	//  var _trim = $.trim(value);  
+      	var a = $('#currentWaterNum').val();
+      	var b = $('#lastWaterNum').val();
+      	var c = (parseFloat(a) - parseFloat(b)).toFixed(2);
+          var d = $('#waterUnitPrice').val();
+        
+      	$('#waterNum').numberbox('setValue', c);
+      	
+      	var e =  (c * d).toFixed(2);
+      	    
+      	$('#waterCharge').numberbox('setValue',e);
+      	
+      	  }  
+      	});  
+        
+       //煤气费用计算 
+        $('#currentGasNum').numberbox({  
+        	  onChange: function(value){ 
+        	
+        		  
+        	//  var _trim = $.trim(value);  
+        	var a = $('#currentGasNum').val();
+        	var b = $('#lastGasNum').val();
+        	var c = (parseFloat(a) - parseFloat(b)).toFixed(2);
+            var d = $('#gasUnitPrice').val();
+          
+        	$('#gasNum').numberbox('setValue', c);
+        	
+        	var e =  (c * d).toFixed(2);
+        	    
+        	$('#gasCharge').numberbox('setValue',e);
+        	
+        	  }  
+        	});  
+        
+        $('#lastGasNum').numberbox({  
+      	  onChange: function(value){ 
+      	
+      		  
+	      	//  var _trim = $.trim(value);  
+	      	var a = $('#currentGasNum').val();
+	      	var b = $('#lastGasNum').val();
+	      	var c = (parseFloat(a) - parseFloat(b)).toFixed(2);
+	          var d = $('#gasUnitPrice').val();
+	        
+	      	$('#gasNum').numberbox('setValue', c);
+	      	
+	      	var e =  (c * d).toFixed(2);
+	      	    
+	      	$('#gasCharge').numberbox('setValue',e);
+      	
+      	  }  
+      	});  
+    
  
     });
     
    
-    
-    
-    function myformatter(date){
-        var y = date.getFullYear();
-        var m = date.getMonth()+1;
-        var d = date.getDate();
-        var h = date.getHours();
-        var mm = date.getMinutes();
-        var s = date.getSeconds();
-        return y+'-'+(m<10?('0'+m):m)+'-'+(d<10?('0'+d):d)+' '+(h<10?('0'+h):h)+':'+(mm<10?('0'+mm):mm)+':'+(s<10?('0'+s):s);
-    }
-    
-    
- //   $('#status').combobox('select', '${room.status}');
- //   $('#type').combobox('select', '${room.type}');
 </script>
 <div class="easyui-layout" data-options="fit:true,border:false">
     <div data-options="region:'center',border:false" title="" style="overflow: hidden;padding: 3px;">
         <form id="roomEditForm" method="post">
-          <table class="grid">
+           <table class="grid">
                 <tr>
-                    <td>住户姓名</td>
-                    <td><input name="id" type="hidden"  value="${tenant.id}">
-                    <input name="tenantName" type="text" placeholder="请输入房间名称" class="easyui-validatebox" data-options="required:true" value="${room.roomName}"></td>
-                    <td>性别</td>
-                    <td><input name="" type="text" placeholder="请输入住户姓名" class="easyui-validatebox" data-options="required:true" value="${room.liver}"></td>
+                    <td>年份</td>
+                    <td><input name="year" id="year" type="text" placeholder="请输入房间名称" type="text" class="easyui-validatebox easyui-textbox" data-options="required:true" value="" style="width:80px"></td>
+                    <td>月份</td>
+                    <td><input name="month" id="month" type="text" placeholder="请输入住户姓名" type="text" class="easyui-validatebox easyui-textbox" data-options="required:true" value="" style="width:80px"></td>
+                    <td>住户</td>
+                    <td><input name="tenantName" id="tenantName" type="text" placeholder="请输入住户姓名" type="text" class="easyui-validatebox easyui-textbox" data-options="required:true" value="" style="width:80px"></td>
                 </tr>
                 <tr>
-                    <td>出租开始日期</td>
-                    <td><input name="beginDate" id="beginDate" placeholder="点击选择时间" onclick="WdatePicker({readOnly:true,dateFmt:'yyyy-MM-dd HH:mm:ss'})" readonly="readonly" class="easyui-validatebox" data-options="required:true" value=""></td>
-                    <td>出租结束日期</td>
+                    <td>本月电表数</td>
+                    <td><input name="currentElectricNum" id="currentElectricNum" placeholder="点击选择时间" class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2" style="width:80px"></td>
+                    <td>上月电表数</td>
                     <td>
-                       <input name="endDate" id="endDate" placeholder="点击选择时间" onclick="WdatePicker({readOnly:true,dateFmt:'yyyy-MM-dd HH:mm:ss'})" readonly="readonly" class="easyui-validatebox" data-options="required:true" value="">
+                       <input name="lastElectricNum" id="lastElectricNum" placeholder="点击选择时间"  type="text" class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2" style="width:80px" >
+                    </td>
+                    <td>用电数</td>
+                    <td>
+                       <input name="electricNum" id="electricNum" placeholder="点击选择时间"  type="text" class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2"  style="width:80px" readonly="true">
+                    </td>
+                     <td>度 /元</td>
+                    <td>
+                       <input name="electricUnitPrice" id="electricUnitPrice" placeholder="输入"  type="text" class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2" style="width:80px">
+                    </td>
+                    <td>电费(元)</td>
+                    <td>
+                       <input name="electricCharge"  id="electricCharge"   type="text" class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2" readonly="true" style="width:80px">
                     </td>
                 </tr>
-                <tr>
-                    
-                    <td>类型</td>
+                 <tr>
+                    <td>本月水表数</td>
+                    <td><input name="currentWaterNum" id="currentWaterNum" placeholder="点击选择时间"  type="text" class="easyui-validatebox easyui-textbox" data-options="required:true,min:0,precision:2" style="width:80px" ></td>
+                    <td>上月水表数</td>
                     <td>
-                        <select name="type" id="type" class="easyui-combobox" data-options="width:140,height:29,editable:false,panelHeight:'auto'" value="${room.type }">
-                            <option value="0">单间</option>
-                            <option value="1">套间</option>
-                        </select>
+                       <input name="lastWaterNum" id="lastWaterNum" placeholder="点击选择时间"  type="text" class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2" style="width:80px">
                     </td>
-                    <td>状态</td>
+                     <td>用水数</td>
                     <td>
-                        <select id="status" name="status" class="easyui-combobox" data-options="width:140,height:29,editable:false,panelHeight:'auto'">
-                                <option value="0">空置</option>
-                                <option value="1">已租</option>
-                        </select>
+                       <input name="waterNum" id="waterNum" placeholder="点击选择时间"  type="text" class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2" style="width:80px" readonly="true">
+                    </td>
+                     <td>顿 /元</td>
+                    <td>
+                       <input name="waterUnitPrice" id="waterUnitPrice" placeholder="点击选择时间"  type="text" class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2" style="width:80px">
+                    </td>
+                    <td>水费(元)</td>
+                    <td>
+                       <input name="waterCharge" id="waterCharge" placeholder="点击选择时间"  type="text" class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2" style="width:80px" readonly="true">
                     </td>
                 </tr>
-                <tr>
-                    <td>所属楼房</td>
-                    <td><select id="buildingId" name="buildingId" style="width: 140px; height: 29px;" class="easyui-validatebox" data-options="required:true" value=""></select></td>
-                    <td>月租</td>
-                    <td><input name="monRent" type="text" placeholder="月租" class="easyui-validatebox" data-options="required:true" value="${room.monRent }"></td>
+                 <tr>
+                    <td>本月煤气数</td>
+                    <td><input name="currentGasNum" id="currentGasNum" placeholder="点击选择时间"   type="text" class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2" style="width:80px"></td>
+                    <td>上月煤气数</td>
+                    <td>
+                       <input name=lastGasNum id="lastGasNum" placeholder="点击选择时间"   class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2" style="width:80px">
+                    </td>
+                     <td>煤气数</td>
+                    <td>
+                       <input name="gasNum" id="gasNum" placeholder="点击选择时间"  type="text" class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2" style="width:80px" readonly="true">
+                    </td>
+                     <td>方 /元</td>
+                    <td>
+                       <input name="gasUnitPrice" id="gasUnitPrice" placeholder="点击选择时间"  type="text" class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2" style="width:80px">
+                    </td>
+                     <td>燃气费(元)</td>
+                    <td>
+                       <input name="gasCharge" id="gasCharge" placeholder="点击选择时间"  type="text" class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2" style="width:80px" readonly="true">
+                    </td>
+                </tr>
+                 <tr>
+                   
+                    <td>网络费</td>
+                    <td><input name="internetCharge" placeholder="点击选择时间"  class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2" style="width:80px"></td>
+                    <td>电视费</td>
+                    <td><input name="tvCharge" placeholder="点击选择时间"  class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2" style="width:80px"></td>
+                    <td>分摊费</td>
+                    <td><input name="equallyCharge" placeholder="点击选择时间"  class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2" style="width:80px"></td>
+                     <td>其他费用</td>
+                    <td><input name="otherCharge" placeholder="点击选择时间"  class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2" style="width:80px"></td>
+                    <td>合计(元)</td>
+                    <td><input name="total" placeholder="点击选择时间"  class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2" style="width:80px"></td>
+                    <td><input name="roomId" type="hidden"  value="${roomId}"></td>
                 </tr>
                 <tr>
                     
                   <td>备注</td>
-                  <td colspan="3"><textarea id="remark" name="remark" rows="" cols="" style="margin: 0px; width: 380px; height: 53px;" ></textarea></td>  
+                  <td colspan="6"><textarea id="remark" name="remark" rows="" cols="" style="margin: 0px; width: 380px; height: 53px;" ></textarea></td>  
                     
                 </tr>
             </table>

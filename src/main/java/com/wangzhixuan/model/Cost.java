@@ -136,6 +136,8 @@ public class Cost implements Serializable {
 	private Double electricUnitPrice;
 	
 
+	private Double total;
+	
 	public Double getWaterUnitPrice() {
 		return waterUnitPrice;
 	}
@@ -186,6 +188,14 @@ public class Cost implements Serializable {
 
 	public Double getLastGasNum() {
 		return lastGasNum;
+	}
+
+	public Double getTotal() {
+		return total;
+	}
+
+	public void setTotal(Double total) {
+		this.total = total;
 	}
 
 	public void setLastGasNum(Double lastGasNum) {

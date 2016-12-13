@@ -210,7 +210,7 @@
     	
         parent.$.modalDialog({
             title : '添加',
-            width : 750,
+            width : 800,
             height : 500,
             href : '${path }/cost/addPage?id='+roomId +"&tenantName="+$('#tenantName').val(),
             buttons : [ {
@@ -264,7 +264,7 @@
         }
         parent.$.modalDialog({
             title : '编辑',
-            width : 500,
+            width : 600,
             height : 300,
             href : '${path }/cost/editPage?id=' + id,
             buttons : [ {

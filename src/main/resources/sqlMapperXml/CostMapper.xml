@@ -24,12 +24,13 @@
 		<result column="water_unit_price" property="waterUnitPrice" />
 		<result column="gas_unit_price" property="gasUnitPrice" />
 		<result column="electric_unit_price" property="electricUnitPrice" />
+		<result column="total" property="total" />
 	</resultMap>
 
     <!-- 通用查询结果列-->
     <sql id="Base_Column_List">
         id, room_id AS roomId, electric_charge AS electricCharge, water_charge AS waterCharge, internet_charge AS internetCharge, tv_charge AS tvCharge, gas_charge AS gasCharge, equally_charge AS equallyCharge, other_charge AS otherCharge, year, month, remark
-       ,current_water_num as lastWaterNum, last_water_num as lastWaterNum,current_gas_num as currentGasNum,last_gas_num as lastGasNum,current_electric_num as currentElectricNum,last_electric_num as lastElectricNum ,water_unit_price as waterUnitPrice,gas_unit_price gasUnitPrice,electric_unit_price electricUnitPrice
+       ,current_water_num as lastWaterNum, last_water_num as lastWaterNum,current_gas_num as currentGasNum,last_gas_num as lastGasNum,current_electric_num as currentElectricNum,last_electric_num as lastElectricNum ,water_unit_price as waterUnitPrice,gas_unit_price gasUnitPrice,electric_unit_price electricUnitPrice,total
     </sql>
     
     <select id="selectCostPage" resultType="Cost">
