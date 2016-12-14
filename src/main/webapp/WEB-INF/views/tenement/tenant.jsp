@@ -14,6 +14,7 @@
     var roomId ;
 
     var selectedNodeId;
+    var roomName;
    /*  t.tree({
     	onLoadSuccess:function(){
     		var node = t.tree('find', selectedNodeId);
@@ -45,6 +46,8 @@
             	
             	if(node.children==null){
             		 roomId = node.id;
+            		 roomName = node.text;
+            		
             		 dataGrid.datagrid('load', {
                          id: node.id
                      });
@@ -170,8 +173,8 @@
                  title : '备注',
                  field : 'remark'
                
-            }
-              , {
+            },
+             {
                 field : 'action',
                 title : '操作',
                 width : 300,
@@ -218,7 +221,7 @@
             title : '添加',
             width : 800,
             height : 500,
-            href : '${path }/cost/addPage?id='+roomId +"&tenantName="+$('#tenantName').val(),
+            href : '${path }/cost/addPage?id='+roomId,
             buttons : [ {
                 text : '添加',
                 handler : function() {
@@ -310,10 +313,14 @@
 	   var rows = dataGrid.datagrid('getSelections');
 	   var data = {}; 
 	  
-  	 if(rows){
+  	 if(rows &&rows.length>0){
   	
-  		 data.cost = rows[0];
   		 data.phone = $('#tel').val();
+  		 data.tenantName = $('#tenantName').val();
+  		 data.roomName = updateStr4roomName(roomName);
+  		 data.total = rows[0].total;
+  	     console.log(data);
+  		// data.phone = $('#tel').val();
   		 
   	  }else{
   		  
@@ -322,9 +329,11 @@
   	  }
 	   
 	   $.messager.progress({
-		    title:'Please waiting',
-		    msg:'Loading data...'
+		    title:'请等待',
+		    msg:'短信发送...'
 		});
+	   
+	  
 	   
 	   $.ajax({
 		   type: "POST",
@@ -332,10 +341,19 @@
 		   data:data,
 		   success: function(msg){
 		//	 var  result =  JSON.pare(msg);
+		       console.log(msg);
+		       console.log(typeof(msg));
+		        var  result = JSON.parse(msg);
 			   if(msg){
 				   
-				   $.messager.alert('发送成功！', result.msg, 'info');
-				 //  $('#ff').form('load',JSON.parse(msg)); 
+				   if(result.success == true){
+					   $.messager.alert('发送成功！', result.msg, 'info');
+				   }else{
+					   
+					   $.messager.alert('发送失败!！', result.msg, 'info');
+				   }
+				    
+				  
 			   }
 			   
 			  
@@ -457,7 +475,7 @@
                     <td>性别:</td>
                     <td><input name="sex" type="text" class="easyui-validatebox" data-options="required:true" value="${tenant.sex }"></input></td>
                     <td>电话:</td>
-                    <td><input name="tel" type="text" class="easyui-validatebox" data-options="required:true" validType="mobile" value="${tenant.tel }"></input></td>
+                    <td><input name="tel" id="tel" type="text" class="easyui-validatebox" data-options="required:true" validType="mobile" value="${tenant.tel }"></input></td>
                     <td>身份证号:</td>
                     <td><input name="identityCard" type="text" class="easyui-validatebox" data-options="required:true" validType="idcard" value="${tenant.identityCard }"></input></td>
                 </tr>

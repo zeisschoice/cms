@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.baomidou.test.mapper.DictTypeMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.wangzhixuan.model.DictType">
+		<id column="dicttypeid" property="dicttypeid" />
+		<result column="dicttypename" property="dicttypename" />
+		<result column="rank" property="rank" />
+		<result column="parentid" property="parentid" />
+		<result column="seqno" property="seqno" />
+		<result column="business_id" property="businessId" />
+		<result column="catalog_id" property="catalogId" />
+		<result column="dicttypecode" property="dicttypecode" />
+		<result column="dictlevel" property="dictlevel" />
+		<result column="dictcat" property="dictcat" />
+	</resultMap>
+
+</mapper>

@@ -36,6 +36,21 @@
       
     }
    
+    function updateStr4roomName(str){
+        
+        
+        if(str.indexOf("(")==-1){
+            	
+            	return str;
+          }
+       
+        
+        var d = str.substring(0,str.indexOf("("));
+        
+        return d;
+        
+      
+    }
     
   //EASyui扩展
     //EASyui扩展
