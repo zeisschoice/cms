@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="cost" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="26babfb5-ac49-4194-b848-96f148ae717a">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="25"/>
+	<property name="ireport.y" value="0"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -25,28 +25,24 @@
 	</style>
 	<style name="Crosstab Data Text" hAlign="Center"/>
 	<style name="ZH_CN" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
-	<subDataset name="Table Dataset 1" uuid="22e89347-275a-4c14-86fa-ed9d8f7707f4">
-		<parameter name="billNo" class="java.lang.String"/>
-		<parameter name="address" class="java.lang.String"/>
-	</subDataset>
-	<parameter name="address" class="java.lang.String"/>
-	<parameter name="billNo" class="java.lang.String"/>
-	<parameter name="printDate" class="java.lang.String"/>
-	<parameter name="fillDate" class="java.lang.String"/>
-	<parameter name="waterNum" class="java.lang.String"/>
-	<parameter name="elecNum" class="java.lang.String"/>
-	<parameter name="crMonWaterNum" class="java.lang.String"/>
-	<parameter name="lsMonWaterNum" class="java.lang.String"/>
-	<parameter name="crMonElecNum" class="java.lang.String"/>
-	<parameter name="lsMonElecNum" class="java.lang.String"/>
-	<parameter name="managerCount" class="java.lang.String"/>
-	<parameter name="tvCount" class="java.lang.String"/>
-	<parameter name="waterCount" class="java.lang.String"/>
-	<parameter name="elecCount" class="java.lang.String"/>
-	<parameter name="perWaterRMB" class="java.lang.String"/>
-	<parameter name="perElecRMB" class="java.lang.String"/>
-	<parameter name="sumCN" class="java.lang.String"/>
-	<parameter name="sum" class="java.lang.String"/>
+	<field name="address" class="java.lang.String"/>
+	<field name="waterNum" class="java.lang.String"/>
+	<field name="elecNum" class="java.lang.String"/>
+	<field name="crMonWaterNum" class="java.lang.String"/>
+	<field name="lsMonWaterNum" class="java.lang.String"/>
+	<field name="crMonElecNum" class="java.lang.String"/>
+	<field name="lsMonElecNum" class="java.lang.String"/>
+	<field name="waterCount" class="java.lang.String"/>
+	<field name="elecCount" class="java.lang.String"/>
+	<field name="perWaterRMB" class="java.lang.String"/>
+	<field name="perElecRMB" class="java.lang.String"/>
+	<field name="managerCount" class="java.lang.String"/>
+	<field name="sumCN" class="java.lang.String"/>
+	<field name="sum" class="java.lang.String"/>
+	<field name="tvCount" class="java.lang.String"/>
+	<field name="other" class="java.lang.String"/>
+	<field name="writeBiller" class="java.lang.String"/>
+	<field name="internetCount" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -84,24 +80,24 @@
 				</textElement>
 				<text><![CDATA[地址：]]></text>
 			</staticText>
-			<textField>
-				<reportElement x="88" y="7" width="100" height="20" uuid="8665a22e-4fe6-452c-b90c-8288a628dffd"/>
-				<textFieldExpression><![CDATA[$P{address}]]></textFieldExpression>
-			</textField>
 			<textField pattern="yyyy-MM-dd">
-				<reportElement x="567" y="10" width="100" height="20" uuid="ea51836d-7b13-4866-8ec8-bab8a290f022"/>
+				<reportElement x="538" y="10" width="100" height="20" uuid="ea51836d-7b13-4866-8ec8-bab8a290f022"/>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement style="ZH_CN" x="491" y="10" width="58" height="20" uuid="de4b65b2-9b46-43bc-a541-caf951ca99ed"/>
-				<text><![CDATA[日期]]></text>
+				<reportElement style="ZH_CN" x="491" y="10" width="36" height="20" uuid="de4b65b2-9b46-43bc-a541-caf951ca99ed"/>
+				<text><![CDATA[日期：]]></text>
 			</staticText>
+			<textField>
+				<reportElement style="ZH_CN" mode="Opaque" x="84" y="8" width="100" height="20" uuid="2405f3e3-4fff-4dbc-bd93-fd95be3ddfa1"/>
+				<textFieldExpression><![CDATA[$F{address}]]></textFieldExpression>
+			</textField>
 		</band>
 	</pageHeader>
 	<columnHeader>
 		<band height="30" splitType="Stretch">
 			<staticText>
-				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="0" y="0" width="384" height="30" uuid="97be49fe-cf76-4d85-b9ff-1a6942392a7d"/>
+				<reportElement style="ZH_CN" stretchType="RelativeToBandHeight" mode="Transparent" x="0" y="0" width="384" height="30" uuid="97be49fe-cf76-4d85-b9ff-1a6942392a7d"/>
 				<box>
 					<pen lineWidth="0.5" lineStyle="Solid"/>
 					<topPen lineWidth="0.5" lineStyle="Solid"/>
@@ -134,7 +130,7 @@
 	<detail>
 		<band height="206" splitType="Stretch">
 			<rectangle>
-				<reportElement x="0" y="1" width="801" height="205" uuid="acd5e320-fbf0-42a7-a1b0-13a90421c8f5"/>
+				<reportElement style="ZH_CN" x="0" y="0" width="801" height="205" uuid="acd5e320-fbf0-42a7-a1b0-13a90421c8f5"/>
 				<graphicElement>
 					<pen lineWidth="0.5"/>
 				</graphicElement>
@@ -152,159 +148,19 @@
 				</graphicElement>
 			</rectangle>
 			<staticText>
-				<reportElement style="ZH_CN" x="32" y="36" width="34" height="22" uuid="a61d4138-5885-490a-9088-933a5f0b301d"/>
+				<reportElement style="ZH_CN" x="32" y="39" width="44" height="20" uuid="a61d4138-5885-490a-9088-933a5f0b301d"/>
+				<textElement>
+					<font pdfFontName="STSong-Light"/>
+				</textElement>
 				<text><![CDATA[水表数：]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="ZH_CN" x="245" y="38" width="63" height="20" uuid="cdcefde3-871d-4707-96b5-7a52c1a6087e"/>
+				<reportElement style="ZH_CN" x="245" y="38" width="44" height="20" uuid="cdcefde3-871d-4707-96b5-7a52c1a6087e"/>
 				<text><![CDATA[电表数：]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="130" y="38" width="60" height="22" uuid="33837e7d-0b42-476e-88e7-08e3afff0e7d"/>
-				<textFieldExpression><![CDATA[$P{waterNum}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="341" y="38" width="36" height="20" uuid="901f0262-a719-440a-97b0-45c12f79bf11"/>
-				<textFieldExpression><![CDATA[$P{elecNum}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement style="ZH_CN" x="32" y="65" width="31" height="20" uuid="bb1c8290-a261-4a8d-8e58-2d9e02a4c82b"/>
-				<text><![CDATA[水费]]></text>
-			</staticText>
-			<staticText>
-				<reportElement style="ZH_CN" x="32" y="91" width="31" height="20" uuid="3884bb49-8887-45e6-8082-cf72f695c2a1"/>
-				<text><![CDATA[电费]]></text>
-			</staticText>
-			<staticText>
-				<reportElement style="ZH_CN" x="32" y="115" width="31" height="20" uuid="1c88aaf6-9257-4e87-b872-9c2d43e698f0"/>
-				<text><![CDATA[管理费]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="145" y="66" width="9" height="20" uuid="e667ee30-2f9c-4027-951b-5b3537a09c3d"/>
-				<text><![CDATA[－]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="81" y="65" width="49" height="20" uuid="10e9324c-7b9d-43ef-88ec-db8dfdc741cc"/>
-				<textFieldExpression><![CDATA[$P{crMonWaterNum}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="171" y="68" width="34" height="20" uuid="6775ddf5-b4b8-4b3e-befa-ca9e84b7e0b5"/>
-				<textFieldExpression><![CDATA[$P{lsMonWaterNum}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="82" y="91" width="48" height="20" uuid="31d02ca1-8d5a-4fb3-a339-6904facc0e6e"/>
-				<textFieldExpression><![CDATA[$P{crMonElecNum}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="145" y="93" width="10" height="20" uuid="1cbac8a9-1ff9-4c12-973d-66272a592d40"/>
-				<text><![CDATA[－]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="172" y="93" width="33" height="20" uuid="bdcb3ae4-e689-411c-8569-0c854e532030"/>
-				<textFieldExpression><![CDATA[$P{lsMonElecNum}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="82" y="115" width="48" height="20" uuid="67595b78-76a3-4df0-89f4-ff6a96c104de"/>
-				<textFieldExpression><![CDATA[$P{managerCount}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement style="ZH_CN" x="143" y="116" width="28" height="19" uuid="6b3f78f4-ea21-4d15-a1bb-2131ee8b7f90"/>
-				<text><![CDATA[月/元]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="223" y="66" width="10" height="20" uuid="185b0a40-9337-4d69-ab62-618bc632716a"/>
-				<text><![CDATA[=]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="223" y="93" width="10" height="20" uuid="6d3d1486-1db3-46bd-8b8f-8c617126a42a"/>
-				<text><![CDATA[=]]></text>
-			</staticText>
-			<staticText>
-				<reportElement style="ZH_CN" x="245" y="117" width="53" height="20" uuid="641110eb-b11d-4cc1-90c1-d184022dfebb"/>
-				<text><![CDATA[电视管理：]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="377" y="118" width="28" height="20" uuid="a0e40372-89aa-45c1-839c-05abe86a3e80"/>
-				<text><![CDATA[月/元]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="308" y="115" width="63" height="20" uuid="c7503166-90ef-4e81-9825-f287a3c35894"/>
-				<textFieldExpression><![CDATA[$P{tvCount}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement style="ZH_CN" x="245" y="66" width="66" height="20" uuid="44e413b1-aaf0-49d0-9ba5-c128ebc82c6f"/>
-				<text><![CDATA[本月用水数：]]></text>
-			</staticText>
-			<staticText>
-				<reportElement style="ZH_CN" x="245" y="92" width="66" height="20" uuid="c26f86fd-a459-47fd-8873-e203ceec2cc6"/>
-				<text><![CDATA[本月用电数]]></text>
-			</staticText>
-			<staticText>
-				<reportElement style="ZH_CN" x="567" y="71" width="36" height="20" uuid="9a98a307-ad28-4339-921a-dadb5bacf546"/>
-				<text><![CDATA[度/元]]></text>
-			</staticText>
-			<staticText>
-				<reportElement style="ZH_CN" x="566" y="99" width="36" height="20" uuid="25832db6-f387-4126-88f6-2d1e374b0185"/>
-				<text><![CDATA[度/元]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="621" y="72" width="13" height="20" uuid="07a630b7-68c0-409e-9fba-c7667dd8ae5e"/>
-				<text><![CDATA[=]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="619" y="100" width="15" height="20" uuid="42b751e2-1d0b-4951-be2d-3bd8cf5e9114"/>
-				<text><![CDATA[=]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="649" y="73" width="71" height="20" uuid="31f071b5-c696-4d2b-be92-6d4c54c96ee9"/>
-				<textFieldExpression><![CDATA[$P{waterCount}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="649" y="101" width="71" height="20" uuid="cfa300cd-78d2-4179-8b27-4f44a002ab24"/>
-				<textFieldExpression><![CDATA[$P{elecCount}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="359" y="68" width="46" height="20" uuid="fa90748a-e218-4f82-982c-512ac155cd37"/>
-				<textFieldExpression><![CDATA[$P{waterNum}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="359" y="91" width="46" height="20" uuid="63359adb-f782-4e42-9d66-342cdfa00ff2"/>
-				<textFieldExpression><![CDATA[$P{elecCount}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="423" y="66" width="23" height="20" uuid="24339539-fd69-4a58-8d98-026cbb5e4157"/>
-				<text><![CDATA[X]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="423" y="95" width="24" height="20" uuid="e4b34ed8-8000-4684-8b91-05aa3313dade"/>
-				<text><![CDATA[X]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="465" y="69" width="86" height="20" uuid="a07d461c-f5ad-4f74-a99e-a1544a40df5d"/>
-				<textFieldExpression><![CDATA[$P{perWaterRMB}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="465" y="97" width="84" height="20" uuid="c7bdd62c-cc8b-4c78-9bdb-7e1f0e7877d8"/>
-				<textFieldExpression><![CDATA[$P{perElecRMB}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement style="ZH_CN" x="29" y="137" width="85" height="20" uuid="0c20ed7c-eb59-420b-b0cb-18afd8991b6a"/>
-				<textElement>
-					<font fontName="宋体"/>
-				</textElement>
-				<text><![CDATA[合计：金额( 大写)]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="120" y="137" width="70" height="20" uuid="9ccb48e0-3e79-4670-a262-ba2e2c0fcbb8"/>
-				<textFieldExpression><![CDATA[$P{sumCN}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="205" y="136" width="28" height="20" uuid="92ea4441-a838-44a2-9f41-457c562f46d0"/>
-				<text><![CDATA[￥]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="245" y="138" width="100" height="20" uuid="0f6f033b-e48d-4ee2-8bd4-6a3ac907a537"/>
-				<textFieldExpression><![CDATA[$P{sum}]]></textFieldExpression>
+				<reportElement style="ZH_CN" x="301" y="38" width="60" height="20" uuid="901f0262-a719-440a-97b0-45c12f79bf11"/>
+				<textFieldExpression><![CDATA[$F{crMonElecNum}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement style="ZH_CN" x="26" y="172" width="660" height="23" uuid="be3900d3-203c-49ba-9a41-83ceb0b47086"/>
@@ -326,35 +182,88 @@
 				</graphicElement>
 			</rectangle>
 			<staticText>
-				<reportElement style="ZH_CN" x="446" y="41" width="94" height="18" uuid="06048eba-a272-4840-b3a0-8a408fbe372b"/>
-				<text><![CDATA[抄表日期]]></text>
+				<reportElement style="ZH_CN" x="417" y="41" width="64" height="18" uuid="06048eba-a272-4840-b3a0-8a408fbe372b"/>
+				<text><![CDATA[抄表日期：]]></text>
 			</staticText>
 			<textField pattern="yyyy-MM-dd">
-				<reportElement x="585" y="40" width="100" height="19" uuid="1986d70e-9ec3-4813-8177-da64da45cbb7"/>
+				<reportElement x="497" y="40" width="100" height="19" uuid="1986d70e-9ec3-4813-8177-da64da45cbb7"/>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement style="ZH_CN" x="428" y="137" width="53" height="20" uuid="b77cc276-b563-4a7e-8557-3c1e670b120d"/>
 				<text><![CDATA[支付方式：]]></text>
 			</staticText>
+			<textField>
+				<reportElement style="ZH_CN" x="78" y="40" width="100" height="20" uuid="038b702d-f475-47a0-a497-9a3dd3819c75"/>
+				<textFieldExpression><![CDATA[$F{crMonWaterNum}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="491" y="139" width="13" height="14" uuid="930b2006-8684-4a85-806d-7689c9c9f8ed"/>
+			</rectangle>
+			<staticText>
+				<reportElement style="ZH_CN" x="514" y="138" width="35" height="20" uuid="cb40623d-72f1-4584-8b9e-d1c664b3caab"/>
+				<text><![CDATA[现金]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="557" y="140" width="13" height="14" uuid="2473b09a-3a61-4729-949f-bdfd234bcabf"/>
+			</rectangle>
+			<staticText>
+				<reportElement style="ZH_CN" x="579" y="140" width="50" height="20" uuid="df4fd542-8c13-4d7d-9892-395087397c71"/>
+				<text><![CDATA[银行转账]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="ZH_CN" x="351" y="114" width="100" height="20" uuid="84a17543-bd70-4f98-b0bd-201b827e59b0"/>
+				<textFieldExpression><![CDATA["网络费："+$F{internetCount}+" 元/月"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="ZH_CN" x="32" y="69" width="754" height="20" uuid="118f3e1f-d0e8-498b-b821-2ed37383bc28"/>
+				<textFieldExpression><![CDATA["水费："+$F{crMonWaterNum}+" － "+$F{lsMonWaterNum}+"  = "+$F{waterNum}+" (本月用水数) "+"  X  "+$F{perWaterRMB}+" 度/元 " + "  =  "+$F{waterCount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="ZH_CN" x="33" y="93" width="753" height="20" uuid="db6d97f3-7f68-4ad7-8bf9-6a0a61620965"/>
+				<textFieldExpression><![CDATA["电费：" + $F{crMonElecNum} + " － " + $F{lsMonElecNum} + "  =  " + $F{elecNum} + " (本月用电数) " + "  X  " + $F{perElecRMB} + " 度/元 " + " = " + $F{elecCount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="ZH_CN" x="33" y="116" width="140" height="20" uuid="30a3b845-f9ae-44b7-83c0-a47187eb3b0e"/>
+				<textFieldExpression><![CDATA["管理费："+$F{managerCount}+"  元/月"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="ZH_CN" x="34" y="138" width="363" height="20" uuid="77cdb3aa-9319-4c99-9e45-5895c17ef18c"/>
+				<textFieldExpression><![CDATA["合计：金额( 大写)"+$F{sumCN} + " ( ￥："+$F{sum}+")"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="ZH_CN" x="190" y="115" width="132" height="20" uuid="94dca5cf-acf4-42e2-af5a-9603c84edb08"/>
+				<textFieldExpression><![CDATA["电视管理："+$F{tvCount}+"  元/月"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="ZH_CN" x="462" y="114" width="100" height="20" uuid="c866cd21-735f-4e6b-a58e-99fa7001ed6c"/>
+				<textFieldExpression><![CDATA[" 其他："+$F{other}]]></textFieldExpression>
+			</textField>
 		</band>
 	</detail>
 	<columnFooter>
 		<band height="45" splitType="Stretch">
 			<staticText>
-				<reportElement style="ZH_CN" x="76" y="10" width="100" height="20" uuid="7eb89637-85f9-4565-9968-b696db98711f"/>
+				<reportElement style="ZH_CN" x="76" y="10" width="54" height="20" uuid="7eb89637-85f9-4565-9968-b696db98711f"/>
 				<textElement>
 					<font fontName="宋体" size="12"/>
 				</textElement>
 				<text><![CDATA[开单人：]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="ZH_CN" x="549" y="11" width="100" height="20" uuid="2323a490-f8ec-40f2-a777-f44e0589b84d"/>
+				<reportElement style="ZH_CN" x="549" y="11" width="54" height="20" uuid="2323a490-f8ec-40f2-a777-f44e0589b84d"/>
 				<textElement>
 					<font fontName="宋体"/>
 				</textElement>
 				<text><![CDATA[收款人：]]></text>
 			</staticText>
+			<textField>
+				<reportElement style="ZH_CN" x="132" y="10" width="106" height="20" uuid="48710579-dc6b-4e03-ba00-064a79732f3a"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{writeBiller}]]></textFieldExpression>
+			</textField>
 		</band>
 	</columnFooter>
 	<pageFooter>

@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.wangzhixuan.commons.base.BaseController;
+import com.wangzhixuan.commons.utils.Trans2RMBUtils;
+import com.wangzhixuan.model.CostPrint;
 import com.wangzhixuan.model.JavaBeanPerson;
 
 import net.sf.jasperreports.engine.JRDataSource;
@@ -37,13 +39,35 @@ public class PrintController extends BaseController {
 	}
 	
 	@RequestMapping(value = "/cost1")
-	public ModelAndView costPrint1(Model model){
-		HashMap p = new HashMap();
-		p.put("address", "佛山市北滘");
-		p.put(JRParameter.IS_IGNORE_PAGINATION, true);
+	public String costPrint1(Model model){
 		
-		List<HashMap> list = new ArrayList<HashMap>();
-		list.add(p);
+		
+		CostPrint cp = new CostPrint();
+		List<CostPrint> list = new ArrayList<CostPrint>();
+		
+		cp.setAddress("佛山市北滘");
+		
+		cp.setCrMonWaterNum("11234");
+		cp.setLsMonWaterNum("12124");
+		cp.setWaterCount("231.05");//水费
+		cp.setWaterNum("20");//水数量
+		
+		cp.setCrMonElecNum("5232");
+		cp.setLsMonElecNum("6224");
+		cp.setElecNum("6666");
+		cp.setElecCount("4223");
+		cp.setManagerCount("30");
+		cp.setPerElecRMB("4.5");
+		cp.setPerWaterRMB("5.6");
+		cp.setSum("1931.01");
+		cp.setSumCN(Trans2RMBUtils.trans2RMB("1931.01"));
+		cp.setTvCount("59");
+		
+		cp.setOther("923");
+		cp.setWriteBiller(getCurrentUser().getName());
+		cp.setInternetCount("50");
+		
+		list.add(cp);
 		// 报表数据源
 		JRDataSource jrDataSource = new JRBeanCollectionDataSource(list);
 		
@@ -53,8 +77,8 @@ public class PrintController extends BaseController {
 		
 		
 		model.addAttribute("costData", jrDataSource);
-		return new ModelAndView("cost", p);
-		//return "cost"; // 对应jasper-defs.xml中的bean id
+		//return new ModelAndView("cost", p);
+		return "cost"; // 对应jasper-defs.xml中的bean id
 	}
 	
 }
