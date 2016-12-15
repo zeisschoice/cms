@@ -300,9 +300,11 @@
     	
     	 var rows = dataGrid.datagrid('getSelections');
     
-    	 if(rows){
-    	
-    		 window.open('${path }/print/cost1');
+    	 if(rows && rows.length > 0){
+    	     var param = JSON.stringify(rows[0]);
+    	     console.log(param);
+    	     console.log('${path }/print/cost1?cost='+param);
+    		 window.open('${path }/print/cost1?cost='+param);
     		 
     	 }
     	

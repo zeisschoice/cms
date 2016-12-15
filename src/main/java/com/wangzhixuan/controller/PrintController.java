@@ -1,5 +1,8 @@
 package com.wangzhixuan.controller;
 
+import java.io.IOException;
+import java.math.BigDecimal;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -7,10 +10,16 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.wangzhixuan.commons.base.BaseController;
 import com.wangzhixuan.commons.utils.Trans2RMBUtils;
+import com.wangzhixuan.model.Cost;
 import com.wangzhixuan.model.CostPrint;
 import com.wangzhixuan.model.JavaBeanPerson;
 
@@ -39,7 +48,17 @@ public class PrintController extends BaseController {
 	}
 	
 	@RequestMapping(value = "/cost1")
-	public String costPrint1(Model model){
+	@ResponseBody
+	public String costPrint1(Model model,@RequestParam("cost") String cost) throws JsonParseException, JsonMappingException, IOException{
+		
+		ObjectMapper mapper = new ObjectMapper();
+		System.out.println(cost);
+		System.out.println("URLEncoder.encode returns "
+			      + URLEncoder.encode(cost, "UTF-8"));
+		//String json = mapper.w
+		cost = cost.replaceAll("&quot;", "\"");
+		System.out.println(cost);
+		Cost c = mapper.readValue(cost,Cost.class);
 		
 		
 		CostPrint cp = new CostPrint();
@@ -47,14 +66,14 @@ public class PrintController extends BaseController {
 		
 		cp.setAddress("佛山市北滘");
 		
-		cp.setCrMonWaterNum("11234");
-		cp.setLsMonWaterNum("12124");
-		cp.setWaterCount("231.05");//水费
-		cp.setWaterNum("20");//水数量
+		cp.setCrMonWaterNum(c.getCurrentWaterNum().toString());
+		cp.setLsMonWaterNum(c.getLastWaterNum().toString());
+		cp.setWaterCount(c.getWaterCharge().toString());//水费
+		cp.setWaterNum("1212");//水数量
 		
-		cp.setCrMonElecNum("5232");
-		cp.setLsMonElecNum("6224");
-		cp.setElecNum("6666");
+		cp.setCrMonElecNum(c.getCurrentElectricNum().toString());
+		cp.setLsMonElecNum(c.getLastElectricNum().toString());
+		cp.setElecNum(new BigDecimal(c.getCurrentElectricNum().toString()).subtract(new BigDecimal(c.getLastWaterNum().toString())).toString());
 		cp.setElecCount("4223");
 		cp.setManagerCount("30");
 		cp.setPerElecRMB("4.5");
