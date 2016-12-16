@@ -18,4 +18,17 @@ h2 {font-size:18px;font-weight:bold;margin:0;margin-bottom:15px;}
 
 .light-info{background:#FFFEE6;color:#8F5700;padding:12px;}
 .light-tip{width:16px;height:16px;margin-right:8px;float:left;}
+
+/* 等待框 */
+.datagrid-mask-msg {
+  position: absolute;
+  top: 50%;
+  margin-top: -20px;
+  padding: 12px 5px 10px 30px;
+  width: auto;
+  height: 16px;
+  border-width: 2px;
+  border-style: solid;
+  display: none;
+}
  

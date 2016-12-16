@@ -76,7 +76,7 @@
                     progressClose();
                 }
                 
-               alert($('#otherCharge').val()); 
+              
                 return isValid;
             },
             success : function(result) {
@@ -367,6 +367,7 @@
                     <td>合计(元)</td>
                     <td><input name="total" id="total" placeholder="点击选择时间"  class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2" style="width:80px" readonly="true"></td>
                     <td><input name="roomId" type="hidden"  value="${roomId}"></td>
+                    <td><input name="sendCount" type="hidden"  value="0"></td>
                 </tr>
                 <tr>
                     

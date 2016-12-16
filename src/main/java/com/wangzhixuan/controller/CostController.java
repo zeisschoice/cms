@@ -84,6 +84,19 @@ public class CostController extends BaseController{
 		// userVo.setPassword(DigestUtils.md5Hex(userVo.getPassword()));
 	//	Room room = new Room();
 	//	room.setRoomName("测试用的");
+	
+	   HashMap<String,Object> columnMap = new HashMap<String,Object>();
+		
+	   columnMap.put("year", cost.getYear());
+	   columnMap.put("month", cost.getMonth());
+	   columnMap.put("room_id", cost.getRoomId());
+	   
+		List<Cost> list = iCostService.selectByMap(columnMap);
+		
+		if(list!=null && list.size()>0){
+			return renderError("此房间已存在当前年月的记录,请勿重复添加！");
+		}
+		
 		iCostService.insert(cost);
 		return renderSuccess("添加成功");
 	}

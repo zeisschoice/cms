@@ -135,8 +135,34 @@ public class Cost implements Serializable {
 	@TableField(value="electric_unit_price")
 	private Double electricUnitPrice;
 	
+	/**
+	 * 管理费
+	 */
+	@TableField(value="manage_charge")
+	private Double manageCharge;
+
+	
 
 	private Double total;
+	
+	@TableField(value="send_count")
+	private Integer sendCount;
+	
+	public Double getManageCharge() {
+		return manageCharge;
+	}
+
+	public void setManageCharge(Double manageCharge) {
+		this.manageCharge = manageCharge;
+	}
+
+	public Integer getSendCount() {
+		return sendCount;
+	}
+
+	public void setSendCount(Integer sendCount) {
+		this.sendCount = sendCount;
+	}
 	
 	public Double getWaterUnitPrice() {
 		return waterUnitPrice;

@@ -22,6 +22,7 @@ import com.wangzhixuan.mapper.SmsLogMapper;
 import com.wangzhixuan.model.Cost;
 import com.wangzhixuan.model.SMSConfig;
 import com.wangzhixuan.model.SmsLog;
+import com.wangzhixuan.service.ICostService;
 
 @Controller
 @RequestMapping("/sms")
@@ -33,9 +34,12 @@ public class SMSController extends BaseController {
 	@Autowired
 	private SmsLogMapper smsLogmapper;
 	
+	@Autowired
+	private ICostService iCostService;
+	
 	@RequestMapping(value = "/send", method = RequestMethod.POST)
     @ResponseBody
-	public Object smsCurrentMonCost(@RequestParam("total") String total,@RequestParam("phone") String phone,@RequestParam("tenantName") String tenantName,@RequestParam("roomName") String roomName) throws JsonProcessingException{
+	public Object smsCurrentMonCost(@RequestParam("total") String total,@RequestParam("phone") String phone,@RequestParam("tenantName") String tenantName,@RequestParam("roomName") String roomName,@RequestParam("id") Integer id,@RequestParam("sendCount") Integer sendCount) throws JsonProcessingException{
 		
 		
 		Result rs  = new Result();
@@ -62,7 +66,6 @@ public class SMSController extends BaseController {
 		
 		String params = mapper.writeValueAsString(map);
 		
-		System.out.println("params: "+params + "phone: " + phone + "tenantName:"+tenantName);
 		
         rs = SMSUtils.sendMsg(smsConifg.getUrl(), smsConifg.getAppKey(), smsConifg.getSecret(), "交租短信", params, phone, "SMS_25620786");
 		
@@ -76,6 +79,12 @@ public class SMSController extends BaseController {
 			 smslog.setIsSuccess("成功");	
 			 smslog.setParams(rsp.getParams().toString());
 			 smslog.setRespBody(rsp.getBody());
+			 
+			 Cost cost = new Cost();
+			 cost.setId(id);
+			 cost.setSendCount(sendCount + 1);
+			 iCostService.updateSelectiveById(cost);
+			 
 		 }else{
 			 smslog.setIsSuccess("失败");	
 			// smslog.setParams(rs.getObj().toString());

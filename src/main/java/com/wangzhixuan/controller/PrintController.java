@@ -48,7 +48,7 @@ public class PrintController extends BaseController {
 	}
 	
 	@RequestMapping(value = "/cost1")
-	@ResponseBody
+	//@ResponseBody
 	public String costPrint1(Model model,@RequestParam("cost") String cost) throws JsonParseException, JsonMappingException, IOException{
 		
 		ObjectMapper mapper = new ObjectMapper();
@@ -69,22 +69,22 @@ public class PrintController extends BaseController {
 		cp.setCrMonWaterNum(c.getCurrentWaterNum().toString());
 		cp.setLsMonWaterNum(c.getLastWaterNum().toString());
 		cp.setWaterCount(c.getWaterCharge().toString());//水费
-		cp.setWaterNum("1212");//水数量
+		cp.setWaterNum(new BigDecimal(c.getCurrentWaterNum().toString()).subtract(new BigDecimal(c.getLastWaterNum().toString())).toString());//水数量
 		
 		cp.setCrMonElecNum(c.getCurrentElectricNum().toString());
 		cp.setLsMonElecNum(c.getLastElectricNum().toString());
 		cp.setElecNum(new BigDecimal(c.getCurrentElectricNum().toString()).subtract(new BigDecimal(c.getLastWaterNum().toString())).toString());
-		cp.setElecCount("4223");
-		cp.setManagerCount("30");
-		cp.setPerElecRMB("4.5");
-		cp.setPerWaterRMB("5.6");
-		cp.setSum("1931.01");
-		cp.setSumCN(Trans2RMBUtils.trans2RMB("1931.01"));
-		cp.setTvCount("59");
+		cp.setElecCount(c.getElectricCharge().toString());
+		cp.setManagerCount(c.getManageCharge().toString());
+		cp.setPerElecRMB(c.getElectricUnitPrice().toString());
+		cp.setPerWaterRMB(c.getWaterUnitPrice().toString());
+		cp.setSum(c.getTotal().toString());
+		cp.setSumCN(Trans2RMBUtils.trans2RMB(c.getTotal().toString()));
+		cp.setTvCount(c.getTvCharge().toString());
 		
-		cp.setOther("923");
+		cp.setOther(c.getOtherCharge().toString());
 		cp.setWriteBiller(getCurrentUser().getName());
-		cp.setInternetCount("50");
+		cp.setInternetCount(c.getInternetCharge().toString());
 		
 		list.add(cp);
 		// 报表数据源

@@ -155,6 +155,12 @@
                 field : 'equallyCharge'
               
             }
+            ,{
+                width : '50',
+                title : '管理费',
+                field : 'manageCharge'
+              
+            }
             ,
             {
                 width : '80',
@@ -169,16 +175,67 @@
               
             },
             {
-            	 width : '200',
-                 title : '备注',
-                 field : 'remark'
+            	 width : '0',
+                 title : '当前电表数',
+                 hidden:true,
+                 field : 'currentElectricNum'
+               
+            }
+            ,
+            {
+            	 width : '0',
+                 title : '当前燃气数',
+                 hidden:true,
+                 field : 'currentGasNum'
                
             },
+            {
+             	width : '0',
+                title : '当前水表数',
+                hidden:true,
+                field : 'currentWaterNum'
+              
+           },
+           {
+            	width : '0',
+               title : '上个月水表数',
+               hidden:true,
+               field : 'lastElectricNum'
+             
+          },
+          {
+              width : '0',
+              title : '上个燃气数',
+              hidden:true,
+              field : 'lastGasNum'
+            
+         },
+         {
+          	 width : '0',
+             title : '上个水表数',
+             hidden:true,
+             field : 'lastWaterNum'
+           
+        },
+        {
+         	width : '0',
+            title : '发送短信次',
+            hidden:true,
+            field : 'sendCount'
+          
+       },
+           {
+          	 width : '200',
+               title : '备注',
+               field : 'remark'
+             
+          },
              {
                 field : 'action',
                 title : '操作',
                 width : 300,
                 formatter : function(value, row, index) {
+                	
                     var str = '';
                        /*  <shiro:hasPermission name="/tenant/edit">
                             str += $.formatString('<a href="javascript:void(0)" class="user-easyui-linkbutton-edit" data-options="plain:true,iconCls:\'icon-edit\'" onclick="editFun(\'{0}\');" >编辑</a>', row.id);
@@ -187,22 +244,37 @@
                             str += '&nbsp;&nbsp;|&nbsp;&nbsp;';
                             str += $.formatString('<a href="javascript:void(0)" class="user-easyui-linkbutton-del" data-options="plain:true,iconCls:\'icon-del\'" onclick="deleteFun(\'{0}\');" >删除</a>', row.id);
                         </shiro:hasPermission> */
-                        <shiro:hasPermission name="/tenant/print">
+                        
+                       <shiro:hasPermission name="/tenant/print"> 
                           str += $.formatString('<a href="javascript:void(0)" class="user-easyui-linkbutton-print" data-options="plain:true,iconCls:\'icon-print\'" onclick="printFun(\'{0}\');" >打印</a>', row.id);
-                       </shiro:hasPermission>
+                       </shiro:hasPermission> 
                        <shiro:hasPermission name="/tenant/sendMsg">
                           str += '&nbsp;&nbsp;|&nbsp;&nbsp;';
-                          str += $.formatString('<a href="javascript:void(0)" class="user-easyui-linkbutton-redo" plain="true" iconCls="icon-redo" onclick="sendMsgFun(\'{0}\');" >发送短信</a>', row.id);
-                       </shiro:hasPermission>
+                          str += $.formatString('<a href="javascript:void(0)" class="user-easyui-linkbutton-redo'+row.id+'" plain="true" iconCls="icon-redo" onclick="sendMsgFun(\'{0}\');" >发送短信</a>', row.id);
+                       </shiro:hasPermission> 
                     return str;
                 }
             } 
              ] ],
             onLoadSuccess:function(data){
-            	$('.user-easyui-linkbutton-edit').linkbutton({text:'编辑',plain:true,iconCls:'icon-del'});
-                $('.user-easyui-linkbutton-del').linkbutton({text:'删除',plain:true,iconCls:'icon-edit'});
+            
+            	
+            //	$('.user-easyui-linkbutton-edit').linkbutton({text:'编辑',plain:true,iconCls:'icon-del'});
+           //     $('.user-easyui-linkbutton-del').linkbutton({text:'删除',plain:true,iconCls:'icon-edit'});
+           
+                if(data && data.rows.length > 0){
+                	
+                	for(var i=0;i<data.rows.length;i++){
+                		
+                	
+                		  
+                		  $('.user-easyui-linkbutton-redo'+data.rows[i].id).linkbutton({text:'短信通知(已发'+data.rows[i].sendCount+'次)',plain:true,iconCls:'icon-redo'});
+                	}
+                	
+                }
+                
                 $('.user-easyui-linkbutton-print').linkbutton({text:'打印',plain:true,iconCls:'icon-print'});
-                $('.user-easyui-linkbutton-redo').linkbutton({text:'发送短信',plain:true,iconCls:'icon-redo'});
+              
             },
             toolbar : '#toolbar'
         });
@@ -217,11 +289,14 @@
     		return;
     	}
     	
+    	
+    	
+    	
         parent.$.modalDialog({
             title : '添加',
             width : 800,
             height : 500,
-            href : '${path }/cost/addPage?id='+roomId,
+            href : '${path }/cost/addPage?id='+roomId+"&tenantName="+$('#tenantName').val(),
             buttons : [ {
                 text : '添加',
                 handler : function() {
@@ -302,8 +377,7 @@
     
     	 if(rows && rows.length > 0){
     	     var param = JSON.stringify(rows[0]);
-    	     console.log(param);
-    	     console.log('${path }/print/cost1?cost='+param);
+    	   
     		 window.open('${path }/print/cost1?cost='+param);
     		 
     	 }
@@ -321,8 +395,9 @@
   		 data.tenantName = $('#tenantName').val();
   		 data.roomName = updateStr4roomName(roomName);
   		 data.total = rows[0].total;
-  	     console.log(data);
-  		// data.phone = $('#tel').val();
+  		 data.id = rows[0].id;
+  		 data.sendCount = rows[0].sendCount;
+  	    
   		 
   	  }else{
   		  
@@ -330,26 +405,20 @@
   		  return;
   	  }
 	   
-	   $.messager.progress({
-		    title:'请等待',
-		    msg:'短信发送...'
-		});
-	   
-	  
+		MaskUtil.mask();  
 	   
 	   $.ajax({
 		   type: "POST",
 		   url: "${path }/sms/send",
 		   data:data,
 		   success: function(msg){
-		//	 var  result =  JSON.pare(msg);
-		       console.log(msg);
-		       console.log(typeof(msg));
+
 		        var  result = JSON.parse(msg);
 			   if(msg){
 				   
 				   if(result.success == true){
 					   $.messager.alert('发送成功！', result.msg, 'info');
+					   $('#dataGrid').datagrid('reload');
 				   }else{
 					   
 					   $.messager.alert('发送失败!！', result.msg, 'info');
@@ -357,15 +426,12 @@
 				    
 				  
 			   }
-			   
-			  
-			   $.messager.progress('close');
-			   
-			   
+			   MaskUtil.unmask(); 
+			  			 			   
 		   },
 		   error:function(){
-			  
-			  $.messager.progress('close');
+			   MaskUtil.unmask();
+			//  $.messager.progress('close');
 			  $.messager.alert('发送失败！', msg.msg, 'error');
 		   }
 	});
@@ -396,10 +462,7 @@
 		   url = '${path }/tenant/edit';
 	   }
 	  
-	 
-	
-	
-	   
+		   
 	   $('#ff').form({
            url:url,
            onSubmit : function() {
@@ -435,7 +498,17 @@
 	   $('#ff').submit();
    }
   
-    
+   
+   //删除住户
+   function delTenantFun(){
+	   
+	   
+	   
+   }
+   
+   
+   
+   
     </script>
     <style type="text/css">
         .datagrid-header-rownumber,.datagrid-cell-rownumber{
@@ -467,15 +540,18 @@
         <div style="width:100%;height:20%;">
         <div id="formToolbar">
             <a onclick="saveTenantFun();" href="javascript:void(0);" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-save'">保存</a>
-            <a onclick="editTenantFun();" href="javascript:void(0);" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-edit'">编辑</a>
+            <a onclick="delTenantFun();" href="javascript:void(0);" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-delete'">删除</a>
         </div>
         <form id="ff" method="post" title="租户信息">
 		     <table style="margin:5px">
                 <tr>
                     <td>住户名称:</td>
                     <td><input name="tenantName" id="tenantName" type="text" class="easyui-validatebox" data-options="required:true"   value="${tenant.tenantName }"></input></td>
-                    <td>性别:</td>
-                    <td><input name="sex" type="text" class="easyui-validatebox" data-options="required:true" value="${tenant.sex }"></input></td>
+                    <td>性别</td>
+                    <td><select name="sex" id="sex"  class="easyui-combobox" data-options="width:140,height:29,editable:false,panelHeight:'auto',required:true">
+                            <option value="0">男</option>
+                            <option value="1">女</option>
+                    </select></td>
                     <td>电话:</td>
                     <td><input name="tel" id="tel" type="text" class="easyui-validatebox" data-options="required:true" validType="mobile" value="${tenant.tel }"></input></td>
                     <td>身份证号:</td>
