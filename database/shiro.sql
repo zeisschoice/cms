@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50712
 File Encoding         : 65001
 
-Date: 2016-12-14 22:49:35
+Date: 2016-12-16 18:26:17
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -68,14 +68,18 @@ CREATE TABLE `cost` (
   `gas_unit_price` double(20,2) DEFAULT '0.00',
   `electric_unit_price` double(20,2) DEFAULT '0.00',
   `total` double(20,2) DEFAULT NULL COMMENT '总费用',
+  `manage_charge` double(20,2) DEFAULT NULL COMMENT '管理费',
+  `send_count` int(11) unsigned zerofill DEFAULT '00000000000',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=latin1 COMMENT='cost';
+) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=latin1 COMMENT='cost';
 
 -- ----------------------------
 -- Records of cost
 -- ----------------------------
-INSERT INTO `cost` VALUES ('32', '1', null, null, null, null, null, null, '444', '2016', '11', '666666666666', '2016-12-13 15:26:08', null, '113', '11', '112', '11', '113.00', '11.00', '3.00', '3.00', '3.00', null);
-INSERT INTO `cost` VALUES ('35', '1', '24', '27', '88', '9', '30', '80', '77', '2016', '12', '9999999999999999', '2016-12-14 11:36:44', null, '122', '113', '122', '112', '121.00', '113.00', '3.00', '3.00', '3.00', '335.00');
+INSERT INTO `cost` VALUES ('36', '1', '0', '112', '30', '20', '104', '5', '20', '2016', '12', '测试', '2016-12-16 17:02:40', null, '114', '98', '112', '99', '113.00', '87.00', '7.00', '8.00', '5.00', '291.00', null, '00000000004');
+INSERT INTO `cost` VALUES ('39', '1', '3', '3', '4', '4', '3', '5', '0', '2016', '11', '5555555555', '2016-12-16 18:08:40', null, '4', '1', '4', '1', '4.00', '1.00', '1.00', '1.00', '1.00', '22.00', null, null);
+INSERT INTO `cost` VALUES ('40', '1', '2', '2', '6', '6', '2', '6', '0', '2016', '10', '6666666666', '2016-12-16 18:12:42', null, '6', '4', '6', '4', '6.00', '4.00', '1.00', '1.00', '1.00', '24.00', null, null);
+INSERT INTO `cost` VALUES ('41', '1', '3', '3', '7', '7', '3', '7', '7', '2016', '9', '9999999', '2016-12-16 18:14:10', null, '7', '4', '7', '4', '7.00', '4.00', '1.00', '1.00', '1.00', '37.00', null, '00000000000');
 
 -- ----------------------------
 -- Table structure for dict_entry
@@ -368,7 +372,7 @@ INSERT INTO `room` VALUES ('3', '3', 'rrrr', '1', '22', '0', '2016-11-23', '2016
 INSERT INTO `room` VALUES ('4', '2', '22宿舍', '1', '200', '1', '2016-11-24', '2016-11-25', '111', '问问');
 INSERT INTO `room` VALUES ('5', '2', '123', null, null, '1', null, null, null, null);
 INSERT INTO `room` VALUES ('6', '2', '1234', null, null, '1', null, null, null, null);
-INSERT INTO `room` VALUES ('7', '2', '333', null, null, '0', null, null, null, null);
+INSERT INTO `room` VALUES ('7', '2', '333', null, null, '1', null, null, null, null);
 INSERT INTO `room` VALUES ('8', '2', '444', null, null, '1', null, null, null, null);
 INSERT INTO `room` VALUES ('9', '2', '555', null, null, '1', null, null, null, null);
 INSERT INTO `room` VALUES ('10', '2', '666', null, null, '1', null, null, null, null);
@@ -407,7 +411,7 @@ CREATE TABLE `sms_log` (
   `resp_body` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   `create_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of sms_log
@@ -423,6 +427,12 @@ INSERT INTO `sms_log` VALUES ('8', 'admin', '0', '成功', '19495', '{rec_num=13
 INSERT INTO `sms_log` VALUES ('9', 'admin', '0', '成功', '34183', '{rec_num=13450761833, sms_param={name:\'张三\',room:\'108\',cost:\'100\'}, sms_template_code=SMS_25620786, sms_type=normal, sms_free_sign_name=交租短信}', '{\"alibaba_aliqin_fc_sms_num_send_response\":{\"result\":{\"err_code\":\"0\",\"model\":\"105033463320^1106968666581\",\"success\":true},\"request_id\":\"z274fl2w7p4s\"}}', '2016-12-14 16:37:50');
 INSERT INTO `sms_log` VALUES ('10', 'admin', '0', '成功', '331', '{rec_num=13450761834, sms_param={\"cost\":\"335\",\"name\":\"张三\",\"room\":\"xxx\"}, sms_template_code=SMS_25620786, sms_type=normal, sms_free_sign_name=交租短信}', '{\"alibaba_aliqin_fc_sms_num_send_response\":{\"result\":{\"err_code\":\"0\",\"model\":\"105036772698^1106972115391\",\"success\":true},\"request_id\":\"z2bgc4i08e27\"}}', '2016-12-14 21:19:35');
 INSERT INTO `sms_log` VALUES ('11', 'admin', '0', '成功', '113', '{rec_num=13450761833, sms_param={\"cost\":\"335\",\"name\":\"张三\",\"room\":\"xxx\"}, sms_template_code=SMS_25620786, sms_type=normal, sms_free_sign_name=交租短信}', '{\"alibaba_aliqin_fc_sms_num_send_response\":{\"result\":{\"err_code\":\"0\",\"model\":\"105036733194^1106971899459\",\"success\":true},\"request_id\":\"qm2y0kbt3uz9\"}}', '2016-12-14 21:20:48');
+INSERT INTO `sms_log` VALUES ('12', 'admin', '0', '成功', '466', '{rec_num=15919064667, sms_param={\"cost\":\"291\",\"name\":\"保爷\",\"room\":\"xx33444\"}, sms_template_code=SMS_25620786, sms_type=normal, sms_free_sign_name=交租短信}', '{\"alibaba_aliqin_fc_sms_num_send_response\":{\"result\":{\"err_code\":\"0\",\"model\":\"105064352622^1107000355819\",\"success\":true},\"request_id\":\"11ifz2h3oc2fk\"}}', '2016-12-16 11:18:39');
+INSERT INTO `sms_log` VALUES ('13', 'admin', '0', '成功', '525', '{rec_num=13450761833, sms_param={\"cost\":\"335\",\"name\":\"张三\",\"room\":\"xxx\"}, sms_template_code=SMS_25620786, sms_type=normal, sms_free_sign_name=交租短信}', '{\"alibaba_aliqin_fc_sms_num_send_response\":{\"result\":{\"err_code\":\"0\",\"model\":\"105070061367^1107006166630\",\"success\":true},\"request_id\":\"3gsl11su4ow8\"}}', '2016-12-16 15:20:44');
+INSERT INTO `sms_log` VALUES ('14', 'admin', '0', '成功', '67218', '{rec_num=13450761833, sms_param={\"cost\":\"11\",\"name\":\"张三\",\"room\":\"xxx\"}, sms_template_code=SMS_25620786, sms_type=normal, sms_free_sign_name=交租短信}', '{\"alibaba_aliqin_fc_sms_num_send_response\":{\"result\":{\"err_code\":\"0\",\"model\":\"105070138958^1107006144771\",\"success\":true},\"request_id\":\"43w1e7r2spcz\"}}', '2016-12-16 15:28:15');
+INSERT INTO `sms_log` VALUES ('15', 'admin', '0', '成功', '8977', '{rec_num=13450761833, sms_param={\"cost\":\"291\",\"name\":\"张三\",\"room\":\"xxx\"}, sms_template_code=SMS_25620786, sms_type=normal, sms_free_sign_name=交租短信}', '{\"alibaba_aliqin_fc_sms_num_send_response\":{\"result\":{\"err_code\":\"0\",\"model\":\"105070846683^1107006942218\",\"success\":true},\"request_id\":\"qm4rjqtp0syr\"}}', '2016-12-16 16:00:14');
+INSERT INTO `sms_log` VALUES ('16', 'admin', '0', '成功', '628', '{rec_num=13450761833, sms_param={\"cost\":\"291\",\"name\":\"张三\",\"room\":\"xxx\"}, sms_template_code=SMS_25620786, sms_type=normal, sms_free_sign_name=交租短信}', '{\"alibaba_aliqin_fc_sms_num_send_response\":{\"result\":{\"err_code\":\"0\",\"model\":\"105071656475^1107007766422\",\"success\":true},\"request_id\":\"44o0huocwe1v\"}}', '2016-12-16 16:42:56');
+INSERT INTO `sms_log` VALUES ('17', 'admin', '0', '成功', '205', '{rec_num=13450761833, sms_param={\"cost\":\"291\",\"name\":\"张三\",\"room\":\"xxx\"}, sms_template_code=SMS_25620786, sms_type=normal, sms_free_sign_name=交租短信}', '{\"alibaba_aliqin_fc_sms_num_send_response\":{\"result\":{\"err_code\":\"0\",\"model\":\"105072032834^1107008128156\",\"success\":true},\"request_id\":\"101z9u4wmjc5f\"}}', '2016-12-16 17:02:40');
 
 -- ----------------------------
 -- Table structure for sys_log
@@ -436,7 +446,7 @@ CREATE TABLE `sys_log` (
   `client_ip` varchar(255) DEFAULT NULL COMMENT '客户端ip',
   `create_time` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=124 DEFAULT CHARSET=utf8 COMMENT='系统日志';
+) ENGINE=InnoDB AUTO_INCREMENT=149 DEFAULT CHARSET=utf8 COMMENT='系统日志';
 
 -- ----------------------------
 -- Records of sys_log
@@ -564,6 +574,31 @@ INSERT INTO `sys_log` VALUES ('120', 'admin', 'admin', '[类名]:com.wangzhixuan
 INSERT INTO `sys_log` VALUES ('121', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.CostController,[方法]:add,[参数]:year=2016&month=12&tenantName=张三&currentElectricNum=121.00&lastElectricNum=113.00&electricNum=8.00&electricUnitPrice=3.00&electricCharge=24.00&currentWaterNum=122.00&lastWaterNum=113.00&waterNum=9.00&waterUnitPrice=3.00&waterCharge=27.00&currentGasNum=122.00&lastGasNum=112.00&gasNum=10.00&gasUnitPrice=3.00&gasCharge=30.00&internetCharge=88.00&tvCharge=9.00&equallyCharge=80.00&otherCharge=77.00&total=335.00&roomId=1&remark=9999999999999999&', '0:0:0:0:0:0:0:1', null);
 INSERT INTO `sys_log` VALUES ('122', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.CostController,[方法]:addRoomPage,[参数]:id=1&tenantName=张三&_=1481689198823&', '0:0:0:0:0:0:0:1', null);
 INSERT INTO `sys_log` VALUES ('123', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.TenantController,[方法]:edit,[参数]:tenantName=张三&sex=1&tel=13450761833&identityCard=121223123111123&remark=test 呃呃呃 3333 99 33 444&roomId=1&id=1&', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('124', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.CostController,[方法]:addRoomPage,[参数]:id=1&_=1481850965257&', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('125', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.CostController,[方法]:addRoomPage,[参数]:id=1&_=1481850965258&', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('126', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.CostController,[方法]:addRoomPage,[参数]:id=1&_=1481852162326&', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('127', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.TenantController,[方法]:edit,[参数]:tenantName=保爷&sex=1&tel=15919064667&identityCard=423232333232323233&remark=交租&roomId=2&id=6&', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('128', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.CostController,[方法]:addRoomPage,[参数]:id=2&_=1481857864625&', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('129', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.CostController,[方法]:add,[参数]:year=2016&month=12&tenantName=保爷&currentElectricNum=113.00&lastElectricNum=87.00&electricNum=26.00&electricUnitPrice=5.00&electricCharge=0.00&currentWaterNum=114.00&lastWaterNum=98.00&waterNum=16.00&waterUnitPrice=7.00&waterCharge=112.00&currentGasNum=112.00&lastGasNum=99.00&gasNum=13.00&gasUnitPrice=8.00&gasCharge=104.00&internetCharge=30.00&tvCharge=20.00&equallyCharge=5.00&otherCharge=20.00&total=291.00&roomId=2&remark=测试&', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('130', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.UserController,[方法]:editPage,[参数]:id=1&_=1481876673092&', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('131', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.UserController,[方法]:editPage,[参数]:id=1&_=1481876673093&', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('132', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.UserController,[方法]:edit,[参数]:id=1&loginName=admin&name=admin&password=&sex=1&age=25&userType=0&organizationId=1&roleIds=1&phone=18707173376&status=0&', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('133', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.UserController,[方法]:editPage,[参数]:id=1&_=1481876673094&', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('134', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.TenantController,[方法]:edit,[参数]:tenantName=321&sex=0&tel=13450761833&identityCard=121212121121212211&remark=222&roomId=4&id=7&', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('135', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.TenantController,[方法]:add,[参数]:tenantName=333&sex=0&tel=13450761833&identityCard=121212121121212211&remark=333&roomId=7&id=&', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('136', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.TenantController,[方法]:edit,[参数]:tenantName=444&sex=1&tel=13450761833&identityCard=121212121121212211&remark=444&roomId=8&id=13&', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('137', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.CostController,[方法]:addRoomPage,[参数]:id=6&_=1481878947622&', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('138', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.CostController,[方法]:addRoomPage,[参数]:id=1&tenantName=张三&_=1481879155669&', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('139', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.CostController,[方法]:addRoomPage,[参数]:id=1&tenantName=张三&_=1481881879537&', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('140', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.CostController,[方法]:add,[参数]:year=2016&month=12&tenantName=张三&currentElectricNum=2.00&lastElectricNum=1.00&electricNum=1.00&electricUnitPrice=1.00&electricCharge=1.00&currentWaterNum=2.00&lastWaterNum=1.00&waterNum=1.00&waterUnitPrice=1.00&waterCharge=1.00&currentGasNum=2.00&lastGasNum=1.00&gasNum=1.00&gasUnitPrice=1.00&gasCharge=1.00&internetCharge=2.00&tvCharge=1.00&equallyCharge=1.00&otherCharge=1.00&total=8.00&roomId=1&remark=1111111111&', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('141', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.CostController,[方法]:addRoomPage,[参数]:id=1&tenantName=张三&_=1481882803312&', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('142', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.CostController,[方法]:add,[参数]:year=2016&month=12&tenantName=张三&currentElectricNum=4.00&lastElectricNum=1.00&electricNum=3.00&electricUnitPrice=1.00&electricCharge=3.00&currentWaterNum=4.00&lastWaterNum=1.00&waterNum=3.00&waterUnitPrice=1.00&waterCharge=3.00&currentGasNum=4.00&lastGasNum=1.00&gasNum=3.00&gasUnitPrice=1.00&gasCharge=3.00&internetCharge=4.00&tvCharge=4.00&equallyCharge=5.00&otherCharge=0.00&total=22.00&roomId=1&remark=5555555555&', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('143', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.CostController,[方法]:add,[参数]:year=2016&month=11&tenantName=张三&currentElectricNum=4.00&lastElectricNum=1.00&electricNum=3.00&electricUnitPrice=1.00&electricCharge=3.00&currentWaterNum=4.00&lastWaterNum=1.00&waterNum=3.00&waterUnitPrice=1.00&waterCharge=3.00&currentGasNum=4.00&lastGasNum=1.00&gasNum=3.00&gasUnitPrice=1.00&gasCharge=3.00&internetCharge=4.00&tvCharge=4.00&equallyCharge=5.00&otherCharge=0.00&total=22.00&roomId=1&remark=5555555555&', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('144', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.CostController,[方法]:addRoomPage,[参数]:id=1&tenantName=张三&_=1481882803314&', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('145', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.CostController,[方法]:add,[参数]:year=2016&month=10&tenantName=张三&currentElectricNum=6.00&lastElectricNum=4.00&electricNum=2.00&electricUnitPrice=1.00&electricCharge=2.00&currentWaterNum=6.00&lastWaterNum=4.00&waterNum=2.00&waterUnitPrice=1.00&waterCharge=2.00&currentGasNum=6.00&lastGasNum=4.00&gasNum=2.00&gasUnitPrice=1.00&gasCharge=2.00&internetCharge=6.00&tvCharge=6.00&equallyCharge=6.00&otherCharge=0.00&total=24.00&roomId=1&remark=6666666666&', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('146', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.CostController,[方法]:addRoomPage,[参数]:id=1&tenantName=张三&_=1481882803315&', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('147', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.CostController,[方法]:add,[参数]:year=2016&month=9&tenantName=张三&currentElectricNum=7.00&lastElectricNum=4.00&electricNum=3.00&electricUnitPrice=1.00&electricCharge=3.00&currentWaterNum=7.00&lastWaterNum=4.00&waterNum=3.00&waterUnitPrice=1.00&waterCharge=3.00&currentGasNum=7.00&lastGasNum=4.00&gasNum=3.00&gasUnitPrice=1.00&gasCharge=3.00&internetCharge=7.00&tvCharge=7.00&equallyCharge=7.00&otherCharge=7.00&total=37.00&roomId=1&sendCount=0&remark=9999999&', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('148', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.TenantController,[方法]:edit,[参数]:tenantName=张三&sex=0&tel=13450761833&identityCard=121223123111123&remark=test 呃呃呃 3333 99 33 444&roomId=1&id=1&', '0:0:0:0:0:0:0:1', null);
 
 -- ----------------------------
 -- Table structure for tenant
@@ -579,22 +614,23 @@ CREATE TABLE `tenant` (
   `remark` varchar(200) DEFAULT NULL,
   `is_del` int(255) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COMMENT='tenant';
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COMMENT='tenant';
 
 -- ----------------------------
 -- Records of tenant
 -- ----------------------------
-INSERT INTO `tenant` VALUES ('1', '张三', '1', '1', '13450761833', '121223123111123', 'test 呃呃呃 3333 99 33 444', '0');
-INSERT INTO `tenant` VALUES ('6', '1', '2', '', null, null, '1', '0');
-INSERT INTO `tenant` VALUES ('7', '321', '4', '', null, null, '222', '0');
+INSERT INTO `tenant` VALUES ('1', '张三', '1', '0', '13450761833', '121223123111123', 'test 呃呃呃 3333 99 33 444', '0');
+INSERT INTO `tenant` VALUES ('6', '保爷', '2', '1', '15919064667', '423232333232323233', '交租', '0');
+INSERT INTO `tenant` VALUES ('7', '321', '4', '0', '13450761833', '121212121121212211', '222', '0');
 INSERT INTO `tenant` VALUES ('8', '555555', '5', '1', '1', '2', '222', '0');
 INSERT INTO `tenant` VALUES ('9', '33334444', '6', '1', '444', '4', '444', '0');
 INSERT INTO `tenant` VALUES ('10', '88', '14', '1', '888', '888', '88', '0');
-INSERT INTO `tenant` VALUES ('11', '9', '15', '9', '9', '9', '9', '0');
-INSERT INTO `tenant` VALUES ('12', '7', '12', '7', '7', '7', '7', '0');
-INSERT INTO `tenant` VALUES ('13', '556', '8', '5', '5', '5', '5', '0');
-INSERT INTO `tenant` VALUES ('14', '2121', '10', '2', '1', '1', '1', '0');
+INSERT INTO `tenant` VALUES ('11', '9', '15', '1', '9', '9', '9', '0');
+INSERT INTO `tenant` VALUES ('12', '7', '12', '2', '7', '7', '7', '0');
+INSERT INTO `tenant` VALUES ('13', '444', '8', '1', '13450761833', '121212121121212211', '444', '0');
+INSERT INTO `tenant` VALUES ('14', '2121', '10', '1', '1', '1', '1', '0');
 INSERT INTO `tenant` VALUES ('15', '1414', '16', '1', '1', '1', '1414', '0');
+INSERT INTO `tenant` VALUES ('16', '333', '7', '0', '13450761833', '121212121121212211', '333', '0');
 
 -- ----------------------------
 -- Table structure for user
@@ -618,7 +654,7 @@ CREATE TABLE `user` (
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('1', 'admin', 'admin', '098f6bcd4621d373cade4e832627b4f6', '0', '25', '18707173376', '0', '0', '1', '2015-12-06 13:14:05');
+INSERT INTO `user` VALUES ('1', 'admin', 'admin', '', '1', '25', '18707173376', '0', '0', '1', '2016-12-16 16:29:15');
 INSERT INTO `user` VALUES ('13', 'snoopy', 'snoopy', '098f6bcd4621d373cade4e832627b4f6', '0', '25', '18707173376', '1', '0', '3', '2015-10-01 13:12:07');
 INSERT INTO `user` VALUES ('14', 'dreamlu', 'dreamlu', '098f6bcd4621d373cade4e832627b4f6', '0', '25', '18707173376', '1', '0', '5', '2015-10-11 23:12:58');
 INSERT INTO `user` VALUES ('15', 'test', 'test', '', '0', '25', '18707173376', '1', '0', '6', '2016-11-11 17:53:18');
@@ -633,18 +669,18 @@ CREATE TABLE `user_role` (
   `user_id` bigint(19) NOT NULL COMMENT '用户id',
   `role_id` bigint(19) NOT NULL COMMENT '角色id',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=68 DEFAULT CHARSET=utf8 COMMENT='用户角色';
+) ENGINE=InnoDB AUTO_INCREMENT=71 DEFAULT CHARSET=utf8 COMMENT='用户角色';
 
 -- ----------------------------
 -- Records of user_role
 -- ----------------------------
-INSERT INTO `user_role` VALUES ('60', '1', '1');
-INSERT INTO `user_role` VALUES ('61', '1', '2');
-INSERT INTO `user_role` VALUES ('62', '1', '7');
 INSERT INTO `user_role` VALUES ('63', '13', '2');
 INSERT INTO `user_role` VALUES ('64', '14', '7');
 INSERT INTO `user_role` VALUES ('65', '15', '8');
 INSERT INTO `user_role` VALUES ('67', '16', '8');
+INSERT INTO `user_role` VALUES ('68', '1', '1');
+INSERT INTO `user_role` VALUES ('69', '1', '2');
+INSERT INTO `user_role` VALUES ('70', '1', '7');
 
 -- ----------------------------
 -- View structure for rentroom
