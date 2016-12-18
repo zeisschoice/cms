@@ -9,11 +9,14 @@
     	var costId = '<%=request.getParameter("id")%>';
     	var tenantName = '<%=request.getParameter("tenantName")%>';
     	
-    	console.log(costId + tenantName);
     	
     	
-        $('#roomEditForm').form({
-            url:'${path}/tenant/edit',
+    	$('#tenantName').val(tenantName);
+    	
+    	
+    	
+        $('#costEditForm').form({
+            url:'${path}/cost/edit',
             onSubmit : function() {
             	
                 progressLoad();
@@ -30,6 +33,7 @@
                 if (result.success) {
                     parent.$.modalDialog.openner_dataGrid.datagrid('reload');//之所以能在这里调用到parent.$.modalDialog.openner_dataGrid这个对象，是因为user.jsp页面预定义好了
                     parent.$.modalDialog.handler.dialog('close');
+                    parent.$.messager.alert('提示', result.msg, 'info');
                 } else {
                     parent.$.messager.alert('错误', result.msg, 'error');
                 }
@@ -54,7 +58,7 @@
 	    var manageCharge = $('#manageCharge').val();
 	    var total = (parseFloat(manageCharge) + parseFloat(monRent) + parseFloat(gasCharge) + parseFloat(waterCharge) + parseFloat(electricCharge) + parseFloat(internetCharge) + parseFloat(tvCharge) + parseFloat(equallyCharge) + parseFloat(otherCharge)).toFixed(2);
 	    
-	    console.log("total:"+total);
+	   
    
 	    $('#total').numberbox('setValue',total);
     }
@@ -223,11 +227,30 @@
   	  }
     });
         
+      
+    var a = $('#currentElectricNum').val();
+	var b = $('#lastElectricNum').val();
+	var c = (parseFloat(a) - parseFloat(b)).toFixed(2);
+    console.log(a +" = "+" = "+ b + c);
+    
+	$('#electricNum').val(c);
         
-        
-        
+	var a1 = $('#currentWaterNum').val();
+	var b1 = $('#lastWaterNum').val();
+	var c1 = (parseFloat(a1) - parseFloat(b1)).toFixed(2);
+  
+  
+	$('#waterNum').val(c1);   
     
  
+	var a2 = $('#currentGasNum').val();
+	var b2 = $('#lastGasNum').val();
+	var c2 = (parseFloat(a2) - parseFloat(b2)).toFixed(2);
+  
+  
+	$('#gasNum').val(c2); 
+	
+	
     });
     
    
@@ -320,14 +343,15 @@
                     <td><input name="otherCharge" id="otherCharge" placeholder="点击选择时间"  class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2" style="width:80px"  value="${cost.otherCharge}"></td>
                     <td>合计(元)</td>
                     <td><input name="total" id="total" placeholder="点击选择时间"  class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2" style="width:80px" readonly="true" value="${cost.total}"></td>
-                    <td><input name="roomId" type="hidden"  value="${cost.roomId}"></td>
-                    <td><input name="sendCount" type="hidden"  value="${cost.sendCount}"></td>
+                    
                 </tr>
                 <tr>
                     
                   <td>备注</td>
-                  <td colspan="6"><textarea id="remark" name="remark" rows="" cols="" style="margin: 0px; width: 380px; height: 53px;" value="${cost.remark}"></textarea></td>  
-                    
+                  <td colspan="6"><textarea id="remark" name="remark" rows="" cols="" style="margin: 0px; width: 380px; height: 53px;" >${cost.remark}</textarea></td>  
+                  <td><input name="roomId" type="hidden"  value="${cost.roomId}"></td>
+                  <td><input name="sendCount" type="hidden"  value="${cost.sendCount}"></td>
+                  <td><input name="id" type="hidden"  value="${cost.id}"></td> 
                 </tr>
             </table>
         </form>

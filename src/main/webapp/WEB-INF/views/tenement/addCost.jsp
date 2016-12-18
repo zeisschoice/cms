@@ -78,6 +78,13 @@
                     progressClose();
                 }
                 
+                if(eq()){
+                	
+                	progressClose();
+                	$.messager.alert('错误', eq(), 'error');
+                	
+                	return false;
+                }
               
                 return isValid;
             },
@@ -108,7 +115,7 @@
     	    
     	    var total = (parseFloat(gasCharge) + parseFloat(waterCharge) + parseFloat(electricCharge) + parseFloat(internetCharge) + parseFloat(tvCharge) + parseFloat(equallyCharge) + parseFloat(otherCharge)).toFixed(2);
     	    
-    	    console.log("total:"+total);
+    	   
        
     	    $('#total').numberbox('setValue',total);
         }
@@ -280,7 +287,35 @@
     });
     
    
-    
+ function eq(){
+	
+	var a1 = $('#currentGasNum').val();
+   	var b1 = $('#lastGasNum').val();  
+	 
+   	if(a1<b1){
+   		
+   		return "当前燃气数不能比上个月的燃气数小！";
+   	}
+   	
+   	var a2 = $('#currentElectricNum').val();
+  	var b2 = $('#lastElectricNum').val();
+   	
+    if(a2<b2){
+   		
+   		return "当前用电数不能比上个月的用电数小！";
+   	}
+  	
+  	var a3 = $('#currentWaterNum').val();
+  	var b3 = $('#lastWaterNum').val();
+  	
+   if(a3<b3){
+   		
+   		return "当前用水数不能比上个月的用水数小！";
+   	}
+  	
+    return false;
+  	
+ }   
     
     
 </script>

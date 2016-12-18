@@ -46,7 +46,7 @@
             onClick : function(node) {
             	
             	if(node.children==null){
-            		console.log(node);
+            		
             		 roomId = node.id;
             		 roomName = node.text;
             		 if(node.attributes){
