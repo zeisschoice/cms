@@ -26,6 +26,7 @@
 		<result column="electric_unit_price" property="electricUnitPrice" />
 		<result column="manage_charge" property="manageCharge" />
 		<result column="send_count" property="sendCount" />
+		<result column="mon_rent" property="monRent" />
 		<result column="total" property="total" />
 	</resultMap>
 

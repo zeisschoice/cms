@@ -86,6 +86,7 @@ public class TenantController extends BaseController{
 		// userVo.setPassword(DigestUtils.md5Hex(userVo.getPassword()));
 		Room room = iRoomService.selectById(tenant.getRoomId());
 		room.setStatus(1);
+		room.setLiver(tenant.getIdentityCard());
 		boolean isUpdate = iRoomService.updateById(room);
 		System.out.println("isUpdate:"+isUpdate);
 		
@@ -97,6 +98,11 @@ public class TenantController extends BaseController{
 	 @ResponseBody
 	 public Object edit(Tenant tenant) {
 		 iTenantService.updateSelectiveById(tenant);
+		 Room room = iRoomService.selectById(tenant.getRoomId());
+		 if(!room.getLiver().equalsIgnoreCase(tenant.getIdentityCard())){
+			 room.setLiver(tenant.getIdentityCard());
+			 iRoomService.updateById(room);
+		 }
 	    return renderSuccess("编辑成功！");
 	 }
 	

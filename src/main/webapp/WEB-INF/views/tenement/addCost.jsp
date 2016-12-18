@@ -13,10 +13,12 @@
     	var year = dateObj.getUTCFullYear();
     	var roomId = <%= request.getParameter("id") %>;
         var tenantName = '<%= request.getParameter("tenantName") %>';
+        var monRent = '<%= request.getParameter("monRent") %>';
     	$('#year').val(year);
     	$('#month').val(month);
     	$('#tenantName').val(tenantName);
-  
+    	$('#monRent').val(monRent);
+         
     
     	if(month==0)
         {
@@ -293,6 +295,10 @@
                     <td><input name="month" id="month" type="text" placeholder="请输入住户姓名" type="text" class="easyui-validatebox easyui-textbox" data-options="required:true" value="" style="width:80px"></td>
                     <td>住户</td>
                     <td><input name="tenantName" id="tenantName" type="text" placeholder="请输入住户姓名" type="text" class="easyui-validatebox easyui-textbox" data-options="required:true" value="" style="width:80px"></td>
+                     <td>月租</td>
+                    <td><input name="monRent" id="monRent" type="text" placeholder="管理费" type="text" class="easyui-validatebox easyui-textbox" data-options="required:true" value="0" style="width:80px"></td>
+                     <td>管理费</td>
+                    <td><input name="manageCharge" id="manageCharge" type="text" placeholder="管理费" type="text" class="easyui-validatebox easyui-textbox" data-options="required:true" value="0" style="width:80px"></td>
                 </tr>
                 <tr>
                     <td>本月电表数</td>

@@ -66,10 +66,9 @@ public class CostController extends BaseController{
 	 @RequestMapping(value = "/editPage", method = RequestMethod.GET)
 		public String roomEdit(Model model,Long id) {	
 			
-			 Cost room = iCostService.selectById(id);
-		     model.addAttribute("room", room);
-		      
-			
+			 Cost cost = iCostService.selectById(id);
+		     model.addAttribute("cost", cost);
+		  
 			return "tenement/editCost";
 		}
 	

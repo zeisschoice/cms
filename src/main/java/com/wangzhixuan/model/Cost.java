@@ -141,7 +141,8 @@ public class Cost implements Serializable {
 	@TableField(value="manage_charge")
 	private Double manageCharge;
 
-	
+	@TableField(value="mon_rent")
+	private Double monRent; 
 
 	private Double total;
 	
@@ -338,6 +339,14 @@ public class Cost implements Serializable {
 
 	public void setRemark(String remark) {
 		this.remark = remark;
+	}
+
+	public Double getMonRent() {
+		return monRent;
+	}
+
+	public void setMonRent(Double monRent) {
+		this.monRent = monRent;
 	}
 
 }

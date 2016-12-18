@@ -53,7 +53,7 @@ public class Tenant implements Serializable {
 	 * 
 	 */
 	@TableField(value="identity_card")
-	private BigDecimal identityCard;
+	private String identityCard;
 
 	/**
 	 * 
@@ -104,11 +104,11 @@ public class Tenant implements Serializable {
 		this.tel = tel;
 	}
 
-	public BigDecimal getIdentityCard() {
+	public String getIdentityCard() {
 		return identityCard;
 	}
 
-	public void setIdentityCard(BigDecimal identityCard) {
+	public void setIdentityCard(String identityCard) {
 		this.identityCard = identityCard;
 	}
 

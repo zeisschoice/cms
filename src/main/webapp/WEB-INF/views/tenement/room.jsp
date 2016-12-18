@@ -46,7 +46,8 @@
                 title : '姓名',
                 field : 'liver'
                 
-            },{
+            },
+            {
                 width : '150',
                 title : '创建日期',
                 field : 'beginDate'
@@ -81,11 +82,16 @@
                     }
            }
             } ,{
-            	 width : '200',
-                 title : '备注',
-                 field : 'remark'
+            	 width : '80',
+                 title : '月租',
+                 field : 'monRent'
                
-            }
+            },{
+           	 width : '200',
+             title : '备注',
+             field : 'remark'
+           
+             }
              , {
                 field : 'action',
                 title : '操作',

@@ -74,7 +74,7 @@ public class Room implements Serializable {
 	/**
 	 * 
 	 */
-	private Integer liver;
+	private String liver;
 
 	/**
 	 * 
@@ -141,11 +141,11 @@ public class Room implements Serializable {
 		this.endDate = endDate;
 	}
 
-	public Integer getLiver() {
+	public String getLiver() {
 		return liver;
 	}
 
-	public void setLiver(Integer liver) {
+	public void setLiver(String liver) {
 		this.liver = liver;
 	}
 

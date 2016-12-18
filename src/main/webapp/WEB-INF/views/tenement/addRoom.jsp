@@ -45,24 +45,24 @@
                 <tr>
                     <td>房间名称</td>
                     <td><input name="roomName" type="text" placeholder="请输入房间名称" class="easyui-validatebox" data-options="required:true" value=""></td>
-                    <td>住户姓名</td>
-                    <td><input name="liver" type="text" placeholder="请输入住户姓名" class="easyui-validatebox" data-options="required:true" value=""></td>
+                   <!--  <td>住户姓名</td>
+                    <td><input name="liver" type="text" placeholder="请输入住户姓名" class="easyui-validatebox" data-options="required:true" value=""></td> -->
                 </tr>
-                <tr>
+               <!--  <tr>
                     <td>出租开始日期</td>
                     <td><input name="beginDate" placeholder="点击选择时间" onclick="WdatePicker({readOnly:true,dateFmt:'yyyy-MM-dd HH:mm:ss'})" readonly="readonly" class="easyui-validatebox" data-options="required:true"></td>
                     <td>出租结束日期</td>
                     <td>
                        <input name="endDate" placeholder="点击选择时间" onclick="WdatePicker({readOnly:true,dateFmt:'yyyy-MM-dd HH:mm:ss'})" readonly="readonly" class="easyui-validatebox" data-options="required:true">
                     </td>
-                </tr>
+                </tr> -->
                 <tr>
                     
                     <td>类型</td>
                     <td>
                         <select name="type" class="easyui-combobox" data-options="width:140,height:29,editable:false,panelHeight:'auto'">
                             <option value="0">单间</option>
-                            <option value="1" selected="selected">套间</option>
+                            <option value="1">套间</option>
                         </select>
                     </td>
                     <td>状态</td>

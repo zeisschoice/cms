@@ -1,6 +1,7 @@
 package com.wangzhixuan.service.impl;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,13 +9,11 @@ import org.springframework.stereotype.Service;
 
 import com.baomidou.framework.service.impl.SuperServiceImpl;
 import com.baomidou.mybatisplus.plugins.Page;
-import com.baomidou.mybatisplus.plugins.pagination.Pagination;
 import com.wangzhixuan.commons.result.Tree;
 import com.wangzhixuan.commons.utils.PageInfo;
 import com.wangzhixuan.mapper.BuildingMapper;
 import com.wangzhixuan.mapper.RoomMapper;
 import com.wangzhixuan.model.Building;
-import com.wangzhixuan.model.Role;
 import com.wangzhixuan.model.Room;
 import com.wangzhixuan.service.IBuildingService;
 
@@ -103,16 +102,19 @@ public class BuildingServiceImpl extends SuperServiceImpl<BuildingMapper, Buildi
 	            		 
 	            		 Tree treeTwo = new Tree(); 
 	            		 treeTwo.setId(rooms.get(j).getId().longValue());
-	            		
+	            		 HashMap map = new HashMap();
+	            		 map.put("monRent", rooms.get(j).getMonRent());
+	            		 
 	            		 if(rooms.get(j).getStatus()==0){
 	            			 treeTwo.setText(rooms.get(j).getRoomName()+"(空闲)");
 	            			 treeTwo.setIconCls("icon-home");
+	            			 
 	            		 }else{
 	            			 
 	            			 treeTwo.setText(rooms.get(j).getRoomName()+"(已租)");
 	            			 treeTwo.setIconCls("icon-man");
 	            		 }
-	            		
+	            		 treeTwo.setAttributes(map);
 	            		 tree.add(treeTwo);
 	            	
 	            	 }

@@ -15,6 +15,7 @@
 
     var selectedNodeId;
     var roomName;
+    var monRent;
    /*  t.tree({
     	onLoadSuccess:function(){
     		var node = t.tree('find', selectedNodeId);
@@ -45,9 +46,14 @@
             onClick : function(node) {
             	
             	if(node.children==null){
+            		console.log(node);
             		 roomId = node.id;
             		 roomName = node.text;
+            		 if(node.attributes){
+            			 monRent = node.attributes.monRent;
+            		 }
             		
+            		 console.log(monRent);
             		 dataGrid.datagrid('load', {
                          id: node.id
                      });
@@ -296,7 +302,7 @@
             title : '添加',
             width : 800,
             height : 500,
-            href : '${path }/cost/addPage?id='+roomId+"&tenantName="+$('#tenantName').val(),
+            href : '${path }/cost/addPage?id='+roomId+"&tenantName="+$('#tenantName').val()+"&monRent="+monRent,
             buttons : [ {
                 text : '添加',
                 handler : function() {
@@ -340,26 +346,40 @@
     }
     
     function editFun(id) {
-        if (id == undefined) {
-            var rows = dataGrid.datagrid('getSelections');
-            id = rows[0].id;
-        } else {
-            dataGrid.datagrid('unselectAll').datagrid('uncheckAll');
+    	
+    	var rows = dataGrid.datagrid('getSelections');
+        
+       if(roomId == null || roomId==""){
+    		
+    		alert("请先选择要添加费用的房间!");
+    		return;
+    	}
+        
+       
+        if(rows && rows.length>0){
+        	
+        	parent.$.modalDialog({
+                title : '编辑',
+                width : 800,
+                height : 400,
+                href : '${path }/cost/editPage?id=' + rows[0].id+"&tenantName="+$('#tenantName').val(),
+                buttons : [ {
+                    text : '确定',
+                    handler : function() {
+                        parent.$.modalDialog.openner_dataGrid = dataGrid;//因为添加成功之后，需要刷新这个dataGrid，所以先预定义好
+                        var f = parent.$.modalDialog.handler.find('#costEditForm');
+                        f.submit();
+                    }
+                } ]
+            });
+        	
+        }else{
+        	
+        	alert("请先选择需要编辑的费用!");
+    		return;
         }
-        parent.$.modalDialog({
-            title : '编辑',
-            width : 600,
-            height : 300,
-            href : '${path }/cost/editPage?id=' + id,
-            buttons : [ {
-                text : '确定',
-                handler : function() {
-                    parent.$.modalDialog.openner_dataGrid = dataGrid;//因为添加成功之后，需要刷新这个dataGrid，所以先预定义好
-                    var f = parent.$.modalDialog.handler.find('#costEditForm');
-                    f.submit();
-                }
-            } ]
-        });
+        
+        
     }
     
     function searchFun() {
@@ -540,7 +560,7 @@
         <div style="width:100%;height:20%;">
         <div id="formToolbar">
             <a onclick="saveTenantFun();" href="javascript:void(0);" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-save'">保存</a>
-            <a onclick="delTenantFun();" href="javascript:void(0);" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-delete'">删除</a>
+            <a onclick="delTenantFun();" href="javascript:void(0);" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-del'">删除</a>
         </div>
         <form id="ff" method="post" title="租户信息">
 		     <table style="margin:5px">
