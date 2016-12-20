@@ -14,6 +14,22 @@
 		<result column="dicttypecode" property="dicttypecode" />
 		<result column="dictlevel" property="dictlevel" />
 		<result column="dictcat" property="dictcat" />
+		<collection property="dictEntryList" ofType="com.wangzhixuan.model.DictEntry">
+		   	<id column="dicttypeid" property="dicttypeid" />
+			<result column="dictid" property="dictid" />
+			<result column="dictname" property="dictname" />
+			<result column="status" property="status" />
+			<result column="sortno" property="sortno" />
+			<result column="rank" property="rank" />
+			<result column="parentid" property="parentid" />
+			<result column="dictlevel" property="dictlevel" />
+			<result column="dictcode" property="dictcode" />
+		</collection>
 	</resultMap>
+
+   <select id="selectDictTypeVoPage">
+     
+     
+   </select>
 
 </mapper>
