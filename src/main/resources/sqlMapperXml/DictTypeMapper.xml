@@ -28,14 +28,18 @@
 	</resultMap>
 
    <select id="selectDictTypeVoPage">
-      select t.*,e.* from dict_type t left join dict_entry e on t.dicttypeid = e.dicttypeid
+      select 
+      t.*,e.dicttypeid,e.dictid,e.dictname,e.status,e.sortno,e.rank as erank,e.parentid as eparentid,e.dictlevel as edictlevel
+      from dict_type t left join dict_entry e on t.dicttypeid = e.dicttypeid
       
-      where
+       <where>
       
       <if test=" name != null and name != '' ">
                 t.dicttypename = #{dicttypename}
-            </if>
-     
+      </if>
+      
+      
+     </where>
    </select>
 
 </mapper>
