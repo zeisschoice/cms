@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.baomidou.test.mapper.DictTypeMapper">
+<mapper namespace="com.wangzhixuan.mapper.DictTypeMapper">
 
 	<!-- 通用查询映射结果 -->
-	<resultMap id="BaseResultMap" type="com.wangzhixuan.model.DictType">
+	<resultMap id="BaseResultMap" type="com.wangzhixuan.model.vo.DictTypeVo">
 		<id column="dicttypeid" property="dicttypeid" />
 		<result column="dicttypename" property="dicttypename" />
 		<result column="rank" property="rank" />
@@ -14,7 +14,7 @@
 		<result column="dicttypecode" property="dicttypecode" />
 		<result column="dictlevel" property="dictlevel" />
 		<result column="dictcat" property="dictcat" />
-		<collection property="dictEntryList" ofType="com.wangzhixuan.model.DictEntry">
+		<collection property="dictEntry" ofType="com.wangzhixuan.model.DictEntry">
 		   	<id column="dicttypeid" property="dicttypeid" />
 			<result column="dictid" property="dictid" />
 			<result column="dictname" property="dictname" />
@@ -27,19 +27,36 @@
 		</collection>
 	</resultMap>
 
-   <select id="selectDictTypeVoPage">
+   <select id="selectDictTypeVoPage" resultMap="BaseResultMap">
       select 
       t.*,e.dicttypeid,e.dictid,e.dictname,e.status,e.sortno,e.rank as erank,e.parentid as eparentid,e.dictlevel as edictlevel
       from dict_type t left join dict_entry e on t.dicttypeid = e.dicttypeid
       
-       <where>
-      
-      <if test=" name != null and name != '' ">
-                t.dicttypename = #{dicttypename}
-      </if>
-      
-      
-     </where>
+      where t.dicttypeid = #{id}
    </select>
+
+   <select id="selectDictTypePage" resultType="DictType">
+   
+     select * from  dict_type
+   
+    <where>
+      
+      <if test="dictname!=null and dictname!='' ">
+     
+      dictname = #{dictname}
+     
+      </if>
+    
+      <if test="dicttypecode!=null and dicttypecode !='' ">
+      
+      dicttypecode = #{dicttypecode}
+      
+      </if>
+    
+    </where>
+   
+   
+   </select>
+
 
 </mapper>

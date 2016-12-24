@@ -1,7 +1,9 @@
 package com.wangzhixuan.service;
 
 import com.baomidou.framework.service.ISuperService;
+import com.wangzhixuan.commons.utils.PageInfo;
 import com.wangzhixuan.model.DictType;
+import com.wangzhixuan.model.vo.DictTypeVo;
 
 /**
  * <p>
@@ -13,4 +15,7 @@ import com.wangzhixuan.model.DictType;
  */
 public interface IDictTypeService extends ISuperService<DictType> {
 	
+	 void selectDataGrid(PageInfo pageInfo);
+	 
+	 DictTypeVo selectDictData(String id);
 }
