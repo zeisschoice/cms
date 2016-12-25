@@ -4,8 +4,8 @@
 
 	<!-- 通用查询映射结果 -->
 	<resultMap id="BaseResultMap" type="com.wangzhixuan.model.DictEntry">
-		<id column="dicttypeid" property="dicttypeid" />
-		<result column="dictid" property="dictid" />
+	    <id column="dictid" property="dictid" />
+		<result column="dicttypeid" property="dicttypeid" />
 		<result column="dictname" property="dictname" />
 		<result column="status" property="status" />
 		<result column="sortno" property="sortno" />

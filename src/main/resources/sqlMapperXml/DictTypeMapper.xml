@@ -3,7 +3,21 @@
 <mapper namespace="com.wangzhixuan.mapper.DictTypeMapper">
 
 	<!-- 通用查询映射结果 -->
-	<resultMap id="BaseResultMap" type="com.wangzhixuan.model.vo.DictTypeVo">
+		<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.wangzhixuan.model.DictType">
+		<id column="dicttypeid" property="dicttypeid" />
+		<result column="dicttypename" property="dicttypename" />
+		<result column="rank" property="rank" />
+		<result column="parentid" property="parentid" />
+		<result column="seqno" property="seqno" />
+		<result column="business_id" property="businessId" />
+		<result column="catalog_id" property="catalogId" />
+		<result column="dicttypecode" property="dicttypecode" />
+		<result column="dictlevel" property="dictlevel" />
+		<result column="dictcat" property="dictcat" />
+	</resultMap>
+	
+	<resultMap id="BaseResultMapVo" type="com.wangzhixuan.model.vo.DictTypeVo">
 		<id column="dicttypeid" property="dicttypeid" />
 		<result column="dicttypename" property="dicttypename" />
 		<result column="rank" property="rank" />
@@ -27,7 +41,7 @@
 		</collection>
 	</resultMap>
 
-   <select id="selectDictTypeVoPage" resultMap="BaseResultMap">
+   <select id="selectDictTypeVoPage" resultMap="BaseResultMapVo">
       select 
       t.*,e.dicttypeid,e.dictid,e.dictname,e.status,e.sortno,e.rank as erank,value,e.dictlevel as edictlevel
       from dict_type t left join dict_entry e on t.dicttypeid = e.dicttypeid

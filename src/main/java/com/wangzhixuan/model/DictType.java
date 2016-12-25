@@ -1,9 +1,11 @@
 package com.wangzhixuan.model;
 
 
+import com.baomidou.mybatisplus.annotations.IdType;
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableName;
 import com.baomidou.mybatisplus.annotations.TableField;
+
 import java.io.Serializable;
 
 /**
@@ -20,9 +22,13 @@ public class DictType implements Serializable {
 	@TableField(exist = false)
     private static final long serialVersionUID = 1L;
 
+//	@TableId(type = IdType.AUTO)
+//	@TableField(value="id")
+//	private Integer id;
 	/**
 	 * 
 	 */
+	@TableId(type = IdType.INPUT)
 	private String dicttypeid;
 	/**
 	 * 

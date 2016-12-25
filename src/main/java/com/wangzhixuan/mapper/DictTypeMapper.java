@@ -5,11 +5,11 @@ import java.util.List;
 import java.util.Map;
 
 import com.baomidou.mybatisplus.mapper.AutoMapper;
-import com.baomidou.mybatisplus.mapper.BaseMapper;
+
 import com.baomidou.mybatisplus.plugins.pagination.Pagination;
 import com.wangzhixuan.model.DictType;
 import com.wangzhixuan.model.vo.DictTypeVo;
-import com.wangzhixuan.model.vo.UserVo;
+
 
 /**
  * <p>

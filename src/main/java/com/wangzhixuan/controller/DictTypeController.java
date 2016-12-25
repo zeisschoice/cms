@@ -120,8 +120,12 @@ public class DictTypeController extends BaseController{
 	    list = dict.getDictEntry();
 			
 	    iDictType.insert(dictType);
-	    
-	   // iDictEntryService.insertBatch(list);
+	  
+	    if(list!=null && list.size()>0){
+	    	
+	    	 iDictEntryService.insertBatch(list);
+	    }
+	   
 	    
     	return renderSuccess("添加成功");
     }
