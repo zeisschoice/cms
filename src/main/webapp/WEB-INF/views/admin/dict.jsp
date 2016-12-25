@@ -73,7 +73,7 @@
                 width : 130,
                 formatter : function(value, row, index) {
                     var str = '';
-                        <shiro:hasPermission name="/dictType/editPage">
+                        <shiro:hasPermission name="/dictType/edit">
                             str += $.formatString('<a href="javascript:void(0)" class="user-easyui-linkbutton-edit" data-options="plain:true,iconCls:\'icon-edit\'" onclick="editFun(\'{0}\');" >编辑</a>', row.id);
                         </shiro:hasPermission>
                         <shiro:hasPermission name="/dictType/delete">
@@ -101,8 +101,12 @@
                 text : '添加',
                 handler : function() {
                     parent.$.modalDialog.openner_dataGrid = dataGrid;//因为添加成功之后，需要刷新这个dataGrid，所以先预定义好
-                    var f = parent.$.modalDialog.handler.find('#dictAddForm');
-                    f.submit();
+       
+                  //  var f = parent.$.modalDialog.handler.find('#dictAddForm');
+                    var s = parent.$.modalDialog.handler.find('#submitButtom');
+                    
+                    s.click();
+                 //   f.submit();
                 }
             } ]
         });
@@ -148,9 +152,9 @@
         }
         parent.$.modalDialog({
             title : '编辑',
-            width : 500,
-            height : 300,
-            href : '${path }/user/editPage?id=' + id,
+            width : 800,
+            height : 600,
+            href : '${path }/dictType/editPage?id=' + id,
             buttons : [ {
                 text : '确定',
                 handler : function() {
@@ -190,12 +194,9 @@
     <div data-options="region:'center',border:true,title:'数据字典'" >
         <table id="dataGrid" data-options="fit:true,border:false"></table>
     </div>
-   <!--  <div data-options="region:'west',border:true,split:false,title:'组织机构'"  style="width:150px;overflow: hidden; ">
-        <ul id="organizationTree"  style="width:160px;margin: 10px 10px 10px 10px">
-        </ul>
-    </div> -->
+
     <div id="toolbar" style="display: none;">
-        <shiro:hasPermission name="/user/add">
+        <shiro:hasPermission name="/dict/add">
             <a onclick="addFun();" href="javascript:void(0);" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-add'">添加</a>
         </shiro:hasPermission>
     </div>

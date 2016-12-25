@@ -17,6 +17,7 @@ import java.io.Serializable;
 @TableName("dict_type")
 public class DictType implements Serializable {
 
+	@TableField(exist = false)
     private static final long serialVersionUID = 1L;
 
 	/**

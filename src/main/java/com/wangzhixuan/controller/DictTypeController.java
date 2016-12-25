@@ -1,6 +1,8 @@
 package com.wangzhixuan.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,9 +11,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.wangzhixuan.commons.base.BaseController;
 import com.wangzhixuan.commons.utils.PageInfo;
+import com.wangzhixuan.model.DictEntry;
 import com.wangzhixuan.model.DictType;
 import com.wangzhixuan.model.vo.DictTypeVo;
+import com.wangzhixuan.service.IDictEntryService;
 import com.wangzhixuan.service.IDictTypeService;
 
 /**
@@ -24,10 +29,13 @@ import com.wangzhixuan.service.IDictTypeService;
  */
 @Controller
 @RequestMapping("/dictType")
-public class DictTypeController {
+public class DictTypeController extends BaseController{
 	
 	@Autowired
 	private IDictTypeService iDictType;
+	
+	@Autowired
+	private IDictEntryService iDictEntryService;
 	
 	@RequestMapping(value="/dict", method = RequestMethod.GET)
 	public String dictTypePage(){
@@ -87,6 +95,35 @@ public class DictTypeController {
 		DictTypeVo v = iDictType.selectDictData(dictType);
 	    
     	return v;
+    }
+	
+	
+	@RequestMapping(value = "/add",method = RequestMethod.POST)
+	@ResponseBody 
+    public Object add(DictTypeVo dict){
+    	
+		
+		
+		DictType dictType = new DictType();
+		
+		dictType.setDicttypeid(dict.getDicttypeid());	
+		dictType.setDicttypecode(dict.getDicttypecode());
+		dictType.setDicttypename(dict.getDicttypename());
+		dictType.setRank(dict.getRank());
+		dictType.setSeqno(dict.getSeqno());
+		dictType.setDictlevel(dict.getDictlevel());
+		
+		
+		
+	    List<DictEntry> list = new ArrayList<DictEntry>();
+		
+	    list = dict.getDictEntry();
+			
+	    iDictType.insert(dictType);
+	    
+	   // iDictEntryService.insertBatch(list);
+	    
+    	return renderSuccess("添加成功");
     }
 	
 }

@@ -1,29 +1,81 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="/commons/global.jsp" %>
 <script type="text/javascript">
+
+var dataGrid;
+
+
     $(function() {
-        var roleIds = ${roleIds };
+
+    	 dataGrid = $('#dataGrid').datagrid({
+             url : '${path }/dictType/dictData',
+             fit : true,
+             striped : true,
+             rownumbers : true,
+             pagination : true,
+             singleSelect : true,
+             idField : 'id',
+             sortName : 'createTime',
+             sortOrder : 'asc',
+             pageSize : 20,
+             pageList : [ 10, 20, 30, 40, 50, 100, 200, 300, 400, 500 ],
+             columns : [ [ {
+                 width : '80',
+                 title : '编号',
+                 field : 'dicttypeid',
+                 sortable : true
+             }, {
+                 width : '80',
+                 title : '名称',
+                 field : 'dicttypename',
+                 sortable : true
+             },{
+                 width : '80',
+                 title : '编码',
+                 field : 'dicttypecode',
+             },{
+                 width : '80',
+                 title : '分类',
+                 field : 'dictcat'
+             },{
+                 width : '80',
+                 title : '序号',
+                 field : 'seqno',
+                 sortable : true
+             },  
+            
+             {
+                 width : '40',
+                 title : '排序',
+                 field : 'rank',
+                 sortable : true
+             } 
+               ] ],
+             onLoadSuccess:function(data){
+               
+             },
+             toolbar : '#toolbar'
+         });
+    
+    	
+    	
+    	
         $('#organizationId').combotree({
             url : '${path }/organization/tree',
             parentField : 'pid',
             lines : true,
-            panelHeight : 'auto',
-            value : '${user.organizationId}'
+            panelHeight : 'auto'
         });
 
         $('#roleIds').combotree({
-            url : '${path }/role/tree',
-            parentField : 'pid',
-            lines : true,
-            panelHeight : 'auto',
-            multiple : true,
-            required : true,
-            cascadeCheck : false,
-            value : roleIds
+            url: '${path }/role/tree',
+            multiple: true,
+            required: true,
+            panelHeight : 'auto'
         });
 
-        $('#userEditForm').form({
-            url : '${path }/user/edit',
+        $('#userAddForm').form({
+            url : '${path }/dictType/add',
             onSubmit : function() {
                 progressLoad();
                 var isValid = $(this).form('validate');
@@ -40,65 +92,49 @@
                     parent.$.modalDialog.openner_dataGrid.datagrid('reload');//之所以能在这里调用到parent.$.modalDialog.openner_dataGrid这个对象，是因为user.jsp页面预定义好了
                     parent.$.modalDialog.handler.dialog('close');
                 } else {
-                    parent.$.messager.alert('错误', result.msg, 'error');
+                    parent.$.messager.alert('提示', result.msg, 'warning');
                 }
             }
         });
-        $("#sex").val('${user.sex}');
-        $("#userType").val('${user.userType}');
-        $("#status").val('${user.status}');
+        
     });
 </script>
 <div class="easyui-layout" data-options="fit:true,border:false">
     <div data-options="region:'center',border:false" title="" style="overflow: hidden;padding: 3px;">
-        <form id="userEditForm" method="post">
-            <div class="light-info" style="overflow: hidden;padding: 3px;">
-                <div>密码不修改请留空。</div>
-            </div>
-            <table class="grid">
+      <!-- -->  <form id="dictAddForm" method="post">
+            <table class="grid" style="width:100%;height:90px">
                 <tr>
-                    <td>登录名</td>
-                    <td><input name="id" type="hidden"  value="${user.id}">
-                    <input name="loginName" type="text" placeholder="请输入登录名称" class="easyui-validatebox" data-options="required:true" value="${user.loginName}"></td>
-                    <td>姓名</td>
-                    <td><input name="name" type="text" placeholder="请输入姓名" class="easyui-validatebox" data-options="required:true" value="${user.name}"></td>
+                    <td>字典ID</td>
+                    <td><input name="dicttypeid" type="text" placeholder="请输入登录名称" class="easyui-validatebox" data-options="required:true" value=""></td>
+                    <td>字典名称</td>
+                    <td><input name="dicttypename" type="text" placeholder="请输入姓名" class="easyui-validatebox" data-options="required:true" value=""></td>
                 </tr>
                 <tr>
-                    <td>密码</td>
-                    <td><input type="text" name="password"/></td>
-                    <td>性别</td>
-                    <td><select name="sex" id="sex"  class="easyui-combobox" data-options="width:140,height:29,editable:false,panelHeight:'auto'">
-                            <option value="0">男</option>
-                            <option value="1">女</option>
-                    </select></td>
-                </tr>
-                <tr>
-                    <td>年龄</td>
-                    <td><input type="text" name="age" value="${user.age}" class="easyui-numberbox"/></td>
-                    <td>用户类型</td>
-                    <td><select id="userType" name="userType"  class="easyui-combobox" data-options="width:140,height:29,editable:false,panelHeight:'auto'">
-                            <option value="0">管理员</option>
-                            <option value="1">用户</option>
-                    </select></td>
-                </tr>
-                <tr>
-                    <td>部门</td>
-                    <td><select id="organizationId" name="organizationId" style="width: 140px; height: 29px;" class="easyui-validatebox" data-options="required:true"></select></td>
-                    <td>角色</td>
-                    <td><input  id="roleIds" name="roleIds" style="width: 140px; height: 29px;"/></td>
-                </tr>
-                <tr>
-                    <td>电话</td>
+                    <td>字典编码</td>
+                    <td><input name="dicttypecode" type="password" placeholder="请输入密码" class="easyui-validatebox" data-options="required:true"></td>
+                    <td>序号</td>
                     <td>
-                        <input type="text" name="phone" class="easyui-numberbox" value="${user.phone}"/>
+                        <input name="seqno" type="text" placeholder="请输入姓名" class="easyui-validatebox" data-options="required:true" value="">
                     </td>
-                    <td>用户类型</td>
-                    <td><select id="state" name="status" value="${user.status}" class="easyui-combobox" data-options="width:140,height:29,editable:false,panelHeight:'auto'">
-                            <option value="0">正常</option>
-                            <option value="1">停用</option>
-                    </select></td>
+                </tr>
+                <tr>
+                    <td>等级</td>
+                    <td><input type="text" name="rank" class="easyui-numberbox"/></td>
+                    <td></td>
+                    <td>
+                    </td>
                 </tr>
             </table>
         </form>
+       <br> 
+     <div style="width:100%;height:400px">  
+     <table id="dataGrid" data-options="fit:true,border:false"></table>
+     </div>
+    <div id="toolbar">
+        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newUser()">添加</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-save" plain="true" onclick="editUser()">保存</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="destroyUser()">删除</a>
+    </div>
+        
     </div>
 </div>

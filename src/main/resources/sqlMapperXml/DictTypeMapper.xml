@@ -20,8 +20,8 @@
 			<result column="dictname" property="dictname" />
 			<result column="status" property="status" />
 			<result column="sortno" property="sortno" />
-			<result column="rank" property="rank" />
-			<result column="parentid" property="parentid" />
+			<result column="rank" property="erank" />
+			<result column="value" property="value" />
 			<result column="dictlevel" property="dictlevel" />
 			<result column="dictcode" property="dictcode" />
 		</collection>
@@ -29,7 +29,7 @@
 
    <select id="selectDictTypeVoPage" resultMap="BaseResultMap">
       select 
-      t.*,e.dicttypeid,e.dictid,e.dictname,e.status,e.sortno,e.rank as erank,e.parentid as eparentid,e.dictlevel as edictlevel
+      t.*,e.dicttypeid,e.dictid,e.dictname,e.status,e.sortno,e.rank as erank,value,e.dictlevel as edictlevel
       from dict_type t left join dict_entry e on t.dicttypeid = e.dicttypeid
       
       where t.dicttypeid = #{id}

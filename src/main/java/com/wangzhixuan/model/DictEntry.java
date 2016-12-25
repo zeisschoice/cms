@@ -17,6 +17,7 @@ import java.io.Serializable;
 @TableName("dict_entry")
 public class DictEntry implements Serializable {
 
+	@TableField(exist = false)
     private static final long serialVersionUID = 1L;
 
 	/**
@@ -46,7 +47,7 @@ public class DictEntry implements Serializable {
 	/**
 	 * 
 	 */
-	private String parentid;
+	private Double value;
 	/**
 	 * 
 	 */
@@ -105,14 +106,6 @@ public class DictEntry implements Serializable {
 		this.rank = rank;
 	}
 
-	public String getParentid() {
-		return parentid;
-	}
-
-	public void setParentid(String parentid) {
-		this.parentid = parentid;
-	}
-
 	public String getDictlevel() {
 		return dictlevel;
 	}
@@ -127,6 +120,14 @@ public class DictEntry implements Serializable {
 
 	public void setDictcode(String dictcode) {
 		this.dictcode = dictcode;
+	}
+
+	public Double getValue() {
+		return value;
+	}
+
+	public void setValue(Double value) {
+		this.value = value;
 	}
 
 	
