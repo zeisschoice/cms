@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="/commons/global.jsp" %>
-<%-- <%@ include file="/commons/basejs.jsp" %> --%>
+ <%@ include file="/commons/basejs.jsp" %>
 <!DOCTYPE html>
 <html>
 
@@ -37,17 +37,20 @@
        <!--  <table id="dataGrid" data-options="fit:true,border:false"></table> -->
         <table id="dataGrid" class="easyui-datagrid" title="" style="width:100%;height:auto"  
         data-options="
-                
+                clickToEdit:true,
                 singleSelect: true,
                 toolbar: '#toolbar'"
                 >
         <thead>
             <tr>
-                <th data-options="field:'dicttypeid',width:80,editor:'text'">编号</th>
+                <th data-options="field:'dicttypeid',width:80,editor:'text',hidden:true">编号</th>
+                <th data-options="field:'dictid',width:80,editor:'text'">编号</th>
                 <th data-options="field:'dictname',width:80,editor:'text'">名称</th>
                 <th data-options="field:'dictcode',width:80,editor:'text'">编码</th>
                 <th data-options="field:'value',width:80,align:'right',editor:'numberbox'">值</th>
-                <th data-options="field:'seqno',width:80,editor:'text'">序号</th>
+                 <th data-options="field:'status',width:80,editor:'numberbox'">状态</th>
+                <th data-options="field:'sortno',width:80,editor:'text'">序号</th>
+                <th data-options="field:'dictlevel',width:80,editor:'text'">级别</th>
                 <th data-options="field:'rank',width:80,editor:'text'">排序</th>
             </tr>
            
@@ -66,62 +69,39 @@
 
 <script type="text/javascript">
 
-var dataGrid;
+//var dataGrid;
 
 
     $(function() {
 
-   /*  	 dataGrid = $('#dataGrid').datagrid({
-             url : '',
-             fit : true,
-             striped : true,
-             rownumbers : true,
-             pagination : true,
-             singleSelect : true,
-             idField : 'id',
-             sortName : 'createTime',
-             sortOrder : 'asc',
-             pageSize : 20,
-             pageList : [ 10, 20, 30, 40, 50, 100, 200, 300, 400, 500 ],
-             columns : [ [ {
-                 width : '80',
-                 title : '编号',
-                 field : 'dicttypeid',
-                 sortable : true
-             }, {
-                 width : '80',
-                 title : '名称',
-                 field : 'dictname'
-                
-             },{
-                 width : '80',
-                 title : '编码',
-                 field : 'dictcode',
-             },{
-                 width : '80',
-                 title : '值',
-                 field : 'value'
-             },{
-                 width : '80',
-                 title : '序号',
-                 field : 'seqno'
-                 
-             },  
-            
-             {
-                 width : '40',
-                 title : '排序',
-                 field : 'rank'
-                 
-             } 
-               ] ],
-             onLoadSuccess:function(data){
-               
-             } ,
-           
-             toolbar : '#toolbar'
-         }); */
-    
+    	
+    	var curr = null;
+    	$(document).bind('mousedown',function(e){
+    		var v = $(e.target).closest('div.datagrid-view');
+    		if (v.length){
+    			var dg = v.children('table');
+    			if (!curr){
+    				curr = dg;
+    			} else if (dg[0] != curr[0]){
+    				endEditingDg(curr);
+    				curr = dg;
+    			}
+    		} else {
+    			endEditing(curr);
+    			curr = null;
+    		}
+    	});
+    	
+    	function endEditingDg(dg){
+    		if (!$(dg).length){return}
+    		var opts = dg.datagrid('options');
+    		opts.finder.getTr(dg[0], null, 'editing').each(function(){
+    			var index = parseInt($(this).attr('datagrid-row-index'));
+    			dg.datagrid('endEdit', index);
+    		});
+    	}
+    		
+    	
         $('#userAddForm').form({
             url : '',
             onSubmit : function() {
@@ -136,7 +116,7 @@ var dataGrid;
                 return isValid;
             },
             success : function(result) {
-                progressClose();
+               /*  progressClose();
                 result = updateStr(result);
                 result = $.parseJSON(result);
                 if (result.success) {
@@ -144,7 +124,7 @@ var dataGrid;
                     parent.$.modalDialog.handler.dialog('close');
                 } else {
                     parent.$.messager.alert('提示', result.msg, 'warning');
-                }
+                } */
             }
         });
         
@@ -165,6 +145,7 @@ var dataGrid;
     
     function append(){
         if (endEditing()){
+        	
             $('#dataGrid').datagrid('appendRow',{});
             editIndex = $('#dataGrid').datagrid('getRows').length-1;
             $('#dataGrid').datagrid('selectRow', editIndex)
@@ -174,14 +155,7 @@ var dataGrid;
     
     
  function newDictEntry(){
-	 
-	/*  $('#dataGrid').datagrid('insertRow',{
-			index: 1,	// index start with 0
-			row: {
-				
-			}
-		});  */
-		
+	 	
 	 var row = $('#dataGrid').datagrid('getSelected');
 		if (row){
 			var index = $('#dataGrid').datagrid('getRowIndex', row);
@@ -191,23 +165,19 @@ var dataGrid;
 		$('#dataGrid').datagrid('insertRow', {
 			index: index,
 			row:{
-				
+				dicttypeid:$('#dicttypeid').val()
 			}
 		});
-		$('#dataGrid').datagrid('selectRow',index);
-		$('#dataGrid').datagrid('beginEdit',index);	
+		
+	    $('#dataGrid').datagrid('selectRow',index);
+		$('#dataGrid').datagrid('beginEdit',index);
 		
 	
  }  
     
 function delDictEntry(){
-	 var editIndex = undefined;	
-	/*  $('#dataGrid').datagrid('deleteRow',{
-			index: 1,	// index start with 0
-			row: {
-				
-			}
-		});  */
+	
+    var editIndex = undefined;	
 	
 	var selectRow = $('#dataGrid').datagrid("getSelections");
     if (selectRow.length == 0) {
@@ -223,33 +193,71 @@ function delDictEntry(){
      $('#dataGrid').datagrid('deleteRow', editIndex);
      editIndex = undefined;
 }  
-  
+
+
+
+
+
+
 function save(){
-		
+	
+	
+	 var isValid = $('#userAddForm').form('validate');
+     if (!isValid) {
+    	 alert("请输入必填项！");
+         return;
+     }
+	
+	
 	var submitData = {};
 	
-    var rows = $('#dataGrid').datagrid('getChanges');
+    var data = $('#dataGrid').datagrid('getData');
     
     submitData.dicttypeid = $('#dicttypeid').val();
     submitData.dicttypename = $('#dicttypename').val();
     submitData.dicttypecode = $('#dicttypecode').val();
     submitData.seqno = $('#seqno').val();
     submitData.rank = $('#rank').val();
-    submitData.dictEntry = rows;
+    
+    var ids = [];
+    
+    if(data.rows){
+    	
+     for(var i=0; i<data.rows.length; i++){
+   	     ids.push(data.rows[i]);
+   	 }
+     
+     submitData.dictEntry = ids;
+     
+    }
+    	
+   
+    
+    console.log(submitData);
+    console.log(data);
+    console.log('myData : ' + JSON.stringify(submitData));
+    console.log(submitData);
+
+    var data = {"dict":submitData}
+    
     progressLoad();
+    
 	$.ajax({
+		
 		   type: "POST",
+		   contentType: "application/json",
+	       dataType: "json",
 		   url: "${path }/dictType/add",
-		   data:submitData,
+		   data:JSON.stringify(submitData),
 		   async: false,
 		   success: function(result){
 	
-
+			   
 			   if(result){
 				  
 				    progressClose();
-	                result = updateStr(result);
-	                result = $.parseJSON(result);
+	             //   result = updateStr(result);
+	             //   result = $.parseJSON(result);
 	                if (result.success) {
 	                    parent.$.modalDialog.openner_dataGrid.datagrid('reload');//之所以能在这里调用到parent.$.modalDialog.openner_dataGrid这个对象，是因为user.jsp页面预定义好了
 	                    parent.$.modalDialog.handler.dialog('close');
@@ -257,7 +265,7 @@ function save(){
 	                    parent.$.messager.alert('提示', result.msg, 'warning');
 	                }
 				 		
-			   }
+			   } 
 
 			   
 			   
@@ -270,6 +278,8 @@ function save(){
 	});
     
 } 
+
+
 
 
 </script>

@@ -29,8 +29,8 @@
 		<result column="dictlevel" property="dictlevel" />
 		<result column="dictcat" property="dictcat" />
 		<collection property="dictEntry" ofType="com.wangzhixuan.model.DictEntry">
-		   	<id column="dicttypeid" property="dicttypeid" />
-			<result column="dictid" property="dictid" />
+			<id column="dictid" property="dictid" />
+			<result column="dicttypeid" property="dicttypeid" />
 			<result column="dictname" property="dictname" />
 			<result column="status" property="status" />
 			<result column="sortno" property="sortno" />

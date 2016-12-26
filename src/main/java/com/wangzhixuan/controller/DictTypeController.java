@@ -7,8 +7,10 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.wangzhixuan.commons.base.BaseController;
@@ -90,7 +92,7 @@ public class DictTypeController extends BaseController{
 	@ResponseBody 
     public Object dictData(String dictType){
     	
-		dictType = "COST";
+		//dictType = "COST";
     	
 		DictTypeVo v = iDictType.selectDictData(dictType);
 	    
@@ -98,9 +100,9 @@ public class DictTypeController extends BaseController{
     }
 	
 	
-	@RequestMapping(value = "/add",method = RequestMethod.POST)
-	@ResponseBody 
-    public Object add(DictTypeVo dict){
+	@RequestMapping(value = "/add",method = RequestMethod.POST,consumes = {"application/json"})
+	@ResponseBody
+    public Object add(@RequestBody DictTypeVo dict){
     	
 		
 		
@@ -123,11 +125,29 @@ public class DictTypeController extends BaseController{
 	  
 	    if(list!=null && list.size()>0){
 	    	
+	    	for(int i = 0;i<list.size();i++){
+	    		
+	    		list.get(i).setDicttypeid(dict.getDicttypeid());
+	    		
+	    	}
+	    	
 	    	 iDictEntryService.insertBatch(list);
 	    }
 	   
 	    
     	return renderSuccess("添加成功");
+    }
+	
+	@RequestMapping("/delete")
+    @ResponseBody
+    public Object delete(String id) {
+		iDictType.deleteById(id);
+		
+		DictEntry entity = new DictEntry();
+		entity.setDicttypeid(id);
+		
+		iDictEntryService.deleteSelective(entity);
+        return renderSuccess("删除成功！");
     }
 	
 }

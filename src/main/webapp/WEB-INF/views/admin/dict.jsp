@@ -74,11 +74,11 @@
                 formatter : function(value, row, index) {
                     var str = '';
                         <shiro:hasPermission name="/dictType/edit">
-                            str += $.formatString('<a href="javascript:void(0)" class="user-easyui-linkbutton-edit" data-options="plain:true,iconCls:\'icon-edit\'" onclick="editFun(\'{0}\');" >编辑</a>', row.id);
+                            str += $.formatString('<a href="javascript:void(0)" class="user-easyui-linkbutton-edit" data-options="plain:true,iconCls:\'icon-edit\'" onclick="editFun(\'{0}\');" >编辑</a>', row.dicttypeid);
                         </shiro:hasPermission>
                         <shiro:hasPermission name="/dictType/delete">
                             str += '&nbsp;&nbsp;|&nbsp;&nbsp;';
-                            str += $.formatString('<a href="javascript:void(0)" class="user-easyui-linkbutton-del" data-options="plain:true,iconCls:\'icon-del\'" onclick="deleteFun(\'{0}\');" >删除</a>', row.id);
+                            str += $.formatString('<a href="javascript:void(0)" class="user-easyui-linkbutton-del" data-options="plain:true,iconCls:\'icon-del\'" onclick="deleteFun(\'{0}\');" >删除</a>', row.dicttypeid);
                         </shiro:hasPermission>
                     return str;
                 }
@@ -119,12 +119,13 @@
         } else {//点击操作里面的删除图标会触发这个
             dataGrid.datagrid('unselectAll').datagrid('uncheckAll');
         }
-        parent.$.messager.confirm('询问', '您是否要删除当前用户？', function(b) {
+        parent.$.messager.confirm('询问', '您是否要删除当前数据字典？', function(b) {
             if (b) {
-                var currentUserId = '${sessionInfo.id}';/*当前登录用户的ID*/
-                if (currentUserId != id) {
+            	
+               
+                if (id != null || id !="") {
                     progressLoad();
-                    $.post('${path }/user/delete', {
+                    $.post('${path }/dictType/delete', {
                         id : id
                     }, function(result) {
                         if (result.success) {
@@ -136,7 +137,7 @@
                 } else {
                     parent.$.messager.show({
                         title : '提示',
-                        msg : '不可以删除自己！'
+                        msg : '不可以删除！'
                     });
                 }
             }
@@ -154,12 +155,12 @@
             title : '编辑',
             width : 800,
             height : 600,
-            href : '${path }/dictType/editPage?id=' + id,
+            href : '${path }/dictType/editPage?dicttypeId=' + id,
             buttons : [ {
                 text : '确定',
                 handler : function() {
                     parent.$.modalDialog.openner_dataGrid = dataGrid;//因为添加成功之后，需要刷新这个dataGrid，所以先预定义好
-                    var f = parent.$.modalDialog.handler.find('#userEditForm');
+                    var f = parent.$.modalDialog.handler.find('#dictEditForm');
                     f.submit();
                 }
             } ]

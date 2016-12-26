@@ -10,7 +10,7 @@
 		<result column="status" property="status" />
 		<result column="sortno" property="sortno" />
 		<result column="rank" property="rank" />
-		<result column="parentid" property="parentid" />
+		<result column="value" property="value" />
 		<result column="dictlevel" property="dictlevel" />
 		<result column="dictcode" property="dictcode" />
 	</resultMap>
