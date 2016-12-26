@@ -34,7 +34,7 @@
 			<result column="dictname" property="dictname" />
 			<result column="status" property="status" />
 			<result column="sortno" property="sortno" />
-			<result column="rank" property="erank" />
+			<result column="erank" property="rank" />
 			<result column="value" property="value" />
 			<result column="dictlevel" property="dictlevel" />
 			<result column="dictcode" property="dictcode" />

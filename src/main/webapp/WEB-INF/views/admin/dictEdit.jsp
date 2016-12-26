@@ -11,21 +11,21 @@
             <table class="grid" style="width:100%;height:90px">
                 <tr>
                     <td>字典ID</td>
-                    <td><input name="dicttypeid" id="dicttypeid" type="text" placeholder="请输入字典ID" class="easyui-validatebox" data-options="required:true" value=""></td>
+                    <td><input name="dicttypeid" id="dicttypeid" type="text" placeholder="请输入字典ID" class="easyui-validatebox" data-options="required:true,disabled:true" value="${dict.dicttypeid}"></td>
                     <td>字典名称</td>
-                    <td><input name="dicttypename" id="dicttypename" type="text" placeholder="请输入字典名称" class="easyui-validatebox" data-options="required:true" value=""></td>
+                    <td><input name="dicttypename" id="dicttypename" type="text" placeholder="请输入字典名称" class="easyui-validatebox" data-options="required:true" value="${dict.dicttypename}"></td>
                 </tr>
                 <tr>
                     <td>字典编码</td>
-                    <td><input name="dicttypecode" id="dicttypecode" type="text" placeholder="请输入字典编码" class="easyui-validatebox" data-options="required:true" value=""></td>
+                    <td><input name="dicttypecode" id="dicttypecode" type="text" placeholder="请输入字典编码" class="easyui-validatebox" data-options="required:true" value="${dict.dicttypecode}"></td>
                     <td>序号</td>
                     <td>
-                        <input name="seqno" id="seqno" type="text" placeholder="请输入姓名" class="easyui-validatebox" data-options="required:true" value="">
+                        <input name="seqno" id="seqno" type="text" placeholder="请输入姓名" class="easyui-validatebox" data-options="required:true" value="${dict.seqno}">
                     </td>
                 </tr>
                 <tr>
                     <td>等级</td>
-                    <td><input type="text" name="rank" id="rank" class="easyui-numberbox" value=""/></td>
+                    <td><input type="text" name="rank" id="rank" class="easyui-numberbox" value="${dict.rank}"/></td>
                     <td></td>
                     <td>
                     </td>
@@ -71,10 +71,14 @@
 
 var dicttypeId = '<%= request.getParameter("dicttypeId")%>';
 
-alert(dicttypeId);
+
 
     $(function() {
 
+    	//获取数据
+    	//	$('#dataGrid').datagrid('load','${dict.dictEntry}');
+    	
+    	console.log(JSON.stringify('${dict.dictEntry}'));
     	
     	var curr = null;
     	$(document).bind('mousedown',function(e){
@@ -232,15 +236,7 @@ function save(){
      
     }
     	
-   
-    
-    console.log(submitData);
-    console.log(data);
-    console.log('myData : ' + JSON.stringify(submitData));
-    console.log(submitData);
-
-    var data = {"dict":submitData}
-    
+     
     progressLoad();
     
 	$.ajax({

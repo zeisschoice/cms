@@ -7,6 +7,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.wangzhixuan.commons.base.BaseController;
 import com.wangzhixuan.commons.utils.PageInfo;
+import com.wangzhixuan.model.Cost;
 import com.wangzhixuan.model.DictEntry;
 import com.wangzhixuan.model.DictType;
 import com.wangzhixuan.model.vo.DictTypeVo;
@@ -82,7 +84,12 @@ public class DictTypeController extends BaseController{
 	
 	
 	@RequestMapping(value = "/editPage",method = RequestMethod.GET)
-	public String dictTypeEdit(){
+	public String dictTypeEdit(Model model ,String dicttypeId){
+		
+		
+		 DictTypeVo dict = iDictType.selectDictData(dicttypeId);
+	     model.addAttribute("dict", dict);
+		
 		
 		return "admin/dictEdit";
 	}
@@ -149,5 +156,8 @@ public class DictTypeController extends BaseController{
 		iDictEntryService.deleteSelective(entity);
         return renderSuccess("删除成功！");
     }
+	
+	
+	
 	
 }
