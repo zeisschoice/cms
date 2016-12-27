@@ -8,13 +8,9 @@
     	
     	var costId = '<%=request.getParameter("id")%>';
     	var tenantName = '<%=request.getParameter("tenantName")%>';
-    	
-    	
-    	
+    	   	
     	$('#tenantName').val(tenantName);
-    	
-    	
-    	
+    	    	
         $('#costEditForm').form({
             url:'${path}/cost/edit',
             onSubmit : function() {
@@ -46,6 +42,52 @@
         
        //--------- 
 
+  // array = [{key:value},{key:value}]
+   function objectFindByKey(array, key, value) {
+    	    for (var i = 0; i < array.length; i++) {
+    	        if (array[i][key] == value) {
+    	            return array[i];
+    	        }
+    	    }
+    	    return null;
+    }
+    	
+    	
+ //----------------------------------   	
+    //获取配置费用数据	
+    	$.ajax({
+  		   type: "GET",
+  		   url: "${path }/dictEntry/data?id=COST",
+  		   async: false,
+  		   success: function(msg){
+  		//	 var  result =  JSON.pare(msg);
+
+  			   if(msg){
+  				  console.log(msg);
+  				  var msg = JSON.parse(msg);
+ 				  
+  				  msg = msg.obj;
+  				  
+ 				
+  				 $('#electricUnitPrice').val(objectFindByKey(msg,"dictid","ECOST").value);
+  				 $('#gasUnitPrice').val(objectFindByKey(msg,"dictid","GCOST").value);
+  				 $('#waterUnitPrice').val(objectFindByKey(msg,"dictid","WCOST").value);
+
+  			
+  			   }
+
+  			   
+  			   
+  		   },
+  		   error:function(){
+  			  
+  			  $.messager.progress('close');
+  			  $.messager.alert('发送失败！', msg.msg, 'error');
+  		   }
+  	});       
+       
+ //--------------
+ 
     function totalCost(){	  
 	    var gasCharge = $('#gasCharge').val();
 	    var waterCharge= $('#waterCharge').val();

@@ -36,8 +36,6 @@
      $("#endDate").val('${room.endDate }'==null || '${room.endDate }'== ''?"":myformatter(new Date('${room.endDate }')));
        
      
-  // $('#status').combobox('select', '${room.status}');
- //     $('#type').combobox('setValue', $('#type')['${room.type}'].value);
      
      $('#buildingId').combotree({
          url : '${path}/room/tree',
@@ -63,8 +61,6 @@
     }
     
     
- //   $('#status').combobox('select', '${room.status}');
- //   $('#type').combobox('select', '${room.type}');
 </script>
 <div class="easyui-layout" data-options="fit:true,border:false">
     <div data-options="region:'center',border:false" title="" style="overflow: hidden;padding: 3px;">
@@ -75,7 +71,7 @@
                     <td><input name="id" type="hidden"  value="${room.id}">
                     <input name="roomName" type="text" placeholder="请输入房间名称" class="easyui-validatebox" data-options="required:true" value="${room.roomName}"></td>
                     <td>住户姓名</td>
-                    <td><input name="liver" type="text" placeholder="请输入住户姓名" class="easyui-validatebox" data-options="required:true" value="${room.liver}"></td>
+                    <td><input name="liver" type="text" placeholder="请输入住户姓名" class="easyui-validatebox" data-options="required:true,readonly:true,disabled:true" value="${room.liver}"></td>
                 </tr>
                 <tr>
                     <td>出租开始日期</td>

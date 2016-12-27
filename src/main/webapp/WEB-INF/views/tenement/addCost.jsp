@@ -69,28 +69,36 @@
  		   }
  	});
     	
- 
+   // array = [{key:value},{key:value}]
+   function objectFindByKey(array, key, value) {
+    	    for (var i = 0; i < array.length; i++) {
+    	        if (array[i][key] == value) {
+    	            return array[i];
+    	        }
+    	    }
+    	    return null;
+    }
+    	
+    	
  //----------------------------------   	
     //获取配置费用数据	
     	$.ajax({
   		   type: "GET",
   		   url: "${path }/dictEntry/data?id=COST",
-  		   data:data,
   		   async: false,
   		   success: function(msg){
   		//	 var  result =  JSON.pare(msg);
 
   			   if(msg){
-  				  
+  				  console.log(msg);
   				  var msg = JSON.parse(msg);
- 				 
- 				  $('#lastElectricNum').val(msg.currentElectricNum);
- 				  $('#lastWaterNum').val(msg.currentWaterNum);
- 				  $('#lastGasNum').val(msg.currentGasNum);
+ 				  
+  				  msg = msg.obj;
   				  
-  				 $('#electricUnitPrice').val(msg.electricUnitPrice);
-  				 $('#gasUnitPrice').val(msg.gasUnitPrice);
-  				 $('#waterUnitPrice').val(msg.waterUnitPrice);
+ 				
+  				 $('#electricUnitPrice').val(objectFindByKey(msg,"dictid","ECOST").value);
+  				 $('#gasUnitPrice').val(objectFindByKey(msg,"dictid","GCOST").value);
+  				 $('#waterUnitPrice').val(objectFindByKey(msg,"dictid","WCOST").value);
 
   			
   			   }
@@ -104,7 +112,11 @@
   			  $.messager.alert('发送失败！', msg.msg, 'error');
   		   }
   	}); 	
-    	
+  
+   //------------------------------
+
+ 
+ 
   //-----------------------------  	
         $('#costAddForm').form({
             url:'${path}/cost/add',

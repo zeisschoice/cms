@@ -16,28 +16,7 @@
     var selectedNodeId;
     var roomName;
     var monRent;
-   /*  t.tree({
-    	onLoadSuccess:function(){
-    		var node = t.tree('find', selectedNodeId);
-    		if (node){
-    			t.tree('select', node.target);
-    		}
-    	},
-    	onSelect:function(node){
-    		selectedNodeId = node.id;
-    	}
-    }); 
-   
-   //-----
-   $("#Form :input").attr("readonly", "readonly");
-   
-   //http://blog.csdn.net/jin_guang/article/details/36905387
-   
-   
-   */
-    
-    
-    
+     
     $(function() {
     	buildRoomTree = $('#roomTree').tree({
             url : '${path }/tenant/tree',
@@ -53,7 +32,7 @@
             			 monRent = node.attributes.monRent;
             		 }
             		
-            		 console.log(monRent);
+            		
             		 dataGrid.datagrid('load', {
                          id: node.id
                      });
@@ -80,9 +59,6 @@
 					});
 	            	
             	
-            		/*  $('#ff').form('load',{
-            			 url:'${path }/tenant/getTenant',
-            		 }); */	
             	
             	}
                
@@ -291,11 +267,16 @@
     	
     	if(roomId == null || roomId==""){
     		
-    		alert("请先选择要添加费用的房间!");
+    	//	alert("请先选择要添加费用的房间!");
+    		$.messager.alert('提示', "请先选择需要编辑的费用!", 'error');
     		return;
     	}
     	
-    	
+    	if($('#tenantName').val()==null || $('#tenantName').val()== ""){
+    		
+    		$.messager.alert('提示', "请先保存住户信息!", 'error');
+    		return;
+    	}
     	
     	
         parent.$.modalDialog({
@@ -351,7 +332,7 @@
         
        if(roomId == null || roomId==""){
     		
-    		alert("请先选择要添加费用的房间!");
+    		$.messager.alert('提示', "请先选择要添加费用的房间!", 'warning');
     		return;
     	}
         
@@ -375,7 +356,7 @@
         	
         }else{
         	
-        	alert("请先选择需要编辑的费用!");
+        	$.messager.alert('提示', "请先选择需要编辑的费用!", 'warning');
     		return;
         }
         
