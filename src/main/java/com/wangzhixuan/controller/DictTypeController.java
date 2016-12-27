@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.wangzhixuan.commons.base.BaseController;
 import com.wangzhixuan.commons.utils.PageInfo;
 import com.wangzhixuan.model.Cost;
@@ -84,12 +86,17 @@ public class DictTypeController extends BaseController{
 	
 	
 	@RequestMapping(value = "/editPage",method = RequestMethod.GET)
-	public String dictTypeEdit(Model model ,String dicttypeId){
+	public String dictTypeEdit(Model model ,String dicttypeId) throws JsonProcessingException{
 		
 		
 		 DictTypeVo dict = iDictType.selectDictData(dicttypeId);
+		 
+		 ObjectMapper mapper = new ObjectMapper();
+		 
 	     model.addAttribute("dict", dict);
-		
+	     model.addAttribute("dictEntry", mapper.writeValueAsString(dict.getDictEntry()));
+	     
+		 
 		
 		return "admin/dictEdit";
 	}
@@ -120,6 +127,7 @@ public class DictTypeController extends BaseController{
 		dictType.setDicttypename(dict.getDicttypename());
 		dictType.setRank(dict.getRank());
 		dictType.setSeqno(dict.getSeqno());
+		dictType.setDictcat(dict.getDictcat());
 		dictType.setDictlevel(dict.getDictlevel());
 		
 		
@@ -158,6 +166,37 @@ public class DictTypeController extends BaseController{
     }
 	
 	
-	
+	@RequestMapping(value= "/edit",method = RequestMethod.POST,consumes = {"application/json"})
+    @ResponseBody
+    public Object edit(@RequestBody DictTypeVo dict) {
+    DictType dictType = new DictType();
+		
+		dictType.setDicttypeid(dict.getDicttypeid());	
+		dictType.setDicttypecode(dict.getDicttypecode());
+		dictType.setDicttypename(dict.getDicttypename());
+		dictType.setRank(dict.getRank());
+		dictType.setSeqno(dict.getSeqno());
+		dictType.setDictlevel(dict.getDictlevel());
+		dictType.setDictcat(dict.getDictcat());
+		
+		
+	    List<DictEntry> list = new ArrayList<DictEntry>();
+		
+	    list = dict.getDictEntry();
+			
+	    iDictType.updateById(dictType);
+	  
+	    if(list!=null && list.size()>0){
+	    	
+	    	for(int i = 0;i<list.size();i++){
+	    		
+	    		list.get(i).setDicttypeid(dict.getDicttypeid());
+	    		iDictEntryService.insertOrUpdate(list.get(i));
+	    	}
+	    	
+	    	
+	    }
+        return renderSuccess("编辑成功！");
+    }
 	
 }

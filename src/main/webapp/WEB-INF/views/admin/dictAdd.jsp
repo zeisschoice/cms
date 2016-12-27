@@ -26,8 +26,8 @@
                 <tr>
                     <td>等级</td>
                     <td><input type="text" name="rank" id="rank" class="easyui-numberbox" value=""/></td>
-                    <td></td>
-                    <td>
+                    <td>类别</td>
+                    <td><input type="text" name="dictcat" id="dictcat" class="easyui-validatebox" value=""/>
                     </td>
                 </tr>
             </table>
@@ -48,9 +48,9 @@
                 <th data-options="field:'dictname',width:80,editor:'text'">名称</th>
                 <th data-options="field:'dictcode',width:80,editor:'text'">编码</th>
                 <th data-options="field:'value',width:80,align:'right',editor:'numberbox'">值</th>
+                <th data-options="field:'dictlevel',width:80,editor:'text'">计费单位</th>
                  <th data-options="field:'status',width:80,editor:'numberbox'">状态</th>
                 <th data-options="field:'sortno',width:80,editor:'text'">序号</th>
-                <th data-options="field:'dictlevel',width:80,editor:'text'">级别</th>
                 <th data-options="field:'rank',width:80,editor:'text'">排序</th>
             </tr>
            
@@ -87,7 +87,7 @@
     				curr = dg;
     			}
     		} else {
-    			endEditing(curr);
+    			endEditingDg(curr);
     			curr = null;
     		}
     	});
@@ -218,6 +218,8 @@ function save(){
     submitData.dicttypecode = $('#dicttypecode').val();
     submitData.seqno = $('#seqno').val();
     submitData.rank = $('#rank').val();
+    submitData.dictcat = $('#dictcat').val();
+    
     
     var ids = [];
     
@@ -231,12 +233,6 @@ function save(){
      
     }
     	
-   
-    
-    console.log(submitData);
-    console.log(data);
-    console.log('myData : ' + JSON.stringify(submitData));
-    console.log(submitData);
 
     var data = {"dict":submitData}
     

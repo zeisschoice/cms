@@ -26,8 +26,8 @@
                 <tr>
                     <td>等级</td>
                     <td><input type="text" name="rank" id="rank" class="easyui-numberbox" value="${dict.rank}"/></td>
-                    <td></td>
-                    <td>
+                   <td>类别</td>
+                    <td><input type="text" name="dictcat" id="dictcat" class="easyui-validatebox" value="${dict.dictcat}"/>
                     </td>
                 </tr>
             </table>
@@ -39,19 +39,23 @@
         data-options="
                 clickToEdit:true,
                 singleSelect: true,
-                toolbar: '#toolbar'"
+                toolbar: '#toolbar',
+                onClickCell: onClickCell
+              
+                "
                 >
         <thead>
             <tr>
-                <th data-options="field:'dicttypeid',width:80,editor:'text',hidden:true">编号</th>
-                <th data-options="field:'dictid',width:80,editor:'text'">编号</th>
+                <th data-options="field:'dicttypeid',width:80">字典ID</th>
+                <th data-options="field:'dictid',width:80,editor:'text',readonly:true">项目编号</th>
                 <th data-options="field:'dictname',width:80,editor:'text'">名称</th>
                 <th data-options="field:'dictcode',width:80,editor:'text'">编码</th>
                 <th data-options="field:'value',width:80,align:'right',editor:'numberbox'">值</th>
-                 <th data-options="field:'status',width:80,editor:'numberbox'">状态</th>
+                <th data-options="field:'dictlevel',width:80,editor:'text'">计费单位</th>
+                <th data-options="field:'status',width:80,editor:'numberbox'">状态</th>
                 <th data-options="field:'sortno',width:80,editor:'text'">序号</th>
-                <th data-options="field:'dictlevel',width:80,editor:'text'">级别</th>
-                <th data-options="field:'rank',width:80,editor:'text'">排序</th>
+                <th data-options="field:'rank',width:80,editor:'text'">排序</th> 
+          
             </tr>
            
         </thead>
@@ -70,15 +74,43 @@
 <script type="text/javascript">
 
 var dicttypeId = '<%= request.getParameter("dicttypeId")%>';
+<%-- <%@ page import="com.fasterxml.jackson.databind.ObjectMapper" %>
+
+<%
+
+ObjectMapper mapper = new ObjectMapper();
+System.out.println(mapper.writeValueAsString("${dict.dictEntry}"));
+
+request.setParameter("dictEntry",);
 
 
+%> --%>
 
     $(function() {
 
-    	//获取数据
-    	//	$('#dataGrid').datagrid('load','${dict.dictEntry}');
+    
+    	var dictentry = $.parseJSON('${dictEntry}');
     	
-    	console.log(JSON.stringify('${dict.dictEntry}'));
+    	var data = [];
+    	
+    	for(var i=0;i<dictentry.length;i++){
+    		
+    		data.push(dictentry[i]);
+    		
+    	}
+    	
+    
+    	
+    	$('#dataGrid').datagrid({ 
+    		url:null   
+    	  });
+    	//获取数据
+    	$('#dataGrid').datagrid('loadData',dictentry);
+    	
+    //	console.log(JSON.stringify('${dictEntry}'));
+    	
+    //	console.log(typeof('${dictEntry}'));
+    	
     	
     	var curr = null;
     	$(document).bind('mousedown',function(e){
@@ -92,7 +124,7 @@ var dicttypeId = '<%= request.getParameter("dicttypeId")%>';
     				curr = dg;
     			}
     		} else {
-    			endEditing(curr);
+    			endEditingDg(curr);
     			curr = null;
     		}
     	});
@@ -197,6 +229,40 @@ function delDictEntry(){
 	 if (editIndex == undefined){return}
      $('#dataGrid').datagrid('deleteRow', editIndex);
      editIndex = undefined;
+     
+ 	$.ajax({
+		
+		   type: "GET",
+		   url: "${path }/dictEntry/delete?id="+selectRow[0].dictid,
+		   async: false,
+		   success: function(result){
+	
+			   
+			   if(result){
+				  
+				    progressClose();
+	                result = updateStr(result);
+	                result = $.parseJSON(result);
+	                if (result.success) {
+	                    parent.$.modalDialog.openner_dataGrid.datagrid('reload');
+	                    parent.$.messager.alert('提示', result.msg, 'success');
+	                   // parent.$.modalDialog.handler.dialog('close');
+	                } else {
+	                    parent.$.messager.alert('提示', result.msg, 'warning');
+	                }
+				 		
+			   } 
+
+			   
+			   
+		   },
+		   error:function(){
+			  progressClose();
+			  $.messager.progress('close');
+			  $.messager.alert('删除失败！', result.msg, 'error');
+		   }
+	});
+     
 }  
 
 
@@ -223,7 +289,7 @@ function save(){
     submitData.dicttypecode = $('#dicttypecode').val();
     submitData.seqno = $('#seqno').val();
     submitData.rank = $('#rank').val();
-    
+    submitData.dictcat = $('#dictcat').val();
     var ids = [];
     
     if(data.rows){
@@ -244,7 +310,7 @@ function save(){
 		   type: "POST",
 		   contentType: "application/json",
 	       dataType: "json",
-		   url: "${path }/dictType/add",
+		   url: "${path }/dictType/edit",
 		   data:JSON.stringify(submitData),
 		   async: false,
 		   success: function(result){
@@ -276,7 +342,26 @@ function save(){
     
 } 
 
-
+function onClickCell(index, field){
+	
+    if (editIndex != index){
+        if (endEditing()){
+            $('#dataGrid').datagrid('selectRow', index)
+                    .datagrid('beginEdit', index);
+            var ed = $('#dataGrid').datagrid('getEditor', {index:index,field:field});
+            if (ed){
+                ($(ed.target).data('textbox') ? $(ed.target).textbox('textbox') : $(ed.target)).focus();
+            }
+            editIndex = index;
+        } else {
+            setTimeout(function(){
+                $('#dataGrid').datagrid('selectRow', editIndex);
+            },0);
+        }
+    }
+    
+    
+}
 
 
 </script>

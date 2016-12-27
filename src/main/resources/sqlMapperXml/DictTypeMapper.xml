@@ -36,14 +36,14 @@
 			<result column="sortno" property="sortno" />
 			<result column="erank" property="rank" />
 			<result column="value" property="value" />
-			<result column="dictlevel" property="dictlevel" />
+			<result column="edictlevel" property="dictlevel" />
 			<result column="dictcode" property="dictcode" />
 		</collection>
 	</resultMap>
 
    <select id="selectDictTypeVoPage" resultMap="BaseResultMapVo">
       select 
-      t.*,e.dicttypeid,e.dictid,e.dictname,e.status,e.sortno,e.rank as erank,value,e.dictlevel as edictlevel
+      t.*,e.dicttypeid,e.dictid,e.dictname,e.status,e.sortno,e.rank as erank,value,e.dictlevel as edictlevel,e.dictcode
       from dict_type t left join dict_entry e on t.dicttypeid = e.dicttypeid
       
       where t.dicttypeid = #{id}
