@@ -74,17 +74,7 @@
 <script type="text/javascript">
 
 var dicttypeId = '<%= request.getParameter("dicttypeId")%>';
-<%-- <%@ page import="com.fasterxml.jackson.databind.ObjectMapper" %>
 
-<%
-
-ObjectMapper mapper = new ObjectMapper();
-System.out.println(mapper.writeValueAsString("${dict.dictEntry}"));
-
-request.setParameter("dictEntry",);
-
-
-%> --%>
 
     $(function() {
 
@@ -107,9 +97,6 @@ request.setParameter("dictEntry",);
     	//获取数据
     	$('#dataGrid').datagrid('loadData',dictentry);
     	
-    //	console.log(JSON.stringify('${dictEntry}'));
-    	
-    //	console.log(typeof('${dictEntry}'));
     	
     	
     	var curr = null;

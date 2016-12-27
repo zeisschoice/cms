@@ -34,6 +34,8 @@
     	data.year = year;
     	data.roomId = roomId ;
     	
+    	
+    	//获取上个月的费用
     	$.ajax({
  		   type: "POST",
  		   url: "${path }/cost/getLastMon",
@@ -67,8 +69,43 @@
  		   }
  	});
     	
-  	
+ 
+ //----------------------------------   	
+    //获取配置费用数据	
+    	$.ajax({
+  		   type: "GET",
+  		   url: "${path }/dictEntry/data?id=COST",
+  		   data:data,
+  		   async: false,
+  		   success: function(msg){
+  		//	 var  result =  JSON.pare(msg);
+
+  			   if(msg){
+  				  
+  				  var msg = JSON.parse(msg);
+ 				 
+ 				  $('#lastElectricNum').val(msg.currentElectricNum);
+ 				  $('#lastWaterNum').val(msg.currentWaterNum);
+ 				  $('#lastGasNum').val(msg.currentGasNum);
+  				  
+  				 $('#electricUnitPrice').val(msg.electricUnitPrice);
+  				 $('#gasUnitPrice').val(msg.gasUnitPrice);
+  				 $('#waterUnitPrice').val(msg.waterUnitPrice);
+
+  			
+  			   }
+
+  			   
+  			   
+  		   },
+  		   error:function(){
+  			  
+  			  $.messager.progress('close');
+  			  $.messager.alert('发送失败！', msg.msg, 'error');
+  		   }
+  	}); 	
     	
+  //-----------------------------  	
         $('#costAddForm').form({
             url:'${path}/cost/add',
             onSubmit : function() {
