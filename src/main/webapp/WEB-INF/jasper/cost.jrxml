@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="cost" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="26babfb5-ac49-4194-b848-96f148ae717a">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="42"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -43,6 +43,8 @@
 	<field name="other" class="java.lang.String"/>
 	<field name="writeBiller" class="java.lang.String"/>
 	<field name="internetCount" class="java.lang.String"/>
+	<field name="lastMon" class="java.lang.String"/>
+	<field name="roomNum" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -217,11 +219,11 @@
 			</textField>
 			<textField>
 				<reportElement style="ZH_CN" x="32" y="69" width="754" height="20" uuid="118f3e1f-d0e8-498b-b821-2ed37383bc28"/>
-				<textFieldExpression><![CDATA["水费："+$F{crMonWaterNum}+" － "+$F{lsMonWaterNum}+"  = "+$F{waterNum}+" (本月用水数) "+"  X  "+$F{perWaterRMB}+" 度/元 " + "  =  "+$F{waterCount}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["水费："+$F{crMonWaterNum}+" － "+$F{lsMonWaterNum}+"  = "+$F{waterNum}+" (本月用水数) "+"  ×  "+$F{perWaterRMB}+" 度/元 " + "  =  "+$F{waterCount}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement style="ZH_CN" x="33" y="93" width="753" height="20" uuid="db6d97f3-7f68-4ad7-8bf9-6a0a61620965"/>
-				<textFieldExpression><![CDATA["电费：" + $F{crMonElecNum} + " － " + $F{lsMonElecNum} + "  =  " + $F{elecNum} + " (本月用电数) " + "  X  " + $F{perElecRMB} + " 度/元 " + " = " + $F{elecCount}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["电费：" + $F{crMonElecNum} + " － " + $F{lsMonElecNum} + "  =  " + $F{elecNum} + " (本月用电数) " + "  ×  " + $F{perElecRMB} + " 度/元 " + " = " + $F{elecCount}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement style="ZH_CN" x="33" y="116" width="140" height="20" uuid="30a3b845-f9ae-44b7-83c0-a47187eb3b0e"/>
@@ -239,6 +241,25 @@
 				<reportElement style="ZH_CN" x="462" y="114" width="100" height="20" uuid="c866cd21-735f-4e6b-a58e-99fa7001ed6c"/>
 				<textFieldExpression><![CDATA[" 其他："+$F{other}]]></textFieldExpression>
 			</textField>
+			<textField>
+				<reportElement style="ZH_CN" x="100" y="10" width="145" height="20" uuid="62e16b2f-a4ba-4be4-9384-2a457a81aca6"/>
+				<textFieldExpression><![CDATA[$F{address} + $F{roomNum}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="455" y="11" width="71" height="20" uuid="6e31b92e-478b-44ea-a862-1a7487794454"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{lastMon}]]></textFieldExpression>
+			</textField>
+			<textField pattern="yyyy-MM-dd">
+				<reportElement x="551" y="10" width="100" height="20" uuid="f2ff4c0f-1b84-4591-b3a5-3713a268b0a9"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="ZH_CN" x="533" y="10" width="12" height="20" uuid="ffd0bd7a-0d82-4d78-9545-56b0889ffc20"/>
+				<text><![CDATA[至]]></text>
+			</staticText>
 		</band>
 	</detail>
 	<columnFooter>

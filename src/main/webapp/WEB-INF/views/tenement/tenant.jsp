@@ -374,6 +374,12 @@
        
     function printFun(){
     	
+    	if(roomName==null || roomName ==""){
+    		
+    		alert("房间为空!");
+    		return;
+    	}
+    	
     	 var rows = dataGrid.datagrid('getSelections');
     
     	 if(rows && rows.length > 0){
@@ -381,6 +387,9 @@
     	   
     		 window.open('${path }/print/cost1?cost='+param);
     		 
+    	 }else{
+    		 
+    		 alert("请选择一条费用记录!");
     	 }
     	
     }

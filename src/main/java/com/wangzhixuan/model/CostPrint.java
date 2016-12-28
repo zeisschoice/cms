@@ -3,10 +3,12 @@ package com.wangzhixuan.model;
 public class CostPrint {
 
 	private String address;
+	private String roomNum;
+	private String lastMon;
     private String waterNum;
 	private String crMonWaterNum;
 	private String elecNum;
- 
+    
 	private String lsMonWaterNum ;
 	private String crMonElecNum ;
 	private String lsMonElecNum ;
@@ -167,6 +169,22 @@ public class CostPrint {
 
 	public void setAddress(String address) {
 		this.address = address;
+	}
+
+	public String getRoomNum() {
+		return roomNum;
+	}
+
+	public void setRoomNum(String roomNum) {
+		this.roomNum = roomNum;
+	}
+
+	public String getLastMon() {
+		return lastMon;
+	}
+
+	public void setLastMon(String lastMon) {
+		this.lastMon = lastMon;
 	}
 	
 }

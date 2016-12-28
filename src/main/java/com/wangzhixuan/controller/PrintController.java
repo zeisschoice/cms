@@ -65,6 +65,9 @@ public class PrintController extends BaseController {
 		List<CostPrint> list = new ArrayList<CostPrint>();
 		
 		cp.setAddress("佛山市北滘");
+		cp.setLastMon("2016-11-3");
+		cp.setRoomNum("A105");
+		
 		
 		cp.setCrMonWaterNum(c.getCurrentWaterNum().toString());
 		cp.setLsMonWaterNum(c.getLastWaterNum().toString());
