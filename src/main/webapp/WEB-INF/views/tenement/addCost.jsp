@@ -2,11 +2,23 @@
 <%@ include file="/commons/global.jsp" %>
 <script type="text/javascript">
 
-    
+  var array = [];  
 
+  // array = [{key:value},{key:value}]
+  function objectFindByKey(array, key, value) {
+   	    for (var i = 0; i < array.length; i++) {
+   	        if (array[i][key] == value) {
+   	            return array[i];
+   	        }
+   	    }
+   	    return null;
+   }
+   	
+  
+  
 
     $(function() {
-       
+        
     	var dateObj = new Date();
     	var month = dateObj.getUTCMonth() + 1; //months from 1-12
     	var day = dateObj.getUTCDate();
@@ -40,21 +52,23 @@
  		   type: "POST",
  		   url: "${path }/cost/getLastMon",
  		   data:data,
- 		   async: false,
+ 		   async: true,
  		   success: function(msg){
  		//	 var  result =  JSON.pare(msg);
-
+                console.log(msg); 
  			   if(msg){
  				  
  				  var msg = JSON.parse(msg);
 				 
+ 				 
+ 				  
 				  $('#lastElectricNum').val(msg.currentElectricNum);
 				  $('#lastWaterNum').val(msg.currentWaterNum);
 				  $('#lastGasNum').val(msg.currentGasNum);
  				  
- 				 $('#electricUnitPrice').val(msg.electricUnitPrice);
- 				 $('#gasUnitPrice').val(msg.gasUnitPrice);
- 				 $('#waterUnitPrice').val(msg.waterUnitPrice);
+ 				// $('#electricUnitPrice').val(msg.electricUnitPrice);
+ 				// $('#gasUnitPrice').val(msg.gasUnitPrice);
+ 				// $('#waterUnitPrice').val(msg.waterUnitPrice);
 
  			
  			   }
@@ -69,38 +83,34 @@
  		   }
  	});
     	
-   // array = [{key:value},{key:value}]
-   function objectFindByKey(array, key, value) {
-    	    for (var i = 0; i < array.length; i++) {
-    	        if (array[i][key] == value) {
-    	            return array[i];
-    	        }
-    	    }
-    	    return null;
-    }
-    	
+  
     	
  //----------------------------------   	
     //获取配置费用数据	
     	$.ajax({
   		   type: "GET",
   		   url: "${path }/dictEntry/data?id=COST",
-  		   async: false,
+  		   async: true,
   		   success: function(msg){
   		//	 var  result =  JSON.pare(msg);
-
+  		      
   			   if(msg){
-  				  console.log(msg);
+  				 
   				  var msg = JSON.parse(msg);
  				  
-  				  msg = msg.obj;
+  				  array = msg.obj;
   				  
- 				
-  				 $('#electricUnitPrice').val(objectFindByKey(msg,"dictid","ECOST").value);
-  				 $('#gasUnitPrice').val(objectFindByKey(msg,"dictid","GCOST").value);
-  				 $('#waterUnitPrice').val(objectFindByKey(msg,"dictid","WCOST").value);
-
-  			
+  				 console.log(msg);
+  					
+  				//	alert("请先配置费用数据字典 ECOST（电费）、GCOST（煤气费）、WCOST（水费）");
+  			     
+  		     
+  			     $('#electricUnitPrice').numberbox('setValue',objectFindByKey(array,"dictid","ECOST").value);
+  			  	 $('#gasUnitPrice').numberbox('setValue',objectFindByKey(array,"dictid","GCOST").value);
+  			   	 $('#waterUnitPrice').numberbox('setValue',objectFindByKey(array,"dictid","WCOST").value); 
+  				
+  		    
+  				
   			   }
 
   			   
@@ -333,6 +343,9 @@
       	  }
         }); 
         
+   
+        
+        
     });
     
    
@@ -366,7 +379,10 @@
   	
  }   
     
-    
+ 
+   
+  
+	 
 </script>
 <div class="easyui-layout" data-options="fit:true,border:false">
     <div data-options="region:'center',border:false" title="" style="overflow: hidden;padding: 3px;">

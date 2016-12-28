@@ -31,6 +31,9 @@ public class Cost implements Serializable {
 	@TableField(value="room_id")
 	private Integer roomId;
 
+	@TableField(value="tenant_id")
+	private Integer tenantId;
+	
 	/**
 	 * 
 	 */

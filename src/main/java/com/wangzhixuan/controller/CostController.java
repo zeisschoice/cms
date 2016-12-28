@@ -89,6 +89,7 @@ public class CostController extends BaseController{
 	   columnMap.put("year", cost.getYear());
 	   columnMap.put("month", cost.getMonth());
 	   columnMap.put("room_id", cost.getRoomId());
+	 //  columnMap.put("tenant_id", cost.getTenantId);
 	   
 		List<Cost> list = iCostService.selectByMap(columnMap);
 		

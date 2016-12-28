@@ -542,7 +542,10 @@
 				   success: function(msg){
 				      
 					   if(msg){
-						   
+						   msg = $.parseJSON(msg);
+						   $('#ff').form('clear');
+						   dataGrid.datagrid('load', {});
+						   $("#roomTree").tree("reload");//刷新树
 						   $.messager.alert('提示', msg.msg, 'info');
 					   }
 							   

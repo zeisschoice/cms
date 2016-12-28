@@ -91,7 +91,7 @@ public class TenantController extends BaseController{
 		room.setLiver(tenant.getIdentityCard());
 		boolean isUpdate = iRoomService.updateById(room);
 		System.out.println("isUpdate:"+isUpdate);
-		
+		tenant.setIsDel(0);
 		iTenantService.insert(tenant);
 		return renderSuccess("添加成功");
 	}
@@ -111,11 +111,18 @@ public class TenantController extends BaseController{
 	 @RequestMapping("/delete")
 	 @ResponseBody
 	 public Object delete(Long id,Long roomId) {
-		 iTenantService.deleteById(id);
+		// iTenantService.deleteById(id);
 		 
 		 Tenant tenant = new Tenant();
 		 tenant.setId(id.intValue());
 		 tenant.setIsDel(1);
+		 
+		 Room room = iRoomService.selectById(roomId);
+	     room.setStatus(0);
+		 room.setLiver(null);
+		 boolean isUpdate = iRoomService.updateById(room);
+		 
+		 
 		 
 		 iTenantService.updateSelectiveById(tenant);
 		
