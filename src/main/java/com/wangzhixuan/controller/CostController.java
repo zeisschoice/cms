@@ -37,14 +37,14 @@ public class CostController extends BaseController{
 	
 	@RequestMapping(value = "/dataGrid", method = RequestMethod.POST)
 	@ResponseBody
-	public Object dataGrid(Room room, Integer page, Integer rows, String sort, String order) {
+	public Object dataGrid(String roomId,String tenantId, Integer page, Integer rows, String sort, String order) {
 		PageInfo pageInfo = new PageInfo(page, rows);
 		Map<String, Object> condition = new HashMap<String, Object>();
 
-		if (room.getId() != null) {
-			condition.put("roomId", room.getId());
+		if (roomId != null && tenantId !=null) {
+			condition.put("roomId", roomId);
+			condition.put("tenantId", tenantId);
 			
-		     
 		}
 
 		pageInfo.setCondition(condition);

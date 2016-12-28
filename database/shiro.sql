@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50712
 File Encoding         : 65001
 
-Date: 2016-12-26 19:17:38
+Date: 2016-12-28 19:52:49
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -59,7 +59,7 @@ CREATE TABLE `cost` (
   `month` int(11) DEFAULT NULL,
   `remark` varchar(200) CHARACTER SET utf8 COLLATE utf8_icelandic_ci DEFAULT NULL,
   `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `tenant_id` int(11) DEFAULT NULL,
+  `tenant_id` bigint(11) DEFAULT NULL,
   `current_water_num` double(20,0) DEFAULT NULL COMMENT '当月水表数',
   `last_water_num` double(20,0) DEFAULT NULL COMMENT '上个月水表数',
   `current_gas_num` double(20,0) DEFAULT NULL,
@@ -79,8 +79,8 @@ CREATE TABLE `cost` (
 -- ----------------------------
 -- Records of cost
 -- ----------------------------
-INSERT INTO `cost` VALUES ('42', '31', '132', '0', '1', '1', '0', '1', '12', '2016', '12', '3333333333', '2016-12-18 10:06:55', null, '11', '12', '11', '12', '121.00', '110.00', '12.00', '12.00', '12.00', '147.00', '35.00', '00000000000', '300');
-INSERT INTO `cost` VALUES ('43', '31', '0', '0', '0', '0', '0', '0', '0', '2016', '11', '卡卡卡卡卡卡卡不不不', '2016-12-18 21:29:01', null, '2', '1', '2', '1', '2.00', '1.00', '0.00', '0.00', '0.00', '0.00', '0.00', '00000000000', '300');
+INSERT INTO `cost` VALUES ('42', '31', '132', '0', '1', '1', '0', '1', '12', '2016', '12', '3333333333', '2016-12-28 19:46:18', '17', '11', '12', '11', '12', '121.00', '110.00', '12.00', '12.00', '12.00', '147.00', '35.00', '00000000000', '300');
+INSERT INTO `cost` VALUES ('43', '31', '0', '0', '0', '0', '0', '0', '0', '2016', '11', '卡卡卡卡卡卡卡不不不', '2016-12-28 19:46:20', '17', '2', '1', '2', '1', '2.00', '1.00', '0.00', '0.00', '0.00', '0.00', '0.00', '00000000000', '300');
 INSERT INTO `cost` VALUES ('44', '32', '6', '4', '0', '0', '0', '0', '0', '2016', '12', '', '2016-12-25 16:55:33', null, '16', '12', '9', '10', '19.00', '13.00', '1.00', '1.00', '1.00', '10.00', '1.00', '00000000002', '400');
 INSERT INTO `cost` VALUES ('45', '33', '99', '9900', '10', '0', '9900', '0', '1', '2016', '12', '', '2016-12-25 17:40:23', null, '100', '1', '100', '1', '100.00', '1.00', '100.00', '100.00', '1.00', '19910.00', '0.00', '00000000001', '1000');
 
@@ -96,7 +96,7 @@ CREATE TABLE `dict_entry` (
   `sortno` int(11) DEFAULT NULL,
   `rank` int(11) DEFAULT NULL,
   `value` double DEFAULT '0',
-  `dictlevel` varchar(255) DEFAULT NULL,
+  `dictlevel` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   `dictcode` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`dictid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -104,8 +104,8 @@ CREATE TABLE `dict_entry` (
 -- ----------------------------
 -- Records of dict_entry
 -- ----------------------------
-INSERT INTO `dict_entry` VALUES ('COST', 'ECOST', '电费', '1', '1', '1', '10', '1', 'ECOST');
-INSERT INTO `dict_entry` VALUES ('COST', 'WCOST', '水费', '2', '2', '2', '5', '2', 'WCOST');
+INSERT INTO `dict_entry` VALUES ('COST', 'ECOST', '电费', '1', '1', '1', '12', '度/元', 'ECOST');
+INSERT INTO `dict_entry` VALUES ('COST', 'WCOST', '电费', null, null, null, '14', '吨/元', 'WCOST');
 
 -- ----------------------------
 -- Table structure for dict_type
@@ -128,7 +128,7 @@ CREATE TABLE `dict_type` (
 -- ----------------------------
 -- Records of dict_type
 -- ----------------------------
-INSERT INTO `dict_type` VALUES ('COST', '费用', '1', null, '1', null, null, 'COST', null, null);
+INSERT INTO `dict_type` VALUES ('COST', '费用', '11', null, '11', null, null, 'COST', null, '费用');
 
 -- ----------------------------
 -- Table structure for organization
@@ -442,7 +442,7 @@ CREATE TABLE `sys_log` (
   `client_ip` varchar(255) DEFAULT NULL COMMENT '客户端ip',
   `create_time` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=344 DEFAULT CHARSET=utf8 COMMENT='系统日志';
+) ENGINE=InnoDB AUTO_INCREMENT=382 DEFAULT CHARSET=utf8 COMMENT='系统日志';
 
 -- ----------------------------
 -- Records of sys_log
@@ -790,6 +790,44 @@ INSERT INTO `sys_log` VALUES ('340', 'admin', 'admin', '[类名]:com.wangzhixuan
 INSERT INTO `sys_log` VALUES ('341', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.DictTypeController,[方法]:add,[参数]:null', '0:0:0:0:0:0:0:1', null);
 INSERT INTO `sys_log` VALUES ('342', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.DictTypeController,[方法]:add,[参数]:null', '0:0:0:0:0:0:0:1', null);
 INSERT INTO `sys_log` VALUES ('343', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.DictTypeController,[方法]:add,[参数]:null', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('344', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.DictTypeController,[方法]:delete,[参数]:id=COST&', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('345', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.DictTypeController,[方法]:add,[参数]:null', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('346', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.DictTypeController,[方法]:delete,[参数]:id=COST&', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('347', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.DictTypeController,[方法]:add,[参数]:null', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('348', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.DictTypeController,[方法]:add,[参数]:null', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('349', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.DictTypeController,[方法]:edit,[参数]:null', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('350', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.DictTypeController,[方法]:edit,[参数]:null', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('351', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.DictTypeController,[方法]:edit,[参数]:null', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('352', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.DictTypeController,[方法]:edit,[参数]:null', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('353', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.DictTypeController,[方法]:edit,[参数]:null', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('354', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.DictEntryController,[方法]:delete,[参数]:id=WWWW&', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('355', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.DictEntryController,[方法]:delete,[参数]:id=WWWW&', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('356', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.DictEntryController,[方法]:delete,[参数]:id=WCOST1&', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('357', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.DictEntryController,[方法]:delete,[参数]:id=ECOST1&', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('358', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.DictTypeController,[方法]:edit,[参数]:null', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('359', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.DictEntryController,[方法]:delete,[参数]:id=WCOST&', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('360', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.DictEntryController,[方法]:delete,[参数]:id=undefined&', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('361', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.DictTypeController,[方法]:edit,[参数]:null', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('362', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.DictTypeController,[方法]:edit,[参数]:null', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('363', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.DictTypeController,[方法]:edit,[参数]:null', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('364', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.DictTypeController,[方法]:edit,[参数]:null', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('365', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.DictTypeController,[方法]:edit,[参数]:null', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('366', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.DictTypeController,[方法]:edit,[参数]:null', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('367', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.DictTypeController,[方法]:edit,[参数]:null', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('368', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.DictTypeController,[方法]:edit,[参数]:null', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('369', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.DictTypeController,[方法]:edit,[参数]:null', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('370', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.DictTypeController,[方法]:edit,[参数]:null', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('371', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.DictTypeController,[方法]:edit,[参数]:null', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('372', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.CostController,[方法]:addRoomPage,[参数]:id=34&tenantName=&monRent=1500&_=1482830273809&', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('373', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.CostController,[方法]:addRoomPage,[参数]:id=33&tenantName=木女士&monRent=1000&_=1482830273810&', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('374', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.CostController,[方法]:addRoomPage,[参数]:id=32&tenantName=张女士&monRent=400&_=1482836297711&', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('375', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.CostController,[方法]:addRoomPage,[参数]:id=31&tenantName=张先生&monRent=300&_=1482836388120&', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('376', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.CostController,[方法]:addRoomPage,[参数]:id=32&tenantName=张女士&monRent=400&_=1482836520747&', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('377', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.CostController,[方法]:addRoomPage,[参数]:id=33&tenantName=木女士&monRent=1000&_=1482837503456&', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('378', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.CostController,[方法]:addRoomPage,[参数]:id=33&tenantName=木女士&monRent=1000&_=1482837503457&', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('379', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.CostController,[方法]:addRoomPage,[参数]:id=31&tenantName=张先生&monRent=300&_=1482885807743&', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('380', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.TenantController,[方法]:delete,[参数]:id=19&', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('381', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.TenantController,[方法]:delete,[参数]:id=18&', '0:0:0:0:0:0:0:1', null);
 
 -- ----------------------------
 -- Table structure for tenant
@@ -811,8 +849,6 @@ CREATE TABLE `tenant` (
 -- Records of tenant
 -- ----------------------------
 INSERT INTO `tenant` VALUES ('17', '张先生', '31', '0', '13450761833', '121223123111123111', '出租', '0');
-INSERT INTO `tenant` VALUES ('18', '张女士', '32', '1', '15919064667', '121212121121212211', '出租', '0');
-INSERT INTO `tenant` VALUES ('19', '木女士', '33', '1', '15919064667', '360022000000001119', '出差', '0');
 
 -- ----------------------------
 -- Table structure for user

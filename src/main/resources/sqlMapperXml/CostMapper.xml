@@ -43,7 +43,9 @@
         from cost
         where
         room_id = #{roomId}
-       
+        and
+        tenant_id = #{tenantId}
+        
         order by create_time desc
     
     </select>

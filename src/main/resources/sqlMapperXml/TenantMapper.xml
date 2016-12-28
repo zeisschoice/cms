@@ -10,11 +10,12 @@
 		<result column="tel" property="tel" />
 		<result column="identity_card" property="identityCard" />
 		<result column="remark" property="remark" />
+		<result column="is_del" property="isDel" />
 	</resultMap>
 
     <!-- 通用查询结果列-->
     <sql id="Base_Column_List">
-        id , tenant_name AS tenantName, room_id AS roomId, sex, tel, identity_card AS identityCard, remark
+        id , tenant_name AS tenantName, room_id AS roomId, sex, tel, identity_card AS identityCard, remark,is_del
     </sql>
     
     <select id="selectTenantPage" resultType="Tenant">
@@ -35,7 +36,7 @@
         from tenant
         where
         room_id = #{roomId}
-    
+        and is_del = 0
     </select>
     
     

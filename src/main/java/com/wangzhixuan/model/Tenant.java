@@ -55,13 +55,16 @@ public class Tenant implements Serializable {
 	@TableField(value="identity_card")
 	private String identityCard;
 
+	
+
 	/**
 	 * 
 	 */
 	private String remark;
 
 
-
+	@TableField(value="is_del")
+	private Integer isDel;
 	
 
 	public Integer getId() {
@@ -120,4 +123,11 @@ public class Tenant implements Serializable {
 		this.remark = remark;
 	}
 
+	public Integer getIsDel() {
+		return isDel;
+	}
+
+	public void setIsDel(Integer isDel) {
+		this.isDel = isDel;
+	}
 }

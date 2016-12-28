@@ -33,9 +33,9 @@
             		 }
             		
             		
-            		 dataGrid.datagrid('load', {
+            		/*  dataGrid.datagrid('load', {
                          id: node.id
-                     });
+                     }); */
             		
             	var d = {};
             	d.id = node.id;
@@ -49,7 +49,21 @@
 						      
 							   if(msg){
 								   
-								   $('#ff').form('load',JSON.parse(msg)); 
+								   var tenant = JSON.parse(msg);
+								   
+								   $('#ff').form('load',tenant); 
+								
+								   
+								   dataGrid.datagrid('load', {
+				                         roomId: tenant.roomId,
+				                         tenantId:tenant.id
+				                     });
+							   }else{
+								   
+								   dataGrid.datagrid('load', {
+				                         
+				                     });
+								   
 							   }
 	   							   
 						   },
@@ -512,7 +526,34 @@
    //删除住户
    function delTenantFun(){
 	   
+	   if($('#id').val() == null || $('#id').val() ==''){
+		   
+		   alert("无可删除的用户!");
+		   return;
+	   }
 	   
+	   parent.$.messager.confirm('询问', '您是否要删除当前用户？！', function(b) {
+	   
+		   if(b){
+			   
+			   $.ajax({
+				   type: "GET",
+				   url: "${path }/tenant/delete?id=" + $('#id').val()+"&roomId=" + roomId,
+				   success: function(msg){
+				      
+					   if(msg){
+						   
+						   $.messager.alert('提示', msg.msg, 'info');
+					   }
+							   
+				   },
+				   error:function(){
+					  alert("加载租户信息失败！");
+				   }
+			});  
+		   }
+	  
+	});
 	   
    }
    
