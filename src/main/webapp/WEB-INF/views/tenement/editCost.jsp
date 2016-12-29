@@ -98,6 +98,7 @@
 	    var otherCharge = $('#otherCharge').val();
 	    var monRent = $('#monRent').val();
 	    var manageCharge = $('#manageCharge').val();
+	    
 	    var total = (parseFloat(manageCharge) + parseFloat(monRent) + parseFloat(gasCharge) + parseFloat(waterCharge) + parseFloat(electricCharge) + parseFloat(internetCharge) + parseFloat(tvCharge) + parseFloat(equallyCharge) + parseFloat(otherCharge)).toFixed(2);
 	    
 	   
@@ -269,7 +270,16 @@
   	  }
     });
         
-      
+   
+
+    $('#manageCharge').numberbox({  
+    	  onChange: function(value){ 
+    		  totalCost();  
+    	  }
+      }); 
+    
+    
+    
     var a = $('#currentElectricNum').val();
 	var b = $('#lastElectricNum').val();
 	var c = (parseFloat(a) - parseFloat(b)).toFixed(2);

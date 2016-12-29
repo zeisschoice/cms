@@ -38,37 +38,37 @@
                 <tr>
                     <td>楼房名称</td>
                     <td><input name="id" type="hidden"  value="">
-                    <input name="buildingName" type="text" placeholder="请输入楼房名称" class="easyui-validatebox" data-options="required:true" value=""></td>
+                    <input name="buildingName" type="text" placeholder="请输入楼房名称" class="easyui-validatebox easyui-textbox" data-options="required:true" value=""></td>
                 </tr>
                 <tr>
                     <td>楼房地址</td>
                     <td>
-                    <input name="buildingAddress" type="text" placeholder="请输入楼房地址" class="easyui-validatebox" data-options="required:true" value=""></td>
+                    <input name="buildingAddress" type="text" placeholder="请输入楼房地址" class="easyui-validatebox easyui-textbox" data-options="required:true" value=""></td>
                 </tr>
                 <tr>
                     <td>房东</td>
                     <td >
-                     <input name="buildingOwn" type="text" placeholder="请输入楼房地址" class="easyui-validatebox" data-options="required:true" value=""></td>
+                     <input name="buildingOwn" type="text" placeholder="请输入楼房地址" class="easyui-validatebox easyui-textbox" data-options="required:true" value=""></td>
                 </tr>
                  <tr>
                     <td>房东电话</td>
                     <td >
-                     <input name="ownPhone" type="text" placeholder="请输入楼房地址" class="easyui-validatebox" data-options="required:true" value=""></td>
+                     <input name="ownPhone" type="text" placeholder="请输入楼房地址" class="easyui-validatebox easyui-textbox" validType="mobile" data-options="required:true" value=""></td>
                 </tr>
                  <tr>
                     <td>管理员</td>
                     <td >
-                     <input name="buildingManager" type="text" placeholder="请输入楼房地址" class="easyui-validatebox" data-options="required:true" value=""></td>
+                     <input name="buildingManager" type="text" placeholder="请输入楼房地址" class="easyui-validatebox easyui-textbox" data-options="required:true" value=""></td>
                 </tr>
                  <tr>
                     <td>管理员电话</td>
                     <td >
-                     <input name="managerPhone" type="text" placeholder="请输入管理员电话" class="easyui-validatebox" data-options="required:true" value=""></td>
+                     <input name="managerPhone" type="text" placeholder="请输入管理员电话" class="easyui-validatebox easyui-textbox" validType="mobile" data-options="required:true" value=""></td>
                 </tr>
                  <tr>
                     <td>房间数</td>
                     <td >
-                     <input name="roomCount" type="text" placeholder="请输入楼房房间数" class="easyui-validatebox" data-options="required:true" value=""></td>
+                     <input name="roomCount" type="text" placeholder="请输入楼房房间数" class="easyui-validatebox easyui-textbox" data-options="required:true" value=""></td>
                 </tr>
                 <tr>
                     <td>备注</td>

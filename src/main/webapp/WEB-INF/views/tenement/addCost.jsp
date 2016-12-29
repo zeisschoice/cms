@@ -174,8 +174,10 @@
     	    var tvCharge = $('#tvCharge').val();
     	    var equallyCharge = $('#equallyCharge').val();
     	    var otherCharge = $('#otherCharge').val();
+    	    var monRent = $('#monRent').val();
+    	    var manageCharge = $('#manageCharge').val();
     	    
-    	    var total = (parseFloat(gasCharge) + parseFloat(waterCharge) + parseFloat(electricCharge) + parseFloat(internetCharge) + parseFloat(tvCharge) + parseFloat(equallyCharge) + parseFloat(otherCharge)).toFixed(2);
+    	    var total = (parseFloat(manageCharge) +  parseFloat(monRent) + parseFloat(gasCharge) + parseFloat(waterCharge) + parseFloat(electricCharge) + parseFloat(internetCharge) + parseFloat(tvCharge) + parseFloat(equallyCharge) + parseFloat(otherCharge)).toFixed(2);
     	    
     	   
        
@@ -347,6 +349,11 @@
         }); 
         
    
+        $('#manageCharge').numberbox({  
+        	  onChange: function(value){ 
+        		  totalCost();  
+        	  }
+          }); 
         
         
     });

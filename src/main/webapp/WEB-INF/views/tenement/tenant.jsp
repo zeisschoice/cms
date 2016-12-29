@@ -51,7 +51,8 @@
 						      
 							   if(msg){
 								   
-								   var tenant = JSON.parse(msg);
+							//	   var tenant = JSON.parse(msg);
+								   var tenant = eval("(" + msg + ")");
 								   
 								   $('#ff').form('load',tenant); 
 								
@@ -372,6 +373,9 @@
                 href : '${path }/cost/editPage?id=' + rows[0].id+"&tenantName="+$('#tenantName').val(),
                 buttons : [ {
                     text : '确定',
+                    iconCls: "icon-ok",
+                    width: 80,
+                    height: 35,
                     handler : function() {
                         parent.$.modalDialog.openner_dataGrid = dataGrid;//因为添加成功之后，需要刷新这个dataGrid，所以先预定义好
                         var f = parent.$.modalDialog.handler.find('#costEditForm');
@@ -481,7 +485,7 @@
 	
 	   if(roomId == null || roomId==""){
    		
-   		alert("请先选择要添加费用的房间!");
+   		alert("请先选择要添加用户的房间!");
    		return;
      	}
 	 

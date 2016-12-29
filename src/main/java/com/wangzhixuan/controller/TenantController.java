@@ -86,7 +86,14 @@ public class TenantController extends BaseController{
 		// return renderError("用户名已存在!");
 		// }
 		// userVo.setPassword(DigestUtils.md5Hex(userVo.getPassword()));
+		System.out.println(tenant);
 		Room room = iRoomService.selectById(tenant.getRoomId());
+		
+		if(room==null){
+			
+			return renderError("不存在该房间，请检查是否在房间节点上添加租户！");
+		}
+		
 		room.setStatus(1);
 		room.setLiver(tenant.getIdentityCard());
 		boolean isUpdate = iRoomService.updateById(room);
