@@ -26,11 +26,15 @@
     	var roomId = <%= request.getParameter("id") %>;
         var tenantName = '<%= request.getParameter("tenantName") %>';
         var monRent = '<%= request.getParameter("monRent") %>';
+        
+        var tenantId = '<%=request.getParameter("tenantId")%>'
+        
+        
     	$('#year').val(year);
     	$('#month').val(month);
     	$('#tenantName').val(tenantName);
     	$('#monRent').val(monRent);
-         
+        $('#tenantId').val(tenantId);
     
     	if(month==0)
         {
@@ -100,7 +104,6 @@
  				  
   				  array = msg.obj;
   				  
-  				 console.log(msg);
   					
   				//	alert("请先配置费用数据字典 ECOST（电费）、GCOST（煤气费）、WCOST（水费）");
   			     
@@ -351,24 +354,25 @@
    
  function eq(){
 	
-	var a1 = $('#currentGasNum').val();
-   	var b1 = $('#lastGasNum').val();  
-	 
+	var a1 = Number($('#currentGasNum').val());
+   	var b1 = Number($('#lastGasNum').val());  
+	
+   	
    	if(a1<b1){
    		
    		return "当前燃气数不能比上个月的燃气数小！";
    	}
    	
-   	var a2 = $('#currentElectricNum').val();
-  	var b2 = $('#lastElectricNum').val();
+   	var a2 = Number($('#currentElectricNum').val());
+  	var b2 = Number($('#lastElectricNum').val());
    	
     if(a2<b2){
    		
    		return "当前用电数不能比上个月的用电数小！";
    	}
   	
-  	var a3 = $('#currentWaterNum').val();
-  	var b3 = $('#lastWaterNum').val();
+  	var a3 = Number($('#currentWaterNum').val());
+  	var b3 = Number($('#lastWaterNum').val());
   	
    if(a3<b3){
    		
@@ -473,6 +477,7 @@
                     <td>合计(元)</td>
                     <td><input name="total" id="total" placeholder="点击选择时间"  class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2" style="width:80px" readonly="true"></td>
                     <td><input name="roomId" type="hidden"  value="${roomId}"></td>
+                    <td><input name="tenantId" id="tenantId" type="hidden"  value=""></td>
                     <td><input name="sendCount" type="hidden"  value="0"></td>
                 </tr>
                 <tr>

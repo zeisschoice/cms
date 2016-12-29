@@ -16,6 +16,7 @@
     var selectedNodeId;
     var roomName;
     var monRent;
+    var tenantId;
      
     $(function() {
     	buildRoomTree = $('#roomTree').tree({
@@ -45,6 +46,7 @@
 						   type: "GET",
 						   url: "${path }/tenant/getTenant",
 						   data: d,
+						   async: true,
 						   success: function(msg){
 						      
 							   if(msg){
@@ -53,6 +55,9 @@
 								   
 								   $('#ff').form('load',tenant); 
 								
+								   tenantId = tenant.id;
+								  
+								   $('#id').val(tenantId);
 								   
 								   dataGrid.datagrid('load', {
 				                         roomId: tenant.roomId,
@@ -220,6 +225,13 @@
             field : 'sendCount'
           
        },
+       {
+           width : '0',
+           title : 'id',
+           hidden:true,
+           field : 'tenantId'
+         
+      },
            {
           	 width : '200',
                title : '备注',
@@ -297,7 +309,7 @@
             title : '添加',
             width : 800,
             height : 500,
-            href : '${path }/cost/addPage?id='+roomId+"&tenantName="+$('#tenantName').val()+"&monRent="+monRent,
+            href : '${path }/cost/addPage?id='+roomId+"&tenantName="+$('#tenantName').val()+"&monRent="+monRent+"&tenantId="+ tenantId,
             buttons : [ {
                 text : '添加',
                 handler : function() {

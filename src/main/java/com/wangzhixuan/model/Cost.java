@@ -352,4 +352,12 @@ public class Cost implements Serializable {
 		this.monRent = monRent;
 	}
 
+	public Integer getTenantId() {
+		return tenantId;
+	}
+
+	public void setTenantId(Integer tenantId) {
+		this.tenantId = tenantId;
+	}
+
 }

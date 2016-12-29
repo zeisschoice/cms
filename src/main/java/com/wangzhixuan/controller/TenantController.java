@@ -66,8 +66,8 @@ public class TenantController extends BaseController{
 		Map<String, Object> condition = new HashMap<String, Object>();
 
 		if (roomId != null && tenantId !=null) {
-			condition.put("roomId", 31);
-			condition.put("tenantId", 17);
+			//condition.put("roomId", 31);
+			//condition.put("tenantId", 17);
 			
 		}
 
