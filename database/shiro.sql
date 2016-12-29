@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : MYSQL
-Source Server Version : 50634
+Source Server         : local_mysql
+Source Server Version : 50712
 Source Host           : localhost:3306
 Source Database       : shiro
 
 Target Server Type    : MYSQL
-Target Server Version : 50634
+Target Server Version : 50712
 File Encoding         : 65001
 
-Date: 2016-12-28 23:20:51
+Date: 2016-12-29 18:59:02
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -35,11 +35,11 @@ CREATE TABLE `building` (
 -- ----------------------------
 -- Records of building
 -- ----------------------------
-INSERT INTO `building` VALUES ('1', '碧桂园', '佛山北滘碧桂园', '碧桂园女士', '15998888888', '碧桂园', '18688888888', '1000', '出租');
-INSERT INTO `building` VALUES ('2', '海蓝地产', '湛江市', '海蓝', '18888888888', '蔡小章', '13499999999', '1212', '出租');
-INSERT INTO `building` VALUES ('3', '海岸花园', '顺德北滘', '张三', '14567832222', '李四', '15899999999', '12', '出售');
-INSERT INTO `building` VALUES ('8', '秀凤楼盘', '广州市番禺区群贤路', '梁秀凤', '13888888888', '梁秀凤', '13888888888', '200', '出租');
-INSERT INTO `building` VALUES ('9', '腾飞楼房', '广州市番禺区群贤路', '梁秀凤', '13888888888', '梁秀凤', '13888888888', '1000', '出售');
+INSERT INTO `building` VALUES ('1', '碧桂园', '佛山北滘碧桂园', '碧桂园女士', '15998888888', '碧桂园', '18688888888', '1000', '出租1');
+INSERT INTO `building` VALUES ('2', '海蓝地产', '湛江市', '海蓝', '18888888888', '蔡小章', '13499999999', '1212', '出租2');
+INSERT INTO `building` VALUES ('3', '海岸花园', '顺德北滘', '张三', '14567832222', '李四', '15899999999', '12', '出售3');
+INSERT INTO `building` VALUES ('8', '秀凤楼盘', '广州市番禺区群贤路', '梁秀凤', '13888888888', '梁秀凤', '13888888888', '200', '出租4');
+INSERT INTO `building` VALUES ('9', '腾飞楼房', '广州市番禺区群贤路', '梁秀凤', '13888888888', '梁秀凤', '13888888888', '1000', '出售5');
 
 -- ----------------------------
 -- Table structure for cost
@@ -74,15 +74,17 @@ CREATE TABLE `cost` (
   `send_count` int(11) unsigned zerofill DEFAULT '00000000000',
   `mon_rent` double(20,0) DEFAULT '0' COMMENT '月租',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=latin1 COMMENT='cost';
+) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=latin1 COMMENT='cost';
 
 -- ----------------------------
 -- Records of cost
 -- ----------------------------
 INSERT INTO `cost` VALUES ('42', '31', '132', '0', '1', '1', '0', '1', '12', '2016', '12', '3333333333', '2016-12-28 19:46:18', '17', '11', '12', '11', '12', '121.00', '110.00', '12.00', '12.00', '12.00', '147.00', '35.00', '00000000000', '300');
 INSERT INTO `cost` VALUES ('43', '31', '0', '0', '0', '0', '0', '0', '0', '2016', '11', '卡卡卡卡卡卡卡不不不', '2016-12-28 19:46:20', '17', '2', '1', '2', '1', '2.00', '1.00', '0.00', '0.00', '0.00', '0.00', '0.00', '00000000000', '300');
-INSERT INTO `cost` VALUES ('44', '32', '6', '4', '0', '0', '0', '0', '0', '2016', '12', '', '2016-12-25 16:55:33', null, '16', '12', '9', '10', '19.00', '13.00', '1.00', '1.00', '1.00', '10.00', '1.00', '00000000002', '400');
-INSERT INTO `cost` VALUES ('45', '33', '99', '9900', '10', '0', '9900', '0', '1', '2016', '12', '', '2016-12-25 17:40:23', null, '100', '1', '100', '1', '100.00', '1.00', '100.00', '100.00', '1.00', '19910.00', '0.00', '00000000001', '1000');
+INSERT INTO `cost` VALUES ('49', '33', '1332', '14', '1', '2', '24', '2', '0', '2016', '12', '1', '2016-12-29 13:33:20', null, '12', '11', '123', '121', '123.00', '12.00', '14.00', '12.00', '12.00', '1375.00', '0.00', '00000000000', '1000');
+INSERT INTO `cost` VALUES ('50', '33', '132', '154', '0', '0', '1440', '0', '0', '2016', '12', '1', '2016-12-29 13:34:44', null, '12', '1', '121', '1', '12.00', '1.00', '14.00', '12.00', '12.00', '1726.00', '0.00', '00000000000', '1000');
+INSERT INTO `cost` VALUES ('51', '33', '132', '154', '0', '0', '132', '0', '0', '2016', '12', '1113333', '2016-12-29 13:37:25', '24', '12', '1', '12', '1', '12.00', '1.00', '14.00', '12.00', '12.00', '418.00', '0.00', '00000000000', '1000');
+INSERT INTO `cost` VALUES ('52', '34', '1464', '1680', '11', '1', '132', '1', '0', '2016', '12', '11', '2016-12-29 18:57:52', '26', '121', '1', '12', '1', '123.00', '1.00', '14.00', '12.00', '12.00', '3289.00', '0.00', '00000000000', '1500');
 
 -- ----------------------------
 -- Table structure for dict_entry
@@ -378,18 +380,19 @@ CREATE TABLE `room` (
   `remark` varchar(200) CHARACTER SET utf8 DEFAULT NULL,
   `area` double(255,2) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of room
 -- ----------------------------
-INSERT INTO `room` VALUES ('31', '1', 'A101', '0', '300', '1', '2016-12-01', '2018-12-25', '周先生', '押一付一', null);
-INSERT INTO `room` VALUES ('32', '2', 'A102', '0', '400', '0', '2016-12-25', '2017-12-25', null, '押一付一', null);
-INSERT INTO `room` VALUES ('33', '3', 'A003', '0', '1000', '1', '2016-12-25', '2017-12-25', '360026888888888888', '押二付一', null);
-INSERT INTO `room` VALUES ('34', '8', '秀凤-北京', '0', '1500', '1', '2016-12-25', '2017-12-25', '李先生', '', null);
-INSERT INTO `room` VALUES ('35', '8', '秀凤-上海', '0', '2000', '0', '2016-12-25', '2017-12-25', '刘女士', '', null);
-INSERT INTO `room` VALUES ('36', '8', '秀凤-广州', '0', '3000', '0', '2016-12-25', '2017-12-25', '张女士', '', null);
-INSERT INTO `room` VALUES ('37', '8', '秀凤-重庆', '0', '3000', '0', '2016-12-25', '2017-12-25', '周先生', '', null);
+INSERT INTO `room` VALUES ('31', '9', 'A101', '0', '300', '1', '2016-12-01', '2018-12-25', '周先生1', '押一付一', null);
+INSERT INTO `room` VALUES ('32', '2', 'A102', '0', '400', '1', '2016-12-25', '2017-12-25', '360022000000001119', '押一付一', null);
+INSERT INTO `room` VALUES ('33', '3', 'A003', '0', '1000', '0', '2016-12-25', '2017-12-25', '3', '押二付一', null);
+INSERT INTO `room` VALUES ('34', '8', '秀凤-北京', '0', '1500', '1', '2016-12-25', '2017-12-25', '360022000000001119', '', null);
+INSERT INTO `room` VALUES ('35', '8', '秀凤-上海', '0', '2000', '0', '2016-12-25', '2017-12-25', '刘女士5', '', null);
+INSERT INTO `room` VALUES ('36', '8', '秀凤-广州', '0', '3000', '0', '2016-12-25', '2017-12-25', '张女士6', '', null);
+INSERT INTO `room` VALUES ('37', '8', '秀凤-重庆', '0', '3000', '0', '2016-12-25', '2017-12-25', '周先生7', '', null);
+INSERT INTO `room` VALUES ('38', '1', '4444444', '0', '500', '0', '2016-12-29', '2016-12-21', null, '44444', null);
 
 -- ----------------------------
 -- Table structure for sms_log
@@ -443,7 +446,7 @@ CREATE TABLE `sys_log` (
   `client_ip` varchar(255) DEFAULT NULL COMMENT '客户端ip',
   `create_time` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=424 DEFAULT CHARSET=utf8 COMMENT='系统日志';
+) ENGINE=InnoDB AUTO_INCREMENT=459 DEFAULT CHARSET=utf8 COMMENT='系统日志';
 
 -- ----------------------------
 -- Records of sys_log
@@ -871,6 +874,41 @@ INSERT INTO `sys_log` VALUES ('420', 'admin', 'admin', '[类名]:com.wangzhixuan
 INSERT INTO `sys_log` VALUES ('421', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.CostController,[方法]:addRoomPage,[参数]:id=33&tenantName=33333&monRent=1000&_=1482936192281&', '0:0:0:0:0:0:0:1', null);
 INSERT INTO `sys_log` VALUES ('422', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.CostController,[方法]:addRoomPage,[参数]:id=33&tenantName=33333&monRent=1000&_=1482936292251&', '0:0:0:0:0:0:0:1', null);
 INSERT INTO `sys_log` VALUES ('423', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.CostController,[方法]:add,[参数]:year=2016&month=12&tenantName=33333&monRent=1000&manageCharge=0&currentElectricNum=2.00&lastElectricNum=1.00&electricNum=1.00&electricUnitPrice=12.00&electricCharge=12.00&currentWaterNum=2.00&lastWaterNum=1.00&waterNum=1.00&waterUnitPrice=14.00&waterCharge=14.00&currentGasNum=2.00&lastGasNum=1.00&gasNum=1.00&gasUnitPrice=12.00&gasCharge=12.00&internetCharge=2.00&tvCharge=2.00&equallyCharge=2.00&otherCharge=2.00&total=46.00&roomId=33&sendCount=0&remark=11111&', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('424', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.CostController,[方法]:addRoomPage,[参数]:id=33&tenantName=33333&monRent=1000&_=1482973384394&', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('425', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.CostController,[方法]:addRoomPage,[参数]:id=33&tenantName=33333&monRent=1000&tenantId=&_=1482975376601&', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('426', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.CostController,[方法]:add,[参数]:year=2016&month=12&tenantName=33333&monRent=1000&manageCharge=0&currentElectricNum=123.00&lastElectricNum=1.00&electricNum=122.00&electricUnitPrice=12.00&electricCharge=1464.00&currentWaterNum=12.00&lastWaterNum=1.00&waterNum=11.00&waterUnitPrice=14.00&waterCharge=154.00&currentGasNum=12.00&lastGasNum=1.00&gasNum=11.00&gasUnitPrice=12.00&gasCharge=132.00&internetCharge=1.00&tvCharge=1.00&equallyCharge=0.00&otherCharge=0.00&total=1752.00&roomId=33&tenantId=&sendCount=0&remark=11111&', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('427', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.CostController,[方法]:addRoomPage,[参数]:id=33&tenantName=33333&monRent=1000&tenantId=&_=1482975590591&', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('428', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.CostController,[方法]:addRoomPage,[参数]:id=33&tenantName=33333&monRent=1000&tenantId=&_=1482975908649&', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('429', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.CostController,[方法]:addRoomPage,[参数]:id=33&tenantName=33333&monRent=1000&tenantId=&_=1482976305682&', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('430', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.CostController,[方法]:addRoomPage,[参数]:id=33&tenantName=33333&monRent=1000&tenantId=24&_=1482976639533&', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('431', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.CostController,[方法]:addRoomPage,[参数]:id=33&tenantName=33333&monRent=1000&tenantId=24&_=1482976713739&', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('432', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.CostController,[方法]:addRoomPage,[参数]:id=33&tenantName=33333&monRent=1000&tenantId=24&_=1482976859521&', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('433', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.CostController,[方法]:addRoomPage,[参数]:id=33&tenantName=33333&monRent=1000&tenantId=24&_=1482977136930&', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('434', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.CostController,[方法]:addRoomPage,[参数]:id=33&tenantName=33333&monRent=1000&tenantId=24&_=1482977983130&', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('435', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.CostController,[方法]:add,[参数]:year=2016&month=12&tenantName=33333&monRent=1000&manageCharge=0&currentElectricNum=12.00&lastElectricNum=1.00&electricNum=11.00&electricUnitPrice=12.00&electricCharge=132.00&currentWaterNum=12.00&lastWaterNum=1.00&waterNum=11.00&waterUnitPrice=14.00&waterCharge=154.00&currentGasNum=12.00&lastGasNum=1.00&gasNum=11.00&gasUnitPrice=12.00&gasCharge=132.00&internetCharge=0.00&tvCharge=0.00&equallyCharge=0.00&otherCharge=0.00&total=418.00&roomId=33&tenantId=&sendCount=0&remark=1&', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('436', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.CostController,[方法]:addRoomPage,[参数]:id=33&tenantName=33333&monRent=1000&tenantId=24&_=1482981195158&', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('437', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.CostController,[方法]:add,[参数]:year=2016&month=12&tenantName=33333&monRent=1000&manageCharge=0&currentElectricNum=23.00&lastElectricNum=1.00&electricNum=22.00&electricUnitPrice=12.00&electricCharge=264.00&currentWaterNum=22.00&lastWaterNum=1.00&waterNum=21.00&waterUnitPrice=14.00&waterCharge=294.00&currentGasNum=22.00&lastGasNum=1.00&gasNum=21.00&gasUnitPrice=12.00&gasCharge=252.00&internetCharge=0.00&tvCharge=0.00&equallyCharge=0.00&otherCharge=0.00&total=810.00&roomId=33&tenantId=&sendCount=0&remark=11&', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('438', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.CostController,[方法]:addRoomPage,[参数]:id=33&tenantName=33333&monRent=1000&tenantId=24&_=1482989528786&', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('439', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.CostController,[方法]:add,[参数]:year=2016&month=12&tenantName=33333&monRent=1000&manageCharge=0&currentElectricNum=123.00&lastElectricNum=12.00&electricNum=111.00&electricUnitPrice=12.00&electricCharge=1332.00&currentWaterNum=12.00&lastWaterNum=11.00&waterNum=1.00&waterUnitPrice=14.00&waterCharge=14.00&currentGasNum=123.00&lastGasNum=121.00&gasNum=2.00&gasUnitPrice=12.00&gasCharge=24.00&internetCharge=1.00&tvCharge=2.00&equallyCharge=2.00&otherCharge=0.00&total=1375.00&roomId=33&tenantId=&sendCount=0&remark=1&', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('440', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.CostController,[方法]:addRoomPage,[参数]:id=33&tenantName=33333&monRent=1000&tenantId=24&_=1482989528787&', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('441', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.CostController,[方法]:add,[参数]:year=2016&month=12&tenantName=33333&monRent=1000&manageCharge=0&currentElectricNum=12.00&lastElectricNum=1.00&electricNum=11.00&electricUnitPrice=12.00&electricCharge=132.00&currentWaterNum=12.00&lastWaterNum=1.00&waterNum=11.00&waterUnitPrice=14.00&waterCharge=154.00&currentGasNum=121.00&lastGasNum=1.00&gasNum=120.00&gasUnitPrice=12.00&gasCharge=1440.00&internetCharge=0.00&tvCharge=0.00&equallyCharge=0.00&otherCharge=0.00&total=1726.00&roomId=33&tenantId=&sendCount=0&remark=1&', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('442', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.CostController,[方法]:addRoomPage,[参数]:id=33&tenantName=33333&monRent=1000&tenantId=24&_=1482989755871&', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('443', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.CostController,[方法]:add,[参数]:year=2016&month=12&tenantName=33333&monRent=1000&manageCharge=0&currentElectricNum=12.00&lastElectricNum=1.00&electricNum=11.00&electricUnitPrice=12.00&electricCharge=132.00&currentWaterNum=12.00&lastWaterNum=1.00&waterNum=11.00&waterUnitPrice=14.00&waterCharge=154.00&currentGasNum=12.00&lastGasNum=1.00&gasNum=11.00&gasUnitPrice=12.00&gasCharge=132.00&internetCharge=0.00&tvCharge=0.00&equallyCharge=0.00&otherCharge=0.00&total=418.00&roomId=33&tenantId=24&sendCount=0&remark=1113333&', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('444', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.CostController,[方法]:addRoomPage,[参数]:id=33&tenantName=33333&monRent=1000&tenantId=24&_=1482989755872&', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('445', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.CostController,[方法]:add,[参数]:year=2016&month=12&tenantName=33333&monRent=1000&manageCharge=0&currentElectricNum=12.00&lastElectricNum=1.00&electricNum=11.00&electricUnitPrice=12.00&electricCharge=132.00&currentWaterNum=12.00&lastWaterNum=1.00&waterNum=11.00&waterUnitPrice=14.00&waterCharge=154.00&currentGasNum=12.00&lastGasNum=1.00&gasNum=11.00&gasUnitPrice=12.00&gasCharge=132.00&internetCharge=112.00&tvCharge=0.00&equallyCharge=0.00&otherCharge=0.00&total=530.00&roomId=33&tenantId=24&sendCount=0&remark=12&', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('446', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.TenantController,[方法]:delete,[参数]:id=24&roomId=33&', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('447', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.RoomController,[方法]:addRoomPage,[参数]:', null, null);
+INSERT INTO `sys_log` VALUES ('448', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.TenantController,[方法]:add,[参数]:tenantName=张四&sex=0&tel=13688888888&identityCard=360022000000001119&remark=aaaaa&roomId=32&id=&', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('449', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.RoomController,[方法]:addRoomPage,[参数]:', null, null);
+INSERT INTO `sys_log` VALUES ('450', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.RoomController,[方法]:addRoomPage,[参数]:', null, null);
+INSERT INTO `sys_log` VALUES ('451', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.RoomController,[方法]:add,[参数]:roomName=4444444&type=0&status=0&buildingId=1&monRent=500&remark=44444&', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('452', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.RoomController,[方法]:edit,[参数]:id=38&roomName=4444444&beginDate=2016-12-29 17:56:52&endDate=2016-12-21 17:56:54&type=0&status=0&buildingId=1&monRent=500.0&remark=44444&', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('453', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.TenantController,[方法]:add,[参数]:tenantName=33333&sex=1&tel=15699999999&identityCard=360022000000001119&remark=aaaa&roomId=34&id=&', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('454', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.CostController,[方法]:addRoomPage,[参数]:id=34&tenantName=33333&monRent=1500&tenantId=26&_=1483008625916&', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('455', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.CostController,[方法]:add,[参数]:year=2016&month=12&tenantName=33333&monRent=1500&manageCharge=0&currentElectricNum=123.00&lastElectricNum=1.00&electricNum=122.00&electricUnitPrice=12.00&electricCharge=1464.00&currentWaterNum=121.00&lastWaterNum=1.00&waterNum=120.00&waterUnitPrice=14.00&waterCharge=1680.00&currentGasNum=12.00&lastGasNum=1.00&gasNum=11.00&gasUnitPrice=12.00&gasCharge=132.00&internetCharge=11.00&tvCharge=1.00&equallyCharge=1.00&otherCharge=0.00&total=3289.00&roomId=34&tenantId=26&sendCount=0&remark=11&', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('456', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.CostController,[方法]:addRoomPage,[参数]:id=32&tenantName=张四&monRent=400&tenantId=25&_=1483008625917&', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('457', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.CostController,[方法]:addRoomPage,[参数]:id=32&tenantName=张四&monRent=400&tenantId=25&_=1483008625918&', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `sys_log` VALUES ('458', 'admin', 'admin', '[类名]:com.wangzhixuan.controller.CostController,[方法]:addRoomPage,[参数]:id=32&tenantName=张四&monRent=400&tenantId=25&_=1483008625919&', '0:0:0:0:0:0:0:1', null);
 
 -- ----------------------------
 -- Table structure for tenant
@@ -886,7 +924,7 @@ CREATE TABLE `tenant` (
   `remark` varchar(200) DEFAULT NULL,
   `is_del` int(255) unsigned zerofill DEFAULT '000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000',
   PRIMARY KEY (`id`,`room_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8 COMMENT='tenant';
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8 COMMENT='tenant';
 
 -- ----------------------------
 -- Records of tenant
@@ -895,7 +933,9 @@ INSERT INTO `tenant` VALUES ('17', '张先生', '31', '0', '13450761833', '12122
 INSERT INTO `tenant` VALUES ('20', '222222', '32', '0', '13450761833', '121223123111123111', '', '000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001');
 INSERT INTO `tenant` VALUES ('22', '77777', '32', '1', '15919064667', '121223123111123111', '7777', '000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001');
 INSERT INTO `tenant` VALUES ('23', '222222', '32', '0', '13450761833', '121223123111123111', '1111', '000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001');
-INSERT INTO `tenant` VALUES ('24', '33333', '33', '0', '13450761833', '360026888888888888', '333333333', '000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000');
+INSERT INTO `tenant` VALUES ('24', '33333', '33', '0', '13450761833', '360026888888888888', '333333333', '000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001');
+INSERT INTO `tenant` VALUES ('25', '张四', '32', '0', '13688888888', '360022000000001119', 'aaaaa', '000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000');
+INSERT INTO `tenant` VALUES ('26', '33333', '34', '1', '15699999999', '360022000000001119', 'aaaa', '000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000');
 
 -- ----------------------------
 -- Table structure for user
@@ -951,4 +991,4 @@ INSERT INTO `user_role` VALUES ('73', '1', '7');
 -- View structure for rentroom
 -- ----------------------------
 DROP VIEW IF EXISTS `rentroom`;
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `rentroom` AS select `b`.`id` AS `id`,`b`.`building_name` AS `building_name`,`b`.`building_address` AS `building_address`,`b`.`building_own` AS `building_own`,`b`.`own_phone` AS `own_phone`,`b`.`building_manager` AS `building_manager`,`b`.`manager_phone` AS `manager_phone`,`b`.`room_count` AS `room_count`,`b`.`remark` AS `remark`,`r`.`room_name` AS `room_name`,`t`.`tenant_name` AS `tenant_name` from ((`building` `b` left join `room` `r` on((`b`.`id` = `r`.`building_id`))) left join `tenant` `t` on((`r`.`id` = `t`.`room_id`))) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER  VIEW `rentroom` AS select `b`.`id` AS `id`,`b`.`building_name` AS `building_name`,`b`.`building_address` AS `building_address`,`b`.`building_own` AS `building_own`,`b`.`own_phone` AS `own_phone`,`b`.`building_manager` AS `building_manager`,`b`.`manager_phone` AS `manager_phone`,`b`.`room_count` AS `room_count`,`b`.`remark` AS `remark`,`r`.`room_name` AS `room_name`,`t`.`tenant_name` AS `tenant_name` from ((`building` `b` left join `room` `r` on((`b`.`id` = `r`.`building_id`))) left join `tenant` `t` on((`r`.`id` = `t`.`room_id`))) ;
