@@ -122,4 +122,19 @@ public class CostController extends BaseController{
 		 
 		 return rs;
 	 } 
+	 
+	 @RequestMapping(value = "/confirmCost",method = RequestMethod.POST)
+	 @ResponseBody
+	 public Object confirmCost(Integer id) {
+		
+		 Cost cost = new Cost();
+		 cost.setId(id);
+		 cost.setIsPay(1);
+		 iCostService.updateSelectiveById(cost);
+		 
+		 return renderSuccess("确认成功！");
+	 } 
+	 
+	 
+	 
 }

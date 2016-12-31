@@ -34,6 +34,9 @@ public class Cost implements Serializable {
 	@TableField(value="tenant_id")
 	private Integer tenantId;
 	
+	@TableField(value="is_pay")
+	private Integer isPay;
+	
 	/**
 	 * 
 	 */
@@ -171,6 +174,7 @@ public class Cost implements Serializable {
 	public Double getWaterUnitPrice() {
 		return waterUnitPrice;
 	}
+
 
 	public void setWaterUnitPrice(Double waterUnitPrice) {
 		this.waterUnitPrice = waterUnitPrice;
@@ -360,4 +364,11 @@ public class Cost implements Serializable {
 		this.tenantId = tenantId;
 	}
 
+	public Integer getIsPay() {
+		return isPay;
+	}
+
+	public void setIsPay(Integer isPay) {
+		this.isPay = isPay;
+	}
 }

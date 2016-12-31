@@ -233,6 +233,20 @@
            field : 'tenantId'
          
       },
+      {
+          width : '0',
+          title : 'id',
+          hidden:true,
+          field : 'roomId'
+        
+     },
+      {
+          width : '0',
+          title : 'id',
+          hidden:true,
+          field : 'isPay'
+        
+     },
            {
           	 width : '200',
                title : '备注',
@@ -242,19 +256,20 @@
              {
                 field : 'action',
                 title : '操作',
-                width : 300,
+                width : 400,
                 formatter : function(value, row, index) {
                 	
                     var str = '';
                        /*  <shiro:hasPermission name="/tenant/edit">
                             str += $.formatString('<a href="javascript:void(0)" class="user-easyui-linkbutton-edit" data-options="plain:true,iconCls:\'icon-edit\'" onclick="editFun(\'{0}\');" >编辑</a>', row.id);
-                        </shiro:hasPermission>
-                        <shiro:hasPermission name="/tenant/delete">
-                            str += '&nbsp;&nbsp;|&nbsp;&nbsp;';
-                            str += $.formatString('<a href="javascript:void(0)" class="user-easyui-linkbutton-del" data-options="plain:true,iconCls:\'icon-del\'" onclick="deleteFun(\'{0}\');" >删除</a>', row.id);
-                        </shiro:hasPermission> */
+                        </shiro:hasPermission>*/
+                        <shiro:hasPermission name="/tenant/confirm"> 
+                           
+                            str += $.formatString('<a href="javascript:void(0)" class="user-easyui-linkbutton-ok'+row.id+'" plain="true" iconCls="icon-ok" onclick="confirmFun(\'{0}\');" >确认缴费</a>', row.id);
+                        </shiro:hasPermission> 
                         
                        <shiro:hasPermission name="/tenant/print"> 
+                          str += '&nbsp;&nbsp;|&nbsp;&nbsp;';
                           str += $.formatString('<a href="javascript:void(0)" class="user-easyui-linkbutton-print" data-options="plain:true,iconCls:\'icon-print\'" onclick="printFun(\'{0}\');" >打印</a>', row.id);
                        </shiro:hasPermission> 
                        <shiro:hasPermission name="/tenant/sendMsg">
@@ -275,8 +290,15 @@
                 	
                 	for(var i=0;i<data.rows.length;i++){
                 		
-                	
+                		  var str = data.rows[i].isPay==1?"已缴":"未缴";
                 		  
+                		  console.log(data.rows[i].isPay);
+                		  console.log(str);
+                		  
+                		//  var iconStr = data.rows[i].isPay==1?"icon-ok":"icon-cancel";
+                	
+                		  $('.user-easyui-linkbutton-ok'+data.rows[i].id).linkbutton({text:'确认缴费('+str+')',plain:true,iconCls:'icon-ok'});
+                		
                 		  $('.user-easyui-linkbutton-redo'+data.rows[i].id).linkbutton({text:'短信通知(已发'+data.rows[i].sendCount+'次)',plain:true,iconCls:'icon-redo'});
                 	}
                 	
@@ -291,6 +313,8 @@
 
     
     function addFun() {
+    	
+    	
     	
     	if(roomId == null || roomId==""){
     		
@@ -415,7 +439,7 @@
     	 if(rows && rows.length > 0){
     	     var param = JSON.stringify(rows[0]);
     	   
-    		 window.open('${path }/print/cost1?cost='+param);
+    		 window.open('${path }/print/cost1?cost='+param+"&roomName="+roomName);
     		 
     	 }else{
     		 
@@ -423,6 +447,52 @@
     	 }
     	
     }
+    
+    function confirmFun(id){
+    	
+    	var rows = dataGrid.datagrid('getSelections');
+    	
+    	
+    	 
+    	 if(rows && rows.length > 0){
+    	     
+    		 if(rows[0].isPay== 1 ){
+    			 $.messager.alert('提示',"已缴费，无需重复确认!",'info');
+    		     return;
+    		 }
+    	 }else{
+    		 
+    		 $.messager.alert('提示',"请选择一条费用记录!",'info');
+    		 return;
+    	 }
+    	 
+    	 
+        /*  if (id == undefined) {//点击右键菜单才会触发这个
+             
+             id = rows[0].id;
+         } else {//点击操作里面的删除图标会触发这个
+             dataGrid.datagrid('unselectAll').datagrid('uncheckAll');
+         } */
+    	 
+         parent.$.messager.confirm('询问', '您是否确认已缴清当前月份的费用了？', function(b) {
+             if (b) {
+            	  progressLoad();
+                  $.post('${path }/cost/confirmCost', {
+                      id : id
+                  }, function(result) {
+                      if (result.success) {
+                          parent.$.messager.alert('提示', result.msg, 'info');
+                          dataGrid.datagrid('reload');
+                      }
+                      progressClose();
+                  }, 'JSON'); 
+             }
+             
+         });
+    	
+    }
+    
+    
     
    function sendMsgFun(){
     	

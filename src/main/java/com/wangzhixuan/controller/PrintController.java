@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,9 +20,13 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.wangzhixuan.commons.base.BaseController;
 import com.wangzhixuan.commons.utils.Trans2RMBUtils;
+import com.wangzhixuan.model.Building;
 import com.wangzhixuan.model.Cost;
 import com.wangzhixuan.model.CostPrint;
 import com.wangzhixuan.model.JavaBeanPerson;
+import com.wangzhixuan.model.Room;
+import com.wangzhixuan.service.IBuildingService;
+import com.wangzhixuan.service.IRoomService;
 
 import net.sf.jasperreports.engine.JRDataSource;
 import net.sf.jasperreports.engine.JRParameter;
@@ -32,7 +37,11 @@ import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 @RequestMapping(value = "/print")
 public class PrintController extends BaseController {
 
+	@Autowired
+	private IBuildingService buildingService;
 	
+	@Autowired
+	private IRoomService iRoomService;
 	
 	@RequestMapping(value = "/cost")
 	public String costPrint(Model model){
@@ -49,24 +58,33 @@ public class PrintController extends BaseController {
 	
 	@RequestMapping(value = "/cost1")
 	//@ResponseBody
-	public String costPrint1(Model model,@RequestParam("cost") String cost) throws JsonParseException, JsonMappingException, IOException{
+	public String costPrint1(Model model,@RequestParam("cost") String cost,String roomName) throws JsonParseException, JsonMappingException, IOException{
 		
 		ObjectMapper mapper = new ObjectMapper();
-		System.out.println(cost);
-		System.out.println("URLEncoder.encode returns "
-			      + URLEncoder.encode(cost, "UTF-8"));
+		
+
 		//String json = mapper.w
 		cost = cost.replaceAll("&quot;", "\"");
-		System.out.println(cost);
+	
 		Cost c = mapper.readValue(cost,Cost.class);
 		
+		Room r = iRoomService.selectById(c.getRoomId());
 		
 		CostPrint cp = new CostPrint();
+		
+		if(r!=null){
+			
+			Building b = buildingService.selectById(r.getBuildingId());
+			cp.setAddress(b==null?"":b.getBuildingName());
+		}
+		
+		
+		
 		List<CostPrint> list = new ArrayList<CostPrint>();
 		
-		cp.setAddress("佛山市北滘");
+		
 		cp.setLastMon("2016-11-3");
-		cp.setRoomNum("A105");
+		cp.setRoomNum(roomName);
 		
 		
 		cp.setCrMonWaterNum(c.getCurrentWaterNum().toString());
