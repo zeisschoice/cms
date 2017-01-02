@@ -172,6 +172,24 @@
             },
             {
                 width : '80',
+                title : '计费(始)',
+                field : 'startDate'
+              
+            },
+            {
+                width : '80',
+                title : '计费(止)',
+                field : 'endDate'
+              
+            },
+            {
+                width : '80',
+                title : '抄表日期',
+                field : 'copyDate'
+              
+            },
+            {
+                width : '80',
                 title : '合计',
                 field : 'total'
               
@@ -392,8 +410,8 @@
         	
         	parent.$.modalDialog({
                 title : '编辑',
-                width : 860,
-                height : 400,
+                width : 1200,
+                height : 500,
                 href : '${path }/cost/editPage?id=' + rows[0].id+"&tenantName="+$('#tenantName').val(),
                 buttons : [ {
                     text : '确定',
@@ -439,7 +457,7 @@
     	 if(rows && rows.length > 0){
     	     var param = JSON.stringify(rows[0]);
     	   
-    		 window.open('${path }/print/cost1?cost='+param+"&roomName="+updateStr4roomName(roomName));
+    		 window.open('${path }/print/cost1?cost='+rows[0].id+"&roomName="+updateStr4roomName(roomName));
     		 
     	 }else{
     		 

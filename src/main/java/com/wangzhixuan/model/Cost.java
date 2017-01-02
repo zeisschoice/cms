@@ -160,21 +160,21 @@ public class Cost implements Serializable {
 	@TableField(value="send_count")
 	private Integer sendCount;
 	
-	@DateTimeFormat(pattern="yyyy-MM-dd") 
+	
 	@TableField(value="start_date")
-	private Date startDate;
+	private String startDate;
 	/**
 	 * 
 	 */
-	@DateTimeFormat(pattern="yyyy-MM-dd") 
+	 
 	@TableField(value="end_date")
-	private Date endDate;
+	private String endDate;
 	/**
 	 * 
 	 */
-	@DateTimeFormat(pattern="yyyy-MM-dd") 
+	
 	@TableField(value="copy_date")
-	private Date copyDate;
+	private String copyDate;
 	
 	
 	
@@ -395,27 +395,27 @@ public class Cost implements Serializable {
 		this.isPay = isPay;
 	}
 
-	public Date getStartDate() {
+	public String getStartDate() {
 		return startDate;
 	}
 
-	public void setStartDate(Date startDate) {
+	public void setStartDate(String startDate) {
 		this.startDate = startDate;
 	}
 
-	public Date getEndDate() {
+	public String getEndDate() {
 		return endDate;
 	}
 
-	public void setEndDate(Date endDate) {
+	public void setEndDate(String endDate) {
 		this.endDate = endDate;
 	}
 
-	public Date getCopyDate() {
+	public String getCopyDate() {
 		return copyDate;
 	}
 
-	public void setCopyDate(Date copyDate) {
+	public void setCopyDate(String copyDate) {
 		this.copyDate = copyDate;
 	}
 }

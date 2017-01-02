@@ -133,7 +133,10 @@
   //-----------------------------  	
         $('#costAddForm').form({
             url:'${path}/cost/add',
-            onSubmit : function() {
+            onSubmit : function(params) {
+            	
+            	console.log(params);
+            	
                 progressLoad();
                 var isValid = $(this).form('validate');
                 if (!isValid) {
@@ -407,8 +410,81 @@
 	    }  
 	}  
    
-  
-	 
+ /* $('#startDate').datebox({  
+	 closeText:'关闭',  
+	 formatter:function(date){  
+	  var y = date.getFullYear();  
+	  var m = date.getMonth()+1;  
+	  var d = date.getDate();  
+	  var h = date.getHours();  
+	  var M = date.getMinutes();  
+	  var s = date.getSeconds();  
+	  function formatNumber(value){  
+	   return (value < 10 ? '0' : '') + value;  
+	  }  
+	  alert(formatNumber(h));  
+	  return y+'-'+m+'-'+d+' '+ formatNumber(h)+':'+formatNumber(M)+':'+formatNumber(s);  
+	 },  
+	 parser:function(s){  
+	  var t = Date.parse(s);  
+	  if (!isNaN(t)){  
+	   return new Date(t);  
+	  } else {  
+	   return new Date();  
+	  }  
+	 }  
+	});   
+
+ $('#endDate').datebox({  
+	 closeText:'关闭',  
+	 formatter:function(date){  
+	  var y = date.getFullYear();  
+	  var m = date.getMonth()+1;  
+	  var d = date.getDate();  
+	  var h = date.getHours();  
+	  var M = date.getMinutes();  
+	  var s = date.getSeconds();  
+	  function formatNumber(value){  
+	   return (value < 10 ? '0' : '') + value;  
+	  }  
+	  alert(formatNumber(h));  
+	  return y+'-'+m+'-'+d+' '+ formatNumber(h)+':'+formatNumber(M)+':'+formatNumber(s);  
+	 },  
+	 parser:function(s){  
+	  var t = Date.parse(s);  
+	  if (!isNaN(t)){  
+	   return new Date(t);  
+	  } else {  
+	   return new Date();  
+	  }  
+	 }  
+	}); 
+ 
+ $('#copyDate').datebox({  
+	 closeText:'关闭',  
+	 formatter:function(date){  
+	  var y = date.getFullYear();  
+	  var m = date.getMonth()+1;  
+	  var d = date.getDate();  
+	  var h = date.getHours();  
+	  var M = date.getMinutes();  
+	  var s = date.getSeconds();  
+	  function formatNumber(value){  
+	   return (value < 10 ? '0' : '') + value;  
+	  }  
+	  alert(formatNumber(h));  
+	  return y+'-'+m+'-'+d+' '+ formatNumber(h)+':'+formatNumber(M)+':'+formatNumber(s);  
+	 },  
+	 parser:function(s){  
+	  var t = Date.parse(s);  
+	  if (!isNaN(t)){  
+	   return new Date(t);  
+	  } else {  
+	   return new Date();  
+	  }  
+	 }  
+	});  */
+ 
 </script>
 <div class="easyui-layout" data-options="fit:true,border:false">
     <div data-options="region:'center',border:false" title="" style="overflow: hidden;padding: 3px;">
@@ -428,16 +504,11 @@
                 </tr>
                 <tr>
                   <td style="width:80px">计费(始)</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <!-- <td><input id="startDate" name="startDate" type="text" class="easyui-datebox" parser="myparser"  required="required" ></td>
+                   <td><input id="startDate" name="startDate" type="text" class="easyui-datebox" parser="myparser"  required="required" ></td>
                   <td style="width:80px">计费(至)</td>
                   <td><input id="endDate" name="endDate" type="text" class="easyui-datebox" parser="myparser" required="required" validType="isAfter['#startDate']"></td>
                    <td style="width:80px">抄表日期</td>
-                  <td><input id="copyDate" name="copyDate" type="text" class="easyui-datebox" parser="myparser" required="required" ></td>  -->
+                  <td><input id="copyDate" name="copyDate" type="text" class="easyui-datebox" parser="myparser" required="required" ></td> 
                   <td>管理费</td>
                   <td><input name="manageCharge" id="manageCharge" type="text" placeholder="管理费" type="text" class="easyui-validatebox easyui-textbox" data-options="required:true" value="0" ></td>
                   <td style="width:80px">网络费</td>

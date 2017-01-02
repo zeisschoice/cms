@@ -61,23 +61,5 @@
 	</bean>
 
 
- <bean  class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
-        <property name="messageConverters">
-            <list>
-                
-                <bean class="org.springframework.http.converter.ByteArrayHttpMessageConverter"/>  
-                <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" />
-                <bean class="org.springframework.http.converter.StringHttpMessageConverter" /> 
-            </list>
-        </property>
-        <property name="webBindingInitializer">  
-            <bean class="org.springframework.web.bind.support.ConfigurableWebBindingInitializer">  
-                <property name="conversionService">  
-                    <bean class="org.springframework.format.support.FormattingConversionServiceFactoryBean"></bean>  
-                </property>  
-            </bean>  
-        </property>  
-</bean> 
-
 
 </beans>

@@ -26,6 +26,7 @@ import com.wangzhixuan.model.CostPrint;
 import com.wangzhixuan.model.JavaBeanPerson;
 import com.wangzhixuan.model.Room;
 import com.wangzhixuan.service.IBuildingService;
+import com.wangzhixuan.service.ICostService;
 import com.wangzhixuan.service.IRoomService;
 
 import net.sf.jasperreports.engine.JRDataSource;
@@ -42,6 +43,10 @@ public class PrintController extends BaseController {
 	
 	@Autowired
 	private IRoomService iRoomService;
+	
+	@Autowired
+	private ICostService iCostService;
+	
 	
 	@RequestMapping(value = "/cost")
 	public String costPrint(Model model){
@@ -60,13 +65,14 @@ public class PrintController extends BaseController {
 	//@ResponseBody
 	public String costPrint1(Model model,@RequestParam("cost") String cost,String roomName) throws JsonParseException, JsonMappingException, IOException{
 		
-		ObjectMapper mapper = new ObjectMapper();
+//		ObjectMapper mapper = new ObjectMapper();
+//		
+//
+//		cost = cost.replaceAll("&quot;", "\"");
+//	
+//		Cost c = mapper.readValue(cost,Cost.class);
 		
-
-		//String json = mapper.w
-		cost = cost.replaceAll("&quot;", "\"");
-	
-		Cost c = mapper.readValue(cost,Cost.class);
+		Cost c = iCostService.selectById(cost);
 		
 		Room r = iRoomService.selectById(c.getRoomId());
 		
