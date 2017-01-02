@@ -1,5 +1,6 @@
 package com.wangzhixuan.controller;
 
+import java.io.IOException;
 import java.util.Date;
 import java.util.HashMap;
 
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.taobao.api.response.AlibabaAliqinFcSmsNumSendResponse;
 import com.wangzhixuan.commons.base.BaseController;
@@ -39,7 +41,7 @@ public class SMSController extends BaseController {
 	
 	@RequestMapping(value = "/send", method = RequestMethod.POST)
     @ResponseBody
-	public Object smsCurrentMonCost(@RequestParam("total") String total,@RequestParam("phone") String phone,@RequestParam("tenantName") String tenantName,@RequestParam("roomName") String roomName,@RequestParam("id") Integer id,@RequestParam("sendCount") Integer sendCount,@RequestParam("mon") String mon) throws JsonProcessingException{
+	public Object smsCurrentMonCost(@RequestParam("total") String total,@RequestParam("phone") String phone,@RequestParam("tenantName") String tenantName,@RequestParam("roomName") String roomName,@RequestParam("id") Integer id,@RequestParam("sendCount") Integer sendCount,@RequestParam("mon") String mon) throws IOException{
 		
 		
 		Result rs  = new Result();
@@ -75,6 +77,28 @@ public class SMSController extends BaseController {
 			
 		 if(rs.isSuccess()){
 			 AlibabaAliqinFcSmsNumSendResponse rsp  = (AlibabaAliqinFcSmsNumSendResponse) rs.getObj();
+			 
+			
+			 
+			 ObjectMapper m = new ObjectMapper();
+			
+			 JsonNode actualObj = m.readTree(rsp.getBody());
+			 
+			 if(actualObj.has("error_response")){
+				 
+				 JsonNode errMsg =  actualObj.get("error_response");
+				 
+				 smslog.setIsSuccess("失败");
+				 Long end = System.currentTimeMillis(); 
+				 smslog.setTimeConsuming(end - start);
+				 smslog.setLoginName(getCurrentUser().getLoginName());
+				 smslog.setLoginRole(getCurrentUser().getUserType().toString());
+				 smslog.setCreateDate(new Date());
+				 int i = smsLogmapper.insert(smslog) ;
+				 rs.setMsg(errMsg.get("sub_msg").asText());
+			     rs.setSuccess(false);
+				 return rs;
+			 }
 			 
 			 smslog.setIsSuccess("成功");	
 			 smslog.setParams(rsp.getParams().toString());

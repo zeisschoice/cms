@@ -562,7 +562,7 @@
 					   $('#dataGrid').datagrid('reload');
 				   }else{
 					   
-					   $.messager.alert('发送失败!！', result.msg, 'info');
+					   $.messager.alert('发送失败!！', result.msg, 'error');
 				   }
 				    
 				  

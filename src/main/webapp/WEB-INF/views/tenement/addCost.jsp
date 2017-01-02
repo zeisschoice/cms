@@ -584,7 +584,7 @@
                     <td><input name="roomId" type="hidden"  value="${roomId}"></td>
                     <td><input name="tenantId" id="tenantId" type="hidden"  value=""></td>
                     <td><input name="sendCount" type="hidden"  value="0"></td>
-                    <td></td>
+                    <td><input name="isPay" type="hidden"  value="0"></td>
                     <td style="width:80px">合计(元)</td>
                     <td><input name="total" id="total" placeholder="点击选择时间"  class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2"  readonly="true"></td>
                 </tr>
