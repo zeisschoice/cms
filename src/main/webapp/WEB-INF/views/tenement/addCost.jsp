@@ -140,6 +140,7 @@
                     progressClose();
                 }
                 
+                
                 if(eq()){
                 	
                 	progressClose();
@@ -152,7 +153,9 @@
             },
             success : function(result) {
                 progressClose();
+            
               
+            	  
                 result = updateStr(result);
                 result = $.parseJSON(result);
                 if (result.success) {
@@ -391,6 +394,18 @@
  }   
     
  
+ function myparser(s){  
+	    if (!s) return new Date();  
+	    var ss = (s.split('-'));  
+	    var y = parseInt(ss[0],10);  
+	    var m = parseInt(ss[1],10);  
+	    var d = parseInt(ss[2],10);  
+	    if (!isNaN(y) && !isNaN(m) && !isNaN(d)){  
+	        return new Date(y,m-1,d);  
+	    } else {  
+	        return new Date();  
+	    }  
+	}  
    
   
 	 
@@ -401,95 +416,112 @@
             <table class="grid">
                 <tr>
                     <td>年份</td>
-                    <td><input name="year" id="year" type="text" placeholder="请输入房间名称" type="text" class="easyui-validatebox easyui-textbox" data-options="required:true" value="" style="width:80px"></td>
+                    <td><input name="year" id="year" type="text" placeholder="请输入房间名称" type="text" class="easyui-validatebox easyui-textbox" data-options="required:true" value="" ></td>
                     <td>月份</td>
-                    <td><input name="month" id="month" type="text" placeholder="请输入住户姓名" type="text" class="easyui-validatebox easyui-textbox" data-options="required:true" value="" style="width:80px"></td>
+                    <td><input name="month" id="month" type="text" placeholder="请输入住户姓名" type="text" class="easyui-validatebox easyui-textbox" data-options="required:true" value="" ></td>
                     <td>住户</td>
-                    <td><input name="tenantName" id="tenantName" type="text" placeholder="请输入住户姓名" type="text" class="easyui-validatebox easyui-textbox" data-options="required:true" value="" style="width:80px"></td>
+                    <td><input name="tenantName" id="tenantName" type="text" placeholder="请输入住户姓名" type="text" class="easyui-validatebox easyui-textbox" data-options="required:true" value="" ></td>
                      <td>月租</td>
-                    <td><input name="monRent" id="monRent" type="text" placeholder="管理费" type="text" class="easyui-validatebox easyui-textbox" data-options="required:true" value="0" style="width:80px"></td>
-                     <td>管理费</td>
-                    <td><input name="manageCharge" id="manageCharge" type="text" placeholder="管理费" type="text" class="easyui-validatebox easyui-textbox" data-options="required:true" value="0" style="width:80px"></td>
+                    <td><input name="monRent" id="monRent" type="text" placeholder="管理费" type="text" class="easyui-validatebox easyui-textbox" data-options="required:true" value="0" ></td>
+                    <td style="width:80px">分摊费</td>
+                    <td><input name="equallyCharge" id="equallyCharge" placeholder="点击选择时间"  class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2"  value="0"></td>
+                </tr>
+                <tr>
+                  <td style="width:80px">计费(始)</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <!-- <td><input id="startDate" name="startDate" type="text" class="easyui-datebox" parser="myparser"  required="required" ></td>
+                  <td style="width:80px">计费(至)</td>
+                  <td><input id="endDate" name="endDate" type="text" class="easyui-datebox" parser="myparser" required="required" validType="isAfter['#startDate']"></td>
+                   <td style="width:80px">抄表日期</td>
+                  <td><input id="copyDate" name="copyDate" type="text" class="easyui-datebox" parser="myparser" required="required" ></td>  -->
+                  <td>管理费</td>
+                  <td><input name="manageCharge" id="manageCharge" type="text" placeholder="管理费" type="text" class="easyui-validatebox easyui-textbox" data-options="required:true" value="0" ></td>
+                  <td style="width:80px">网络费</td>
+                  <td><input name="internetCharge" id="internetCharge" placeholder="点击选择时间"  class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2"  value="0"></td>
                 </tr>
                 <tr>
                     <td>本月电表数</td>
-                    <td><input name="currentElectricNum" id="currentElectricNum" placeholder="点击选择时间" class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2" style="width:80px"></td>
+                    <td><input name="currentElectricNum" id="currentElectricNum" placeholder="点击选择时间" class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2" ></td>
                     <td>上月电表数</td>
                     <td>
-                       <input name="lastElectricNum" id="lastElectricNum" placeholder="点击选择时间"  type="text" class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2" style="width:80px" >
+                       <input name="lastElectricNum" id="lastElectricNum" placeholder="点击选择时间"  type="text" class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2"  >
                     </td>
                     <td>用电数</td>
                     <td>
-                       <input name="electricNum" id="electricNum" placeholder="点击选择时间"  type="text" class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2"  style="width:80px" readonly="true">
+                       <input name="electricNum" id="electricNum" placeholder="点击选择时间"  type="text" class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2"  readonly="true">
                     </td>
                      <td>度 /元</td>
                     <td>
-                       <input name="electricUnitPrice" id="electricUnitPrice" placeholder="输入"  type="text" class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2" style="width:80px" value="0">
+                       <input name="electricUnitPrice" id="electricUnitPrice" placeholder="输入"  type="text" class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2"  value="0">
                     </td>
                     <td>电费(元)</td>
                     <td>
-                       <input name="electricCharge"  id="electricCharge"   type="text" class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2" readonly="true" style="width:80px" value="0">
+                       <input name="electricCharge"  id="electricCharge"   type="text" class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2" readonly="true"  value="0">
                     </td>
                 </tr>
                  <tr>
                     <td>本月水表数</td>
-                    <td><input name="currentWaterNum" id="currentWaterNum" placeholder="点击选择时间"  type="text" class="easyui-validatebox easyui-textbox" data-options="required:true,min:0,precision:2" style="width:80px" ></td>
+                    <td><input name="currentWaterNum" id="currentWaterNum" placeholder="点击选择时间"  type="text" class="easyui-validatebox easyui-textbox" data-options="required:true,min:0,precision:2"  ></td>
                     <td>上月水表数</td>
                     <td>
-                       <input name="lastWaterNum" id="lastWaterNum" placeholder="点击选择时间"  type="text" class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2" style="width:80px">
+                       <input name="lastWaterNum" id="lastWaterNum" placeholder="点击选择时间"  type="text" class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2" >
                     </td>
                      <td>用水数</td>
                     <td>
-                       <input name="waterNum" id="waterNum" placeholder="点击选择时间"  type="text" class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2" style="width:80px" readonly="true">
+                       <input name="waterNum" id="waterNum" placeholder="点击选择时间"  type="text" class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2"  readonly="true">
                     </td>
-                     <td>顿 /元</td>
+                     <td>吨/元</td>
                     <td>
-                       <input name="waterUnitPrice" id="waterUnitPrice" placeholder="点击选择时间"  type="text" class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2" style="width:80px" value="0">
+                       <input name="waterUnitPrice" id="waterUnitPrice" placeholder="点击选择时间"  type="text" class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2"  value="0">
                     </td>
                     <td>水费(元)</td>
                     <td>
-                       <input name="waterCharge" id="waterCharge" placeholder="点击选择时间"  type="text" class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2" style="width:80px" readonly="true" value="0">
+                       <input name="waterCharge" id="waterCharge" placeholder="点击选择时间"  type="text" class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2"  readonly="true" value="0">
                     </td>
                 </tr>
                  <tr>
-                    <td>本月煤气数</td>
-                    <td><input name="currentGasNum" id="currentGasNum" placeholder="点击选择时间"   type="text" class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2" style="width:80px"></td>
-                    <td>上月煤气数</td>
+                    <td style="width:80px">本月煤气数</td>
+                    <td><input name="currentGasNum" id="currentGasNum" placeholder="点击选择时间"   type="text" class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2" ></td>
+                    <td style="width:80px">上月煤气数</td>
                     <td>
-                       <input name=lastGasNum id="lastGasNum" placeholder="点击选择时间"   class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2" style="width:80px">
+                       <input name=lastGasNum id="lastGasNum" placeholder="点击选择时间"   class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2" >
                     </td>
-                     <td>煤气数</td>
+                     <td style="width:80px">煤气数</td>
                     <td>
-                       <input name="gasNum" id="gasNum" placeholder="点击选择时间"  type="text" class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2" style="width:80px" readonly="true">
+                       <input name="gasNum" id="gasNum" placeholder="点击选择时间"  type="text" class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2"  readonly="true">
                     </td>
-                     <td>方 /元</td>
+                     <td style="width:80px">方 /元</td>
                     <td>
-                       <input name="gasUnitPrice" id="gasUnitPrice" placeholder="点击选择时间"  type="text" class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2" style="width:80px" value="0">
+                       <input name="gasUnitPrice" id="gasUnitPrice" placeholder="点击选择时间"  type="text" class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2"  value="0">
                     </td>
-                     <td>燃气费(元)</td>
+                     <td style="width:80px">燃气费(元)</td>
                     <td>
-                       <input name="gasCharge" id="gasCharge" placeholder="点击选择时间"  type="text" class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2" style="width:80px" readonly="true" value="0">
+                       <input name="gasCharge" id="gasCharge" placeholder="点击选择时间"  type="text" class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2"  readonly="true" value="0">
                     </td>
                 </tr>
                  <tr>
                    
-                    <td>网络费</td>
-                    <td><input name="internetCharge" id="internetCharge" placeholder="点击选择时间"  class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2" style="width:80px" value="0"></td>
-                    <td>电视费</td>
-                    <td><input name="tvCharge" id="tvCharge" placeholder="点击选择时间"  class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2" style="width:80px" value="0"></td>
-                    <td>分摊费</td>
-                    <td><input name="equallyCharge" id="equallyCharge" placeholder="点击选择时间"  class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2" style="width:80px" value="0"></td>
-                     <td>其他费用</td>
-                    <td><input name="otherCharge" id="otherCharge" placeholder="点击选择时间"  class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2" style="width:80px" value="0"></td>
-                    <td>合计(元)</td>
-                    <td><input name="total" id="total" placeholder="点击选择时间"  class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2" style="width:80px" readonly="true"></td>
+                   
+                    <td style="width:80px">电视费</td>
+                    <td><input name="tvCharge" id="tvCharge" placeholder="点击选择时间"  class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2"  value="0"></td>
+                    
+                     <td style="width:80px">其他费用</td>
+                    <td><input name="otherCharge" id="otherCharge" placeholder="点击选择时间"  class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2"  value="0"></td>
+                    
                     <td><input name="roomId" type="hidden"  value="${roomId}"></td>
                     <td><input name="tenantId" id="tenantId" type="hidden"  value=""></td>
                     <td><input name="sendCount" type="hidden"  value="0"></td>
+                    <td></td>
+                    <td style="width:80px">合计(元)</td>
+                    <td><input name="total" id="total" placeholder="点击选择时间"  class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2"  readonly="true"></td>
                 </tr>
                 <tr>
                     
-                  <td>备注</td>
+                  <td style="width:80px">备注</td>
                   <td colspan="6"><textarea id="remark" name="remark" rows="" cols="" style="margin: 0px; width: 380px; height: 53px;" ></textarea></td>  
                     
                 </tr>

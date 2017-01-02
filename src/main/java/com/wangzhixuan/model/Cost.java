@@ -6,6 +6,10 @@ import com.baomidou.mybatisplus.annotations.TableField;
 import java.io.Serializable;
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+
+
 /**
  * <p>
  * cost
@@ -156,18 +160,21 @@ public class Cost implements Serializable {
 	@TableField(value="send_count")
 	private Integer sendCount;
 	
-//	@TableField(value="start_date")
-//	private Date startDate;
-//	/**
-//	 * 
-//	 */
-//	@TableField(value="end_date")
-//	private Date endDate;
-//	/**
-//	 * 
-//	 */
-//	@TableField(value="copy_date")
-//	private Date copyDate;
+	@DateTimeFormat(pattern="yyyy-MM-dd") 
+	@TableField(value="start_date")
+	private Date startDate;
+	/**
+	 * 
+	 */
+	@DateTimeFormat(pattern="yyyy-MM-dd") 
+	@TableField(value="end_date")
+	private Date endDate;
+	/**
+	 * 
+	 */
+	@DateTimeFormat(pattern="yyyy-MM-dd") 
+	@TableField(value="copy_date")
+	private Date copyDate;
 	
 	
 	
@@ -388,27 +395,27 @@ public class Cost implements Serializable {
 		this.isPay = isPay;
 	}
 
-//	public Date getStartDate() {
-//		return startDate;
-//	}
-//
-//	public void setStartDate(Date startDate) {
-//		this.startDate = startDate;
-//	}
-//
-//	public Date getEndDate() {
-//		return endDate;
-//	}
-//
-//	public void setEndDate(Date endDate) {
-//		this.endDate = endDate;
-//	}
-//
-//	public Date getCopyDate() {
-//		return copyDate;
-//	}
-//
-//	public void setCopyDate(Date copyDate) {
-//		this.copyDate = copyDate;
-//	}
+	public Date getStartDate() {
+		return startDate;
+	}
+
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
+	}
+
+	public Date getEndDate() {
+		return endDate;
+	}
+
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
+	}
+
+	public Date getCopyDate() {
+		return copyDate;
+	}
+
+	public void setCopyDate(Date copyDate) {
+		this.copyDate = copyDate;
+	}
 }
