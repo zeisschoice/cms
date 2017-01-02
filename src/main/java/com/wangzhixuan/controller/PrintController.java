@@ -86,7 +86,10 @@ public class PrintController extends BaseController {
 		cp.setLastMon("2016-11-3");
 		cp.setRoomNum(roomName);
 		
-		
+		cp.setGasUnitPrice(c.getGasUnitPrice().toString());
+		cp.setCurrentGasNum(c.getCurrentGasNum().toString());
+		cp.setLastGasNum(c.getLastGasNum().toString());
+		cp.setGasCharge(c.getGasCharge().toString());
 		cp.setCrMonWaterNum(c.getCurrentWaterNum().toString());
 		cp.setLsMonWaterNum(c.getLastWaterNum().toString());
 		cp.setWaterCount(c.getWaterCharge().toString());//水费

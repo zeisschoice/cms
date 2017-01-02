@@ -39,7 +39,7 @@ public class SMSController extends BaseController {
 	
 	@RequestMapping(value = "/send", method = RequestMethod.POST)
     @ResponseBody
-	public Object smsCurrentMonCost(@RequestParam("total") String total,@RequestParam("phone") String phone,@RequestParam("tenantName") String tenantName,@RequestParam("roomName") String roomName,@RequestParam("id") Integer id,@RequestParam("sendCount") Integer sendCount) throws JsonProcessingException{
+	public Object smsCurrentMonCost(@RequestParam("total") String total,@RequestParam("phone") String phone,@RequestParam("tenantName") String tenantName,@RequestParam("roomName") String roomName,@RequestParam("id") Integer id,@RequestParam("sendCount") Integer sendCount,@RequestParam("mon") String mon) throws JsonProcessingException{
 		
 		
 		Result rs  = new Result();
@@ -61,13 +61,13 @@ public class SMSController extends BaseController {
 		map.put("name", tenantName);
 		map.put("room", roomName);
 		map.put("cost", total);
-		
+		map.put("mon", mon);
 		
 		
 		String params = mapper.writeValueAsString(map);
 		
 		
-        rs = SMSUtils.sendMsg(smsConifg.getUrl(), smsConifg.getAppKey(), smsConifg.getSecret(), "交租短信", params, phone, "SMS_25620786");
+        rs = SMSUtils.sendMsg(smsConifg.getUrl(), smsConifg.getAppKey(), smsConifg.getSecret(), "房租", params, phone, "SMS_37555054");
 		
 	
 		

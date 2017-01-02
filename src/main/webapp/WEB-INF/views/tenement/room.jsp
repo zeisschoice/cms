@@ -203,7 +203,7 @@
     </script>
 </head>
 <body class="easyui-layout" data-options="fit:true,border:false">
-    <div data-options="region:'north',border:false" style="height: 30px; overflow: hidden;background-color: #fff">
+   <!--  <div data-options="region:'north',border:false" style="height: 30px; overflow: hidden;background-color: #fff">
         <form id="searchForm">
             <table>
                 <tr>
@@ -217,7 +217,7 @@
                 </tr>
             </table>
         </form>
-    </div>
+    </div> -->
     <div data-options="region:'center',border:true,title:'房间列表'" >
         <table id="dataGrid" data-options="fit:true,border:false"></table>
     </div>

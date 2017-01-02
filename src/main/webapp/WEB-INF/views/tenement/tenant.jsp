@@ -332,7 +332,7 @@
     	
         parent.$.modalDialog({
             title : '添加',
-            width : 800,
+            width : 1200,
             height : 500,
             href : '${path }/cost/addPage?id='+roomId+"&tenantName="+$('#tenantName').val()+"&monRent="+monRent+"&tenantId="+ tenantId,
             buttons : [ {
@@ -353,12 +353,12 @@
         } else {//点击操作里面的删除图标会触发这个
             dataGrid.datagrid('unselectAll').datagrid('uncheckAll');
         }
-        parent.$.messager.confirm('询问', '您是否要删除当前房间？', function(b) {
+        parent.$.messager.confirm('询问', '您是否要删除当前费用？', function(b) {
             if (b) {
                 var currentUserId = '${sessionInfo.id}';/*当前登录用户的ID*/
                 if (currentUserId != id) {
                     progressLoad();
-                    $.post('${path }/tenant/delete', {
+                    $.post('${path }/cost/delete', {
                         id : id
                     }, function(result) {
                         if (result.success) {
@@ -370,7 +370,7 @@
                 } else {
                     parent.$.messager.show({
                         title : '提示',
-                        msg : '不可以删除自己！'
+                        msg : '不可以删除！'
                     });
                 }
             }
@@ -392,7 +392,7 @@
         	
         	parent.$.modalDialog({
                 title : '编辑',
-                width : 800,
+                width : 860,
                 height : 400,
                 href : '${path }/cost/editPage?id=' + rows[0].id+"&tenantName="+$('#tenantName').val(),
                 buttons : [ {
@@ -439,7 +439,7 @@
     	 if(rows && rows.length > 0){
     	     var param = JSON.stringify(rows[0]);
     	   
-    		 window.open('${path }/print/cost1?cost='+param+"&roomName="+roomName);
+    		 window.open('${path }/print/cost1?cost='+param+"&roomName="+updateStr4roomName(roomName));
     		 
     	 }else{
     		 
@@ -507,6 +507,7 @@
   		 data.total = rows[0].total;
   		 data.id = rows[0].id;
   		 data.sendCount = rows[0].sendCount;
+  		 data.mon = rows[0].month;
   	    
   		 
   	  }else{
@@ -647,6 +648,53 @@
    }
    
    
+   function deleteFun(){
+	   
+	   
+	   var rows = dataGrid.datagrid('getSelections');
+       
+	  	 if(rows &&rows.length>0){
+	  	  	
+	  		 parent.$.messager.confirm('询问', '您是否要删除当前费用？！', function(b) {
+	      	   
+	  		   if(b){
+	  			   
+	  			   $.ajax({
+	  				   type: "GET",
+	  				   url: "${path }/cost/delete?id=" +rows[0].id,
+	  				   success: function(msg){
+	  				      
+	  					   if(msg){
+	  						   msg = $.parseJSON(msg);
+	  						  
+	  						 dataGrid.datagrid('reload');
+	  						   
+	  						   $.messager.alert('提示', msg.msg, 'info');
+	  					   }
+	  							   
+	  				   },
+	  				   error:function(){
+	  					  alert("加载租户信息失败！");
+	  				   }
+	  			});  
+	  		   }
+	  	  
+	     	});
+	  	    
+	  		 
+	  	  }else{
+	  		  
+	  		  alert("请选择一条记录！");
+	  		  return;
+	  	  }
+        
+       
+      
+        
+	   
+	   
+   }
+   
    
    
     </script>
@@ -657,7 +705,7 @@
     </style>
 </head>
 <body class="easyui-layout" data-options="fit:true,border:false">
-    <div data-options="region:'north',border:false" style="height: 30px; overflow: hidden;background-color: #fff">
+   <!--  <div data-options="region:'north',border:false" style="height: 30px; overflow: hidden;background-color: #fff">
         <form id="searchForm">
             <table>
                 <tr>
@@ -671,7 +719,7 @@
                 </tr>
             </table>
         </form>
-    </div>
+    </div> -->
     
     
     

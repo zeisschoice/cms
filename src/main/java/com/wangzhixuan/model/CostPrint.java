@@ -23,7 +23,43 @@ public class CostPrint {
 	private String other;
 	private String writeBiller;
 	private String internetCount;
+	public String getCurrentGasNum() {
+		return currentGasNum;
+	}
+
+	public void setCurrentGasNum(String currentGasNum) {
+		this.currentGasNum = currentGasNum;
+	}
+
+	public String getLastGasNum() {
+		return lastGasNum;
+	}
+
+	public void setLastGasNum(String lastGasNum) {
+		this.lastGasNum = lastGasNum;
+	}
+
+	public String getGasUnitPrice() {
+		return gasUnitPrice;
+	}
+
+	public void setGasUnitPrice(String gasUnitPrice) {
+		this.gasUnitPrice = gasUnitPrice;
+	}
+
+	private String gasCharge;
+	private String currentGasNum;
+	private String lastGasNum;
+	private String gasUnitPrice;
 	
+	public String getGasCharge() {
+		return gasCharge;
+	}
+
+	public void setGasCharge(String gasCharge) {
+		this.gasCharge = gasCharge;
+	}
+
 	public String getInternetCount() {
 		return internetCount;
 	}

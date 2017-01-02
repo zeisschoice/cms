@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.annotations.IdType;
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableField;
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * <p>
@@ -154,6 +155,21 @@ public class Cost implements Serializable {
 	
 	@TableField(value="send_count")
 	private Integer sendCount;
+	
+//	@TableField(value="start_date")
+//	private Date startDate;
+//	/**
+//	 * 
+//	 */
+//	@TableField(value="end_date")
+//	private Date endDate;
+//	/**
+//	 * 
+//	 */
+//	@TableField(value="copy_date")
+//	private Date copyDate;
+	
+	
 	
 	public Double getManageCharge() {
 		return manageCharge;
@@ -371,4 +387,28 @@ public class Cost implements Serializable {
 	public void setIsPay(Integer isPay) {
 		this.isPay = isPay;
 	}
+
+//	public Date getStartDate() {
+//		return startDate;
+//	}
+//
+//	public void setStartDate(Date startDate) {
+//		this.startDate = startDate;
+//	}
+//
+//	public Date getEndDate() {
+//		return endDate;
+//	}
+//
+//	public void setEndDate(Date endDate) {
+//		this.endDate = endDate;
+//	}
+//
+//	public Date getCopyDate() {
+//		return copyDate;
+//	}
+//
+//	public void setCopyDate(Date copyDate) {
+//		this.copyDate = copyDate;
+//	}
 }

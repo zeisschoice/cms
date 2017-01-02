@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="cost" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="26babfb5-ac49-4194-b848-96f148ae717a">
-	<property name="ireport.zoom" value="1.0"/>
-	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="42"/>
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="201"/>
+	<property name="ireport.y" value="0"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -45,6 +45,10 @@
 	<field name="internetCount" class="java.lang.String"/>
 	<field name="lastMon" class="java.lang.String"/>
 	<field name="roomNum" class="java.lang.String"/>
+	<field name="gasCharge" class="java.lang.String"/>
+	<field name="currentGasNum" class="java.lang.String"/>
+	<field name="lastGasNum" class="java.lang.String"/>
+	<field name="gasUnitPrice" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -214,7 +218,7 @@
 				<text><![CDATA[银行转账]]></text>
 			</staticText>
 			<textField>
-				<reportElement style="ZH_CN" x="351" y="114" width="100" height="20" uuid="84a17543-bd70-4f98-b0bd-201b827e59b0"/>
+				<reportElement style="ZH_CN" x="325" y="114" width="100" height="20" uuid="84a17543-bd70-4f98-b0bd-201b827e59b0"/>
 				<textFieldExpression><![CDATA["网络费："+$F{internetCount}+" 元/月"]]></textFieldExpression>
 			</textField>
 			<textField>
@@ -234,11 +238,11 @@
 				<textFieldExpression><![CDATA["合计：金额( 大写)"+$F{sumCN} + " ( ￥："+$F{sum}+")"]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="ZH_CN" x="190" y="115" width="132" height="20" uuid="94dca5cf-acf4-42e2-af5a-9603c84edb08"/>
+				<reportElement style="ZH_CN" x="183" y="115" width="132" height="20" uuid="94dca5cf-acf4-42e2-af5a-9603c84edb08"/>
 				<textFieldExpression><![CDATA["电视管理："+$F{tvCount}+"  元/月"]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="ZH_CN" x="462" y="114" width="100" height="20" uuid="c866cd21-735f-4e6b-a58e-99fa7001ed6c"/>
+				<reportElement style="ZH_CN" x="433" y="114" width="100" height="20" uuid="c866cd21-735f-4e6b-a58e-99fa7001ed6c"/>
 				<textFieldExpression><![CDATA[" 其他："+$F{other}]]></textFieldExpression>
 			</textField>
 			<textField>
@@ -260,6 +264,10 @@
 				<reportElement style="ZH_CN" x="533" y="10" width="12" height="20" uuid="ffd0bd7a-0d82-4d78-9545-56b0889ffc20"/>
 				<text><![CDATA[至]]></text>
 			</staticText>
+			<textField>
+				<reportElement style="ZH_CN" x="549" y="113" width="137" height="20" uuid="8de6ba96-f22a-40bf-b23d-7b455ec8550d"/>
+				<textFieldExpression><![CDATA["燃气费："+$F{gasCharge}]]></textFieldExpression>
+			</textField>
 		</band>
 	</detail>
 	<columnFooter>
