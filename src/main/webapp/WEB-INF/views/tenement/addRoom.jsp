@@ -16,7 +16,6 @@
             success : function(result) {
                 progressClose();
               
-                console.log('${path}/room/addRoom');
                 result = updateStr(result);
                 result = $.parseJSON(result);
                 if (result.success) {

@@ -59,7 +59,6 @@
  		   async: true,
  		   success: function(msg){
  		//	 var  result =  JSON.pare(msg);
-                console.log(msg); 
  			   if(msg){
  				  
  				  var msg = JSON.parse(msg);
@@ -135,7 +134,6 @@
             url:'${path}/cost/add',
             onSubmit : function(params) {
             	
-            	console.log(params);
             	
                 progressLoad();
                 var isValid = $(this).form('validate');

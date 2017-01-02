@@ -89,8 +89,6 @@ var dicttypeId = '<%= request.getParameter("dicttypeId")%>';
     		
     	}
     	
-    console.log(dictentry);
-    console.log(data);
     	
     	$('#dataGrid').datagrid({ 
     		url:null   

@@ -63,7 +63,6 @@
   		//	 var  result =  JSON.pare(msg);
 
   			   if(msg){
-  				  console.log(msg);
   				  var msg = JSON.parse(msg);
  				  
   				  msg = msg.obj;
@@ -283,7 +282,6 @@
     var a = $('#currentElectricNum').val();
 	var b = $('#lastElectricNum').val();
 	var c = (parseFloat(a) - parseFloat(b)).toFixed(2);
-    console.log(a +" = "+" = "+ b + c);
     
 	$('#electricNum').val(c);
         

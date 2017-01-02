@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="cost" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="26babfb5-ac49-4194-b848-96f148ae717a">
 	<property name="ireport.zoom" value="1.5"/>
-	<property name="ireport.x" value="201"/>
+	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<style name="table">
 		<box>
@@ -43,12 +43,14 @@
 	<field name="other" class="java.lang.String"/>
 	<field name="writeBiller" class="java.lang.String"/>
 	<field name="internetCount" class="java.lang.String"/>
-	<field name="lastMon" class="java.lang.String"/>
+	<field name="startDate" class="java.lang.String"/>
 	<field name="roomNum" class="java.lang.String"/>
 	<field name="gasCharge" class="java.lang.String"/>
 	<field name="currentGasNum" class="java.lang.String"/>
 	<field name="lastGasNum" class="java.lang.String"/>
 	<field name="gasUnitPrice" class="java.lang.String"/>
+	<field name="endDate" class="java.lang.String"/>
+	<field name="copyDate" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -161,11 +163,11 @@
 				<text><![CDATA[水表数：]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="ZH_CN" x="245" y="38" width="44" height="20" uuid="cdcefde3-871d-4707-96b5-7a52c1a6087e"/>
+				<reportElement style="ZH_CN" x="245" y="40" width="44" height="20" uuid="cdcefde3-871d-4707-96b5-7a52c1a6087e"/>
 				<text><![CDATA[电表数：]]></text>
 			</staticText>
 			<textField>
-				<reportElement style="ZH_CN" x="301" y="38" width="60" height="20" uuid="901f0262-a719-440a-97b0-45c12f79bf11"/>
+				<reportElement style="ZH_CN" x="301" y="40" width="60" height="20" uuid="901f0262-a719-440a-97b0-45c12f79bf11"/>
 				<textFieldExpression><![CDATA[$F{crMonElecNum}]]></textFieldExpression>
 			</textField>
 			<staticText>
@@ -187,14 +189,6 @@
 					<pen lineWidth="0.5"/>
 				</graphicElement>
 			</rectangle>
-			<staticText>
-				<reportElement style="ZH_CN" x="417" y="41" width="64" height="18" uuid="06048eba-a272-4840-b3a0-8a408fbe372b"/>
-				<text><![CDATA[抄表日期：]]></text>
-			</staticText>
-			<textField pattern="yyyy-MM-dd">
-				<reportElement x="497" y="40" width="100" height="19" uuid="1986d70e-9ec3-4813-8177-da64da45cbb7"/>
-				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
-			</textField>
 			<staticText>
 				<reportElement style="ZH_CN" x="428" y="137" width="53" height="20" uuid="b77cc276-b563-4a7e-8557-3c1e670b120d"/>
 				<text><![CDATA[支付方式：]]></text>
@@ -250,23 +244,19 @@
 				<textFieldExpression><![CDATA[$F{address} + $F{roomNum}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="455" y="11" width="71" height="20" uuid="6e31b92e-478b-44ea-a862-1a7487794454"/>
+				<reportElement style="ZH_CN" x="455" y="11" width="183" height="20" uuid="6e31b92e-478b-44ea-a862-1a7487794454"/>
 				<textElement>
 					<font size="10" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{lastMon}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{startDate} +" 至 " + $F{endDate}]]></textFieldExpression>
 			</textField>
-			<textField pattern="yyyy-MM-dd">
-				<reportElement x="551" y="10" width="100" height="20" uuid="f2ff4c0f-1b84-4591-b3a5-3713a268b0a9"/>
-				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement style="ZH_CN" x="533" y="10" width="12" height="20" uuid="ffd0bd7a-0d82-4d78-9545-56b0889ffc20"/>
-				<text><![CDATA[至]]></text>
-			</staticText>
 			<textField>
 				<reportElement style="ZH_CN" x="549" y="113" width="137" height="20" uuid="8de6ba96-f22a-40bf-b23d-7b455ec8550d"/>
 				<textFieldExpression><![CDATA["燃气费："+$F{gasCharge}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="ZH_CN" x="456" y="41" width="159" height="20" uuid="d9550698-2938-4823-94b9-4b1ac43691bd"/>
+				<textFieldExpression><![CDATA["抄表日期: "+$F{copyDate}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

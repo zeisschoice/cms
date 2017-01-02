@@ -89,7 +89,9 @@ public class PrintController extends BaseController {
 		List<CostPrint> list = new ArrayList<CostPrint>();
 		
 		
-		cp.setLastMon("2016-11-3");
+		cp.setCopyDate(c.getCopyDate());
+		cp.setStartDate(c.getStartDate());
+		cp.setEndDate(c.getEndDate());
 		cp.setRoomNum(roomName);
 		
 		cp.setGasUnitPrice(c.getGasUnitPrice().toString());

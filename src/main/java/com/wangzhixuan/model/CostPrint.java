@@ -4,7 +4,9 @@ public class CostPrint {
 
 	private String address;
 	private String roomNum;
-	private String lastMon;
+	private String startDate;
+	private String endDate;
+	private String copyDate;
     private String waterNum;
 	private String crMonWaterNum;
 	private String elecNum;
@@ -215,12 +217,29 @@ public class CostPrint {
 		this.roomNum = roomNum;
 	}
 
-	public String getLastMon() {
-		return lastMon;
+	public String getStartDate() {
+		return startDate;
 	}
 
-	public void setLastMon(String lastMon) {
-		this.lastMon = lastMon;
+	public void setStartDate(String startDate) {
+		this.startDate = startDate;
 	}
+
+	public String getEndDate() {
+		return endDate;
+	}
+
+	public void setEndDate(String endDate) {
+		this.endDate = endDate;
+	}
+
+	public String getCopyDate() {
+		return copyDate;
+	}
+
+	public void setCopyDate(String copyDate) {
+		this.copyDate = copyDate;
+	}
+
 	
 }

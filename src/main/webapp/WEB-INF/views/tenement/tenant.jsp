@@ -195,6 +195,20 @@
               
             },
             {
+                width : '80',
+                title : '是否缴费',
+                field : 'isPay',
+                formatter : function(value, row, index) {
+                	
+                         switch (value) {
+                         case 0:
+                             return '<span style="color:red;">未缴</span>';
+                         case 1:
+                             return '<span style="color:green;">已缴</span>';
+                         }
+                     }
+            },
+            {
             	 width : '0',
                  title : '当前电表数',
                  hidden:true,
@@ -258,13 +272,13 @@
           field : 'roomId'
         
      },
-      {
+     /*  {
           width : '0',
           title : 'id',
           hidden:true,
           field : 'isPay'
         
-     },
+     }, */
            {
           	 width : '200',
                title : '备注',
@@ -310,8 +324,6 @@
                 		
                 		  var str = data.rows[i].isPay==1?"已缴":"未缴";
                 		  
-                		  console.log(data.rows[i].isPay);
-                		  console.log(str);
                 		  
                 		//  var iconStr = data.rows[i].isPay==1?"icon-ok":"icon-cancel";
                 	
