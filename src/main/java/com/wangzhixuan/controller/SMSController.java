@@ -31,7 +31,7 @@ import com.wangzhixuan.service.ICostService;
 public class SMSController extends BaseController {
 
 	@Autowired
-	private SMSConfig smsConifg;
+	private SMSConfig smsCfg;
 	
 	@Autowired
 	private SmsLogMapper smsLogmapper;
@@ -69,16 +69,15 @@ public class SMSController extends BaseController {
 		String params = mapper.writeValueAsString(map);
 		
 		
-        rs = SMSUtils.sendMsg(smsConifg.getUrl(), smsConifg.getAppKey(), smsConifg.getSecret(), "房租", params, phone, "SMS_37555054");
+        rs = SMSUtils.sendMsg(smsCfg.getUrl(), smsCfg.getAppKey(), smsCfg.getSecret(), smsCfg.getTemplate(), params, phone, smsCfg.getTemplateCode());
 		
 	
 		
 		 
 			
 		 if(rs.isSuccess()){
-			 AlibabaAliqinFcSmsNumSendResponse rsp  = (AlibabaAliqinFcSmsNumSendResponse) rs.getObj();
 			 
-			
+			 AlibabaAliqinFcSmsNumSendResponse rsp  = (AlibabaAliqinFcSmsNumSendResponse) rs.getObj();
 			 
 			 ObjectMapper m = new ObjectMapper();
 			
@@ -94,6 +93,8 @@ public class SMSController extends BaseController {
 				 smslog.setLoginName(getCurrentUser().getLoginName());
 				 smslog.setLoginRole(getCurrentUser().getUserType().toString());
 				 smslog.setCreateDate(new Date());
+				 smslog.setParams(rsp.getParams().toString());
+				 smslog.setRespBody(rsp.getBody());
 				 int i = smsLogmapper.insert(smslog) ;
 				 rs.setMsg(errMsg.get("sub_msg").asText());
 			     rs.setSuccess(false);

@@ -5,6 +5,21 @@ public class SMSConfig {
 	private String url;
 	private String appKey;
 	private String secret;
+	private String template;
+	private String templateCode;
+	
+	public String getTemplate() {
+		return template;
+	}
+	public void setTemplate(String template) {
+		this.template = template;
+	}
+	public String getTemplateCode() {
+		return templateCode;
+	}
+	public void setTemplateCode(String templateCode) {
+		this.templateCode = templateCode;
+	}
 	public String getUrl() {
 		return url;
 	}

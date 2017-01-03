@@ -28,6 +28,8 @@
         <property name="url" value="${sms.url}"/>
         <property name="appKey" value="${sms.appKey}"/>
         <property name="secret" value="${sms.secret}"/>
+        <property name="template" value="${sms.template}"/>
+        <property name="templateCode" value="${sms.templateCode}"/>
      </bean>
    
 </beans>
