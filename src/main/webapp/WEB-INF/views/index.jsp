@@ -113,7 +113,37 @@
         });
     }
 
+     
+    
 </script>
+
+  <script type="text/javascript">
+        $(document).ready(function () {
+        /*     $("#metroaqui").AddMetroSimpleButton('bt3', 'metro-vermelho', 'static/metroaqui/Style/Imagem/carta.png', 'Vermelho', 'alert("Vermelho");');
+            $("#metroaqui").AddMetroSingleLabeledButton('bt6', 'metro-roxo', 'static/metroaqui/Style/Imagem/admin.png', '30', 'alert("Vermelho");');
+            $("#metroaqui").AddMetroSingleLabeledButton('bt6', 'metro-roxo', 'static/metroaqui/Style/Imagem/admin.png', '30', 'alert("Vermelho");');
+            $("#metroaqui").AddMetroSingleLabeledButton('bt6', 'metro-roxo', 'static/metroaqui/Style/Imagem/admin.png', '30', 'alert("Vermelho");'); */
+		  /*   $("#metroaqui").AddMetroDoubleButton('bt4', 'metro-azul', 'static/metroaqui/Style/Imagem/appbar.home.people.png', '房间管理', 'alert("Azul");'); 
+            $("#metroaqui").AddMetroDoubleButton('bt4', 'metro-verde', 'static/metroaqui/Style/Imagem/appbar.people.multiple.png', '住户管理', 'alert("Azul");'); 
+            $("#metroaqui").AddMetroDoubleButton('bt4', 'metro-laranja', 'static/metroaqui/Style/Imagem/appbar.settings.png', '设置', 'alert("Azul");'); 
+          */
+
+        /*     $("#metroaqui_novo").AddMetroDoubleWithTrailer('bt6', 'metro-azul', 'Style/Imagem/admin.png', 'Button with Status Text', 'alert("Text");', 'metro-info');
+			$("#metroaqui_novo").AddMetroDoubleWithTrailerWithBG('bt6', 'Style/Imagem/fundo_metro.png', 'Button with Status Text', 'alert("Text");', 'metro-azul'); */
+			
+			$("#metroaqui_novo").AddMetroDoubleButton('bt4', 'metro-azul', 'Style/Imagem/carta.png', 'Azul', 'alert("Azul");');
+			$("#metroaqui_novo").AddMetroDoubleButton('bt2', 'metro-laranja', 'Style/Imagem/carta.png', 'Azul', 'alert("Azul");');
+			$("#metroaqui_novo").AddMetroDoubleButton('bt6', 'metro-verde', 'Style/Imagem/carta.png', 'Azul', 'alert("Azul");');
+			 /*$("#metroaqui_novo").AddMetroSimpleButton('bt1', 'metro-verde', 'Style/Imagem/carta.png', 'Teste Roger', 'alert("feito b1");'); 
+            $("#metroaqui_novo").AddMetroSimpleButton('bt2', 'metro-laranja', 'Style/Imagem/carta.png', 'Laranja', 'alert("Laranja");');
+             $("#metroaqui_novo").AddMetroDoubleButton('bt4', 'metro-azul', 'Style/Imagem/carta.png', 'Azul', 'alert("Azul");');
+           /*  $("#metroaqui_novo").AddMetroSimpleButton('bt5', 'metro-laranja', 'Style/Imagem/carta.png', 'Laranja', 'alert("Laranja");');
+			$("#metroaqui_novo").AddMetroSimpleButton('bt1', 'metro-verde', 'Style/Imagem/admin.png', 'Teste Roger', '');
+            $("#metroaqui_novo").AddMetroSimpleButton('bt2', 'metro-laranja', 'Style/Imagem/carta.png', 'Laranja', '');
+			$("#metroaqui_novo").AddMetroSimpleButton('bt1', 'metro-verde', 'Style/Imagem/carta.png', 'Teste Roger', '');  */
+        });
+  </script>
+
 </head>
 <body>
     <div id="loading" style="position: fixed;top: -50%;left: -50%;width: 200%;height: 200%;background: #fff;z-index: 100;overflow: hidden;">
@@ -149,6 +179,41 @@
                         .osc_git_info{color: #666;}
                         .osc_git_main a{color: #4183c4;}
                     </style>
+                    <!-- ///////////////// -->
+                    <div class="easyui-layout" style="width:100%;height:100%;">
+				        <div id="p" data-options="region:'east'"  style="width:20%;padding:10px">
+				             <div class="easyui-calendar" style="width:100%;height:250px;"></div>
+				        </div>
+				        <div data-options="region:'center'" >
+				          
+				           <div class="easyui-layout" style="width:100%;height:100%;">
+				              <div id="p" data-options="region:'north'" border="false" style="width:100%;height:100%;padding:10px;text-aling:center">
+				               <%--  <div style="display:inline;align:center;margin:80px">
+				                   <div style="float:left;width:25%"><img style="width:100px;height:100px;" src="${staticPath }/static/style/images/network.png"></div>   
+				                   <div style="float:left;width:25%"><img style="width:100px;height:100px;" src="${staticPath }/static/style/images/business.png"></div>
+				                   <div style="float:left;width:25%"><img style="width:100px;height:100px;" src="${staticPath }/static/style/images/school.png"></div>
+				                   <div style="float:left;width:25%"><img style="width:100px;height:100px;" src="${staticPath }/static/style/images/wall_calendar.png"></div>  
+				                 </div>    --%>                                         
+				               
+				               <!--  <div id="metroaqui" sytle="text-align:center" class="metro-panel"></div> -->
+				                <div id="metroaqui_novo"></div> 
+				            
+				              </div>
+				              
+				            <!--   <div id="p" data-options="region:'south'" border="false" style="width:100%;height:50%;padding:10px">
+				                   <div>
+				                     <div id="main" style="width: 400px;height:200px;"></div>
+									   
+				                   </div> 
+				                     
+				                   <div id="metroaqui_novo"></div> 
+				                   <div></div>  
+				              </div> -->
+				              
+				           </div>
+				        </div>
+                   </div>
+                    <!-- ////////////////// -->
                 </div>
             </div>
         </div>
@@ -166,4 +231,31 @@
         #ie6-warning p{width:960px;margin:0 auto;}
     </style>
 </body>
+<script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+
+        // 指定图表的配置项和数据
+        var option = {
+            title: {
+                text: 'ECharts 入门示例'
+            },
+            tooltip: {},
+            legend: {
+                data:['销量']
+            },
+            xAxis: {
+                data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
+            },
+            yAxis: {},
+            series: [{
+                name: '销量',
+                type: 'bar',
+                data: [5, 20, 36, 10, 10, 20]
+            }]
+        };
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+  </script>
 </html>
