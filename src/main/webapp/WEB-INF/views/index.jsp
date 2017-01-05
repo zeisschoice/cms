@@ -131,16 +131,16 @@
         /*     $("#metroaqui_novo").AddMetroDoubleWithTrailer('bt6', 'metro-azul', 'Style/Imagem/admin.png', 'Button with Status Text', 'alert("Text");', 'metro-info');
 			$("#metroaqui_novo").AddMetroDoubleWithTrailerWithBG('bt6', 'Style/Imagem/fundo_metro.png', 'Button with Status Text', 'alert("Text");', 'metro-azul'); */
 			
-			$("#metroaqui_novo").AddMetroDoubleButton('bt4', 'metro-azul', 'Style/Imagem/carta.png', 'Azul', 'alert("Azul");');
-			$("#metroaqui_novo").AddMetroDoubleButton('bt2', 'metro-laranja', 'Style/Imagem/carta.png', 'Azul', 'alert("Azul");');
-			$("#metroaqui_novo").AddMetroDoubleButton('bt6', 'metro-verde', 'Style/Imagem/carta.png', 'Azul', 'alert("Azul");');
+			$("#metroaqui_novo").AddMetroDoubleButton('bt4', 'metro-azul', 'static/metroaqui/Style/Imagem/appbar.home.people.png', '楼房管理', 'alert("Azul");');
+			$("#metroaqui_novo").AddMetroDoubleButton('bt4', 'metro-laranja', 'static/metroaqui/Style/Imagem/appbar.people.multiple.png','住户管理', 'alert("Azul");');
+		    $("#metroaqui_novo").AddMetroDoubleButton('bt4', 'metro-azul', 'static/metroaqui/Style/Imagem/appbar.settings.png', '系统设置', 'alert("Azul")');
 			 /*$("#metroaqui_novo").AddMetroSimpleButton('bt1', 'metro-verde', 'Style/Imagem/carta.png', 'Teste Roger', 'alert("feito b1");'); 
             $("#metroaqui_novo").AddMetroSimpleButton('bt2', 'metro-laranja', 'Style/Imagem/carta.png', 'Laranja', 'alert("Laranja");');
              $("#metroaqui_novo").AddMetroDoubleButton('bt4', 'metro-azul', 'Style/Imagem/carta.png', 'Azul', 'alert("Azul");');
-           /*  $("#metroaqui_novo").AddMetroSimpleButton('bt5', 'metro-laranja', 'Style/Imagem/carta.png', 'Laranja', 'alert("Laranja");');
-			$("#metroaqui_novo").AddMetroSimpleButton('bt1', 'metro-verde', 'Style/Imagem/admin.png', 'Teste Roger', '');
-            $("#metroaqui_novo").AddMetroSimpleButton('bt2', 'metro-laranja', 'Style/Imagem/carta.png', 'Laranja', '');
-			$("#metroaqui_novo").AddMetroSimpleButton('bt1', 'metro-verde', 'Style/Imagem/carta.png', 'Teste Roger', '');  */
+           /*  $("#metroaqui_novo").AddMetroSimpleButton('bt5', 'metro-laranja', 'Style/Imagem/carta.png', 'Laranja', 'alert("Laranja");'); */
+		//	$("#metroaqui_novo").AddMetroSimpleButton('bt1', 'metro-verde', 'Style/Imagem/admin.png', 'Teste Roger', '');
+       //     $("#metroaqui_novo").AddMetroSimpleButton('bt2', 'metro-laranja', 'Style/Imagem/carta.png', 'Laranja', '');
+		//	$("#metroaqui_novo").AddMetroSimpleButton('bt1', 'metro-verde', 'Style/Imagem/carta.png', 'Teste Roger', ''); 
         });
   </script>
 
@@ -182,7 +182,14 @@
                     <!-- ///////////////// -->
                     <div class="easyui-layout" style="width:100%;height:100%;">
 				        <div id="p" data-options="region:'east'"  style="width:20%;padding:10px">
+				            
 				             <div class="easyui-calendar" style="width:100%;height:250px;"></div>
+				             <br>
+				             <div  style="width:100%;height:400px;">
+                                <table id="dataGrid" data-options="fit:true,border:true" title="最近操作"></table>
+                             </div>
+                             
+                             
 				        </div>
 				        <div data-options="region:'center'" >
 				          
@@ -197,18 +204,11 @@
 				               
 				               <!--  <div id="metroaqui" sytle="text-align:center" class="metro-panel"></div> -->
 				                <div id="metroaqui_novo"></div> 
-				            
+				                
+				                <div id="main" style="width: 600px;height:400px;"></div>
 				              </div>
 				              
-				            <!--   <div id="p" data-options="region:'south'" border="false" style="width:100%;height:50%;padding:10px">
-				                   <div>
-				                     <div id="main" style="width: 400px;height:200px;"></div>
-									   
-				                   </div> 
-				                     
-				                   <div id="metroaqui_novo"></div> 
-				                   <div></div>  
-				              </div> -->
+				           
 				              
 				           </div>
 				        </div>
@@ -217,7 +217,7 @@
                 </div>
             </div>
         </div>
-        <div data-options="region:'south',border:false" style="height: 30px;line-height:30px; overflow: hidden;text-align: center;background-color: #eee" >Copyright © 2015 power by 租房系统</div>
+        <div data-options="region:'south',border:false" style="height: 30px;line-height:30px; overflow: hidden;text-align: center;background-color: #eee" >Copyright © 2017 power by 租房系统</div>
     </div>
 
     <!--[if lte IE 7]>
@@ -258,4 +258,32 @@
         // 使用刚指定的配置项和数据显示图表。
         myChart.setOption(option);
   </script>
+  
+      <script type="text/javascript">
+        var dataGrid;
+        $(function () {
+            dataGrid = $('#dataGrid').datagrid({
+                url: '${path }/sysLog/loginlog',
+                fit: true,
+                pageList: [10, 20, 30, 40, 50, 100, 200, 300, 400, 500],
+                columns: [[{
+                    width: '80',
+                    title: '登录名',
+                    field: 'loginName'
+                 
+                }, {
+                    width: '80',
+                    title: '用户名',
+                    field: 'roleName'
+                }, {
+                    width: '80',
+                    title: '操作时间',
+                    field: 'createTime'
+                }]]
+            });
+        });
+    </script>
+  
+  
+  
 </html>
