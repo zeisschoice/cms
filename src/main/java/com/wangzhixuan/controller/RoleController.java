@@ -18,7 +18,7 @@ import com.wangzhixuan.service.IRoleService;
 
 /**
  * @description：权限管理
- * @author：zhixuan.wang
+ * @author：zeiss
  * @date：2015/10/1 14:51
  */
 @Controller
@@ -98,7 +98,7 @@ public class RoleController extends BaseController {
      * @param id
      * @return
      */
-    @RequestMapping("/delete")
+    @RequestMapping(value="/delete",method = RequestMethod.POST)
     @ResponseBody
     public Object delete(Long id) {
         roleService.deleteById(id);

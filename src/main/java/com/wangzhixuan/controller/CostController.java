@@ -127,6 +127,7 @@ public class CostController extends BaseController{
 	 @RequestMapping(value = "/getLastMon",method = RequestMethod.POST)
 	 @ResponseBody
 	 public Object selectLastMon(Cost cost) {
+		// iCostService.sele
 		 Cost rs = iCostService.selectOne(cost);
 		 
 		 return rs;

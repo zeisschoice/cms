@@ -143,8 +143,6 @@ zhstr : {// 验证之只能输入中文
  isAfter: {
     validator: function(value, param){
     	
-    	console.log(value);
-    	console.log(param);
     	
         var dateA = $.fn.datebox.defaults.parser(value);
         var dateB = $.fn.datebox.defaults.parser($(param[0]).datebox('getValue'));

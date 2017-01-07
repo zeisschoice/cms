@@ -89,6 +89,9 @@
             href : '${path }/role/addPage',
             buttons : [ {
                 text : '确定',
+                iconCls: "icon-ok",
+                width: 80,
+                height: 35,
                 handler : function() {
                     parent.$.modalDialog.openner_dataGrid = dataGrid;//因为添加成功之后，需要刷新这个treeGrid，所以先预定义好
                     var f = parent.$.modalDialog.handler.find('#roleAddForm');
@@ -112,6 +115,9 @@
             href : '${path }/role/editPage?id=' + id,
             buttons : [ {
                 text : '确定',
+                iconCls: "icon-ok",
+                width: 80,
+                height: 35,
                 handler : function() {
                     parent.$.modalDialog.openner_dataGrid = dataGrid;//因为添加成功之后，需要刷新这个dataGrid，所以先预定义好
                     var f = parent.$.modalDialog.handler.find('#roleEditForm');
@@ -131,7 +137,7 @@
         parent.$.messager.confirm('询问', '您是否要删除当前角色？', function(b) {
             if (b) {
                 progressLoad();
-                $.post('${ctx}/role/delete', {
+                $.post('${path}/role/delete', {
                     id : id
                 }, function(result) {
                     if (result.success) {
@@ -159,6 +165,9 @@
             href : '${path }/role/grantPage?id=' + id,
             buttons : [ {
                 text : '确定',
+                iconCls: "icon-ok",
+                width: 80,
+                height: 35,
                 handler : function() {
                     parent.$.modalDialog.openner_dataGrid = dataGrid;//因为添加成功之后，需要刷新这个dataGrid，所以先预定义好
                     var f = parent.$.modalDialog.handler.find('#roleGrantForm');

@@ -89,6 +89,9 @@
                 href : '${path }/organization/editPage?id=' + node.id,
                 buttons : [ {
                     text : '编辑',
+                    iconCls: "icon-ok",
+                    width: 80,
+                    height: 35,
                     handler : function() {
                         parent.$.modalDialog.openner_treeGrid = treeGrid;//因为添加成功之后，需要刷新这个treeGrid，所以先预定义好
                         var f = parent.$.modalDialog.handler.find('#organizationEditForm');
@@ -132,6 +135,9 @@
             href : '${path }/organization/addPage',
             buttons : [ {
                 text : '添加',
+                iconCls: "icon-ok",
+                width: 80,
+                height: 35,
                 handler : function() {
                     parent.$.modalDialog.openner_treeGrid = treeGrid;//因为添加成功之后，需要刷新这个treeGrid，所以先预定义好
                     var f = parent.$.modalDialog.handler.find('#organizationAddForm');

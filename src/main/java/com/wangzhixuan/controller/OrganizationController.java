@@ -115,7 +115,9 @@ public class OrganizationController extends BaseController {
     @RequestMapping("/delete")
     @ResponseBody
     public Object delete(Long id) {
-        organizationService.selectById(id);
+     //   organizationService.selectById(id);
+        
+        organizationService.deleteById(id);
         return renderSuccess("删除成功！");
     }
 }

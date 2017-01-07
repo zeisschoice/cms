@@ -36,15 +36,15 @@
     	$('#monRent').val(monRent);
         $('#tenantId').val(tenantId);
     
+        month = month - 1;
+        
     	if(month==0)
         {
             month=12;
             year=year-1;
-        }else{
-        	
-        	month = month -1;
-        	
         }
+        	
+    
     	var data = {};
     	data.month = month;
     	data.year = year;
@@ -56,7 +56,7 @@
  		   type: "POST",
  		   url: "${path }/cost/getLastMon",
  		   data:data,
- 		   async: true,
+ 		   async: false,
  		   success: function(msg){
  		//	 var  result =  JSON.pare(msg);
  			   if(msg){
@@ -82,7 +82,7 @@
  		   error:function(){
  			  
  			  $.messager.progress('close');
- 			  $.messager.alert('发送失败！', msg.msg, 'error');
+ 			  $.messager.alert('获取失败！', msg.msg, 'error');
  		   }
  	});
     	
@@ -172,6 +172,7 @@
         
         function totalCost(){
       	  
+                	
     	    var gasCharge = $('#gasCharge').val();
     	    var waterCharge= $('#waterCharge').val();
     	    var electricCharge = $('#electricCharge').val();
@@ -364,18 +365,21 @@
         //设置单元价格
         $('#electricUnitPrice').numberbox({  
       	  onChange: function(value){ 
+      		  changeEle();
       		  totalCost();  
       	  }
         }); 
        
         $('#gasUnitPrice').numberbox({  
         	  onChange: function(value){ 
+        		  changeGas();
         		  totalCost();  
         	  }
           }); 
         
         $('#waterUnitPrice').numberbox({  
       	  onChange: function(value){ 
+      		  changeWater();
       		  totalCost();  
       	  }
         }); 
@@ -453,56 +457,56 @@
 	 }  
 	});   
 
- $('#endDate').datebox({  
-	 closeText:'关闭',  
-	 formatter:function(date){  
-	  var y = date.getFullYear();  
-	  var m = date.getMonth()+1;  
-	  var d = date.getDate();  
-	  var h = date.getHours();  
-	  var M = date.getMinutes();  
-	  var s = date.getSeconds();  
-	  function formatNumber(value){  
-	   return (value < 10 ? '0' : '') + value;  
-	  }  
-	  alert(formatNumber(h));  
-	  return y+'-'+m+'-'+d+' '+ formatNumber(h)+':'+formatNumber(M)+':'+formatNumber(s);  
-	 },  
-	 parser:function(s){  
-	  var t = Date.parse(s);  
-	  if (!isNaN(t)){  
-	   return new Date(t);  
-	  } else {  
-	   return new Date();  
-	  }  
-	 }  
-	}); 
  
- $('#copyDate').datebox({  
-	 closeText:'关闭',  
-	 formatter:function(date){  
-	  var y = date.getFullYear();  
-	  var m = date.getMonth()+1;  
-	  var d = date.getDate();  
-	  var h = date.getHours();  
-	  var M = date.getMinutes();  
-	  var s = date.getSeconds();  
-	  function formatNumber(value){  
-	   return (value < 10 ? '0' : '') + value;  
-	  }  
-	  alert(formatNumber(h));  
-	  return y+'-'+m+'-'+d+' '+ formatNumber(h)+':'+formatNumber(M)+':'+formatNumber(s);  
-	 },  
-	 parser:function(s){  
-	  var t = Date.parse(s);  
-	  if (!isNaN(t)){  
-	   return new Date(t);  
-	  } else {  
-	   return new Date();  
-	  }  
-	 }  
-	});  */
+  */
+  
+ function changeEle(){
+	  
+   	var a = $('#currentElectricNum').val();
+  	var b = $('#lastElectricNum').val();
+  	var c = (parseFloat(a) - parseFloat(b)).toFixed(2);
+      var d = $('#electricUnitPrice').val();
+    
+  	$('#electricNum').numberbox('setValue', c);
+  	
+  	var e =  (c * d).toFixed(2);
+  	    
+  	$('#electricCharge').numberbox('setValue',e);
+	  
+  } 
+  
  
+  function changeWater(){
+	  
+	  var a = $('#currentWaterNum').val();
+    	var b = $('#lastWaterNum').val();
+    	var c = (parseFloat(a) - parseFloat(b)).toFixed(2);
+        var d = $('#waterUnitPrice').val();
+      
+    	$('#waterNum').numberbox('setValue', c);
+    	
+    	var e =  (c * d).toFixed(2);
+    	    
+    	$('#waterCharge').numberbox('setValue',e);
+	  
+  }
+  
+  
+  function changeGas(){
+	  
+		var a = $('#currentGasNum').val();
+      	var b = $('#lastGasNum').val();
+      	var c = (parseFloat(a) - parseFloat(b)).toFixed(2);
+          var d = $('#gasUnitPrice').val();
+        
+      	$('#gasNum').numberbox('setValue', c);
+      	
+      	var e =  (c * d).toFixed(2);
+      	    
+      	$('#gasCharge').numberbox('setValue',e);
+	  
+  }
+  
 </script>
 <div class="easyui-layout" data-options="fit:true,border:false">
     <div data-options="region:'center',border:false" title="" style="overflow: hidden;padding: 3px;">
