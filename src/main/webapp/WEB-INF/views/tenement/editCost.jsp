@@ -55,12 +55,11 @@
     	
  //----------------------------------   	
     //获取配置费用数据	
-    	$.ajax({
+    /* 	$.ajax({
   		   type: "GET",
   		   url: "${path }/dictEntry/data?id=COST",
   		   async: false,
   		   success: function(msg){
-  		//	 var  result =  JSON.pare(msg);
 
   			   if(msg){
   				  var msg = JSON.parse(msg);
@@ -83,7 +82,7 @@
   			  $.messager.progress('close');
   			  $.messager.alert('发送失败！', msg.msg, 'error');
   		   }
-  	});       
+  	});        */
        
  //--------------
  

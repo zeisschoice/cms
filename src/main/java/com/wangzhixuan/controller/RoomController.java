@@ -107,5 +107,28 @@ public class RoomController extends BaseController {
 			
 			return "tenement/editRoom";
 		}
+	 
+	    @RequestMapping(value = "/getRentingRate", method = RequestMethod.GET)
+	    @ResponseBody
+		public Object getRentingRate() {	
+			
+	    	 HashMap<String,Integer> map = new HashMap<String,Integer>();
+	    	 
+	    	 Room entity = new Room();
+	    	 entity.setStatus(1);
+	    	 
+			 int renting = iRoomService.selectCount(entity);
+			 
+			 entity.setStatus(0);
+			 
+			 int unused = iRoomService.selectCount(entity);
+		  //   model.addAttribute("room", room);
+		     
+			 map.put("renting", renting);
+			 map.put("unused", unused);
+			
+			return map;
+	 } 
+	 
 	
 }

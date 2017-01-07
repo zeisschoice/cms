@@ -10,6 +10,7 @@ import com.baomidou.mybatisplus.plugins.Page;
 import com.wangzhixuan.commons.utils.PageInfo;
 import com.wangzhixuan.mapper.CostMapper;
 import com.wangzhixuan.model.Cost;
+import com.wangzhixuan.model.MonCost;
 import com.wangzhixuan.model.Tenant;
 import com.wangzhixuan.service.ICostService;
 
@@ -37,5 +38,14 @@ public class CostServiceImpl extends SuperServiceImpl<CostMapper, Cost> implemen
 	   
 	    pageInfo.setRows(list);
         pageInfo.setTotal(page.getTotal());
+	}
+
+	@Override
+	public List<MonCost> selectMonCost() {
+		
+		List<MonCost> rs = costMapper.countMonCost();
+		
+		
+		return rs;
 	}
 }

@@ -113,7 +113,17 @@
         });
     }
 
-     
+  function clickIcon(url,title,icon){
+	  
+	  var url = '${path }' + url;
+      addTab({
+          title : title,
+          url : url,
+          iconCls : icon
+      });
+	  
+	  
+  }   
     
 </script>
 
@@ -131,9 +141,9 @@
         /*     $("#metroaqui_novo").AddMetroDoubleWithTrailer('bt6', 'metro-azul', 'Style/Imagem/admin.png', 'Button with Status Text', 'alert("Text");', 'metro-info');
 			$("#metroaqui_novo").AddMetroDoubleWithTrailerWithBG('bt6', 'Style/Imagem/fundo_metro.png', 'Button with Status Text', 'alert("Text");', 'metro-azul'); */
 			
-			$("#metroaqui_novo").AddMetroDoubleButton('bt4', 'metro-azul', 'static/metroaqui/Style/Imagem/appbar.home.people.png', '楼房管理', 'alert("Azul");');
-			$("#metroaqui_novo").AddMetroDoubleButton('bt4', 'metro-laranja', 'static/metroaqui/Style/Imagem/appbar.people.multiple.png','住户管理', 'alert("Azul");');
-		    $("#metroaqui_novo").AddMetroDoubleButton('bt4', 'metro-azul', 'static/metroaqui/Style/Imagem/appbar.settings.png', '系统设置', 'alert("Azul")');
+			$("#metroaqui_novo").AddMetroDoubleButton('bt4', 'metro-azul', 'static/metroaqui/Style/Imagem/appbar.home.people.png', '楼房管理', 'clickIcon("/building/BuildingPage","楼房管理","menu_icon_datadeal");');
+			$("#metroaqui_novo").AddMetroDoubleButton('bt4', 'metro-laranja', 'static/metroaqui/Style/Imagem/appbar.people.multiple.png','租户管理', 'clickIcon("/tenant/tenantPage","租户管理","menu_icon_datadeal");');
+		    $("#metroaqui_novo").AddMetroDoubleButton('bt4', 'metro-azul', 'static/metroaqui/Style/Imagem/appbar.settings.png', '系统设置', 'clickIcon("/resource/manager","资源管理","menu_icon_datadeal")');
 			 /*$("#metroaqui_novo").AddMetroSimpleButton('bt1', 'metro-verde', 'Style/Imagem/carta.png', 'Teste Roger', 'alert("feito b1");'); 
             $("#metroaqui_novo").AddMetroSimpleButton('bt2', 'metro-laranja', 'Style/Imagem/carta.png', 'Laranja', 'alert("Laranja");');
              $("#metroaqui_novo").AddMetroDoubleButton('bt4', 'metro-azul', 'Style/Imagem/carta.png', 'Azul', 'alert("Azul");');
@@ -204,11 +214,28 @@
 				               
 				               <!--  <div id="metroaqui" sytle="text-align:center" class="metro-panel"></div> -->
 				                <div id="metroaqui_novo"></div> 
-				                
-				                <div id="main" style="width: 600px;height:400px;"></div>
+				                <br/>
+				                <br/>
+				                <!-- 图表 -->
+					               <div > 
+					                 
+					                 <div id="main" style="width: 350px;height:200px;float:left;padding-top:20px;padding-left:180px"></div>
+					                
+					                 <div id="main1" style="width: 350px;height:200px;float:left;padding-top:20px"></div>
+					                 
+					                 <!-- <div id="main2" style="width: 350px;height:200px;float:left;padding-top:20px"></div> -->
+					              </div>    
+				             <br>
+				             <br>
+				                <!-- 折线图 -->
+					             <div style="width: 1000px;height:300px;">
+					               
+					                <div id="main3" style="width:100%;height:300px;padding-top:20px"></div>
+					             
+					             </div>
+				             
+				             
 				              </div>
-				              
-				           
 				              
 				           </div>
 				        </div>
@@ -232,31 +259,242 @@
     </style>
 </body>
 <script type="text/javascript">
+       
+       var rentingCount ;
+
         // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('main'));
+        var myChart = echarts.init(document.getElementById('main'),'macarons');
+        var myChart1 = echarts.init(document.getElementById('main1'),'vintage');
+       // var myChart2 = echarts.init(document.getElementById('main2'),'roma');
+        var myChart3 =  echarts.init(document.getElementById('main3'),'vintage');
+        
+        //获取出租率
+        myChart.showLoading();
+        $.get('${path }/room/getRentingRate').done(function (result) {
+        
+        	
+        	result = JSON.parse(result);
+        	
+        	rentingCount = result.renting;
+        	
+        	myChart.hideLoading();
+        	myChart.setOption({
+        	    tooltip : {
+        	        trigger: 'item',
+        	        formatter: "{a} <br/>{b} : {c} ({d}%)"
+        	    },
+        	    legend: {
+        	        orient: 'vertical',
+        	        left: 'left',
+        	        data: ['出租率']
+        	    },
+        	    series : [
+        	        {
+        	            type: 'pie',
+        	            radius : ['40%', '55%'],
+        	            label: {
+        	                normal: {
+        	                    position: 'center'
+        	                }  
+        	            },
+        	            data:[
+        	                 
+        	                {
+        	                    value:result.renting, name:'出租率',
+        	                    label: {
+        	                        normal: {
+        	                            formatter: '{d} %',
+        	                            textStyle: {
+        	                                fontSize: 10
+        	                            }
+        	                        }
+        	                    }
+        	                },
+        	                {
+        	                    value:result.unused, name:'空闲',
+        	                    tooltip: {
+        	                        show: false
+        	                    },
+        	                    itemStyle: {
+        	                        normal: {
+        	                            color: '#999'
+        	                        }
+        	                    },
+        	                    label: {
+        	                        normal: {
+        	                            formatter: '\n出租率'
+        	                        }
+        	                    }
+        	                }
+        	            ]
+        	        }
+        	    ]
+        	});
+        	
+        	
+        });
+        
+        
+//缴费率
+ myChart1.showLoading();
+ 
+ $.get('${path }/cost/getCurMonPay').done(function (result) {
+        
+        	
+        	result = JSON.parse(result);
+        	
+        	//rentingCount = result.renting;
+            myChart1.hideLoading();
+        	myChart1.setOption(
+        			
+        			{
+                	    tooltip : {
+                	        trigger: 'item',
+                	        formatter: "{a} <br/>{b} : {c} ({d}%)"
+                	    },
+                	    legend: {
+                	        orient: 'vertical',
+                	        left: 'left',
+                	        data: ['本月缴费率']
+                	    },
+                	    series : [
+                	        {
+                	            type: 'pie',
+                	            radius : ['40%', '55%'],
+                	            label: {
+                	                normal: {
+                	                    position: 'center'
+                	                }  
+                	            },
+                	            data:[
+                	                 
+                	                {
+                	                    value:result.payRooms, name:'本月缴费率',
+                	                    label: {
+                	                        normal: {
+                	                            formatter: '{d} %',
+                	                            textStyle: {
+                	                                fontSize: 10
+                	                            }
+                	                        }
+                	                    }
+                	                },
+                	                {
+                	                    value:(rentingCount - result.payRooms), name:'总在租数',
+                	                    tooltip: {
+                	                        show: false
+                	                    },
+                	                    itemStyle: {
+                	                        normal: {
+                	                            color: '#999'
+                	                        }
+                	                    },
+                	                    label: {
+                	                        normal: {
+                	                            formatter: '\n本月缴费率'
+                	                        }
+                	                    }
+                	                }
+                	            ]
+                	        }
+                	    ]
+                	}
+        	
+        	);
+        	
+ });	
+        
+        
+  
+        
+ //月度费用统计
+ myChart3.showLoading();
+  $.get('${path }/cost/getCostStatistics').done(function (result) {
+	  
+	  myChart3.hideLoading();
+	  result = JSON.parse(result);
+	  myChart3.setOption({
+  	    title: {
+	        text: '费用统计'
+	    },
+	    tooltip: {
+	        trigger: 'axis'
+	    },
+	    legend: {
+	        data:['电费','水费','网络','管理费','分摊费','燃气费','其他费']
+	    },
+	    grid: {
+	        left: '3%',
+	        right: '4%',
+	        bottom: '3%',
+	        containLabel: true
+	    },
+	    toolbox: {
+	        feature: {
+	            saveAsImage: {}
+	        }
+	    },
+	    xAxis: {
+	        type: 'category',
+	        boundaryGap: false,
+	        data: ['一月','二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月']
+	    },
+	    yAxis: {
+	        type: 'value'
+	    },
+	    series: [
+	        {
+	            name:'电费',
+	            type:'line',
+	            stack: '总量',
+	            data:result.electric
+	        },
+	        {
+	            name:'水费',
+	            type:'line',
+	            stack: '总量',
+	            data:result.water
+	        },
+	        {
+	            name:'网络',
+	            type:'line',
+	            stack: '总量',
+	            data:result.internet
+	        },
+	        {
+	            name:'管理费',
+	            type:'line',
+	            stack: '总量',
+	            data:result.manage
+	        },
+	        {
+	            name:'分摊费',
+	            type:'line',
+	            stack: '总量',
+	            data:result.equally
+	        },
+	        {
+	            name:'燃气费',
+	            type:'line',
+	            stack: '总量',
+	            data:result.gas
+	        },
+	        {
+	            name:'其他费',
+	            type:'line',
+	            stack: '总量',
+	            data:result.other
+	        }
+	    ]
+	}); 
+	  
+  });
+     
 
-        // 指定图表的配置项和数据
-        var option = {
-            title: {
-                text: 'ECharts 入门示例'
-            },
-            tooltip: {},
-            legend: {
-                data:['销量']
-            },
-            xAxis: {
-                data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
-            },
-            yAxis: {},
-            series: [{
-                name: '销量',
-                type: 'bar',
-                data: [5, 20, 36, 10, 10, 20]
-            }]
-        };
-
-        // 使用刚指定的配置项和数据显示图表。
-        myChart.setOption(option);
+        
+      
+        
+        
   </script>
   
       <script type="text/javascript">
@@ -267,16 +505,16 @@
                 fit: true,
                 pageList: [10, 20, 30, 40, 50, 100, 200, 300, 400, 500],
                 columns: [[{
-                    width: '80',
+                    width: '60',
                     title: '登录名',
                     field: 'loginName'
                  
                 }, {
-                    width: '80',
+                    width: '60',
                     title: '用户名',
                     field: 'roleName'
                 }, {
-                    width: '80',
+                    width: '130',
                     title: '操作时间',
                     field: 'createTime'
                 }]]

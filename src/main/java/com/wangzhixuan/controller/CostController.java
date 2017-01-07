@@ -1,6 +1,8 @@
 package com.wangzhixuan.controller;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -21,6 +23,7 @@ import com.wangzhixuan.commons.base.BaseController;
 import com.wangzhixuan.commons.utils.PageInfo;
 import com.wangzhixuan.mapper.CostMapper;
 import com.wangzhixuan.model.Cost;
+import com.wangzhixuan.model.MonCost;
 import com.wangzhixuan.model.Room;
 import com.wangzhixuan.model.Tenant;
 import com.wangzhixuan.service.ICostService;
@@ -141,6 +144,88 @@ public class CostController extends BaseController{
 		 return renderSuccess("确认成功！");
 	 } 
 	 
+	 @RequestMapping(value = "/getCurMonPay",method = RequestMethod.GET)
+	 @ResponseBody
+	 public Object getCurMonPay() {
+		
+		 HashMap<String,Integer> map = new HashMap<String,Integer>();
+		 
+		 Cost cost = new Cost();
+		 
+		 int month = Calendar.getInstance().get(Calendar.MONTH);
+		 int year = Calendar.getInstance().get(Calendar.YEAR);
+		 cost.setIsPay(1);
+		 cost.setMonth(month + 1);
+		 cost.setYear(year);
+		 
+		 System.out.println("year: "+year + "month: "+month);
+		 
+		 int payRooms = iCostService.selectCount(cost);
+		 
+		 map.put("payRooms", payRooms);
+		 
+		 return map;
+	 } 
 	 
+	 
+	 @RequestMapping(value = "/getCostStatistics",method = RequestMethod.GET)
+	 @ResponseBody
+	 public Object getCostStatistics() {
+		
+		 HashMap<String,Object> map = new HashMap<String,Object>();
+		 
+		 List<MonCost> mc = iCostService.selectMonCost();
+		 
+		 map =  getCostMon(mc);
+		 
+		
+		 
+		 return map;
+	 } 
+	 
+	 
+	 public HashMap<String,Object> getCostMon(List<MonCost> mc){
+		 
+		 HashMap <String,Object>map  = new HashMap<String,Object>();
+		 
+		 List<Double> water = new ArrayList<Double>();
+		 List <Double>electric = new ArrayList<Double>();
+		 List <Double>internet = new ArrayList<Double>();
+		 List <Double>gas = new ArrayList<Double>();
+		 List <Double>tv = new ArrayList<Double>();
+		 List <Double>equally = new ArrayList<Double>();
+		 List <Double>other = new ArrayList<Double>(); 
+		 List <Double>manage = new ArrayList<Double>();
+		 
+		 
+		 if(mc!=null && mc.size()>0){
+			
+			 for(int i=0;i<mc.size();i++){
+				 
+				 water.add(mc.get(i).getWater());
+				 electric.add(mc.get(i).getElectric());
+				 internet.add(mc.get(i).getInternet());
+				 gas.add(mc.get(i).getGas());
+				 tv.add(mc.get(i).getTv());
+				 equally.add(mc.get(i).getEqually());
+				 other.add(mc.get(i).getOther());
+				 manage.add(mc.get(i).getManage());
+				 
+			 }
+			 
+			 
+		 }
+		 
+		 map.put("water", water);
+		 map.put("electric", electric);
+		 map.put("internet", internet);
+		 map.put("gas", gas);
+		 map.put("tv", tv);
+		 map.put("equally", equally);
+		 map.put("other", other);
+		 map.put("manage", manage);
+		 
+		 return map;
+	 }
 	 
 }

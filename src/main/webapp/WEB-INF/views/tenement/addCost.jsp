@@ -69,9 +69,9 @@
 				  $('#lastWaterNum').val(msg.currentWaterNum);
 				  $('#lastGasNum').val(msg.currentGasNum);
  				  
- 				// $('#electricUnitPrice').val(msg.electricUnitPrice);
- 				// $('#gasUnitPrice').val(msg.gasUnitPrice);
- 				// $('#waterUnitPrice').val(msg.waterUnitPrice);
+ 				 $('#electricUnitPrice').val(msg.electricUnitPrice);
+ 				 $('#gasUnitPrice').val(msg.gasUnitPrice);
+ 				 $('#waterUnitPrice').val(msg.waterUnitPrice);
 
  			
  			   }
@@ -89,8 +89,9 @@
   
     	
  //----------------------------------   	
-    //获取配置费用数据	
-    	$.ajax({
+    //获取配置费用数据
+    
+ /*    	$.ajax({
   		   type: "GET",
   		   url: "${path }/dictEntry/data?id=COST",
   		   async: true,
@@ -123,7 +124,7 @@
   			  $.messager.progress('close');
   			  $.messager.alert('发送失败！', msg.msg, 'error');
   		   }
-  	}); 	
+  	}); 	 */
   
    //------------------------------
 
@@ -360,6 +361,25 @@
           }); 
         
         
+        //设置单元价格
+        $('#electricUnitPrice').numberbox({  
+      	  onChange: function(value){ 
+      		  totalCost();  
+      	  }
+        }); 
+       
+        $('#gasUnitPrice').numberbox({  
+        	  onChange: function(value){ 
+        		  totalCost();  
+        	  }
+          }); 
+        
+        $('#waterUnitPrice').numberbox({  
+      	  onChange: function(value){ 
+      		  totalCost();  
+      	  }
+        }); 
+        
     });
     
    
@@ -504,7 +524,7 @@
                   <td style="width:80px">计费(始)</td>
                    <td><input id="startDate" name="startDate" type="text" class="easyui-datebox" parser="myparser"  required="required" ></td>
                   <td style="width:80px">计费(至)</td>
-                  <td><input id="endDate" name="endDate" type="text" class="easyui-datebox" parser="myparser" required="required" validType="isAfter['#startDate']"></td>
+                  <td><input id="endDate" name="endDate" type="text" class="easyui-datebox" parser="myparser" required="required" ></td> <!-- validType="isAfter['#startDate']" -->
                    <td style="width:80px">抄表日期</td>
                   <td><input id="copyDate" name="copyDate" type="text" class="easyui-datebox" parser="myparser" required="required" ></td> 
                   <td>管理费</td>

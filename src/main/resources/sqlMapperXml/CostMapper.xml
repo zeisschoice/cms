@@ -62,4 +62,30 @@
      update cost is_pay = 1 where id = #{id}
     
     </update>
+    
+    <select id="countMonCost" resultType="MonCost">
+      
+    SELECT
+	month,
+	year,
+	sum(water_charge) AS water,
+	sum(electric_charge) AS electric,
+	sum(internet_charge) internet,
+	sum(gas_charge) gas,
+	sum(tv_charge) AS tv,
+	sum(equally_charge) AS equally,
+	sum(other_charge) AS other,
+    sum(manage_charge) as manage
+	FROM
+		cost
+	WHERE
+		YEAR = YEAR (CURDATE())
+	GROUP BY
+		MONTH
+	ORDER BY
+		MONTH ASC
+    
+    </select>
+    
+    
 </mapper>

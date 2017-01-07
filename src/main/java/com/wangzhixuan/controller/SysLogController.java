@@ -44,7 +44,7 @@ public class SysLogController {
     @RequestMapping(value = "/loginlog", method = RequestMethod.POST)
     @ResponseBody
     public PageInfo loginLog(Integer page, Integer rows) {
-        PageInfo pageInfo = new PageInfo(1, 13);
+        PageInfo pageInfo = new PageInfo(1, 10);
         Map<String, Object> condition = new HashMap<String, Object>();
         pageInfo.setCondition(condition);
         sysLogService.selectDataGrid(pageInfo);

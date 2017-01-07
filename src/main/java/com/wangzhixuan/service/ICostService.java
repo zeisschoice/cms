@@ -1,8 +1,11 @@
 package com.wangzhixuan.service;
 
+import java.util.List;
+
 import com.baomidou.framework.service.ISuperService;
 import com.wangzhixuan.commons.utils.PageInfo;
 import com.wangzhixuan.model.Cost;
+import com.wangzhixuan.model.MonCost;
 
 
 /**
@@ -16,4 +19,6 @@ import com.wangzhixuan.model.Cost;
 public interface ICostService extends ISuperService<Cost> {
 	
 	void selectDataGrid(PageInfo pageInfo);
+	
+	List<MonCost> selectMonCost();
 }

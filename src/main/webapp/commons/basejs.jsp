@@ -13,8 +13,10 @@
 <script type="text/javascript" src="${staticPath }/static/easyui/jquery.easyui.min.js" charset="utf-8"></script>
 <script type="text/javascript" src="${staticPath }/static/easyui/locale/easyui-lang-zh_CN.js" charset="utf-8"></script>
 <!-- [百度图表] -->
-<script type="text/javascript" src="${staticPath }/static/echart/echarts-all.js" charset="utf-8"></script>
-
+<script type="text/javascript" src="${staticPath }/static/echart/echarts.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="${staticPath }/static/echart/theme/macarons.js" charset="utf-8"></script>
+<script type="text/javascript" src="${staticPath }/static/echart/theme/shine.js" charset="utf-8"></script>
+<script type="text/javascript" src="${staticPath }/static/echart/theme/roma.js" charset="utf-8"></script>
 <!-- [metroaqui插件] -->
 <script type="text/javascript" src="${staticPath }/static/metroaqui/Script/jquery.metro-btn.js" charset="utf-8"></script>
 
@@ -140,6 +142,10 @@ zhstr : {// 验证之只能输入中文
  
  isAfter: {
     validator: function(value, param){
+    	
+    	console.log(value);
+    	console.log(param);
+    	
         var dateA = $.fn.datebox.defaults.parser(value);
         var dateB = $.fn.datebox.defaults.parser($(param[0]).datebox('getValue'));
         return dateA>new Date() && dateA>dateB;
