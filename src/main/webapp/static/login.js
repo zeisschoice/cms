@@ -52,23 +52,27 @@ $(function () {
         },
         success:function(result){
         	
+        	
             progressClose();
          
             result = updateStr(result);
              
-            var data = eval('(' + result + ')'); 
+        //    var data = eval('(' + result + ')'); 
            
        //     var data = $.parseJSON(d);
             
-       //     var data = JSON.parse(d);
-            
+            var data = JSON.parse(result);
+          
             if (data.success) {
             	
                 window.location.href = basePath + '/index';
             }else{
+            	
+            	console.log(data);
+            	
                 $.messager.show({
                     title:'提示',
-                    msg:'<div class="light-info"><div class="light-tip icon-tip"></div><div>'+result.msg+'</div></div>',
+                    msg:'<div class="light-info"><div class="light-tip icon-tip"></div><div>'+data.msg+'</div></div>',
                     showType:'show'
                 });
             }

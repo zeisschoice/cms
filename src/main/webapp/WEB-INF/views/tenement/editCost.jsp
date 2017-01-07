@@ -302,7 +302,78 @@
 	
     });
     
+    
+    //设置单元价格
+    $('#electricUnitPrice').numberbox({  
+  	  onChange: function(value){ 
+  		  changeEle();
+  		  totalCost();  
+  	  }
+    }); 
    
+    $('#gasUnitPrice').numberbox({  
+    	  onChange: function(value){ 
+    		  changeGas();
+    		  totalCost();  
+    	  }
+      }); 
+    
+    $('#waterUnitPrice').numberbox({  
+  	  onChange: function(value){ 
+  		  changeWater();
+  		  totalCost();  
+  	  }
+    }); 
+    
+   
+    function changeEle(){
+  	  
+       	var a = $('#currentElectricNum').val();
+      	var b = $('#lastElectricNum').val();
+      	var c = (parseFloat(a) - parseFloat(b)).toFixed(2);
+          var d = $('#electricUnitPrice').val();
+        
+      	$('#electricNum').numberbox('setValue', c);
+      	
+      	var e =  (c * d).toFixed(2);
+      	    
+      	$('#electricCharge').numberbox('setValue',e);
+    	  
+      } 
+      
+     
+      function changeWater(){
+    	  
+    	  var a = $('#currentWaterNum').val();
+        	var b = $('#lastWaterNum').val();
+        	var c = (parseFloat(a) - parseFloat(b)).toFixed(2);
+            var d = $('#waterUnitPrice').val();
+          
+        	$('#waterNum').numberbox('setValue', c);
+        	
+        	var e =  (c * d).toFixed(2);
+        	    
+        	$('#waterCharge').numberbox('setValue',e);
+    	  
+      }
+      
+      
+      function changeGas(){
+    	  
+    		var a = $('#currentGasNum').val();
+          	var b = $('#lastGasNum').val();
+          	var c = (parseFloat(a) - parseFloat(b)).toFixed(2);
+              var d = $('#gasUnitPrice').val();
+            
+          	$('#gasNum').numberbox('setValue', c);
+          	
+          	var e =  (c * d).toFixed(2);
+          	    
+          	$('#gasCharge').numberbox('setValue',e);
+    	  
+      }
+    
+    
 </script>
 <div class="easyui-layout" data-options="fit:true,border:false">
     <div data-options="region:'center',border:false" title="" style="overflow: hidden;padding: 3px;">
@@ -325,7 +396,7 @@
                   <td style="width:80px">计费(始)</td>
                    <td><input id="startDate" name="startDate" type="text" class="easyui-datebox" parser="myparser"  required="required" value="${cost.startDate}"></td>
                   <td style="width:80px">计费(至)</td>
-                  <td><input id="endDate" name="endDate" type="text" class="easyui-datebox" parser="myparser" required="required" validType="isAfter['#startDate']" value="${cost.endDate}"></td>
+                  <td><input id="endDate" name="endDate" type="text" class="easyui-datebox" parser="myparser" required="required"  value="${cost.endDate}"></td>  <!-- validType="isAfter['#startDate']" -->
                    <td style="width:80px">抄表日期</td>
                   <td><input id="copyDate" name="copyDate" type="text" class="easyui-datebox" parser="myparser" required="required" value="${cost.copyDate}"></td> 
                    <td>管理费</td>
