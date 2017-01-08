@@ -68,19 +68,19 @@
           <table class="grid">
                 <tr>
                     <td>房间名称</td>
-                    <td><input name="id" type="hidden"  value="${room.id}">
+                    <td colspan="3" style="width: 140px;"><input name="id" type="hidden"  value="${room.id}">
                     <input name="roomName" type="text" placeholder="请输入房间名称" class="easyui-validatebox" data-options="required:true" value="${room.roomName}"></td>
                    <%--  <td>住户姓名</td>
                     <td><input name="liver" type="text" placeholder="请输入住户姓名" class="easyui-validatebox" data-options="required:true,readonly:true,disabled:true" value="${room.liver}"></td> --%>
                 </tr>
-                <tr>
-                    <td>出租开始日期</td>
+               <!--  <tr>
+                    <td>合同日期(始)</td>
                     <td><input name="beginDate" id="beginDate" placeholder="点击选择时间" onclick="WdatePicker({readOnly:true,dateFmt:'yyyy-MM-dd HH:mm:ss'})" readonly="readonly" class="easyui-validatebox" data-options="required:true" value=""></td>
-                    <td>出租结束日期</td>
+                    <td>合同日期(止)</td>
                     <td>
                        <input name="endDate" id="endDate" placeholder="点击选择时间" onclick="WdatePicker({readOnly:true,dateFmt:'yyyy-MM-dd HH:mm:ss'})" readonly="readonly" class="easyui-validatebox" data-options="required:true" value="">
                     </td>
-                </tr>
+                </tr> -->
                 <tr>
                     
                     <td>类型</td>

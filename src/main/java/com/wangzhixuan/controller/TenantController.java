@@ -1,5 +1,8 @@
 package com.wangzhixuan.controller;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -80,7 +83,7 @@ public class TenantController extends BaseController{
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	@ResponseBody
-	public Object add(Tenant tenant) {
+	public Object add(Tenant tenant) throws ParseException {
 		// User u = userService.selectByLoginName(userVo.getLoginName());
 		// if (u != null) {
 		// return renderError("用户名已存在!");
@@ -96,6 +99,12 @@ public class TenantController extends BaseController{
 		
 		room.setStatus(1);
 		room.setLiver(tenant.getIdentityCard());
+		
+		 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");  
+		
+		
+		room.setBeginDate(sdf.parse(tenant.getStartDate()));
+		room.setEndDate(sdf.parse(tenant.getEndDate()));
 		boolean isUpdate = iRoomService.updateById(room);
 		System.out.println("isUpdate:"+isUpdate);
 		tenant.setIsDel(0);
@@ -105,13 +114,18 @@ public class TenantController extends BaseController{
 
 	 @RequestMapping(value = "/edit",method = RequestMethod.POST)
 	 @ResponseBody
-	 public Object edit(Tenant tenant) {
+	 public Object edit(Tenant tenant) throws ParseException {
 		 iTenantService.updateSelectiveById(tenant);
 		 Room room = iRoomService.selectById(tenant.getRoomId());
 		 if(!room.getLiver().equalsIgnoreCase(tenant.getIdentityCard())){
 			 room.setLiver(tenant.getIdentityCard());
-			 iRoomService.updateById(room);
+			
 		 }
+		 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");  
+		 room.setBeginDate(sdf.parse(tenant.getStartDate()));
+		 room.setEndDate(sdf.parse(tenant.getEndDate()));
+		 iRoomService.updateById(room);
+		 
 	    return renderSuccess("编辑成功！");
 	 }
 	

@@ -755,7 +755,7 @@
     
     <div data-options="region:'center',border:true,title:'住户信息'">
         
-        <div style="width:100%;height:20%;">
+        <div style="width:100%;height:30%;">
         <div id="formToolbar">
             <a onclick="saveTenantFun();" href="javascript:void(0);" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-save'">保存</a>
             <a onclick="delTenantFun();" href="javascript:void(0);" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-del'">删除</a>
@@ -776,8 +776,14 @@
                     <td><input name="identityCard" type="text" class="easyui-validatebox" data-options="required:true" validType="idcard" value="${tenant.identityCard }"></input></td>
                 </tr>
                 <tr>
+                   <td>合同日期(始)</td>
+                   <td><input id="startDate" name="startDate" type="text" class="easyui-datebox"   required="required" value="${tenant.startDate}"></td>
+                   <td>合同日期(至)</td>
+                  <td><input id="endDate" name="endDate" type="text" class="easyui-datebox"  required="required" value="${tenant.endDate}"></td> <!-- validType="isAfter['#startDate']" -->
+                </tr>
+                <tr>
                     <td>备注</td>
-                     <td colspan="7"><textarea id="remark" name="remark" rows="" cols="" style="margin: 0px; width:100%; height: 30px;" value="${tenant.remark }"></textarea></td>
+                     <td colspan="7"><textarea id="remark" name="remark" rows="" cols="" style="margin: 0px; width:100%; height: 50px;" value="${tenant.remark }"></textarea></td>
                 </tr>
                 <tr>
                  <td><input name="roomId" id="roomId" type="hidden"  value="${tenant.roomId}"></td>
@@ -787,7 +793,7 @@
    
          </form> 
          </div >
-         <div style="width:100%;height:80%;">
+         <div style="width:100%;height:70%;">
             <table id="dataGrid" data-options="fit:true,border:false"></table> 
          </div>
     </div>

@@ -66,6 +66,30 @@ public class Tenant implements Serializable {
 	@TableField(value="is_del")
 	private Integer isDel;
 	
+	@TableField(value="start_date")
+	private String startDate;
+	/**
+	 * 
+	 */
+	 
+	@TableField(value="end_date")
+	private String endDate;
+
+	public String getStartDate() {
+		return startDate;
+	}
+
+	public void setStartDate(String startDate) {
+		this.startDate = startDate;
+	}
+
+	public String getEndDate() {
+		return endDate;
+	}
+
+	public void setEndDate(String endDate) {
+		this.endDate = endDate;
+	}
 
 	public Integer getId() {
 		return id;

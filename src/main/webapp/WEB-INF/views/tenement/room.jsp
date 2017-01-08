@@ -49,11 +49,11 @@
             },
             {
                 width : '150',
-                title : '创建日期',
+                title : '合同开始日期',
                 field : 'beginDate'
             },{
                 width : '150',
-                title : '结束日期',
+                title : '合同结束日期',
                 field : 'endDate'
               
             },  {
@@ -176,8 +176,8 @@
         }
         parent.$.modalDialog({
             title : '编辑',
-            width : 500,
-            height : 300,
+            width : 560,
+            height : 350,
             href : '${path }/room/editPage?id=' + id,
             buttons : [ {
                 text : '确定',

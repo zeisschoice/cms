@@ -11,11 +11,14 @@
 		<result column="identity_card" property="identityCard" />
 		<result column="remark" property="remark" />
 		<result column="is_del" property="isDel" />
+		<result column="start_date" property="startDate" />
+		<result column="end_date" property="endDate" />
+		
 	</resultMap>
 
     <!-- 通用查询结果列-->
     <sql id="Base_Column_List">
-        id , tenant_name AS tenantName, room_id AS roomId, sex, tel, identity_card AS identityCard, remark,is_del
+        id , tenant_name AS tenantName, room_id AS roomId, sex, tel, identity_card AS identityCard, remark,is_del,start_date as startDate,end_date as endDate
     </sql>
     
     <select id="selectTenantPage" resultType="Tenant">
