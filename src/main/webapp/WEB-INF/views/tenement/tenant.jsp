@@ -780,6 +780,8 @@
                    <td><input id="startDate" name="startDate" type="text" class="easyui-datebox"   required="required" value="${tenant.startDate}"></td>
                    <td>合同日期(至)</td>
                   <td><input id="endDate" name="endDate" type="text" class="easyui-datebox"  required="required" value="${tenant.endDate}"></td> <!-- validType="isAfter['#startDate']" -->
+                   <td>押金(保证金)</td>
+                  <td><input id="deposit" name="deposit" type="text" class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2"  required="required" value="${tenant.deposit}"></td> <!-- validType="isAfter['#startDate']" -->
                 </tr>
                 <tr>
                     <td>备注</td>
@@ -800,7 +802,7 @@
     
     
     
-    <div data-options="region:'west',border:true,split:false,title:'楼房'"  style="width:150px;overflow-x: hidden; ">
+    <div data-options="region:'west',border:true,split:false,title:'楼房'"  style="width:250px;overflow-x: hidden; ">
         <ul id="roomTree"  style="width:160px;margin: 10px 10px 10px 10px">
         </ul>
     </div>

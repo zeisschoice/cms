@@ -71,7 +71,17 @@ public class Tenant implements Serializable {
 	/**
 	 * 
 	 */
-	 
+	private Double deposit;
+	
+	
+	public Double getDeposit() {
+		return deposit;
+	}
+
+	public void setDeposit(Double deposit) {
+		this.deposit = deposit;
+	}
+
 	@TableField(value="end_date")
 	private String endDate;
 
