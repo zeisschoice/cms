@@ -191,7 +191,7 @@
                     </style>
                     <!-- ///////////////// -->
                     <div class="easyui-layout" style="width:100%;height:100%;">
-				        <div id="p" data-options="region:'east'"  style="width:20%;padding:10px">
+				        <div id="p" data-options="region:'east'"  style="width:20%;padding:5px">
 				            
 				             <div class="easyui-calendar" style="width:100%;height:250px;"></div>
 				             <br>
