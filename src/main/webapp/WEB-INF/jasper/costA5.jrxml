@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="costA5" language="groovy" pageWidth="421" pageHeight="298" orientation="Landscape" columnWidth="381" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="26babfb5-ac49-4194-b848-96f148ae717a">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Crosstab Data Text" hAlign="Center"/>
+	<style name="ZH_CN" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+	<field name="address" class="java.lang.String"/>
+	<field name="waterNum" class="java.lang.String"/>
+	<field name="elecNum" class="java.lang.String"/>
+	<field name="crMonWaterNum" class="java.lang.String"/>
+	<field name="lsMonWaterNum" class="java.lang.String"/>
+	<field name="crMonElecNum" class="java.lang.String"/>
+	<field name="lsMonElecNum" class="java.lang.String"/>
+	<field name="waterCount" class="java.lang.String"/>
+	<field name="elecCount" class="java.lang.String"/>
+	<field name="perWaterRMB" class="java.lang.String"/>
+	<field name="perElecRMB" class="java.lang.String"/>
+	<field name="managerCount" class="java.lang.String"/>
+	<field name="sumCN" class="java.lang.String"/>
+	<field name="sum" class="java.lang.String"/>
+	<field name="tvCount" class="java.lang.String"/>
+	<field name="other" class="java.lang.String"/>
+	<field name="writeBiller" class="java.lang.String"/>
+	<field name="internetCount" class="java.lang.String"/>
+	<field name="startDate" class="java.lang.String"/>
+	<field name="roomNum" class="java.lang.String"/>
+	<field name="gasCharge" class="java.lang.String"/>
+	<field name="currentGasNum" class="java.lang.String"/>
+	<field name="lastGasNum" class="java.lang.String"/>
+	<field name="gasUnitPrice" class="java.lang.String"/>
+	<field name="endDate" class="java.lang.String"/>
+	<field name="copyDate" class="java.lang.String"/>
+	<field name="monRent" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="25" splitType="Stretch">
+			<staticText>
+				<reportElement style="ZH_CN" x="148" y="2" width="74" height="20" uuid="2dd33633-7092-4937-8ee0-56cd5a8ec56b"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="宋体" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[房租收据]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="182" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="31" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="28" splitType="Stretch"/>
+	</summary>
+</jasperReport>
