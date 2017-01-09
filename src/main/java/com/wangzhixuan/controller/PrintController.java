@@ -92,6 +92,7 @@ public class PrintController extends BaseController {
 		cp.setCopyDate(c.getCopyDate());
 		cp.setStartDate(c.getStartDate());
 		cp.setEndDate(c.getEndDate());
+		cp.setMonRent(r.getMonRent().toString());
 		cp.setRoomNum(roomName);
 		
 		cp.setGasUnitPrice(c.getGasUnitPrice().toString());

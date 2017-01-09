@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="cost" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="26babfb5-ac49-4194-b848-96f148ae717a">
 	<property name="ireport.zoom" value="1.5"/>
-	<property name="ireport.x" value="0"/>
+	<property name="ireport.x" value="298"/>
 	<property name="ireport.y" value="0"/>
 	<style name="table">
 		<box>
@@ -51,6 +51,7 @@
 	<field name="gasUnitPrice" class="java.lang.String"/>
 	<field name="endDate" class="java.lang.String"/>
 	<field name="copyDate" class="java.lang.String"/>
+	<field name="monRent" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -244,8 +245,8 @@
 				<textFieldExpression><![CDATA[$F{address} + $F{roomNum}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="ZH_CN" x="455" y="11" width="183" height="20" uuid="6e31b92e-478b-44ea-a862-1a7487794454"/>
-				<textElement>
+				<reportElement style="ZH_CN" x="384" y="0" width="219" height="36" uuid="6e31b92e-478b-44ea-a862-1a7487794454"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{startDate} +" 至 " + $F{endDate}]]></textFieldExpression>
@@ -257,6 +258,11 @@
 			<textField>
 				<reportElement style="ZH_CN" x="456" y="41" width="159" height="20" uuid="d9550698-2938-4823-94b9-4b1ac43691bd"/>
 				<textFieldExpression><![CDATA["抄表日期: "+$F{copyDate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="ZH_CN" x="602" y="0" width="199" height="36" uuid="a48dd0f2-598d-4c55-8e31-5aecaec968c7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["月租:"+$F{monRent}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
