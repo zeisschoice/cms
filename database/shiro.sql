@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50712
 File Encoding         : 65001
 
-Date: 2017-01-08 19:00:21
+Date: 2017-01-10 16:55:52
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -30,14 +30,15 @@ CREATE TABLE `building` (
   `room_count` int(11) DEFAULT NULL,
   `remark` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of building
 -- ----------------------------
 INSERT INTO `building` VALUES ('13', '颐和居', '大石穗中路63号', '梁秀凤', '13682222283', '梁秀凤', '13682222283', '200', '这里是备注');
 INSERT INTO `building` VALUES ('14', '万达公寓', '大山村北基坊被2巷7号', '梁秀凤', '13682222283', '梁秀凤', '13682222283', '200', '这里是备注');
-INSERT INTO `building` VALUES ('15', '粤森楼', '大山村群星二路', '梁秀凤', '13682222283', '梁秀凤', '13682222283', '200', '这里是备注');
+INSERT INTO `building` VALUES ('15', '粤森楼A座', '大山村群星二路', '梁秀凤', '13682222283', '梁秀凤', '13682222283', '200', '');
+INSERT INTO `building` VALUES ('16', '粤森楼B座', '大山村群星二路', '梁秀凤', '13682222283', '梁秀凤', '13682222283', '200', '这里是备注');
 
 -- ----------------------------
 -- Table structure for cost
@@ -432,54 +433,54 @@ CREATE TABLE `room` (
 -- ----------------------------
 -- Records of room
 -- ----------------------------
-INSERT INTO `room` VALUES ('40', '15', '粤森楼B座-102', '0', '1500', '0', null, null, '260001781116729', '', null);
-INSERT INTO `room` VALUES ('41', '15', '粤森楼B座-103', '0', '1500', '0', null, null, '260001781116729', '', null);
-INSERT INTO `room` VALUES ('42', '15', '粤森楼B座-103', '0', '1500', '0', null, null, '260001781116729', '', null);
-INSERT INTO `room` VALUES ('43', '15', '粤森楼B座-104', '0', '1500', '0', null, null, '260001781116729', '', null);
-INSERT INTO `room` VALUES ('44', '15', '粤森楼B座-105', '0', '1500', '0', null, null, '260001781116729', '', null);
-INSERT INTO `room` VALUES ('45', '15', '粤森楼B座-106', '0', '1500', '0', null, null, '260001781116729', '', null);
-INSERT INTO `room` VALUES ('46', '15', '粤森楼B座-201', '0', '1500', '0', null, null, '260001781116729', '', null);
-INSERT INTO `room` VALUES ('47', '15', '粤森楼B座-202', '0', '1500', '0', null, null, '260001781116729', '', null);
-INSERT INTO `room` VALUES ('48', '15', '粤森楼B座-203', '0', '1500', '0', null, null, '260001781116729', '', null);
-INSERT INTO `room` VALUES ('49', '15', '粤森楼B座-204', '0', '1500', '0', null, null, '260001781116729', '', null);
-INSERT INTO `room` VALUES ('50', '15', '粤森楼B座-205', '0', '1500', '0', null, null, '260001781116729', '', null);
-INSERT INTO `room` VALUES ('51', '15', '粤森楼B座-206', '0', '1500', '0', null, null, '260001781116729', '', null);
-INSERT INTO `room` VALUES ('52', '15', '粤森楼B座-207', '0', '1500', '0', null, null, '260001781116729', '', null);
-INSERT INTO `room` VALUES ('53', '15', '粤森楼B座-301', '0', '1500', '0', null, null, '260001781116729', '', null);
-INSERT INTO `room` VALUES ('54', '15', '粤森楼B座-302', '0', '1500', '0', null, null, '260001781116729', '', null);
-INSERT INTO `room` VALUES ('55', '15', '粤森楼B座-303', '0', '1500', '0', null, null, '260001781116729', '', null);
-INSERT INTO `room` VALUES ('56', '15', '粤森楼B座-304', '0', '1500', '0', null, null, '260001781116729', '', null);
-INSERT INTO `room` VALUES ('57', '15', '粤森楼B座-305', '0', '1500', '0', null, null, '260001781116729', '', null);
-INSERT INTO `room` VALUES ('58', '15', '粤森楼B座-306', '0', '1500', '0', null, null, '260001781116729', '', null);
-INSERT INTO `room` VALUES ('59', '15', '粤森楼B座-307', '0', '1500', '0', null, null, '260001781116729', '', null);
-INSERT INTO `room` VALUES ('60', '15', '粤森楼B座-308', '0', '1500', '0', null, null, '260001781116729', '', null);
-INSERT INTO `room` VALUES ('61', '15', '粤森楼B座-309', '0', '1500', '0', null, null, '260001781116729', '', null);
-INSERT INTO `room` VALUES ('62', '15', '粤森楼B座-401', '0', '1500', '0', null, null, '260001781116729', '', null);
-INSERT INTO `room` VALUES ('63', '15', '粤森楼B座-402', '0', '1500', '0', null, null, '260001781116729', '', null);
-INSERT INTO `room` VALUES ('64', '15', '粤森楼B座-403', '0', '1500', '0', null, null, '260001781116729', '', null);
-INSERT INTO `room` VALUES ('65', '15', '粤森楼B座-404', '0', '1500', '0', null, null, '260001781116729', '', null);
-INSERT INTO `room` VALUES ('66', '15', '粤森楼B座-405', '0', '1500', '0', null, null, '260001781116729', '', null);
-INSERT INTO `room` VALUES ('67', '15', '粤森楼B座-406', '0', '1500', '0', null, null, '260001781116729', '', null);
-INSERT INTO `room` VALUES ('68', '15', '粤森楼B座-407', '0', '1500', '0', null, null, '260001781116729', '', null);
-INSERT INTO `room` VALUES ('69', '15', '粤森楼B座-408', '0', '1500', '0', null, null, '260001781116729', '', null);
-INSERT INTO `room` VALUES ('70', '15', '粤森楼B座-409', '0', '1500', '0', null, null, '260001781116729', '', null);
-INSERT INTO `room` VALUES ('71', '15', '粤森楼B座-501', '0', '1500', '0', null, null, '260001781116729', '', null);
-INSERT INTO `room` VALUES ('72', '15', '粤森楼B座-502', '0', '1500', '0', null, null, '260001781116729', '', null);
-INSERT INTO `room` VALUES ('73', '15', '粤森楼B座-503', '0', '1500', '0', null, null, '260001781116729', '', null);
-INSERT INTO `room` VALUES ('74', '15', '粤森楼B座-504', '0', '1500', '0', null, null, '260001781116729', '', null);
-INSERT INTO `room` VALUES ('75', '15', '粤森楼B座-505', '0', '1500', '0', null, null, '260001781116729', '', null);
-INSERT INTO `room` VALUES ('76', '15', '粤森楼B座-506', '0', '1500', '0', null, null, '260001781116729', '', null);
-INSERT INTO `room` VALUES ('77', '15', '粤森楼B座-507', '0', '1500', '0', null, null, '260001781116729', '', null);
-INSERT INTO `room` VALUES ('78', '15', '粤森楼B座-508', '0', '1500', '0', null, null, '260001781116729', '', null);
-INSERT INTO `room` VALUES ('79', '15', '粤森楼B座-509', '0', '1500', '0', null, null, '260001781116729', '', null);
-INSERT INTO `room` VALUES ('80', '15', '粤森楼B座-601', '0', '1500', '0', null, null, '260001781116729', '', null);
-INSERT INTO `room` VALUES ('81', '15', '粤森楼B座-602', '0', '1500', '0', null, null, '260001781116729', '', null);
-INSERT INTO `room` VALUES ('82', '15', '粤森楼B座-603', '0', '1500', '0', null, null, '260001781116729', '', null);
-INSERT INTO `room` VALUES ('83', '15', '粤森楼B座-604', '0', '1500', '0', null, null, '260001781116729', '', null);
-INSERT INTO `room` VALUES ('84', '15', '粤森楼B座-605', '0', '1500', '0', null, null, '260001781116729', '', null);
-INSERT INTO `room` VALUES ('85', '15', '粤森楼B座-606', '0', '1500', '0', null, null, '260001781116729', '', null);
-INSERT INTO `room` VALUES ('86', '15', '粤森楼B座-607', '0', '1500', '0', null, null, '260001781116729', '', null);
-INSERT INTO `room` VALUES ('87', '15', '粤森楼B座-608', '0', '1500', '0', null, null, '260001781116729', '', null);
+INSERT INTO `room` VALUES ('40', '16', '粤森楼B座-102', '0', '1500', '0', null, null, '260001781116729', '', null);
+INSERT INTO `room` VALUES ('41', '16', '粤森楼B座-103', '0', '1500', '0', null, null, '260001781116729', '', null);
+INSERT INTO `room` VALUES ('42', '16', '粤森楼B座-103', '0', '1500', '0', null, null, '260001781116729', '', null);
+INSERT INTO `room` VALUES ('43', '16', '粤森楼B座-104', '0', '1500', '0', null, null, '260001781116729', '', null);
+INSERT INTO `room` VALUES ('44', '16', '粤森楼B座-105', '0', '1500', '0', null, null, '260001781116729', '', null);
+INSERT INTO `room` VALUES ('45', '16', '粤森楼B座-106', '0', '1500', '0', null, null, '260001781116729', '', null);
+INSERT INTO `room` VALUES ('46', '16', '粤森楼B座-201', '0', '1500', '0', null, null, '260001781116729', '', null);
+INSERT INTO `room` VALUES ('47', '16', '粤森楼B座-202', '0', '1500', '0', null, null, '260001781116729', '', null);
+INSERT INTO `room` VALUES ('48', '16', '粤森楼B座-203', '0', '1500', '0', null, null, '260001781116729', '', null);
+INSERT INTO `room` VALUES ('49', '16', '粤森楼B座-204', '0', '1500', '0', null, null, '260001781116729', '', null);
+INSERT INTO `room` VALUES ('50', '16', '粤森楼B座-205', '0', '1500', '0', null, null, '260001781116729', '', null);
+INSERT INTO `room` VALUES ('51', '16', '粤森楼B座-206', '0', '1500', '0', null, null, '260001781116729', '', null);
+INSERT INTO `room` VALUES ('52', '16', '粤森楼B座-207', '0', '1500', '0', null, null, '260001781116729', '', null);
+INSERT INTO `room` VALUES ('53', '16', '粤森楼B座-301', '0', '1500', '0', null, null, '260001781116729', '', null);
+INSERT INTO `room` VALUES ('54', '16', '粤森楼B座-302', '0', '1500', '0', null, null, '260001781116729', '', null);
+INSERT INTO `room` VALUES ('55', '16', '粤森楼B座-303', '0', '1500', '0', null, null, '260001781116729', '', null);
+INSERT INTO `room` VALUES ('56', '16', '粤森楼B座-304', '0', '1500', '0', null, null, '260001781116729', '', null);
+INSERT INTO `room` VALUES ('57', '16', '粤森楼B座-305', '0', '1500', '0', null, null, '260001781116729', '', null);
+INSERT INTO `room` VALUES ('58', '16', '粤森楼B座-306', '0', '1500', '0', null, null, '260001781116729', '', null);
+INSERT INTO `room` VALUES ('59', '16', '粤森楼B座-307', '0', '1500', '0', null, null, '260001781116729', '', null);
+INSERT INTO `room` VALUES ('60', '16', '粤森楼B座-308', '0', '1500', '0', null, null, '260001781116729', '', null);
+INSERT INTO `room` VALUES ('61', '16', '粤森楼B座-309', '0', '1500', '0', null, null, '260001781116729', '', null);
+INSERT INTO `room` VALUES ('62', '16', '粤森楼B座-401', '0', '1500', '0', null, null, '260001781116729', '', null);
+INSERT INTO `room` VALUES ('63', '16', '粤森楼B座-402', '0', '1500', '0', null, null, '260001781116729', '', null);
+INSERT INTO `room` VALUES ('64', '16', '粤森楼B座-403', '0', '1500', '0', null, null, '260001781116729', '', null);
+INSERT INTO `room` VALUES ('65', '16', '粤森楼B座-404', '0', '1500', '0', null, null, '260001781116729', '', null);
+INSERT INTO `room` VALUES ('66', '16', '粤森楼B座-405', '0', '1500', '0', null, null, '260001781116729', '', null);
+INSERT INTO `room` VALUES ('67', '16', '粤森楼B座-406', '0', '1500', '0', null, null, '260001781116729', '', null);
+INSERT INTO `room` VALUES ('68', '16', '粤森楼B座-407', '0', '1500', '0', null, null, '260001781116729', '', null);
+INSERT INTO `room` VALUES ('69', '16', '粤森楼B座-408', '0', '1500', '0', null, null, '260001781116729', '', null);
+INSERT INTO `room` VALUES ('70', '16', '粤森楼B座-409', '0', '1500', '0', null, null, '260001781116729', '', null);
+INSERT INTO `room` VALUES ('71', '16', '粤森楼B座-501', '0', '1500', '0', null, null, '260001781116729', '', null);
+INSERT INTO `room` VALUES ('72', '16', '粤森楼B座-502', '0', '1500', '0', null, null, '260001781116729', '', null);
+INSERT INTO `room` VALUES ('73', '16', '粤森楼B座-503', '0', '1500', '0', null, null, '260001781116729', '', null);
+INSERT INTO `room` VALUES ('74', '16', '粤森楼B座-504', '0', '1500', '0', null, null, '260001781116729', '', null);
+INSERT INTO `room` VALUES ('75', '16', '粤森楼B座-505', '0', '1500', '0', null, null, '260001781116729', '', null);
+INSERT INTO `room` VALUES ('76', '16', '粤森楼B座-506', '0', '1500', '0', null, null, '260001781116729', '', null);
+INSERT INTO `room` VALUES ('77', '16', '粤森楼B座-507', '0', '1500', '0', null, null, '260001781116729', '', null);
+INSERT INTO `room` VALUES ('78', '16', '粤森楼B座-508', '0', '1500', '0', null, null, '260001781116729', '', null);
+INSERT INTO `room` VALUES ('79', '16', '粤森楼B座-509', '0', '1500', '0', null, null, '260001781116729', '', null);
+INSERT INTO `room` VALUES ('80', '16', '粤森楼B座-601', '0', '1500', '0', null, null, '260001781116729', '', null);
+INSERT INTO `room` VALUES ('81', '16', '粤森楼B座-602', '0', '1500', '0', null, null, '260001781116729', '', null);
+INSERT INTO `room` VALUES ('82', '16', '粤森楼B座-603', '0', '1500', '0', null, null, '260001781116729', '', null);
+INSERT INTO `room` VALUES ('83', '16', '粤森楼B座-604', '0', '1500', '0', null, null, '260001781116729', '', null);
+INSERT INTO `room` VALUES ('84', '16', '粤森楼B座-605', '0', '1500', '0', null, null, '260001781116729', '', null);
+INSERT INTO `room` VALUES ('85', '16', '粤森楼B座-606', '0', '1500', '0', null, null, '260001781116729', '', null);
+INSERT INTO `room` VALUES ('86', '16', '粤森楼B座-607', '0', '1500', '0', null, null, '260001781116729', '', null);
+INSERT INTO `room` VALUES ('87', '16', '粤森楼B座-608', '0', '1500', '0', null, null, '260001781116729', '', null);
 INSERT INTO `room` VALUES ('88', '15', '粤森楼A座-102', '0', '1500', '0', null, null, '260001781116729', '', null);
 INSERT INTO `room` VALUES ('89', '15', '粤森楼A座-103', '0', '1500', '0', null, null, '260001781116729', '', null);
 INSERT INTO `room` VALUES ('90', '15', '粤森楼A座-103', '0', '1500', '0', null, null, '260001781116729', '', null);
@@ -574,7 +575,7 @@ INSERT INTO `room` VALUES ('178', '14', '万达公寓-606', '0', '1500', '0', nu
 INSERT INTO `room` VALUES ('179', '14', '万达公寓-607', '0', '1500', '0', null, null, '260001781116729', '', null);
 INSERT INTO `room` VALUES ('180', '14', '万达公寓-608', '0', '1500', '0', null, null, '260001781116729', '', null);
 INSERT INTO `room` VALUES ('181', '14', '万达公寓-609', '0', '1500', '0', null, null, '260001781116729', '', null);
-INSERT INTO `room` VALUES ('182', '13', '颐和居-2A', '0', '1500', '0', '2017-01-01', '2017-01-31', '260001781116729', '', null);
+INSERT INTO `room` VALUES ('182', '13', '颐和居-2A', '0', '1500', '1', '2017-01-01', '2017-01-31', '260001781116729', '11111', null);
 INSERT INTO `room` VALUES ('183', '13', '颐和居-2B', '0', '1500', '0', null, null, '260001781116729', '', null);
 INSERT INTO `room` VALUES ('184', '13', '颐和居-2C', '0', '1500', '0', null, null, '260001781116729', '', null);
 INSERT INTO `room` VALUES ('185', '13', '颐和居-2E', '0', '1500', '0', null, null, '260001781116729', '', null);
@@ -621,7 +622,7 @@ CREATE TABLE `sys_log` (
   `client_ip` varchar(255) DEFAULT NULL COMMENT '客户端ip',
   `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=947 DEFAULT CHARSET=utf8 COMMENT='系统日志';
+) ENGINE=InnoDB AUTO_INCREMENT=961 DEFAULT CHARSET=utf8 COMMENT='系统日志';
 
 -- ----------------------------
 -- Records of sys_log
@@ -1572,6 +1573,20 @@ INSERT INTO `sys_log` VALUES ('943', 'lxf', 'lxf', '[类名]:com.wangzhixuan.con
 INSERT INTO `sys_log` VALUES ('944', 'lxf', 'lxf', '[类名]:com.wangzhixuan.controller.CostController,[方法]:add,[参数]:year=2017&month=1&tenantName=张先生&monRent=1500&equallyCharge=123.00&startDate=2017-01-01&endDate=2017-01-31&copyDate=2017-01-09&manageCharge=12&internetCharge=0.00&currentElectricNum=123.00&lastElectricNum=121.00&electricNum=2.00&electricUnitPrice=12.00&electricCharge=24.00&currentWaterNum=123.00&lastWaterNum=12.00&waterNum=111.00&waterUnitPrice=12.00&waterCharge=1332.00&currentGasNum=123.00&lastGasNum=121.00&gasNum=2.00&gasUnitPrice=12.00&gasCharge=24.00&tvCharge=12.00&otherCharge=12.00&roomId=182&tenantId=27&sendCount=0&isPay=0&total=3039.00&remark=12&', '0:0:0:0:0:0:0:1', '2017-01-08 18:53:20');
 INSERT INTO `sys_log` VALUES ('945', 'lxf', 'lxf', '[类名]:com.wangzhixuan.controller.SysLogController,[方法]:loginLog,[参数]:null', '0:0:0:0:0:0:0:1', '2017-01-08 18:55:51');
 INSERT INTO `sys_log` VALUES ('946', 'lxf', 'lxf', '[类名]:com.wangzhixuan.controller.TenantController,[方法]:edit,[参数]:tenantName=张先生&sex=0&tel=13450761833&identityCard=260001781116729&startDate=2017-01-01&endDate=2017-01-31&deposit=2000.00&remark=啊发发1&roomId=182&id=27&', '0:0:0:0:0:0:0:1', '2017-01-08 18:56:10');
+INSERT INTO `sys_log` VALUES ('947', 'lxf', 'lxf', '[类名]:com.wangzhixuan.controller.SysLogController,[方法]:loginLog,[参数]:null', '0:0:0:0:0:0:0:1', '2017-01-09 09:56:07');
+INSERT INTO `sys_log` VALUES ('948', 'lxf', 'lxf', '[类名]:com.wangzhixuan.controller.SysLogController,[方法]:loginLog,[参数]:null', '0:0:0:0:0:0:0:1', '2017-01-09 09:56:15');
+INSERT INTO `sys_log` VALUES ('949', 'lxf', 'lxf', '[类名]:com.wangzhixuan.controller.RoomController,[方法]:edit,[参数]:id=182&roomName=颐和居-2A&type=1&status=0&buildingId=13&monRent=1500.0&remark=11111&', '0:0:0:0:0:0:0:1', '2017-01-09 10:01:21');
+INSERT INTO `sys_log` VALUES ('950', 'lxf', 'lxf', '[类名]:com.wangzhixuan.controller.RoomController,[方法]:edit,[参数]:id=182&roomName=颐和居-2A&type=0&status=1&buildingId=13&monRent=1500.0&remark=11111&', '0:0:0:0:0:0:0:1', '2017-01-09 10:01:36');
+INSERT INTO `sys_log` VALUES ('951', 'lxf', 'lxf', '[类名]:com.wangzhixuan.controller.SysLogController,[方法]:loginLog,[参数]:null', '0:0:0:0:0:0:0:1', '2017-01-10 14:16:35');
+INSERT INTO `sys_log` VALUES ('952', 'lxf', 'lxf', '[类名]:com.wangzhixuan.controller.SysLogController,[方法]:loginLog,[参数]:null', '0:0:0:0:0:0:0:1', '2017-01-10 15:11:53');
+INSERT INTO `sys_log` VALUES ('953', 'lxf', 'lxf', '[类名]:com.wangzhixuan.controller.SysLogController,[方法]:loginLog,[参数]:null', '0:0:0:0:0:0:0:1', '2017-01-10 15:42:42');
+INSERT INTO `sys_log` VALUES ('954', 'lxf', 'lxf', '[类名]:com.wangzhixuan.controller.SysLogController,[方法]:loginLog,[参数]:null', '0:0:0:0:0:0:0:1', '2017-01-10 15:53:06');
+INSERT INTO `sys_log` VALUES ('955', 'lxf', 'lxf', '[类名]:com.wangzhixuan.controller.SysLogController,[方法]:loginLog,[参数]:null', '0:0:0:0:0:0:0:1', '2017-01-10 16:10:40');
+INSERT INTO `sys_log` VALUES ('956', 'lxf', 'lxf', '[类名]:com.wangzhixuan.controller.SysLogController,[方法]:loginLog,[参数]:null', '0:0:0:0:0:0:0:1', '2017-01-10 16:27:37');
+INSERT INTO `sys_log` VALUES ('957', 'lxf', 'lxf', '[类名]:com.wangzhixuan.controller.SysLogController,[方法]:loginLog,[参数]:null', '0:0:0:0:0:0:0:1', '2017-01-10 16:28:09');
+INSERT INTO `sys_log` VALUES ('958', 'lxf', 'lxf', '[类名]:com.wangzhixuan.controller.BuildingController,[方法]:edit,[参数]:id=15&buildingName=粤森楼A座&buildingAddress=大山村群星二路&buildingOwn=梁秀凤&ownPhone=13682222283&buildingManager=梁秀凤&managerPhone=13682222283&roomCount=200&remark=&', '0:0:0:0:0:0:0:1', '2017-01-10 16:44:28');
+INSERT INTO `sys_log` VALUES ('959', 'lxf', 'lxf', '[类名]:com.wangzhixuan.controller.BuildingController,[方法]:addPage,[参数]:', null, '2017-01-10 16:44:41');
+INSERT INTO `sys_log` VALUES ('960', 'lxf', 'lxf', '[类名]:com.wangzhixuan.controller.SysLogController,[方法]:loginLog,[参数]:null', '0:0:0:0:0:0:0:1', '2017-01-10 16:50:34');
 
 -- ----------------------------
 -- Table structure for tenant
