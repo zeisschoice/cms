@@ -43,9 +43,14 @@
             <table class="grid">
                 <tr>
                     <td>房间名称</td>
-                    <td><input name="roomName" type="text" placeholder="请输入房间名称" class="easyui-validatebox" data-options="required:true" value=""></td>
-                   <!--  <td>住户姓名</td>
-                    <td><input name="liver" type="text" placeholder="请输入住户姓名" class="easyui-validatebox" data-options="required:true,readonly:true" value=""></td>  -->
+                    <td><input name="roomName"  type="text" placeholder="请输入房间名称" class="easyui-validatebox" data-options="width:140,required:true" value=""></td>
+                    <td>房间类型</td>
+                    <td>
+                        <select name="type" class="easyui-combobox" data-options="width:140,height:29,editable:false,panelHeight:'auto'">
+                            <option value="0">单间</option>
+                            <option value="1">套间</option>
+                        </select>
+                    </td>
                 </tr>
                <!--  <tr>
                     <td>出租开始日期</td>
@@ -56,14 +61,8 @@
                     </td>
                 </tr> -->
                 <tr>
-                    
-                    <td>类型</td>
-                    <td>
-                        <select name="type" class="easyui-combobox" data-options="width:140,height:29,editable:false,panelHeight:'auto'">
-                            <option value="0">单间</option>
-                            <option value="1">套间</option>
-                        </select>
-                    </td>
+                     <td>所属楼房</td>
+                    <td><select id="buildingId" name="buildingId"  class="easyui-validatebox" data-options="width:140,height:29,required:true"></select></td>
                     <td>状态</td>
                     <td>
                         <select id="status" name="status" class="easyui-combobox" data-options="width:140,height:29,editable:false,panelHeight:'auto'">
@@ -73,16 +72,13 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>所属楼房</td>
-                    <td><select id="buildingId" name="buildingId" style="width: 140px; height: 29px;" class="easyui-validatebox" data-options="required:true"></select></td>
                     <td>月租</td>
-                    <td><input name="monRent" type="text" placeholder="月租" class="easyui-validatebox" data-options="required:true"></td>
+                    <td><input name="monRent" type="text" placeholder="月租" class="easyui-validatebox" data-options="width:140,height:29,required:true"></td>
                 </tr>
                 <tr>
                     
                   <td>备注</td>
                   <td colspan="3"><textarea id="remark" name="remark" rows="" cols="" style="margin: 0px; width: 380px; height: 53px;" ></textarea></td>  
-                    
                 </tr>
             </table>
         </form>

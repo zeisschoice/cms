@@ -96,7 +96,7 @@
         parent.$.modalDialog({
             title : '添加',
             width : 500,
-            height : 400,
+            height : 300,
             href : '${path }/building/addPage',
             buttons : [ {
                 text : '确定',

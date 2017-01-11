@@ -32,15 +32,13 @@
     });
 </script>
 <div class="easyui-layout" data-options="fit:true,border:false">
-    <div data-options="region:'center',border:false" title="楼房信息" style="overflow: hidden;padding: 3px;">
+    <div data-options="region:'center',border:false" title="" style="overflow: hidden;padding: 3px;">
         <form id="buildingAddForm" method="post">
             <table class="grid">
                 <tr>
                     <td>楼房名称</td>
                     <td><input name="id" type="hidden"  value="">
                     <input name="buildingName" type="text" placeholder="请输入楼房名称" class="easyui-validatebox easyui-textbox" data-options="required:true" value=""></td>
-                </tr>
-                <tr>
                     <td>楼房地址</td>
                     <td>
                     <input name="buildingAddress" type="text" placeholder="请输入楼房地址" class="easyui-validatebox easyui-textbox" data-options="required:true" value=""></td>
@@ -49,8 +47,7 @@
                     <td>房东</td>
                     <td >
                      <input name="buildingOwn" type="text" placeholder="请输入楼房地址" class="easyui-validatebox easyui-textbox" data-options="required:true" value=""></td>
-                </tr>
-                 <tr>
+                
                     <td>房东电话</td>
                     <td >
                      <input name="ownPhone" type="text" placeholder="请输入楼房地址" class="easyui-validatebox easyui-textbox" validType="mobile" data-options="required:true" value=""></td>
@@ -59,8 +56,6 @@
                     <td>管理员</td>
                     <td >
                      <input name="buildingManager" type="text" placeholder="请输入楼房地址" class="easyui-validatebox easyui-textbox" data-options="required:true" value=""></td>
-                </tr>
-                 <tr>
                     <td>管理员电话</td>
                     <td >
                      <input name="managerPhone" type="text" placeholder="请输入管理员电话" class="easyui-validatebox easyui-textbox" validType="mobile" data-options="required:true" value=""></td>
@@ -72,7 +67,7 @@
                 </tr>
                 <tr>
                     <td>备注</td>
-                    <td colspan="3"><textarea id="remark" name="remark" rows="" cols="" ></textarea></td>
+                    <td colspan="3"><textarea id="remark" name="remark" rows="" cols="" style="margin: 0px; width: 391px; height: 60px;"></textarea></td>
                 </tr>
             </table>
         </form>
