@@ -176,8 +176,8 @@
         }
         parent.$.modalDialog({
             title : '编辑',
-            width : 560,
-            height : 350,
+            width : 500,
+            height : 300,
             href : '${path }/room/editPage?id=' + id,
             buttons : [ {
                 text : '确定',

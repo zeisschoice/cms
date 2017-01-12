@@ -366,7 +366,10 @@
             height : 500,
             href : '${path }/cost/addPage?id='+roomId+"&tenantName="+$('#tenantName').val()+"&monRent="+monRent+"&tenantId="+ tenantId,
             buttons : [ {
-                text : '添加',
+            	 text : '确定',
+                 iconCls: "icon-ok",
+                 width: 80,
+                 height: 35,
                 handler : function() {
                     parent.$.modalDialog.openner_dataGrid = dataGrid;//因为添加成功之后，需要刷新这个dataGrid，所以先预定义好
                     var f = parent.$.modalDialog.handler.find('#costAddForm');

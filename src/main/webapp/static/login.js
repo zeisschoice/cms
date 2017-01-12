@@ -68,7 +68,7 @@ $(function () {
                 window.location.href = basePath + '/index';
             }else{
             	
-            	console.log(data);
+            	
             	
                 $.messager.show({
                     title:'提示',
