@@ -362,8 +362,8 @@
     	
         parent.$.modalDialog({
             title : '添加',
-            width : 1200,
-            height : 500,
+            width : 800,
+            height : 540,
             href : '${path }/cost/addPage?id='+roomId+"&tenantName="+$('#tenantName').val()+"&monRent="+monRent+"&tenantId="+ tenantId,
             buttons : [ {
             	 text : '确定',
@@ -425,8 +425,8 @@
         	
         	parent.$.modalDialog({
                 title : '编辑',
-                width : 1200,
-                height : 500,
+                width : 800,
+                height : 540,
                 href : '${path }/cost/editPage?id=' + rows[0].id+"&tenantName="+$('#tenantName').val(),
                 buttons : [ {
                     text : '确定',
@@ -652,7 +652,7 @@
 		   return;
 	   }
 	   
-	   parent.$.messager.confirm('询问', '您是否要删除当前用户？！', function(b) {
+	   parent.$.messager.confirm('询问', '您是否要删除当前租户？！', function(b) {
 	   
 		   if(b){
 			   

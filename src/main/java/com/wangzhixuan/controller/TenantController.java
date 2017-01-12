@@ -134,6 +134,12 @@ public class TenantController extends BaseController{
 	 public Object delete(Long id,Long roomId) {
 		// iTenantService.deleteById(id);
 		 
+		 
+		 if(id == null || roomId==null){
+			 
+			 return renderError("删除失败！用户ID为空或者房间ID为空!");
+		 }
+		 
 		 Tenant tenant = new Tenant();
 		 tenant.setId(id.intValue());
 		 tenant.setIsDel(1);
@@ -141,12 +147,16 @@ public class TenantController extends BaseController{
 		 Room room = iRoomService.selectById(roomId);
 	     room.setStatus(0);
 		 room.setLiver(null);
+		 room.setBeginDate(null);
+		 room.setEndDate(null);
 		 boolean isUpdate = iRoomService.updateById(room);
 		 
 		 
 		 
-		 iTenantService.updateSelectiveById(tenant);
+		// iTenantService.updateSelectiveById(tenant);
 		
+		 iTenantService.deleteById(id);
+		 
 		 return renderSuccess("删除成功！");
 	 }
 	 
