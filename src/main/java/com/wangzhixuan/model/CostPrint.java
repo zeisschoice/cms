@@ -2,13 +2,14 @@ package com.wangzhixuan.model;
 
 public class CostPrint {
 
-	private String address;
-	private String roomNum;
-	private String startDate;
-	private String endDate;
-	private String copyDate;
-    private String waterNum;
-	private String crMonWaterNum;
+	private String address;  //地址
+	private String roomNum; //房间号
+	private String monRent;//月租
+	private String startDate;//计费开始日期
+	private String endDate; //计费结束日期
+	private String copyDate;//抄表日期
+    private String waterNum;//水表数
+	private String crMonWaterNum;//当月用水数
 	private String elecNum;
     
 	private String lsMonWaterNum ;
@@ -25,8 +26,17 @@ public class CostPrint {
 	private String other;
 	private String writeBiller;
 	private String internetCount;
+	
 	public String getCurrentGasNum() {
 		return currentGasNum;
+	}
+
+	public String getMonRent() {
+		return monRent;
+	}
+
+	public void setMonRent(String monRent) {
+		this.monRent = monRent;
 	}
 
 	public void setCurrentGasNum(String currentGasNum) {

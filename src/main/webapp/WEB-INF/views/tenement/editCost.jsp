@@ -363,7 +363,7 @@
     		var a = $('#currentGasNum').val();
           	var b = $('#lastGasNum').val();
           	var c = (parseFloat(a) - parseFloat(b)).toFixed(2);
-              var d = $('#gasUnitPrice').val();
+            var d = $('#gasUnitPrice').val();
             
           	$('#gasNum').numberbox('setValue', c);
           	
@@ -380,102 +380,109 @@
           <form id="costEditForm" method="post">
              <table class="grid">
                 <tr>
-                    <td>年份</td>
+                    <td align="right">年份</td>
                     <td><input name="year" id="year" type="text" placeholder="请输入房间名称" type="text" class="easyui-validatebox easyui-textbox" data-options="required:true"   value="${cost.year}"></td>
-                    <td>月份</td>
+                    <td align="right">月份</td>
                     <td><input name="month" id="month" type="text" placeholder="请输入住户姓名" type="text" class="easyui-validatebox easyui-textbox" data-options="required:true"   value="${cost.month}"></td>
-                    <td>住户</td>
+                    <td align="right">住户</td>
                     <td><input name="tenantName" id="tenantName" type="text" placeholder="请输入住户姓名" type="text" class="easyui-validatebox easyui-textbox" data-options="required:true" value=""  value="${tenantName }"></td>
-                     <td>月租</td>
-                    <td><input name="monRent" id="monRent" type="text" placeholder="管理费" type="text" class="easyui-validatebox easyui-textbox" data-options="required:true"   value="${cost.monRent}"></td>
-                    <td>分摊费</td>
-                    <td><input name="equallyCharge" id="equallyCharge" placeholder="点击选择时间"  class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2"   value="${cost.equallyCharge}"></td>
-                   
-                </tr>
-                <tr>
-                  <td style="width:80px">计费(始)</td>
+                 </tr>
+                 <tr>
+                  <td align="right">计费(始)</td>
                    <td><input id="startDate" name="startDate" type="text" class="easyui-datebox" parser="myparser"  required="required" value="${cost.startDate}"></td>
-                  <td style="width:80px">计费(至)</td>
+                  <td align="right">计费(至)</td>
                   <td><input id="endDate" name="endDate" type="text" class="easyui-datebox" parser="myparser" required="required"  value="${cost.endDate}"></td>  <!-- validType="isAfter['#startDate']" -->
-                   <td style="width:80px">抄表日期</td>
+                   <td align="right">抄表日期</td>
                   <td><input id="copyDate" name="copyDate" type="text" class="easyui-datebox" parser="myparser" required="required" value="${cost.copyDate}"></td> 
-                   <td>管理费</td>
-                   <td><input name="manageCharge" id="manageCharge" type="text" placeholder="管理费" type="text" class="easyui-validatebox easyui-textbox" data-options="required:true"   value="${cost.manageCharge}"></td>
-                  <td>网络费</td>
-                    <td><input name="internetCharge" id="internetCharge" placeholder="点击选择时间"  class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2"  value="${cost.internetCharge}"></td>
+                 </tr>
+                 
+                 <tr> 
+                    <td align="right">月租</td>
+                    <td><input name="monRent" id="monRent" type="text" placeholder="管理费" type="text" class="easyui-validatebox easyui-textbox" data-options="required:true"   value="${cost.monRent}"></td>
+                    <td align="right">分摊费</td>
+                    <td><input name="equallyCharge" id="equallyCharge" placeholder="点击选择时间"  class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2"   value="${cost.equallyCharge}"></td>
+                    <td align="right">电视费</td>
+                    <td><input name="tvCharge" id="tvCharge" placeholder="点击选择时间"  class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2"  value="${cost.tvCharge}"></td>
                 </tr>
                 <tr>
-                    <td>本月电表数</td>
+                   <td align="right">管理费</td>
+                   <td><input name="manageCharge" id="manageCharge" type="text" placeholder="管理费" type="text" class="easyui-validatebox easyui-textbox" data-options="required:true"   value="${cost.manageCharge}"></td>
+                   <td align="right">网络费</td>
+                   <td><input name="internetCharge" id="internetCharge" placeholder="点击选择时间"  class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2"  value="${cost.internetCharge}"></td>
+                   <td align="right">其他费用</td>
+                   <td><input name="otherCharge" id="otherCharge" placeholder="点击选择时间"  class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2"   value="${cost.otherCharge}"></td>
+                </tr>
+                <tr>
+                    <td align="right">本月电表数</td>
                     <td><input name="currentElectricNum" id="currentElectricNum" placeholder="点击选择时间" class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2"  value="${cost.currentElectricNum}"></td>
-                    <td>上月电表数</td>
+                    <td align="right">本月水表数</td>
+                    <td><input name="currentWaterNum" id="currentWaterNum" placeholder="点击选择时间"  type="text" class="easyui-validatebox easyui-textbox" data-options="required:true,min:0,precision:2"  value="${cost.currentWaterNum}"></td>
+                    <td align="right">本月煤气数</td>
+                    <td><input name="currentGasNum" id="currentGasNum" placeholder="点击选择时间"   type="text" class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2"  value="${cost.currentGasNum}"></td>
+                </tr>
+                <tr>  
+                    <td align="right">上月电表数</td>
                     <td>
                        <input name="lastElectricNum" id="lastElectricNum" placeholder="点击选择时间"  type="text" class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2"  value="${cost.lastElectricNum}">
                     </td>
-                    <td>用电数</td>
-                    <td>
-                       <input name="electricNum" id="electricNum" placeholder="点击选择时间"  type="text" class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2"   readonly="true" value="0">
-                    </td>
-                     <td>度 /元</td>
-                    <td>
-                       <input name="electricUnitPrice" id="electricUnitPrice" placeholder="输入"  type="text" class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2"  value="${cost.electricUnitPrice}">
-                    </td>
-                    <td>电费(元)</td>
-                    <td>
-                       <input name="electricCharge"  id="electricCharge"   type="text" class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2" readonly="true"  value="${cost.electricCharge}">
-                    </td>
-                </tr>
-                 <tr>
-                    <td>本月水表数</td>
-                    <td><input name="currentWaterNum" id="currentWaterNum" placeholder="点击选择时间"  type="text" class="easyui-validatebox easyui-textbox" data-options="required:true,min:0,precision:2"  value="${cost.currentWaterNum}"></td>
-                    <td>上月水表数</td>
+                    <td align="right">上月水表数</td>
                     <td>
                        <input name="lastWaterNum" id="lastWaterNum" placeholder="点击选择时间"  type="text" class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2"  value="${cost.lastWaterNum}">
                     </td>
-                     <td>用水数</td>
-                    <td>
-                       <input name="waterNum" id="waterNum" placeholder="点击选择时间"  type="text" class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2"  readonly="true" value="">
-                    </td>
-                     <td>顿 /元</td>
-                    <td>
-                       <input name="waterUnitPrice" id="waterUnitPrice" placeholder="点击选择时间"  type="text" class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2"  value="${cost.waterUnitPrice}">
-                    </td>
-                    <td>水费(元)</td>
-                    <td>
-                       <input name="waterCharge" id="waterCharge" placeholder="点击选择时间"  type="text" class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2"  readonly="true" value="${cost.waterCharge}">
-                    </td>
-                </tr>
-                 <tr>
-                    <td>本月煤气数</td>
-                    <td><input name="currentGasNum" id="currentGasNum" placeholder="点击选择时间"   type="text" class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2"  value="${cost.currentGasNum}"></td>
-                    <td>上月煤气数</td>
+                   <td align="right">上月煤气数</td>
                     <td>
                        <input name=lastGasNum id="lastGasNum" placeholder="点击选择时间"   class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2"  value="${cost.lastGasNum}">
                     </td>
-                     <td>煤气数</td>
+                </tr>
+                <tr>  
+                    <td align="right">用电数</td>
+                    <td>
+                       <input name="electricNum" id="electricNum" placeholder="点击选择时间"  type="text" class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2"   readonly="true" value="0">
+                    </td>
+                    <td align="right">用水数</td>
+                    <td>
+                       <input name="waterNum" id="waterNum" placeholder="点击选择时间"  type="text" class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2"  readonly="true" value="">
+                    </td>
+                    <td align="right">煤气数</td>
                     <td>
                        <input name="gasNum" id="gasNum" placeholder="点击选择时间"  type="text" class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2"  readonly="true" value="">
                     </td>
-                     <td>方 /元</td>
+                 </tr>
+                 
+                 <tr>   
+                    <td align="right">度 /元</td>
+                    <td>
+                       <input name="electricUnitPrice" id="electricUnitPrice" placeholder="输入"  type="text" class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2"  value="${cost.electricUnitPrice}">
+                    </td>
+                    <td align="right">吨 /元</td>
+                    <td>
+                       <input name="waterUnitPrice" id="waterUnitPrice" placeholder="点击选择时间"  type="text" class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2"  value="${cost.waterUnitPrice}">
+                    </td>
+                    <td align="right">方 /元</td>
                     <td>
                        <input name="gasUnitPrice" id="gasUnitPrice" placeholder="点击选择时间"  type="text" class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2"  value="${cost.gasUnitPrice}">
                     </td>
-                     <td>燃气费(元)</td>
+                 </tr>
+                 <tr>    
+                    <td align="right">电费合计(元)</td>
+                    <td>
+                       <input name="electricCharge"  id="electricCharge"   type="text" class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2" readonly="true"  value="${cost.electricCharge}">
+                    </td>
+                    <td align="right">水费合计(元)</td>
+                    <td>
+                       <input name="waterCharge" id="waterCharge" placeholder="点击选择时间"  type="text" class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2"  readonly="true" value="${cost.waterCharge}">
+                    </td>
+                    <td align="right">燃气费合计(元)</td>
                     <td>
                        <input name="gasCharge" id="gasCharge" placeholder="点击选择时间"  type="text" class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2"  readonly="true"value="${cost.gasCharge}">
                     </td>
                 </tr>
                  <tr>
-                   
-                   
-                    <td>电视费</td>
-                    <td><input name="tvCharge" id="tvCharge" placeholder="点击选择时间"  class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2"  value="${cost.tvCharge}"></td>
-                    <td>其他费用</td>
-                    <td><input name="otherCharge" id="otherCharge" placeholder="点击选择时间"  class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2"   value="${cost.otherCharge}"></td>
                     <td><input name="roomId" type="hidden"  value="${cost.roomId}"></td>
                     <td><input name="sendCount" type="hidden"  value="${cost.sendCount}"></td>
                     <td><input name="id" type="hidden"  value="${cost.id}"></td> 
                     <td></td>
-                    <td>合计(元)</td>
+                    <td align="right">费用总计(元)</td>
                     <td><input name="total" id="total" placeholder="点击选择时间"  class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2"  readonly="true" value="${cost.total}"></td>
                     
                 </tr>

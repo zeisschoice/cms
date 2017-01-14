@@ -41,7 +41,9 @@
          url : '${path}/room/tree',
          parentField : 'pid',
          lines : true,
-         panelHeight : 'auto'
+         panelHeight : 'auto',
+         value:'${room.buildingId}'
+        
      });
  
  
@@ -61,6 +63,11 @@
     }
     
     
+ 
+    
+    $('#type').val('${room.type }');
+    $('#status').val('${room.status}');
+    
 </script>
 <div class="easyui-layout" data-options="fit:true,border:false">
     <div data-options="region:'center',border:false" title="" style="overflow: hidden;padding: 3px;">
@@ -68,24 +75,24 @@
           <table class="grid">
                 <tr>
                     <td>房间名称</td>
-                    <td><input name="id" type="hidden"  value="${room.id}">
-                    <input name="roomName" type="text" placeholder="请输入房间名称" class="easyui-validatebox" data-options="required:true" value="${room.roomName}"></td>
+                    <td colspan="3" ><input name="id" type="hidden"  value="${room.id}">
+                    <input style="width: 400px;" name="roomName" type="text" placeholder="请输入房间名称" class="easyui-validatebox" data-options="required:true" value="${room.roomName}"></td>
                    <%--  <td>住户姓名</td>
                     <td><input name="liver" type="text" placeholder="请输入住户姓名" class="easyui-validatebox" data-options="required:true,readonly:true,disabled:true" value="${room.liver}"></td> --%>
                 </tr>
-                <tr>
-                    <td>出租开始日期</td>
+               <!--  <tr>
+                    <td>合同日期(始)</td>
                     <td><input name="beginDate" id="beginDate" placeholder="点击选择时间" onclick="WdatePicker({readOnly:true,dateFmt:'yyyy-MM-dd HH:mm:ss'})" readonly="readonly" class="easyui-validatebox" data-options="required:true" value=""></td>
-                    <td>出租结束日期</td>
+                    <td>合同日期(止)</td>
                     <td>
                        <input name="endDate" id="endDate" placeholder="点击选择时间" onclick="WdatePicker({readOnly:true,dateFmt:'yyyy-MM-dd HH:mm:ss'})" readonly="readonly" class="easyui-validatebox" data-options="required:true" value="">
                     </td>
-                </tr>
+                </tr> -->
                 <tr>
                     
                     <td>类型</td>
                     <td>
-                        <select name="type" id="type" class="easyui-combobox" data-options="width:140,height:29,editable:false,panelHeight:'auto'" value="${room.type }">
+                        <select name="type" id="type" class="easyui-combobox" data-options="width:140,height:29,editable:false,panelHeight:'auto'" >
                             <option value="0">单间</option>
                             <option value="1">套间</option>
                         </select>
@@ -100,14 +107,14 @@
                 </tr>
                 <tr>
                     <td>所属楼房</td>
-                    <td><select id="buildingId" name="buildingId" style="width: 140px; height: 29px;" class="easyui-validatebox" data-options="required:true" value=""></select></td>
+                    <td><select id="buildingId" name="buildingId" style="width: 140px; height: 29px;"  data-options="required:true"></select></td>
                     <td>月租</td>
                     <td><input name="monRent" type="text" placeholder="月租" class="easyui-validatebox" data-options="required:true" value="${room.monRent }"></td>
                 </tr>
                 <tr>
                     
                   <td>备注</td>
-                  <td colspan="3"><textarea id="remark" name="remark" rows="" cols="" style="margin: 0px; width: 380px; height: 53px;" ></textarea></td>  
+                  <td colspan="3"><textarea id="remark" name="remark" rows="" cols="" style="margin: 0px; width: 400px; height: 53px;" ></textarea></td>  
                     
                 </tr>
             </table>

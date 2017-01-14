@@ -50,11 +50,11 @@ a {
     text-decoration: none;
 }
 .tou {
-    background: url("../images/tou.png") no-repeat;
+    background: url("../images/user.net.png") no-repeat;
     width: 97px;
     height: 92px;
     position: absolute;
-    top: -87px;
+    top: -70px;
     left: 140px;
 }
 .left_hand {

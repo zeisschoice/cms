@@ -49,11 +49,11 @@
             },
             {
                 width : '150',
-                title : '创建日期',
+                title : '合同开始日期',
                 field : 'beginDate'
             },{
                 width : '150',
-                title : '结束日期',
+                title : '合同结束日期',
                 field : 'endDate'
               
             },  {

@@ -362,11 +362,14 @@
     	
         parent.$.modalDialog({
             title : '添加',
-            width : 1200,
-            height : 500,
+            width : 800,
+            height : 540,
             href : '${path }/cost/addPage?id='+roomId+"&tenantName="+$('#tenantName').val()+"&monRent="+monRent+"&tenantId="+ tenantId,
             buttons : [ {
-                text : '添加',
+            	 text : '确定',
+                 iconCls: "icon-ok",
+                 width: 80,
+                 height: 35,
                 handler : function() {
                     parent.$.modalDialog.openner_dataGrid = dataGrid;//因为添加成功之后，需要刷新这个dataGrid，所以先预定义好
                     var f = parent.$.modalDialog.handler.find('#costAddForm');
@@ -422,8 +425,8 @@
         	
         	parent.$.modalDialog({
                 title : '编辑',
-                width : 1200,
-                height : 500,
+                width : 800,
+                height : 540,
                 href : '${path }/cost/editPage?id=' + rows[0].id+"&tenantName="+$('#tenantName').val(),
                 buttons : [ {
                     text : '确定',
@@ -649,7 +652,7 @@
 		   return;
 	   }
 	   
-	   parent.$.messager.confirm('询问', '您是否要删除当前用户？！', function(b) {
+	   parent.$.messager.confirm('询问', '您是否要删除当前租户？！', function(b) {
 	   
 		   if(b){
 			   
@@ -755,7 +758,7 @@
     
     <div data-options="region:'center',border:true,title:'住户信息'">
         
-        <div style="width:100%;height:20%;">
+        <div style="width:100%;height:30%;">
         <div id="formToolbar">
             <a onclick="saveTenantFun();" href="javascript:void(0);" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-save'">保存</a>
             <a onclick="delTenantFun();" href="javascript:void(0);" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-del'">删除</a>
@@ -776,8 +779,16 @@
                     <td><input name="identityCard" type="text" class="easyui-validatebox" data-options="required:true" validType="idcard" value="${tenant.identityCard }"></input></td>
                 </tr>
                 <tr>
+                   <td>合同日期(始)</td>
+                   <td><input id="startDate" name="startDate" type="text" class="easyui-datebox"   required="required" value="${tenant.startDate}"></td>
+                   <td>合同日期(至)</td>
+                  <td><input id="endDate" name="endDate" type="text" class="easyui-datebox"  required="required" value="${tenant.endDate}"></td> <!-- validType="isAfter['#startDate']" -->
+                   <td>押金(保证金)</td>
+                  <td><input id="deposit" name="deposit" type="text" class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2"  required="required" value="${tenant.deposit}"></td> <!-- validType="isAfter['#startDate']" -->
+                </tr>
+                <tr>
                     <td>备注</td>
-                     <td colspan="7"><textarea id="remark" name="remark" rows="" cols="" style="margin: 0px; width:100%; height: 30px;" value="${tenant.remark }"></textarea></td>
+                     <td colspan="7"><textarea id="remark" name="remark" rows="" cols="" style="margin: 0px; width:100%; height: 50px;" value="${tenant.remark }"></textarea></td>
                 </tr>
                 <tr>
                  <td><input name="roomId" id="roomId" type="hidden"  value="${tenant.roomId}"></td>
@@ -787,14 +798,14 @@
    
          </form> 
          </div >
-         <div style="width:100%;height:80%;">
+         <div style="width:100%;height:70%;">
             <table id="dataGrid" data-options="fit:true,border:false"></table> 
          </div>
     </div>
     
     
     
-    <div data-options="region:'west',border:true,split:false,title:'楼房'"  style="width:150px;overflow-x: hidden; ">
+    <div data-options="region:'west',border:true,split:false,title:'楼房'"  style="width:250px;overflow-x: hidden; ">
         <ul id="roomTree"  style="width:160px;margin: 10px 10px 10px 10px">
         </ul>
     </div>

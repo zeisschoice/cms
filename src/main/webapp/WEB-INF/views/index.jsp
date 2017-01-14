@@ -143,7 +143,8 @@
 			
 			$("#metroaqui_novo").AddMetroDoubleButton('bt4', 'metro-azul', 'static/metroaqui/Style/Imagem/appbar.home.people.png', '楼房管理', 'clickIcon("/building/BuildingPage","楼房管理","menu_icon_datadeal");');
 			$("#metroaqui_novo").AddMetroDoubleButton('bt4', 'metro-laranja', 'static/metroaqui/Style/Imagem/appbar.people.multiple.png','租户管理', 'clickIcon("/tenant/tenantPage","租户管理","menu_icon_datadeal");');
-		    $("#metroaqui_novo").AddMetroDoubleButton('bt4', 'metro-azul', 'static/metroaqui/Style/Imagem/appbar.settings.png', '系统设置', 'clickIcon("/resource/manager","资源管理","menu_icon_datadeal")');
+	//		$("#metroaqui_novo").AddMetroDoubleButton('bt4', 'metro-laranja', 'static/metroaqui/Style/Imagem/appbar.people.multiple.png','租户管理', 'clickIcon("/tenant/tenantPage","租户管理","menu_icon_datadeal");');
+		    $("#metroaqui_novo").AddMetroDoubleButton('bt4', 'metro-verde', 'static/metroaqui/Style/Imagem/appbar.settings.png', '系统设置', 'clickIcon("/resource/manager","资源管理","menu_icon_datadeal");');
 			 /*$("#metroaqui_novo").AddMetroSimpleButton('bt1', 'metro-verde', 'Style/Imagem/carta.png', 'Teste Roger', 'alert("feito b1");'); 
             $("#metroaqui_novo").AddMetroSimpleButton('bt2', 'metro-laranja', 'Style/Imagem/carta.png', 'Laranja', 'alert("Laranja");');
              $("#metroaqui_novo").AddMetroDoubleButton('bt4', 'metro-azul', 'Style/Imagem/carta.png', 'Azul', 'alert("Azul");');
@@ -191,11 +192,11 @@
                     </style>
                     <!-- ///////////////// -->
                     <div class="easyui-layout" style="width:100%;height:100%;">
-				        <div id="p" data-options="region:'east'"  style="width:20%;padding:10px">
+				        <div id="p" data-options="region:'east',split:true" title="日历" style="width:20%;padding:5px">
 				            
 				             <div class="easyui-calendar" style="width:100%;height:250px;"></div>
 				             <br>
-				             <div  style="width:100%;height:400px;">
+				             <div  style="width:100%;height:380px;">
                                 <table id="dataGrid" data-options="fit:true,border:true" title="最近操作"></table>
                              </div>
                              

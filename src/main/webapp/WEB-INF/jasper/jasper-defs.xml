@@ -11,7 +11,7 @@
 	</bean>
 	
 	 <bean id="cost" class="org.springframework.web.servlet.view.jasperreports.JasperReportsPdfView">
-		<property name="url" value="/WEB-INF/jasper/cost.jasper"/>
+		<property name="url" value="/WEB-INF/jasper/costA5.jasper"/>
 		 <property name="reportDataKey" value="costData"/> 
 	</bean> 
 	

@@ -14,6 +14,8 @@
             idField : 'id',
             treeField : 'name',
             parentField : 'pid',
+            rownumbers : true,
+            pagination : true,
             fit : true,
             fitColumns : false,
             border : false,
