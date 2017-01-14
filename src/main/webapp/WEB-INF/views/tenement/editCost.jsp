@@ -363,7 +363,7 @@
     		var a = $('#currentGasNum').val();
           	var b = $('#lastGasNum').val();
           	var c = (parseFloat(a) - parseFloat(b)).toFixed(2);
-              var d = $('#gasUnitPrice').val();
+            var d = $('#gasUnitPrice').val();
             
           	$('#gasNum').numberbox('setValue', c);
           	
