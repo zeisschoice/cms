@@ -145,7 +145,7 @@
         parent.$.modalDialog({
             title : '添加',
             width : 500,
-            height : 350,
+            height : 290,
             href : '${path }/resource/addPage',
             buttons : [ {
                 text : '确定',
