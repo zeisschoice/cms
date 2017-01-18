@@ -1,7 +1,10 @@
 package com.wangzhixuan.service.impl;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -179,14 +182,27 @@ public class ResourceServiceImpl extends SuperServiceImpl<ResourceMapper, Resour
         }
 
         // 普通用户
+        HashMap<Long,Resource> map = new HashMap<Long,Resource>();
         List<Resource> resourceIdList = new ArrayList<Resource>();
         List<Long> roleIdList = userRoleMapper.selectRoleIdListByUserId(user.getId());
         for (Long id : roleIdList) {
             List<Resource> resourceIdLists = roleMapper.selectResourceIdListByRoleIdAndType(id);
             for (Resource resource: resourceIdLists) {
-                resourceIdList.add(resource);
+               
+            	map.put(resource.getId(), resource);
+            	//resourceIdList.add(resource);
             }
         }
+        
+      
+        Iterator it = map.keySet().iterator();
+        
+        while(it.hasNext()){
+        	
+        	resourceIdList.add(map.get(it.next()));
+        }
+        
+        
         for (Resource resource : resourceIdList) {
             if (resource != null && resource.getPid() == null) {
                 Tree treeOne = new Tree();
