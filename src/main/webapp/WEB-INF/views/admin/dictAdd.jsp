@@ -35,10 +35,12 @@
        <br> 
      
        <!--  <table id="dataGrid" data-options="fit:true,border:false"></table> -->
+       
+       <!--   clickToEdit:true,
+                singleSelect: true, -->
         <table id="dataGrid" class="easyui-datagrid" title="" style="width:100%;height:auto"  
         data-options="
-                clickToEdit:true,
-                singleSelect: true,
+              
                 toolbar: '#toolbar'"
                 >
         <thead>
@@ -49,7 +51,7 @@
                 <th data-options="field:'dictcode',width:80,editor:'text'">编码</th>
                 <th data-options="field:'value',width:80,align:'right',editor:'numberbox'">值</th>
                 <th data-options="field:'dictlevel',width:80,editor:'text'">计费单位</th>
-                 <th data-options="field:'status',width:80,editor:'numberbox'">状态</th>
+                <th data-options="field:'status',width:80,editor:'numberbox'">状态</th>
                 <th data-options="field:'sortno',width:80,editor:'text'">序号</th>
                 <th data-options="field:'rank',width:80,editor:'text'">排序</th>
             </tr>
@@ -59,7 +61,7 @@
      
      
     <div id="toolbar">
-        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="append()">添加</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="testAdd()">添加</a>
         <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="delDictEntry()">删除</a>
     </div>
       <a href="javascript:void(0)" id="submitButtom" class="easyui-linkbutton" onclick="save()" style="display:none">保存</a>
@@ -132,7 +134,10 @@
 
     var editIndex = undefined;
     function endEditing(){
-        if (editIndex == undefined){return true}
+        if (editIndex == undefined){
+        	return true
+        	}
+        
         if ($('#dataGrid').datagrid('validateRow', editIndex)){
             $('#dataGrid').datagrid('endEdit', editIndex);
             editIndex = undefined;
@@ -157,24 +162,49 @@
  function newDictEntry(){
 	 	
 	 var row = $('#dataGrid').datagrid('getSelected');
+	 
+
+	 
+	   var index = 0;
+	 
 		if (row){
 			var index = $('#dataGrid').datagrid('getRowIndex', row);
-		} else {
-			index = 0;
-		}
+			
+		} else 
+		
+		//{
+		//	index = 0;
+	//	}
+		
 		$('#dataGrid').datagrid('insertRow', {
 			index: index,
 			row:{
-				dicttypeid:$('#dicttypeid').val()
+				//dicttypeid:$('#dicttypeid').val()
 			}
 		});
 		
 	    $('#dataGrid').datagrid('selectRow',index);
 		$('#dataGrid').datagrid('beginEdit',index);
 		
+		
 	
  }  
     
+ 
+ function testAdd(){
+	 
+	 $('#dataGrid').datagrid('insertRow',{
+			index: 0,	// index start with 0
+			row: {
+				
+			}
+		});
+	 
+	 
+	 
+	 
+ }
+ 
 function delDictEntry(){
 	
     var editIndex = undefined;	

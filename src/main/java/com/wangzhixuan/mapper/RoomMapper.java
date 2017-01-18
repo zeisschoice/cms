@@ -25,5 +25,7 @@ public interface RoomMapper extends AutoMapper<Room> {
 	 List<Room> selectRoomPage(Pagination page, Map<String, Object> params);
 	 
 	 List<Room> selectRoombyBuildId(@Param("buildingId") Long id);
+	 
+	 List<Room> selectRoombyBuildId4Tree(@Param("buildingId") Long id);
 	
 }

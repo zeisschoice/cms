@@ -346,10 +346,10 @@
     	
     	
     	
-    	if(roomId == null || roomId==""){
+    	if(roomId == null || roomId=="" || tenantId == null || tenantId==""){
     		
     	//	alert("请先选择要添加费用的房间!");
-    		$.messager.alert('提示', "请先选择需要编辑的费用!", 'error');
+    		$.messager.alert('提示', "请先选择需要添加的费用的房间或先保存房间信息!", 'error');
     		return;
     	}
     	
@@ -414,9 +414,9 @@
     	
     	var rows = dataGrid.datagrid('getSelections');
         
-       if(roomId == null || roomId==""){
+       if(roomId == null || roomId=="" || tenantId == null || tenantId==""){
     		
-    		$.messager.alert('提示', "请先选择要添加费用的房间!", 'warning');
+    		$.messager.alert('提示', "请先选择要编辑费用的房间!", 'warning');
     		return;
     	}
         
@@ -623,12 +623,22 @@
                result = updateStr(result);
                result = $.parseJSON(result);
                if (result.success) {
-            	   $.messager.alert('提示',result.msg,'info');
+            	   $.messager.alert('提示',result.obj.msg,'info');
             	   $("#roomTree").tree("reload");//刷新树
+            	   
+            	   
+            	   tenantId = result.obj.tenantId
+            	   
+            	   $('#id').val(result.obj.tenantId);
             	 //    buildRoomTree.tree('reload');
+            	
+            	  dataGrid.datagrid('load', {
+                       roomId: roomId,
+                       tenantId:tenantId
+                   });
                   
                } else {
-                   $.messager.alert('提示', result.msg, 'warning');
+                   $.messager.alert('提示', result.obj.msg, 'warning');
                } 
           
            },
