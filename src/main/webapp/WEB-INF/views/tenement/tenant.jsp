@@ -792,7 +792,7 @@
                    <td>合同日期(始)</td>
                    <td><input id="startDate" name="startDate" type="text" class="easyui-datebox" editable="fasle"  required="required" value="${tenant.startDate}"></td>
                    <td>合同日期(至)</td>
-                  <td><input id="endDate" name="endDate" type="text" class="easyui-datebox" editable="fasle" required="required" value="${tenant.endDate}"></td> <!-- validType="isAfter['#startDate']" -->
+                  <td><input id="endDate" name="endDate" type="text" class="easyui-datebox" editable="fasle" required="required" value="${tenant.endDate}" validType="greaterThan['#startDate']"></td> <!-- validType="isAfter['#startDate']" -->
                    <td>押金(保证金)</td>
                   <td><input id="deposit" name="deposit" type="text" class="easyui-validatebox easyui-numberbox" data-options="required:true,min:0,precision:2"  required="required" value="${tenant.deposit}"></td> <!-- validType="isAfter['#startDate']" -->
                 </tr>

@@ -531,7 +531,7 @@
                   <td align="right">计费(始)</td>
                    <td><input id="startDate" name="startDate" type="text" class="easyui-datebox" parser="myparser" editable="fasle" required="required" ></td>
                   <td align="right">计费(至)</td>
-                  <td><input id="endDate" name="endDate" type="text" class="easyui-datebox" parser="myparser" editable="fasle" required="required" ></td> <!-- validType="isAfter['#startDate']" -->
+                  <td><input id="endDate" name="endDate" type="text" class="easyui-datebox" parser="myparser" editable="fasle" required="required" validType="greaterThan['#startDate']"></td> <!-- validType="isAfter['#startDate']" -->
                    <td align="right">抄表日期</td>
                   <td><input id="copyDate" name="copyDate" type="text" class="easyui-datebox" parser="myparser" editable="fasle" required="required" ></td> 
                 </tr>

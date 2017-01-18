@@ -227,5 +227,20 @@ zhstr : {// 验证之只能输入中文
         
 }());
     
-    
+  
+$.extend($.fn.validatebox.defaults.rules, {
+	greaterThan:{
+		validator: function(value,param){
+			var v1 = $(param[0]).datebox('getValue');
+			var d1 = $.fn.datebox.defaults.parser(v1);
+			var d2 = $.fn.datebox.defaults.parser(value);
+			return d2 > d1;
+		},
+		message: '结束时间不能小于开始时间!'
+	}
+})  
+  
+  
+  
+  
 </script>
