@@ -241,6 +241,17 @@ $.extend($.fn.validatebox.defaults.rules, {
 })  
   
   
-  
+$.extend($.fn.validatebox.defaults.rules, {
+	isCurrentMon:{
+		validator: function(value,param){
+			var v1 = $(param[0]).datebox('getValue');
+		//	var d1 = $.fn.datebox.defaults.parser(v1);
+			var d2 = $.fn.datebox.defaults.parser(value);
+			var month = d2.getMonth() + 1;
+			return d2 != d1;
+		},
+		message: '抄表日期不能是非当前月月份!'
+	}
+})  
   
 </script>
