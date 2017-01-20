@@ -300,15 +300,7 @@
 	$('#gasNum').val(c2); 
 	
 	
-	$('#monRent').numberbox({  
-	      	  onChange: function(value){ 
-	      		  totalCost();  
-	      	  }
-	}); 
-	
-	
-	
-  
+    });
     
     
     //设置单元价格
@@ -332,9 +324,6 @@
   		  totalCost();  
   	  }
     }); 
-   
-  
-    });
     
    
     function changeEle(){
@@ -384,8 +373,6 @@
     	  
       }
     
-      
-   
     
 </script>
 <div class="easyui-layout" data-options="fit:true,border:false">
@@ -402,11 +389,11 @@
                  </tr>
                  <tr>
                   <td align="right">计费(始)</td>
-                   <td><input id="startDate" name="startDate" type="text" class="easyui-datebox" parser="myparser" editable="fasle"  required="required" value="${cost.startDate}"></td>
+                   <td><input id="startDate" name="startDate" type="text" class="easyui-datebox" parser="myparser"  required="required" value="${cost.startDate}"></td>
                   <td align="right">计费(至)</td>
-                  <td><input id="endDate" name="endDate" type="text" class="easyui-datebox" parser="myparser" editable="fasle" required="required"  value="${cost.endDate}" validType="greaterThan['#startDate']"></td>  <!-- validType="isAfter['#startDate']" -->
+                  <td><input id="endDate" name="endDate" type="text" class="easyui-datebox" parser="myparser" required="required"  value="${cost.endDate}"></td>  <!-- validType="isAfter['#startDate']" -->
                    <td align="right">抄表日期</td>
-                  <td><input id="copyDate" name="copyDate" type="text" class="easyui-datebox" parser="myparser" editable="fasle" required="required" value="${cost.copyDate}"></td> 
+                  <td><input id="copyDate" name="copyDate" type="text" class="easyui-datebox" parser="myparser" required="required" value="${cost.copyDate}"></td> 
                  </tr>
                  
                  <tr> 

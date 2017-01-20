@@ -92,7 +92,7 @@ public class BuildingServiceImpl extends SuperServiceImpl<BuildingMapper, Buildi
 	             treeOne.setText(list.get(i).getBuildingName());
 	             treeOne.setIconCls("icon-company");
 	             
-	             List<Room> rooms = roomMapper.selectRoombyBuildId4Tree(list.get(i).getId().longValue());
+	             List<Room> rooms = roomMapper.selectRoombyBuildId(list.get(i).getId().longValue());
 	             
 	             System.out.println("房间数："+rooms.size());
 	             
