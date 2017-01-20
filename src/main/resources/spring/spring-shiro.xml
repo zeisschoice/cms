@@ -24,7 +24,7 @@
         <constructor-arg value="rememberMe"/>
         <property name="httpOnly" value="true"/>
         <!-- 7天,采用spring el计算方便修改[细节决定成败]！ -->
-        <property name="maxAge" value="#{7 * 24 * 60 * 60}"/>
+        <property name="maxAge" value="#{30 * 60}"/>
     </bean>
 
     <!-- rememberMe管理器,cipherKey生成见{@code Base64Test.java} -->

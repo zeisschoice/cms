@@ -90,7 +90,7 @@
                 height : 300,
                 href : '${path }/organization/editPage?id=' + node.id,
                 buttons : [ {
-                    text : '编辑',
+                    text : '确定',
                     iconCls: "icon-ok",
                     width: 80,
                     height: 35,
@@ -136,7 +136,7 @@
             height : 300,
             href : '${path }/organization/addPage',
             buttons : [ {
-                text : '添加',
+                text : '确定',
                 iconCls: "icon-ok",
                 width: 80,
                 height: 35,
