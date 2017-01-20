@@ -26,7 +26,7 @@
     <select id="selectRoomPage" resultType="Room">
         select
        
-        DISTINCT r.id ,r.building_id buildingId, r.room_name AS roomName, r.type, r.mon_rent AS monRent, r.status, r.begin_date AS beginDate, r.end_date AS endDate, t.tenant_name as liver, r.remark
+         r.id ,r.building_id buildingId, r.room_name AS roomName, r.type, r.mon_rent AS monRent, r.status, r.begin_date AS beginDate, r.end_date AS endDate, t.tenant_name as liver, r.remark
       
         from room r left join tenant t on r.liver = t.identity_card
         where 1=1
@@ -41,7 +41,7 @@
     
         select
        
-         DISTINCT r.id ,r.building_id buildingId, r.room_name AS roomName, r.type, r.mon_rent AS monRent, r.status, r.begin_date AS beginDate, r.end_date AS endDate, t.tenant_name as liver, r.remark
+         r.id ,r.building_id buildingId, r.room_name AS roomName, r.type, r.mon_rent AS monRent, r.status, r.begin_date AS beginDate, r.end_date AS endDate, t.tenant_name as liver, r.remark
       
         from room r left join tenant t on r.liver = t.identity_card
         where 1=1
@@ -50,21 +50,5 @@
         </if>
     
     </select>
-    
-    
-    <select id="selectRoombyBuildId4Tree" resultType="Room" parameterType="java.lang.Long">
-    
-        select
-       
-          r.id ,r.building_id as buildingId, r.room_name AS roomName, r.type, r.mon_rent AS monRent, r.status, r.begin_date AS beginDate, r.end_date AS endDate, r.remark
-      
-        from room r 
-        where 1=1
-        <if test=" buildingId!=null">
-          and r.building_id = #{buildingId}
-        </if>
-    
-    </select> 
-    
     
 </mapper>

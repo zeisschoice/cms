@@ -20,12 +20,12 @@ filter: alpha(opacity=80);
 opacity: 0.8;
 }
 
-/* .metro-panel {
+.metro-panel {
     clear:both;
     width:1000px;
 	height:138px;
 	margin:0px auto;
-} */
+}
 
 .metro .imgsimple {
     height:64px;
@@ -79,7 +79,7 @@ opacity: 0.8;
 }
 
 .metrodouble {
-    width:30%;/*  width:330px; */
+    width:330px;
 }
 
 .metro-destaque-rodape {
