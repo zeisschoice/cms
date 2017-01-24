@@ -270,27 +270,27 @@
 				<textFieldExpression><![CDATA["合计：金额( 大写)"+$F{sumCN} + " ( ￥："+$F{sum}+")"]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement style="ZH_CN" x="320" y="79" width="38" height="17" uuid="3e9ccf40-4e40-4cf2-9043-fe99f53e10d0"/>
+				<reportElement style="ZH_CN" x="320" y="79" width="54" height="17" uuid="3e9ccf40-4e40-4cf2-9043-fe99f53e10d0"/>
 				<textElement verticalAlignment="Middle">
 					<font size="9"/>
 				</textElement>
 				<text><![CDATA[支付方式：]]></text>
 			</staticText>
 			<rectangle>
-				<reportElement x="362" y="83" width="8" height="8" uuid="b1c6fed3-1ac3-45b9-a654-e50a8183b20b"/>
+				<reportElement x="374" y="83" width="8" height="8" uuid="b1c6fed3-1ac3-45b9-a654-e50a8183b20b"/>
 			</rectangle>
 			<staticText>
-				<reportElement style="ZH_CN" mode="Opaque" x="373" y="79" width="23" height="17" uuid="bef5d715-1ae6-479e-b399-30c1c1f4c51a"/>
+				<reportElement style="ZH_CN" mode="Opaque" x="385" y="79" width="23" height="17" uuid="bef5d715-1ae6-479e-b399-30c1c1f4c51a"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="9"/>
 				</textElement>
 				<text><![CDATA[现金]]></text>
 			</staticText>
 			<rectangle>
-				<reportElement x="401" y="83" width="8" height="8" uuid="053eac31-a9c4-4aad-9803-e281a84dcca1"/>
+				<reportElement x="413" y="83" width="8" height="8" uuid="053eac31-a9c4-4aad-9803-e281a84dcca1"/>
 			</rectangle>
 			<staticText>
-				<reportElement style="ZH_CN" x="417" y="79" width="38" height="17" uuid="53de496b-43ee-4228-a469-2a5763ffc00d"/>
+				<reportElement style="ZH_CN" x="429" y="79" width="38" height="17" uuid="53de496b-43ee-4228-a469-2a5763ffc00d"/>
 				<textElement verticalAlignment="Middle">
 					<font size="9"/>
 				</textElement>
