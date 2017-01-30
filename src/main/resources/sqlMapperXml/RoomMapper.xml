@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.wangzhixuan.mapper.RoomMapper">
+<mapper namespace="com.zeiss.cms.mapper.RoomMapper">
 
-	<resultMap id="BaseResultMap" type="com.wangzhixuan.model.Room">
+	<resultMap id="BaseResultMap" type="com.zeiss.cms.model.Room">
 		<id column="id" property="id" />
 		<result column="room_name" property="roomName" />
 		<result column="building_id" property="buildingId" />
@@ -26,7 +26,7 @@
     <select id="selectRoomPage" resultType="Room">
         select
        
-         r.id ,r.building_id buildingId, r.room_name AS roomName, r.type, r.mon_rent AS monRent, r.status, r.begin_date AS beginDate, r.end_date AS endDate, t.tenant_name as liver, r.remark
+        DISTINCT r.id ,r.building_id buildingId, r.room_name AS roomName, r.type, r.mon_rent AS monRent, r.status, r.begin_date AS beginDate, r.end_date AS endDate, t.tenant_name as liver, r.remark
       
         from room r left join tenant t on r.liver = t.identity_card
         where 1=1
@@ -41,7 +41,7 @@
     
         select
        
-         r.id ,r.building_id buildingId, r.room_name AS roomName, r.type, r.mon_rent AS monRent, r.status, r.begin_date AS beginDate, r.end_date AS endDate, t.tenant_name as liver, r.remark
+         DISTINCT r.id ,r.building_id buildingId, r.room_name AS roomName, r.type, r.mon_rent AS monRent, r.status, r.begin_date AS beginDate, r.end_date AS endDate, t.tenant_name as liver, r.remark
       
         from room r left join tenant t on r.liver = t.identity_card
         where 1=1
@@ -50,5 +50,21 @@
         </if>
     
     </select>
+    
+    
+    <select id="selectRoombyBuildId4Tree" resultType="Room" parameterType="java.lang.Long">
+    
+        select
+       
+          r.id ,r.building_id as buildingId, r.room_name AS roomName, r.type, r.mon_rent AS monRent, r.status, r.begin_date AS beginDate, r.end_date AS endDate, r.remark
+      
+        from room r 
+        where 1=1
+        <if test=" buildingId!=null">
+          and r.building_id = #{buildingId}
+        </if>
+    
+    </select> 
+    
     
 </mapper>

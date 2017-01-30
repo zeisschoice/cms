@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="/commons/global.jsp" %>
+
 <script type="text/javascript">
     $(function() {
         $('#roleAddForm').form({
@@ -14,7 +15,6 @@
             },
             success : function(result) {
                 progressClose();
-                result = updateStr(result);
                 result = $.parseJSON(result);
                 if (result.success) {
                     parent.$.modalDialog.openner_dataGrid.datagrid('reload');//之所以能在这里调用到parent.$.modalDialog.openner_dataGrid这个对象，是因为user.jsp页面预定义好了
@@ -27,7 +27,7 @@
     });
 </script>
 <div class="easyui-layout" data-options="fit:true,border:false" >
-    <div data-options="region:'center',border:false" title="" style="overflow: hidden;padding: 3px;" >
+    <div data-options="region:'center',border:false" style="overflow: hidden;padding: 3px;" >
         <form id="roleAddForm" method="post">
             <table class="grid">
                 <tr>
@@ -41,7 +41,7 @@
                 <tr>
                     <td>状态</td>
                     <td >
-                        <select id="status" name="status" class="easyui-combobox" data-options="width:140,height:29,editable:false,panelHeight:'auto'">
+                        <select name="status" class="easyui-combobox" data-options="width:140,height:29,editable:false,panelHeight:'auto'">
                             <option value="0">正常</option>
                             <option value="1">停用</option>
                         </select>
@@ -49,7 +49,7 @@
                 </tr>
                 <tr>
                     <td>备注</td>
-                    <td colspan="3"><textarea name="description" rows="" cols="" ></textarea></td>
+                    <td colspan="3"><textarea name="description"></textarea></td>
                 </tr>
             </table>
         </form>

@@ -1,8 +1,35 @@
+.icon-btn{
+	background:url('icons/btn.png') no-repeat center center;
+}
+
+.icon-refresh{
+	background:url('icons/refresh.png') no-repeat center center;
+}
+
+.icon-del{
+	background:url('icons/del.png') no-repeat center center;
+}
+
+.icon-home{
+	background:url('icons/home.png') no-repeat center center;
+}
+
+.icon-list{
+	background:url('icons/list.png') no-repeat center center;
+}
+
+.icon-company{
+	background:url('icons/company.png') no-repeat center center;
+}
+.icon-folder{
+	background:url('icons/folder.png') no-repeat center center;
+}
+
 .icon-blank{
 	background:url('icons/blank.gif') no-repeat center center;
 }
 .icon-add{
-	background:url('icons/edit_add.png') no-repeat center center;
+	background:url('icons/add.png') no-repeat center center;
 }
 .icon-edit{
 	background:url('icons/pencil.png') no-repeat center center;
@@ -94,31 +121,3 @@
 .icon-large-chart{
 	background:url('icons/large_chart.png') no-repeat center center;
 }
-
-.icon-btn{
-	background:url('icons/btn.png') no-repeat center center;
-}
-
-.icon-refresh{
-	background:url('icons/refresh.png') no-repeat center center;
-}
-
-.icon-del{
-	background:url('icons/del.png') no-repeat center center;
-}
-
-.icon-home{
-	background:url('icons/home.png') no-repeat center center;
-}
-
-.icon-list{
-	background:url('icons/list.png') no-repeat center center;
-}
-
-.icon-company{
-	background:url('icons/company.png') no-repeat center center;
-}
-.icon-folder{
-	background:url('icons/folder.png') no-repeat center center;
-}
-
