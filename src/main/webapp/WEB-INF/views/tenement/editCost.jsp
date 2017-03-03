@@ -172,11 +172,22 @@
   	var a = $('#currentWaterNum').val();
   	var b = $('#lastWaterNum').val();
   	var c = (parseFloat(a) - parseFloat(b)).toFixed(2);
-      var d = $('#waterUnitPrice').val();
+    var d = $('#waterUnitPrice').val();
     
   	$('#waterNum').numberbox('setValue', c);
   	
-  	var e =  (c * d).toFixed(2);
+  	var e;
+  	//水费小于或者等于3吨收 13块
+  	if(c<=3){
+  		
+  		e = 13;
+  		
+  	}else{
+  		
+  		e =  (c * d).toFixed(2);
+  	}
+  	
+  //	var e =  (c * d).toFixed(2);
   	    
   	$('#waterCharge').numberbox('setValue',e);
   	
@@ -362,8 +373,19 @@
           
         	$('#waterNum').numberbox('setValue', c);
         	
-        	var e =  (c * d).toFixed(2);
-        	    
+        	//var e =  (c * d).toFixed(2);
+        	  
+        	var e ;
+        	
+        	if(c<=3){
+        		
+        		e = 13;
+        		
+        	}else{
+        		
+        	    e =  (c * d).toFixed(2);
+        	}
+        	
         	$('#waterCharge').numberbox('setValue',e);
     	  
       }
