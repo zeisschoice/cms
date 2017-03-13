@@ -35,7 +35,7 @@
             <table class="grid">
                 <tr>
                     <td>项目名称</td>
-                    <td><input name="id" type="hidden"  value="${projectRegHead.projectId}">
+                    <td><input name="projectId" type="hidden"  value="${projectRegHead.projectId}">
                     <input name="name" type="text" placeholder="请输入名称" class="easyui-validatebox" data-options="required:true" value="${projectRegHead.projectName}"></td>
                     <td>项目类型</td>
                     <td >

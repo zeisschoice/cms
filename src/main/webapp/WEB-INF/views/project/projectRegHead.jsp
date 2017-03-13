@@ -182,7 +182,7 @@
 function projectRegHeadAddFun() {
     parent.$.modalDialog({
         title : '添加',
-        width : 700,
+        width : 900,
         height : 600,
         href : '${path }/project/addPage',
         buttons : [ {
@@ -211,7 +211,7 @@ function projectRegHeadEditFun(id) {
   
     parent.$.modalDialog({
         title : '编辑',
-        width : 700,
+        width : 800,
         height : 600,
         href :  '${path }/project/editPage?id=' + id,
         buttons : [ {
