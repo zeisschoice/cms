@@ -43,7 +43,7 @@ public class GeneratorCode {
         gc.setEnableCache(false);// XML 二级缓存
         gc.setBaseResultMap(false);// XML ResultMap
         gc.setBaseColumnList(false);// XML columList
-        gc.setAuthor("zhixuan.wang");
+        gc.setAuthor("zeiss");
 //         自定义文件命名，注意 %s 会自动填充表实体属性！
         gc.setMapperName("%sMapper");
         gc.setXmlName("%sMapper");
@@ -93,7 +93,7 @@ public class GeneratorCode {
         mpg.setStrategy(strategy);
         // 包配置
         PackageConfig pc = new PackageConfig();
-        pc.setParent("com.zeiss.cms");
+        pc.setParent("com.zeiss.cms.project");
         pc.setModuleName(null);  //所属模块
         pc.setController("controller");
         pc.setEntity("model");
