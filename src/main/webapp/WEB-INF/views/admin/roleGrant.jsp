@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="/commons/global.jsp" %>
+
 <script type="text/javascript">
     var resourceTree;
     $(function() {
@@ -8,8 +9,7 @@
             parentField : 'pid',
             lines : true,
             checkbox : true,
-            onClick : function(node) {
-            },
+            onClick : function(node) {},
             onLoadSuccess : function(node, data) {
                 progressLoad();
                 $.post( '${path }/role/findResourceIdListByRoleId', {
@@ -52,7 +52,6 @@
             },
             success : function(result) {
                 progressClose();
-                result = updateStr(result);
                 result = $.parseJSON(result);
                 if (result.success) {
                     parent.$.modalDialog.openner_dataGrid.datagrid('reload');//之所以能在这里调用到parent.$.modalDialog.openner_dataGrid这个对象，是因为user.jsp页面预定义好了

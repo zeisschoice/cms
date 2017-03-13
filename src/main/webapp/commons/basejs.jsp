@@ -3,15 +3,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="X-UA-Compatible" content="edge" />
 <link rel="shortcut icon" href="${staticPath }/static/style/images/favicon.ico" />
-<!-- [my97日期时间控件] -->
+<%-- [my97日期时间控件] --%>
 <script type="text/javascript" src="${staticPath }/static/My97DatePicker/WdatePicker.js" charset="utf-8"></script>
-<!-- [jQuery] -->
+<%-- [jQuery] --%>
 <script type="text/javascript" src="${staticPath }/static/easyui/jquery.min.js" charset="utf-8"></script>
-<!-- [EasyUI] -->
-<link id="easyuiTheme" rel="stylesheet" type="text/css" href="${staticPath }/static/easyui/themes/bootstrap/easyui.css" />
+<%-- [EasyUI] --%>
+<link id="easyuiTheme" rel="stylesheet" type="text/css" href="${staticPath }/static/easyui/themes/gray/easyui.css" />
 <link id="easyuiTheme" rel="stylesheet" type="text/css" href="${staticPath }/static/easyui/themes/icon.css" />
 <script type="text/javascript" src="${staticPath }/static/easyui/jquery.easyui.min.js" charset="utf-8"></script>
 <script type="text/javascript" src="${staticPath }/static/easyui/locale/easyui-lang-zh_CN.js" charset="utf-8"></script>
+
 <!-- [百度图表] -->
 <script type="text/javascript" src="${staticPath }/static/echart/echarts.min.js" charset="utf-8"></script>
 <script type="text/javascript" src="${staticPath }/static/echart/theme/macarons.js" charset="utf-8"></script>
@@ -22,12 +23,16 @@
 
 <link id="metroUI" rel="stylesheet" type="text/css" href="${staticPath }/static/metroaqui/Style/Interacao.css" />
 <link id="metroUI" rel="stylesheet" type="text/css" href="${staticPath }/static/metroaqui/Style/jq-metro.css" />
-<!-- [扩展JS] -->
+
+<%-- [扩展JS] --%>
 <script type="text/javascript" src="${staticPath }/static/extJs.js" charset="utf-8"></script>
-<%-- <script type="text/javascript" src="${staticPath }/static/easyui/datagrid-cellediting.js" charset="utf-8"></script> --%>
-<!-- [扩展样式] -->
-<link rel="stylesheet" type="text/css" href="${staticPath }/static/style/css/dreamlu.css" />
-<link rel="stylesheet" type="text/css" href="${staticPath }/static/icommon.css" />
+<%-- [扩展样式] --%>
+<link rel="stylesheet" type="text/css" href="${staticPath }/static/style/css/dreamlu.css?v=10" />
+<link rel="stylesheet" type="text/css" href="${staticPath }/static/foundation-icons/foundation-icons.css" />
+<script type="text/javascript">
+    var basePath = "${staticPath }";
+</script>
+
 <script type="text/javascript">
     var basePath = "${staticPath }";
     
@@ -227,5 +232,31 @@ zhstr : {// 验证之只能输入中文
         
 }());
     
-    
+  
+$.extend($.fn.validatebox.defaults.rules, {
+	greaterThan:{
+		validator: function(value,param){
+			var v1 = $(param[0]).datebox('getValue');
+			var d1 = $.fn.datebox.defaults.parser(v1);
+			var d2 = $.fn.datebox.defaults.parser(value);
+			return d2 > d1;
+		},
+		message: '结束时间不能小于开始时间!'
+	}
+})  
+  
+  
+$.extend($.fn.validatebox.defaults.rules, {
+	isCurrentMon:{
+		validator: function(value,param){
+			var v1 = $(param[0]).datebox('getValue');
+		//	var d1 = $.fn.datebox.defaults.parser(v1);
+			var d2 = $.fn.datebox.defaults.parser(value);
+			var month = d2.getMonth() + 1;
+			return d2 != d1;
+		},
+		message: '抄表日期不能是非当前月月份!'
+	}
+})  
+  
 </script>

@@ -5,7 +5,7 @@
 		http://www.springframework.org/schema/beans 
 		http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
 
-	<bean id="iReportView" class="com.wangzhixuan.commons.base.ApplicationIReportView">
+	<bean id="iReportView" class="com.zeiss.cms.commons.base.ApplicationIReportView">
 		<!-- <property name="url" value="/WEB-INF/jasper/report2.jasper"/> -->
 		<property name="reportDataKey" value="jrMainDataSource"/>
 	</bean>

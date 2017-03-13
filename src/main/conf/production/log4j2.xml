@@ -33,7 +33,7 @@
     </appenders>
 
     <loggers>
-        <Logger name="com.wangzhixuan" level="info" />
+        <Logger name="com.zeiss" level="info" />
         <Root level="WARN" additivity="false">
             <AppenderRef ref="Console" />
             <AppenderRef ref="RollingFile" />

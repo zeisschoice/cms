@@ -18,17 +18,50 @@ h2 {font-size:18px;font-weight:bold;margin:0;margin-bottom:15px;}
 
 .light-info{background:#FFFEE6;color:#8F5700;padding:12px;}
 .light-tip{width:16px;height:16px;margin-right:8px;float:left;}
-
-/* 等待框 */
-.datagrid-mask-msg {
-  position: absolute;
-  top: 50%;
-  margin-top: -20px;
-  padding: 12px 5px 10px 30px;
-  width: auto;
-  height: 16px;
-  border-width: 2px;
-  border-style: solid;
-  display: none;
-}
  
+[class*="fi-"] {
+    color: #5f9ea0;
+    font-size: 18px;
+    background-image:none!important;
+    overflow: visible!important;
+}
+
+.tabs [class*="fi-"] {
+    margin-top: -12px;
+}
+.tabs-tool [class*="fi-"] {
+    margin-top: -10px;
+}
+
+.icon-blue {
+	color: #3c8dbc;
+}
+
+.icon-purple {
+    color: #605ca8;
+}
+
+.icon-green {
+    color: #00a65a;
+}
+
+.icon-red {
+    color: #dd4b39;
+}
+
+.icon-yellow {
+    color: #f39c12;
+}
+
+.icon-gray {
+    color: #9C9C9C;
+}
+
+.icon-black {
+	color: #000000;
+}
+
+td .tree-title {
+	height: 28px;
+	line-height: 28px;
+}

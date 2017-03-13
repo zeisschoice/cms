@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="/commons/global.jsp" %>
+
 <script type="text/javascript">
     $(function() {
-
         $('#editUserPwdForm').form({
             url : '${path }/user/editUserPwd',
             onSubmit : function() {
@@ -15,7 +15,6 @@
             },
             success : function(result) {
                 progressClose();
-                result = updateStr(result);
                 result = $.parseJSON(result);
                 if (result.success) {
                     parent.$.messager.alert('提示', result.msg, 'info');

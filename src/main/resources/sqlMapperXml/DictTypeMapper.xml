@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.wangzhixuan.mapper.DictTypeMapper">
+<mapper namespace="com.zeiss.cms.mapper.DictTypeMapper">
 
 	<!-- 通用查询映射结果 -->
 		<!-- 通用查询映射结果 -->
-	<resultMap id="BaseResultMap" type="com.wangzhixuan.model.DictType">
+	<resultMap id="BaseResultMap" type="com.zeiss.cms.model.DictType">
 		<id column="dicttypeid" property="dicttypeid" />
 		<result column="dicttypename" property="dicttypename" />
 		<result column="rank" property="rank" />
@@ -17,7 +17,7 @@
 		<result column="dictcat" property="dictcat" />
 	</resultMap>
 	
-	<resultMap id="BaseResultMapVo" type="com.wangzhixuan.model.vo.DictTypeVo">
+	<resultMap id="BaseResultMapVo" type="com.zeiss.cms.model.vo.DictTypeVo">
 		<id column="dicttypeid" property="dicttypeid" />
 		<result column="dicttypename" property="dicttypename" />
 		<result column="rank" property="rank" />
@@ -28,7 +28,7 @@
 		<result column="dicttypecode" property="dicttypecode" />
 		<result column="dictlevel" property="dictlevel" />
 		<result column="dictcat" property="dictcat" />
-		<collection property="dictEntry" ofType="com.wangzhixuan.model.DictEntry">
+		<collection property="dictEntry" ofType="com.zeiss.cms.model.DictEntry">
 			<id column="dictid" property="dictid" />
 			<result column="dicttypeid" property="dicttypeid" />
 			<result column="dictname" property="dictname" />
