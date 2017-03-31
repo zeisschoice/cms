@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.plugins.Page;
@@ -40,9 +41,29 @@ public class ProjectRegItemController extends BaseController {
     public PageInfo dataGrid(ProjectRegItem projectRegItem, Integer page, Integer rows, String sort,String order) {
         EntityWrapper<ProjectRegItem> ew = new EntityWrapper<ProjectRegItem>();
         ew.setEntity(projectRegItem);
+        
+        
         Page<ProjectRegItem> pages = getPage(page, rows, sort, order);
         pages = projectRegItemService.selectPage(pages,ew);
         return pageToPageInfo(pages);
+    }
+   
+    @RequestMapping(value = "/getData", method = RequestMethod.POST)
+    @ResponseBody
+    public List<ProjectRegItem> getData(Long projectRegId) {
+        EntityWrapper<ProjectRegItem> ew = new EntityWrapper<ProjectRegItem>();
+      
+        ProjectRegItem projectRegItem = new ProjectRegItem();
+        
+        projectRegItem.setProjectRegId(projectRegId);
+        
+        ew.setEntity(projectRegItem);
+     
+        System.out.println(projectRegId);
+              
+        List<ProjectRegItem> regItems = projectRegItemService.selectList(ew);
+        
+        return regItems;
     }
     
     /**

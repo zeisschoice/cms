@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.plugins.Page;
@@ -39,12 +40,26 @@ public class ProjectFinanceItemController extends BaseController {
 
     @PostMapping("/dataGrid")
     @ResponseBody
-    public PageInfo dataGrid(ProjectFinanceItem projectFinanceItem, Integer page, Integer rows, String sort,String order) {
+    public PageInfo dataGrid(ProjectFinanceItem projectFinanceItem,Integer page, Integer rows, String sort,String order) {
         EntityWrapper<ProjectFinanceItem> ew = new EntityWrapper<ProjectFinanceItem>();
+      
         ew.setEntity(projectFinanceItem);
         Page<ProjectFinanceItem> pages = getPage(page, rows, sort, order);
         pages = projectFinanceItemService.selectPage(pages,ew);
         return pageToPageInfo(pages);
+    }
+   
+    @RequestMapping(value = "/getData", method = RequestMethod.POST)
+    @ResponseBody
+    public List<ProjectFinanceItem> getData(Long projectId) {
+        EntityWrapper<ProjectFinanceItem> ew = new EntityWrapper<ProjectFinanceItem>();
+      
+        ProjectFinanceItem projectFinanceItem = new ProjectFinanceItem();
+       // projectFinanceItem.setProjectId(projectId);
+        ew.eq("project_id", projectId);
+        ew.setEntity(projectFinanceItem);
+        List<ProjectFinanceItem> projectFinanceItems= projectFinanceItemService.selectList(ew);
+        return projectFinanceItems;
     }
     
     /**

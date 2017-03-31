@@ -16,77 +16,74 @@
         sortOrder : 'asc',
         pageSize : 20,
         pageList : [ 10, 20, 30, 40, 50, 100, 200, 300, 400, 500],
+        frozenColumns:[[
+        	{
+                width : '60',
+                title : '编号',
+                field : 'projectId',
+                hidden:'true'
+               
+            },{
+                width : '160',
+                title : '项目名称',
+                field : 'projectName'
+            }
+    	]],
         columns:  [[ {
             width : '60',
-            title : '编号',
-            field : 'projectId',
-            sortable : true
+            title : '项目合同签订方',
+            field : 'projectType'
         },{
             width : '60',
-            title : '项目名称',
-            field : 'projectName',
-            sortable : true
-        },{
-            width : '60',
-            title : '项目类型',
-            field : 'projectType',
-            sortable : true
-        },{
-            width : '60',
-            title : '建设架构',
-            field : 'buildOrg',
-            sortable : true
+            title : '建设单位',
+            field : 'buildOrg'
         },{
             width : '60',
             title : '联系人',
-            field : 'contactPerson',
-            sortable : true
+            field : 'contactPerson'
         },{
             width : '60',
             title : '联系地址',
-            field : 'contactsAddress',
-            sortable : true
+            field : 'contactsAddress'
         },{
             width : '60',
             title : '联系电话',
-            field : 'contactCall',
-            sortable : true
+            field : 'contactCall'
         },{
             width : '60',
             title : '手机',
-            field : 'contactTel',
-            sortable : true
+            field : 'contactTel'
         },{
             width : '60',
             title : '传真',
-            field : 'contactFax',
-            sortable : true
+            field : 'contactFax'
         },{
             width : '60',
-            title : '详细内容',
-            field : 'workDetail',
-            sortable : true
+            title : '工作内容',
+            field : 'workDetail'
         },{
             width : '60',
-            title : '业务类型',
-            field : 'businessType',
-            sortable : true
+            title : '项目类型',
+            field : 'projectType'
         },{
             width : '60',
-            title : '审批部门',
-            field : 'aproveDepartment',
-            sortable : true
+            title : '行业类别',
+            field : 'businessType'
         },{
             width : '60',
-            title : '是否xx',
+            title : '审批机关',
+            field : 'aproveDepartment'
+        },{
+            width : '60',
+            title : '有无合同',
             field : 'isContract',
             sortable : true,
             formatter : function(value, row, index) {
                 switch (value) {
                 case 0:
-                    return '正常';
+                    return '无';
                 case 1:
-                    return '停用';
+                    return '有';
                 }
             }
         },{
@@ -101,12 +98,12 @@
             sortable : true
         },{
             width : '60',
-            title : '项目率',
+            title : '扣罚比例',
             field : 'projectPunishRate',
             sortable : true
         },{
             width : '60',
-            title : 'xx原因',
+            title : '扣罚理由',
             field : 'punishReason',
             sortable : true
         },{
@@ -121,12 +118,12 @@
             sortable : true
         },{
             width : '60',
-            title : '记录室',
+            title : '档案室',
             field : 'recordRoom',
             sortable : true
         },{
             width : '60',
-            title : '分支xx',
+            title : '分管院长',
             field : 'brancheDean',
             sortable : true
         },{
@@ -136,17 +133,17 @@
             sortable : true
         },{
             width : '60',
-            title : '项目组领导',
+            title : '项目组织',
             field : 'projectGroupLeader',
             sortable : true
         },{
             width : '60',
-            title : '部门领导',
+            title : '部门负责人',
             field : 'departmentCharger',
             sortable : true
         },{
             width : '60',
-            title : '项目组领导',
+            title : '主管院长',
             field : 'chargeDean',
             sortable : true
         }, 
@@ -182,17 +179,42 @@
 function projectRegHeadAddFun() {
     parent.$.modalDialog({
         title : '添加',
-        width : 900,
-        height : 600,
+        width : 1000,
+        height : 650,
+        maximizable:true,
         href : '${path }/project/addPage',
-        buttons : [ {
-            text : '确定',
-            handler : function() {
-                parent.$.modalDialog.openner_dataGrid = projectRegHeadDataGrid;//因为添加成功之后，需要刷新这个treeGrid，所以先预定义好
-                var f = parent.$.modalDialog.handler.find('#projectRegHeadAddForm');
-                f.submit();
-            }
-        } ]
+        toolbar:[{
+			text:'保存',
+			iconCls:'icon-save',
+			handler:function(){
+				
+	            var f = parent.$.modalDialog.handler.find('#projectRegHeadAddForm');
+				var dg1 = parent.$.modalDialog.handler.find('#projectFinanceDataGrid');
+				var dg2 = parent.$.modalDialog.handler.find('#projectRegCostDatagrid');
+				var dt1 = dg1.datagrid("getRows");
+				var dt2 = dg2.datagrid("getRows");
+
+				
+				var projectRegVo = {};
+					
+		
+			    projectRegVo["projectRegHead"] = f.form('serialize');
+			    projectRegVo["projectFinanceItems"] = dg1.datagrid("getRows");
+			    projectRegVo["projectRegItems"] = dg2.datagrid("getRows");
+			 //   saveEditData(projectRegVo);
+				saveData(projectRegVo);
+				parent.$.modalDialog.openner_dataGrid = projectRegHeadDataGrid;//因为添加成功之后，需要刷新这个dataGrid，所以先预定义好
+			
+			}
+		},{
+			text:'关闭',
+			iconCls:'fi-x icon-red',
+			handler:function(){
+				
+				parent.$.modalDialog.handler.dialog('close');
+				
+			}
+		}]
     });
 }
 
@@ -211,17 +233,49 @@ function projectRegHeadEditFun(id) {
   
     parent.$.modalDialog({
         title : '编辑',
-        width : 800,
-        height : 600,
+        width : 1000,
+        height : 650,
         href :  '${path }/project/editPage?id=' + id,
-        buttons : [ {
-            text : '确定',
-            handler : function() {
-                parent.$.modalDialog.openner_dataGrid = projectRegHeadDataGrid;//因为添加成功之后，需要刷新这个dataGrid，所以先预定义好
-                var f = parent.$.modalDialog.handler.find('#projectRegHeadEditForm');
-                f.submit();
-            }
-        } ]
+        maximizable:true,
+        toolbar:[{
+			text:'保存',
+			iconCls:'icon-save',
+			handler:function(){
+				
+				    var f = parent.$.modalDialog.handler.find('#projectRegHeadEditForm');
+					var dg1 = parent.$.modalDialog.handler.find('#projectFinanceDataGrid');
+					var dg2 = parent.$.modalDialog.handler.find('#projectRegCostDatagrid');
+					var dt1 = dg1.datagrid("getRows");
+					var dt2 = dg2.datagrid("getRows");
+
+					
+					var projectRegVo = {};
+						
+			
+					projectRegVo["projectRegHead"] = f.form('serialize');
+					projectRegVo["projectFinanceItems"] = dg1.datagrid("getRows");
+					projectRegVo["projectRegItems"] = dg2.datagrid("getRows");
+						
+				//	saveData(projectRegVo);
+					
+					
+				    console.log(JSON.stringify(projectRegVo));
+				    console.log("=========================");
+				   // saveData(JSON.stringify(editInfo));
+				    saveEditData(projectRegVo);
+					parent.$.modalDialog.openner_dataGrid = projectRegHeadDataGrid;//因为添加成功之后，需要刷新这个dataGrid，所以先预定义好
+					
+				
+			}
+		},{
+			text:'关闭',
+			iconCls:'fi-x icon-red',
+			handler:function(){
+				
+				parent.$.modalDialog.handler.dialog('close');
+				
+			}
+		}]
     });
 }
 
@@ -236,7 +290,7 @@ function projectRegHeadEditFun(id) {
      } else {//点击操作里面的删除图标会触发这个
          projectRegHeadDataGrid.datagrid('unselectAll').datagrid('uncheckAll');
      }
-     parent.$.messager.confirm('询问', '您是否要删除当前角色？', function(b) {
+     parent.$.messager.confirm('询问', '您是否要删除当前项目？', function(b) {
          if (b) {
              progressLoad();
              $.post('${path }/project/delete', {
@@ -266,6 +320,53 @@ function projectRegHeadCleanFun() {
 function projectRegHeadSearchFun() {
      projectRegHeadDataGrid.datagrid('load', $.serializeObject($('#projectRegHeadSearchForm')));
 }
+//{'projectName':$.serializeObject($('#projectRegHeadSearchForm'))
+
+function saveData(dt){
+			   
+	$.ajax({
+		   type : "POST",
+		   contentType : "application/json",
+		   url: "${path}/project/add",
+		   data:JSON.stringify(dt),
+		   dataType : 'json',
+		   success: function(msg){
+		  parent.$.modalDialog.openner_dataGrid.datagrid('reload');//之所以能在这里调用到parent.$.modalDialog.openner_dataGrid这个对象，是因为user.jsp页面预定义好了
+          parent.$.modalDialog.handler.dialog('close');
+		  $.messager.alert('添加成功！', msg.msg, 'info');   
+			   
+		   },
+		   error:function(msg){
+			  
+			  $.messager.progress('close');
+			  $.messager.alert('获取失败！', msg.msg, 'error');
+		   }
+	});
+	
+}
+
+function saveEditData(dt){
+	   
+	$.ajax({
+		   type : "POST",
+		   contentType : "application/json",
+		   url: "${path}/project/edit",
+		   data:JSON.stringify(dt),
+		   dataType : 'json',
+		   success: function(msg){
+			  parent.$.modalDialog.openner_dataGrid.datagrid('reload');//之所以能在这里调用到parent.$.modalDialog.openner_dataGrid这个对象，是因为user.jsp页面预定义好了
+	          parent.$.modalDialog.handler.dialog('close');
+			  $.messager.alert('编辑成功！', msg.msg, 'info');   
+			   
+		   },
+		   error:function(msg){
+			  
+			  $.messager.progress('close');
+			  $.messager.alert('获取失败！', msg.msg, 'error');
+		   }
+	});
+	
+}
 </script>
 
 <div class="easyui-layout" data-options="fit:true,border:false">
@@ -274,7 +375,7 @@ function projectRegHeadSearchFun() {
             <table>
                 <tr>
                     <th>名称:</th>
-                    <td><input name="name" placeholder="搜索条件"/></td>
+                    <td><input name="projectName" placeholder="项目名称"/></td>
                     <td>
                         <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'fi-magnifying-glass',plain:true" onclick="projectRegHeadSearchFun();">查询</a>
                         <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'fi-x-circle',plain:true" onclick="projectRegHeadCleanFun();">清空</a>

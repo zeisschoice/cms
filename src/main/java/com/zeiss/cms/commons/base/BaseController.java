@@ -11,6 +11,7 @@ import org.springframework.web.bind.ServletRequestDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 
 import com.baomidou.mybatisplus.plugins.Page;
+import com.zeiss.cms.commons.interceptor.DateConvertEditor;
 import com.zeiss.cms.commons.result.Result;
 import com.zeiss.cms.commons.shiro.ShiroUser;
 import com.zeiss.cms.commons.utils.PageInfo;
@@ -30,7 +31,8 @@ public abstract class BaseController {
         /**
          * 自动转换日期类型的字段格式
          */
-        binder.registerCustomEditor(Date.class, new CustomDateEditor(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"), true));
+        binder.registerCustomEditor(Date.class, new DateConvertEditor());
+        
         /**
          * 防止XSS攻击
          */

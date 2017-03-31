@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.activerecord.Model;
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableName;
+import com.baomidou.mybatisplus.enums.IdType;
+
 import java.io.Serializable;
 /**
  * <p>
@@ -18,9 +20,12 @@ public class ProjectFinanceItem extends Model<ProjectFinanceItem> {
 
     private static final long serialVersionUID = 1L;
 
+    @TableField(value="income_project_name")
+    private String inComeprojectName;
     /**
      * 
      */
+    @TableId(value="finance_item_id", type = IdType.AUTO)
     @TableField(value="finance_item_id")
     private Long financeItemId;
     /**
@@ -46,7 +51,7 @@ public class ProjectFinanceItem extends Model<ProjectFinanceItem> {
     /**
      * 
      */
-    private java.util.Date date1;
+    private String date1;
     /**
      * 
      */
@@ -55,7 +60,7 @@ public class ProjectFinanceItem extends Model<ProjectFinanceItem> {
     /**
      * 
      */
-    private java.util.Date date2;
+    private String date2;
     /**
      * 
      */
@@ -64,7 +69,7 @@ public class ProjectFinanceItem extends Model<ProjectFinanceItem> {
     /**
      * 
      */
-    private java.util.Date date3;
+    private String date3;
     /**
      * 
      */
@@ -73,7 +78,7 @@ public class ProjectFinanceItem extends Model<ProjectFinanceItem> {
     /**
      * 
      */
-    private java.util.Date date4;
+    private String date4;
 
 
     public Long getFinanceItemId() {
@@ -116,11 +121,11 @@ public class ProjectFinanceItem extends Model<ProjectFinanceItem> {
         this.incomingOutgoings1 = incomingOutgoings1;
     }
 
-    public java.util.Date getDate1() {
+    public String getDate1() {
         return date1;
     }
 
-    public void setDate1(java.util.Date date1) {
+    public void setDate1(String date1) {
         this.date1 = date1;
     }
 
@@ -132,11 +137,11 @@ public class ProjectFinanceItem extends Model<ProjectFinanceItem> {
         this.incomingOutgoings2 = incomingOutgoings2;
     }
 
-    public java.util.Date getDate2() {
+    public String getDate2() {
         return date2;
     }
 
-    public void setDate2(java.util.Date date2) {
+    public void setDate2(String date2) {
         this.date2 = date2;
     }
 
@@ -148,11 +153,19 @@ public class ProjectFinanceItem extends Model<ProjectFinanceItem> {
         this.incomingOutgoings3 = incomingOutgoings3;
     }
 
-    public java.util.Date getDate3() {
+    public String getInComeprojectName() {
+		return inComeprojectName;
+	}
+
+	public void setInComeprojectName(String inComeprojectName) {
+		this.inComeprojectName = inComeprojectName;
+	}
+
+	public String getDate3() {
         return date3;
     }
 
-    public void setDate3(java.util.Date date3) {
+    public void setDate3(String date3) {
         this.date3 = date3;
     }
 
@@ -164,11 +177,11 @@ public class ProjectFinanceItem extends Model<ProjectFinanceItem> {
         this.incomingOutgoings4 = incomingOutgoings4;
     }
 
-    public java.util.Date getDate4() {
+    public String getDate4() {
         return date4;
     }
 
-    public void setDate4(java.util.Date date4) {
+    public void setDate4(String date4) {
         this.date4 = date4;
     }
 

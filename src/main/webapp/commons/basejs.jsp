@@ -259,4 +259,38 @@ $.extend($.fn.validatebox.defaults.rules, {
 	}
 })  
   
+//扩展form的属性 ,使用如：
+// $('form').form('serialize');
+// $('form').form('getValue','a'); //获取表单中name=a 的元素值
+//$('form').form('setValue',{'name':'a'}); //赋值给表单中name=a 的元素值
+ $.extend($.fn.form.methods, {  
+    serialize: function(jq){  
+        var arrayValue = $(jq[0]).serializeArray();
+        var json = {};
+        $.each(arrayValue, function() {
+            var item = this;
+            if (json[item["name"]]) {
+                json[item["name"]] = json[item["name"]] + "," + item["value"];
+            } else {
+                json[item["name"]] = item["value"];
+            }
+        });
+        return json; 
+    },
+    getValue:function(jq,name){  
+        var jsonValue = $(jq[0]).form("serialize");
+        return jsonValue[name]; 
+    },
+    setValue:function(jq,name,value){
+        return jq.each(function () {
+                _b(this, _29);
+                var data = {};
+                data[name] = value;
+                $(this).form("load",data);
+        });
+    }
+});
+  
+  
+  
 </script>

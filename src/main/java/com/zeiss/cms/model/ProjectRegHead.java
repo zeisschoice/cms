@@ -54,6 +54,10 @@ public class ProjectRegHead extends Model<ProjectRegHead> {
     /**
      * 
      */
+    
+    @TableField(value="background_info")
+    private String backgroundInfo;
+
     @TableField(value="contacts_address")
     private String contactsAddress;
     /**
@@ -65,7 +69,7 @@ public class ProjectRegHead extends Model<ProjectRegHead> {
      * 
      */
     @TableField(value="contact_tel")
-    private java.math.BigDecimal contactTel;
+    private String contactTel;
     /**
      * 
      */
@@ -79,7 +83,13 @@ public class ProjectRegHead extends Model<ProjectRegHead> {
     /**
      * 
      */
-    @TableField(value="business_type")
+    
+    @TableField(value="contract_singer")
+    private String contractSigner;
+    
+   
+
+	@TableField(value="business_type")
     private Integer businessType;
     /**
      * 
@@ -95,12 +105,12 @@ public class ProjectRegHead extends Model<ProjectRegHead> {
      * 
      */
     @TableField(value="start_date")
-    private java.util.Date startDate;
+    private String startDate;
     /**
      * 
      */
     @TableField(value="end_date")
-    private java.util.Date endDate;
+    private String endDate;
     /**
      * 
      */
@@ -184,7 +194,15 @@ public class ProjectRegHead extends Model<ProjectRegHead> {
         this.projectType = projectType;
     }
 
-    public String getBuildOrg() {
+    public String getBackgroundInfo() {
+		return backgroundInfo;
+	}
+
+	public void setBackgroundInfo(String backgroundInfo) {
+		this.backgroundInfo = backgroundInfo;
+	}
+
+	public String getBuildOrg() {
         return buildOrg;
     }
 
@@ -216,11 +234,11 @@ public class ProjectRegHead extends Model<ProjectRegHead> {
         this.contactCall = contactCall;
     }
 
-    public java.math.BigDecimal getContactTel() {
+    public String getContactTel() {
         return contactTel;
     }
 
-    public void setContactTel(java.math.BigDecimal contactTel) {
+    public void setContactTel(String contactTel) {
         this.contactTel = contactTel;
     }
 
@@ -264,19 +282,19 @@ public class ProjectRegHead extends Model<ProjectRegHead> {
         this.isContract = isContract;
     }
 
-    public java.util.Date getStartDate() {
+    public String getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(java.util.Date startDate) {
+    public void setStartDate(String startDate) {
         this.startDate = startDate;
     }
 
-    public java.util.Date getEndDate() {
+    public String getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(java.util.Date endDate) {
+    public void setEndDate(String endDate) {
         this.endDate = endDate;
     }
 
@@ -360,6 +378,15 @@ public class ProjectRegHead extends Model<ProjectRegHead> {
         this.chargeDean = chargeDean;
     }
 
+    
+    public String getContractSigner() {
+		return contractSigner;
+	}
+
+	public void setContractSigner(String contractSigner) {
+		this.contractSigner = contractSigner;
+	}
+	
 	@Override
 	protected Serializable pkVal() {
 		// TODO Auto-generated method stub

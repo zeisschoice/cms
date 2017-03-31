@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.activerecord.Model;
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableName;
+import com.baomidou.mybatisplus.enums.IdType;
+
 import java.io.Serializable;
 /**
  * <p>
@@ -21,6 +23,7 @@ public class ProjectRegItem extends Model<ProjectRegItem> {
     /**
      * 
      */
+    @TableId(value="project_reg_id")
     @TableField(value="project_reg_id")
     private Long projectRegId;
     /**
@@ -37,7 +40,7 @@ public class ProjectRegItem extends Model<ProjectRegItem> {
      * 
      */
     @TableField(value="deduct_date")
-    private java.util.Date deductDate;
+    private String deductDate;
     /**
      * 
      */
@@ -51,7 +54,7 @@ public class ProjectRegItem extends Model<ProjectRegItem> {
      * 
      */
     @TableField(value="cost_date")
-    private java.util.Date costDate;
+    private String costDate;
     /**
      * 
      */
@@ -65,7 +68,7 @@ public class ProjectRegItem extends Model<ProjectRegItem> {
      * 
      */
     @TableField(value="rewards_date")
-    private java.util.Date rewardsDate;
+    private String rewardsDate;
     /**
      * 
      */
@@ -101,11 +104,11 @@ public class ProjectRegItem extends Model<ProjectRegItem> {
         this.projectName = projectName;
     }
 
-    public java.util.Date getDeductDate() {
+    public String getDeductDate() {
         return deductDate;
     }
 
-    public void setDeductDate(java.util.Date deductDate) {
+    public void setDeductDate(String deductDate) {
         this.deductDate = deductDate;
     }
 
@@ -125,11 +128,11 @@ public class ProjectRegItem extends Model<ProjectRegItem> {
         this.deduct = deduct;
     }
 
-    public java.util.Date getCostDate() {
+    public String getCostDate() {
         return costDate;
     }
 
-    public void setCostDate(java.util.Date costDate) {
+    public void setCostDate(String costDate) {
         this.costDate = costDate;
     }
 
@@ -149,11 +152,11 @@ public class ProjectRegItem extends Model<ProjectRegItem> {
         this.cost = cost;
     }
 
-    public java.util.Date getRewardsDate() {
+    public String getRewardsDate() {
         return rewardsDate;
     }
 
-    public void setRewardsDate(java.util.Date rewardsDate) {
+    public void setRewardsDate(String rewardsDate) {
         this.rewardsDate = rewardsDate;
     }
 
