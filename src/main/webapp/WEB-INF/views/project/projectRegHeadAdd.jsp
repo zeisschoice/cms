@@ -384,6 +384,7 @@ function append(dg){
 }
 function removeit(dg){
     if (editIndex == undefined){return}
+    
     $(dg).datagrid('cancelEdit', editIndex)
             .datagrid('deleteRow', editIndex);
     editIndex = undefined;

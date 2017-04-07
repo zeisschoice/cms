@@ -96,8 +96,9 @@ public class ProjectFinanceItemController extends BaseController {
     @RequestMapping("/delete")
     @ResponseBody
     public Object delete(Long id) {
-        ProjectFinanceItem projectFinanceItem = new ProjectFinanceItem();
-        boolean b = projectFinanceItemService.updateById(projectFinanceItem);
+      //  ProjectFinanceItem projectFinanceItem = new ProjectFinanceItem();
+     //   projectFinanceItem.setFinanceItemId(id);
+        boolean b = projectFinanceItemService.deleteById(id);
         if (b) {
             return renderSuccess("删除成功！");
         } else {

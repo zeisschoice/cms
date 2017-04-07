@@ -99,9 +99,9 @@ public class ProjectRegItemController extends BaseController {
     @RequestMapping("/delete")
     @ResponseBody
     public Object delete(Long id) {
-        ProjectRegItem projectRegItem = new ProjectRegItem();
-        projectRegItem.setProjectRegId(id);
-        boolean b = projectRegItemService.updateById(projectRegItem);
+       // ProjectRegItem projectRegItem = new ProjectRegItem();
+     //   projectRegItem.setProjectRegId(id);
+        boolean b = projectRegItemService.deleteById(id);
         if (b) {
             return renderSuccess("删除成功！");
         } else {

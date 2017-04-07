@@ -201,7 +201,7 @@
 				>
 					 <thead>	
 						<tr>
-						    <th field="projectId" width="80" hidden="true">收支项目</th>
+						    <th field="financeItemId" width="80" hidden="true">收支项目</th>
 							<th field="inComeprojectName" width="80" editor="{type:'text'}">收支项目</th>
 			                <th field="contractPlan" width="100" editor="{type:'text'}">合同计划</th>
 			                <th field="useOrPredict" width="120" editor="{type:'text'}">计划依据及用途</th>
@@ -253,7 +253,7 @@
 <div id="projectRegFinaceToolbar" style="display: none;">
    <%--  <shiro:hasPermission name="/projectRegHead/add"> </shiro:hasPermission> --%>
         <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true" onclick="append('#projectFinanceDataGrid')">添加</a>
-        <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true" onclick="removeit('#projectFinanceDataGrid')">删除</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true" onclick="removeitFinanceItem('#projectFinanceDataGrid')">删除</a>
         <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-save',plain:true" onclick="accept('#projectFinanceDataGrid')">确定</a>
         <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-undo',plain:true" onclick="reject('#projectFinanceDataGrid')">撤销</a>
       <!--   <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-search',plain:true" onclick="getChanges('#projectFinanceDataGrid')">获取改变d</a> -->
@@ -266,7 +266,7 @@
         <a onclick="projectRegHeadAddFun();" href="javascript:void(0);" class="easyui-linkbutton" data-options="plain:true,iconCls:'fi-minus icon-red'">删除</a> -->
         
         <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true" onclick="append('#projectRegCostDatagrid')">添加</a>
-        <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true" onclick="removeit('#projectRegCostDatagrid')">删除</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true" onclick="removeitCostItem('#projectRegCostDatagrid')">删除</a>
         <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-save',plain:true" onclick="accept('#projectRegCostDatagrid')">确定</a>
         <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-undo',plain:true" onclick="reject('#projectRegCostDatagrid')">撤销</a>
       <!--   <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-search',plain:true" onclick="getChanges('#projectRegCostDatagrid')">获取改变d</a> -->
@@ -416,12 +416,60 @@ function append(dg){
                 .datagrid('beginEdit', editIndex);
     }
 }
-function removeit(dg){
+
+var dg1 ;
+var itemId ;
+var url;
+var isdel = false;
+function removeitFinanceItem(dg){
     if (editIndex == undefined){return}
-    $(dg).datagrid('cancelEdit', editIndex)
-            .datagrid('deleteRow', editIndex);
-    editIndex = undefined;
+    
+    var selected = $(dg).datagrid('getSelected');
+    url = '${path}/projectFinanceItem/delete';
+    
+    dg1 = dg;
+    itemId = selected.financeItemId;
+    
+   
+    
+    $.messager.confirm('询问', '您是否要删除当前项目？', function(b) {
+        if (b) {
+        
+        	if(!isNaN(itemId)){
+             	removeItem(url,itemId,dg1);
+        	 }
+        	
+        	
+        }
+    });
+    
 }
+
+
+
+function removeitCostItem(dg){
+    if (editIndex == undefined){return}
+    
+    var selected = $(dg).datagrid('getSelected');
+    
+    var url = '${path}/projectRegItem/delete'
+    
+    dg1 = dg;
+    itemId = selected.projectRegId;
+    //parent.
+    	$.messager.confirm('询问', '您是否要删除当前项目？', function(b) {
+            if (b) {
+            	
+            	if(!isNaN(itemId)){
+                 	removeItem(url,itemId,dg1);
+                 	//editIndex = undefined;
+            	 }
+            }
+        });
+    	     
+  
+}
+
 function accept(dg){
     if (endEditing(dg)){
         $(dg).datagrid('acceptChanges');
@@ -437,7 +485,26 @@ function getChanges(dg){
 }
 
 
-
+function removeItem(url,id,dg){
+	
+    progressLoad();
+    $.post(url, {
+        id : id
+    }, function(result) {
+        if (result.success) {
+            $.messager.alert('提示', result.msg, 'info');
+            $(dg).datagrid('deleteRow', editIndex);
+            
+            editIndex = undefined;
+          //  projectRegHeadDataGrid.datagrid('reload');
+        }else{
+        	
+        	$.messager.alert('提示', '删除失败', 'info');
+        }
+        progressClose();
+    }, 'JSON');
+	
+}
 
 
 </script>
