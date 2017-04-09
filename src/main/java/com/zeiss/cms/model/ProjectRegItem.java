@@ -23,12 +23,16 @@ public class ProjectRegItem extends Model<ProjectRegItem> {
     /**
      * 
      */
-    @TableId(value="project_reg_id")
+    @TableId(value="project_reg_id",type = IdType.AUTO)
     @TableField(value="project_reg_id")
     private Long projectRegId;
     /**
      * 
      */
+    
+    @TableField(value="project_id")
+    private Long projectId;
+    
     @TableField(value="project_no")
     private String projectNo;
     /**
@@ -152,7 +156,15 @@ public class ProjectRegItem extends Model<ProjectRegItem> {
         this.cost = cost;
     }
 
-    public String getRewardsDate() {
+    public Long getProjectId() {
+		return projectId;
+	}
+
+	public void setProjectId(Long projectId) {
+		this.projectId = projectId;
+	}
+
+	public String getRewardsDate() {
         return rewardsDate;
     }
 

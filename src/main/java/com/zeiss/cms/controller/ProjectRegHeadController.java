@@ -99,7 +99,7 @@ public class ProjectRegHeadController extends BaseController {
     	
     	for(int i = 0;i<projectRegItems.size();i++){
     		
-    		projectRegItems.get(i).setProjectRegId(projectRegHead.getProjectId());
+    		projectRegItems.get(i).setProjectId(projectRegHead.getProjectId());
     	}
     	
     	
@@ -147,7 +147,7 @@ public class ProjectRegHeadController extends BaseController {
     	
         for(int i = 0;i<projectRegItems.size();i++){
     		
-    		projectRegItems.get(i).setProjectRegId(projectRegHead.getProjectId());
+    		projectRegItems.get(i).setProjectId(projectRegHead.getProjectId());
     	}
     	
     	

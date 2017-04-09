@@ -50,16 +50,16 @@ public class ProjectRegItemController extends BaseController {
    
     @RequestMapping(value = "/getData", method = RequestMethod.POST)
     @ResponseBody
-    public List<ProjectRegItem> getData(Long projectRegId) {
+    public List<ProjectRegItem> getData(Long projectId) {
         EntityWrapper<ProjectRegItem> ew = new EntityWrapper<ProjectRegItem>();
       
         ProjectRegItem projectRegItem = new ProjectRegItem();
         
-        projectRegItem.setProjectRegId(projectRegId);
-        
+       // projectRegItem.setProjectId(projectRegId);
+        ew.eq("project_id", projectId);
         ew.setEntity(projectRegItem);
      
-        System.out.println(projectRegId);
+        System.out.println("------->>"+projectId);
               
         List<ProjectRegItem> regItems = projectRegItemService.selectList(ew);
         

@@ -50,7 +50,7 @@
 		
 	
 	 $.post('${path}/projectRegItem/getData', {
-		 projectRegId : '${projectRegHead.projectId}'
+		 projectId : '${projectRegHead.projectId}'
      }, function(result) {
          if (result) {
         	 $('#projectRegCostDatagrid').datagrid('loadData',result);
@@ -232,7 +232,8 @@
 					>
 				 <thead>	
 					<tr>
-					    <th field="projectRegId" hidden="true">时间</th>
+					    <th field="projectRegId" hidden="true"></th>
+					    <th field="projectId" hidden="true"></th>
 	                    <th field="deductDate" width="100" editor="{type:'datebox'}">时间</th>
 		                <th field="deductPerson" width="80" editor="{type:'text'}">提成</th>
 		                <th field="deduct" width="80" editor="{type:'text'}">经手人</th>
