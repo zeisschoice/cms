@@ -62,55 +62,55 @@
 						class="easyui-validatebox"></td>
 					<td>建设单位</td>
 					<td><input id="buildOrg" name="buildOrg" type="text"
-						placeholder="请输入字典ID" class="easyui-validatebox" value="">
+						placeholder="请输入建设单位" class="easyui-validatebox" value="">
 					<td>联系人</td>
 					<td><input name="chargeDean" id="chargeDean" type="text"
-						placeholder="请输入字典ID" class="easyui-validatebox" value="">
+						placeholder="请输入联系人" class="easyui-validatebox" value="">
 				</tr>
 				<tr>
 					<td>联系地址</td>
 					<td><input id="contactsAddress" name="contactsAddress"
-						type="text" placeholder="请输入字典ID" class="easyui-validatebox"
+						type="text" placeholder="请输入联系地址" class="easyui-validatebox"
 						value="">
 					<td>背景资料</td>
 					<td><input id="backgroundInfo" name="backgroundInfo"
-						type="text" placeholder="请输入字典ID" class="easyui-validatebox"
+						type="text" placeholder="请输入背景资料" class="easyui-validatebox"
 						value="">
 					<td>联系电话</td>
 					<td><input name="contactCall" id="contactCall" type="text"
-						placeholder="请输入字典ID" class="easyui-validatebox" value="">
+						placeholder="请输入联系电话" class="easyui-validatebox" value="">
 					 <td>手机</td>
 					<td><input name="contactTel" id="contactTel" type="text"
-						placeholder="请输入电话号码" type="text" class="easyui-validatebox" data-options="required:true" validType="mobile" value="">
+						placeholder="请输入手机号码" type="text" class="easyui-validatebox" data-options="required:true" validType="mobile" value="">
 				</tr>
 				<tr>
 				   
 					<td>传真</td>
 					<td><input name="contactFax" id="contactFax" type="text"
-						placeholder="请输入字典ID" class="easyui-validatebox" value="">
+						placeholder="请输入传真" class="easyui-validatebox" value="">
 					<td>工作内容</td>
 					<td><input name="workDetail" id="workDetail" type="text"
-						placeholder="请输入字典ID" class="easyui-validatebox" value="">
+						placeholder="请输入工作内容" class="easyui-validatebox" value="">
 					<td>项目类型</td>
 					<td><input name="projectType" id="projectType" type="text"
-						placeholder="请输入字典ID" class="easyui-validatebox" value="">
+						placeholder="请输入项目类型" class="easyui-validatebox" value="">
 					 <td>行业类型</td>
 					<td><input name="businessType" id="businessType" type="text"
-						placeholder="请输入字典ID" class="easyui-validatebox" value="">	
+						placeholder="请输入行业类型" class="easyui-validatebox" value="">	
 				</tr>
 				
 				<tr>
 				   
 					<td>审批部门</td>
 					<td><input name="aproveDepartment" id="aproveDepartment"
-						type="text" placeholder="请输入字典ID" class="easyui-validatebox"
+						type="text" placeholder="请输入审批部门" class="easyui-validatebox"
 						value="">
 					<td>有无合同</td>
 					<td><input name="isContract" id="isContract" type="text"
-						placeholder="请输入字典ID" class="easyui-validatebox" value="">
+						placeholder="请输入有无合同" class="easyui-validatebox" value="">
 					<td>开始日期</td>
 					<td><input name="startDate" id="startDate" type="text"
-						placeholder="请输入字典ID" type="text" class="easyui-datebox" editable="fasle" >
+						placeholder="请选择日期" type="text" class="easyui-datebox" editable="fasle" >
 				</tr>
 				<tr>
 					<td>结束日期</td>
@@ -118,34 +118,34 @@
 						placeholder="请选择日期" type="text" class="easyui-datebox" editable="fasle">
 					<td>扣罚比例</td>
 					<td><input name="projectPunishRate" id="projectPunishRate"
-						type="text" placeholder="请输入字典ID" class="easyui-validatebox"
+						type="text" placeholder="请输入扣罚比例" class="easyui-validatebox"
 						value="">
 					<td>扣罚原因</td>
 					<td><input name="punishReason" id="punishReason" type="text"
-						placeholder="请输入字典ID" class="easyui-validatebox" value="">
+						placeholder="请输入扣罚原因" class="easyui-validatebox" value="">
 						<td>业务室</td>
 					<td><input name="businessRoom" id="businessRoom" type="text"
-						placeholder="请输入字典ID" class="easyui-validatebox" value="">
+						placeholder="请输入业务室" class="easyui-validatebox" value="">
 				</tr>
 				<tr>
 					<td>经理</td>
 					<td><input name="manager" id="manager" type="text"
-						placeholder="请输入字典ID" class="easyui-validatebox" value="">
+						placeholder="请输入经理" class="easyui-validatebox" value="">
 					<td>档案室</td>
 					<td><input name="recordRoom" id="recordRoom" type="text"
-						placeholder="请输入字典ID" class="easyui-validatebox" value="">
+						placeholder="请输入档案室" class="easyui-validatebox" value="">
 				</tr>
 				<tr>
 					<td>填表人</td>
 					<td><input name="fillPerson" id="fillPerson" type="text"
-						placeholder="请输入字典ID" class="easyui-validatebox" value="">
+						placeholder="请输入填表人" class="easyui-validatebox" value="">
 					<td>记录室</td>
 					<td><input name="projectGroupLeader" id="projectGroupLeader"
-						type="text" placeholder="请输入字典ID" class="easyui-validatebox"
+						type="text" placeholder="请输入记录室" class="easyui-validatebox"
 						value="">
 					<td>部门领导</td>
 					<td><input name="departmentCharger" id="departmentCharger"
-						type="text" placeholder="请输入字典ID" class="easyui-validatebox"
+						type="text" placeholder="请输入部门领导" class="easyui-validatebox"
 						value="">
 				</tr>
 			</table>
@@ -153,7 +153,7 @@
 		
 		
     <div id="tt" class="easyui-tabs"  style="width: 100%;height:400px">
-		<div title="财务安排" style="width: 100%;height:100%">
+		<div title="财务费用" style="width: 100%;height:100%">
 			<!-- <div data-options="region:'center',border:false"> </div> -->
 			<table id="projectFinanceDataGrid" class="easyui-datagrid"
 					style="width:100%;height:auto"
@@ -169,16 +169,16 @@
 					 <thead>	
 						<tr>
 						    <th field="projectId" width="80" hidden="true">收支项目</th>
-							<th field="inComeprojectName" width="80" editor="{type:'text'}">收支项目</th>
-			                <th field="contractPlan" width="100" editor="{type:'text'}">合同计划</th>
-			                <th field="useOrPredict" width="120" editor="{type:'text'}">计划依据及用途</th>
-			                <th field="incomingOutgoings1" width="60"   editor="{type:'numberbox',options:{precision:2,required:true}}">金额1</th> <!-- editor="{type:'numberbox',options:{precision:2,required:true}}" -->
+							<th field="inComeprojectName" width="150" editor="{type:'text'}">收支项目</th>
+			                <th field="contractPlan" width="150" editor="{type:'text'}">合同计划</th>
+			                <th field="useOrPredict" width="200" editor="{type:'text'}">计划依据及用途</th>
+			                <th field="incomingOutgoings1" width="100"   editor="{type:'numberbox',options:{precision:2,required:true}}">金额1</th> <!-- editor="{type:'numberbox',options:{precision:2,required:true}}" -->
 			                <th field="date1" width="100"  editor="{type:'datebox'}">时间1</th>
-			                <th field="incomingOutgoings2" width="60"  editor="{type:'numberbox',options:{precision:2,required:true}}">金额2</th>
+			                <th field="incomingOutgoings2" width="100"  editor="{type:'numberbox',options:{precision:2,required:true}}">金额2</th>
 			                <th field="date2" width="100" editor="{type:'datebox'}">时间2</th>
-			                <th field="incomingOutgoings3" width="60"  editor="{type:'numberbox',options:{precision:2,required:true}}">金额3</th>
+			                <th field="incomingOutgoings3" width="100"  editor="{type:'numberbox',options:{precision:2,required:true}}">金额3</th>
 			                <th field="date3" width="100" editor="{type:'datebox'}">时间3</th>
-			                <th field="incomingOutgoings4" width="60"  editor="{type:'numberbox',options:{precision:2,required:true}}">金额4</th>
+			                <th field="incomingOutgoings4" width="100"  editor="{type:'numberbox',options:{precision:2,required:true}}">金额4</th>
 			                <th field="date4" width="100" editor="{type:'datebox'}">时间4</th>
                         </tr>
 					 </thead>	
@@ -199,14 +199,14 @@
 					>
 				 <thead>	
 					<tr>
-		                <th field="deductDate" width="100" editor="{type:'datebox'}">时间</th>
-		                <th field="deductPerson" width="80" editor="{type:'text'}">提成</th>
-		                <th field="deduct" width="80" editor="{type:'text'}">经手人</th>
-		                <th field="costDate" width="80" editor="{type:'datebox'}">时间</th>
-		                <th field="costPerson" width="100" editor="{type:'text'}">费用</th>
-		                <th field="cost" width="100" editor="{type:'text'}">经手人</th>
-		                <th field="rewardsDate" width="100" editor="{type:'datebox'}">时间</th>
-		                <th field="rewards" width="100" editor="{type:'text'}">奖励</th>
+		                <th field="deductDate" width="120" editor="{type:'datebox'}">时间</th>
+		                <th field="deduct" width="80" editor="{type:'numberbox',options:{precision:2,required:true}}">提成</th>
+		                <th field="deductPerson" width="80" editor="{type:'text'}">经手人</th>
+		                <th field="costDate" width="120" editor="{type:'datebox'}">时间</th>
+		                <th field="costPerson" width="100" editor="{type:'text'}">经手人</th>
+		                <th field="cost" width="100" editor="{type:'numberbox',options:{precision:2,required:true}}">费用</th>
+		                <th field="rewardsDate" width="120" editor="{type:'datebox'}">时间</th>
+		                <th field="rewards" width="100" editor="{type:'numberbox',options:{precision:2,required:true}}">奖励</th>
 		                <th field="rewardsPerson" width="100" editor="{type:'text'}">受款人</th>
                      </tr>
 				 </thead>	

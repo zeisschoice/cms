@@ -223,7 +223,7 @@ function projectRegHeadAddFun() {
  * 编辑
  */
 function projectRegHeadEditFun(id) {
-	console.log(id);
+	
     if (id == undefined) {
         var rows = projectRegHeadDataGrid.datagrid('getSelections');
         id = rows[0].projectId;
@@ -259,8 +259,7 @@ function projectRegHeadEditFun(id) {
 				//	saveData(projectRegVo);
 					
 					
-				    console.log(JSON.stringify(projectRegVo));
-				    console.log("=========================");
+				
 				   // saveData(JSON.stringify(editInfo));
 				    saveEditData(projectRegVo);
 					parent.$.modalDialog.openner_dataGrid = projectRegHeadDataGrid;//因为添加成功之后，需要刷新这个dataGrid，所以先预定义好

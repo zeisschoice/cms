@@ -95,55 +95,55 @@
 						class="easyui-validatebox"  value="${projectRegHead.contractSigner}"></td>
 					<td>建设单位</td>
 					<td><input id="buildOrg" name="buildOrg" type="text"
-						placeholder="请输入字典ID" class="easyui-validatebox" value="${projectRegHead.buildOrg}">
+						placeholder="请输入建设单位" class="easyui-validatebox" value="${projectRegHead.buildOrg}">
 					<td>联系人</td>
 					<td><input name="chargeDean" id="chargeDean" type="text"
-						placeholder="请输入字典ID" class="easyui-validatebox" value="${projectRegHead.chargeDean}">
+						placeholder="请输联系人" class="easyui-validatebox" value="${projectRegHead.chargeDean}">
 				</tr>
 				<tr>
 					<td>联系地址</td>
 					<td><input id="contactsAddress" name="contactsAddress"
-						type="text" placeholder="请输入字典ID" class="easyui-validatebox"
+						type="text" placeholder="请输入联系地址" class="easyui-validatebox"
 						value="${projectRegHead.contactsAddress}">
 					<td>背景资料</td>
 					<td><input id="backgroundInfo" name="backgroundInfo"
-						type="text" placeholder="请输入字典ID" class="easyui-validatebox"
+						type="text" placeholder="请输入背景资料" class="easyui-validatebox"
 						value="${projectRegHead.backgroundInfo}">
 					<td>联系电话</td>
 					<td><input name="contactCall" id="contactCall" type="text"
-						placeholder="请输入字典ID" class="easyui-validatebox" value="${projectRegHead.contactCall}">
+						placeholder="请输入联系电话" class="easyui-validatebox" value="${projectRegHead.contactCall}">
 					 <td>手机</td>
 					<td><input name="contactTel" id="contactTel" type="text"
-						placeholder="请输入电话号码" type="text" class="easyui-validatebox" data-options="required:true" validType="mobile" value="${projectRegHead.contactTel}">
+						placeholder="请输入手机号码" type="text" class="easyui-validatebox" data-options="required:true" validType="mobile" value="${projectRegHead.contactTel}">
 				</tr>
 				<tr>
 				   
 					<td>传真</td>
 					<td><input name="contactFax" id="contactFax" type="text"
-						placeholder="请输入字典ID" class="easyui-validatebox" value="${projectRegHead.contactFax}">
+						placeholder="请输入传真" class="easyui-validatebox" value="${projectRegHead.contactFax}">
 					<td>工作内容</td>
 					<td><input name="workDetail" id="workDetail" type="text"
-						placeholder="请输入字典ID" class="easyui-validatebox" value="${projectRegHead.workDetail}">
+						placeholder="请输入工作内容" class="easyui-validatebox" value="${projectRegHead.workDetail}">
 					<td>项目类型</td>
 					<td><input name="projectType" id="projectType" type="text"
-						placeholder="请输入字典ID" class="easyui-validatebox" value="${projectRegHead.projectType}">
+						placeholder="请输入项目类型" class="easyui-validatebox" value="${projectRegHead.projectType}">
 					 <td>行业类型</td>
 					<td><input name="businessType" id="businessType" type="text"
-						placeholder="请输入字典ID" class="easyui-validatebox" value="${projectRegHead.businessType}">	
+						placeholder="请输入行业类型" class="easyui-validatebox" value="${projectRegHead.businessType}">	
 				</tr>
 				
 				<tr>
 				   
 					<td>审批部门</td>
 					<td><input name="aproveDepartment" id="aproveDepartment"
-						type="text" placeholder="请输入字典ID" class="easyui-validatebox"
+						type="text" placeholder="请输入审批部门" class="easyui-validatebox"
 						value="${projectRegHead.aproveDepartment}">
 					<td>有无合同</td>
 					<td><input name="isContract" id="isContract" type="text"
-						placeholder="请输入字典ID" class="easyui-validatebox" value="${projectRegHead.isContract}">
+						placeholder="请输入有无合同情况" class="easyui-validatebox" value="${projectRegHead.isContract}">
 					<td>开始日期</td>
 					<td><input name="startDate" id="startDate" type="text"
-						placeholder="请输入字典ID" type="text" class="easyui-datebox" editable="fasle" value="${projectRegHead.startDate}">
+						placeholder="请选择日期" type="text" class="easyui-datebox" editable="fasle" value="${projectRegHead.startDate}">
 				</tr>
 				<tr>
 					<td>结束日期</td>
@@ -151,34 +151,34 @@
 						placeholder="请选择日期" type="text" class="easyui-datebox" editable="fasle" value="${projectRegHead.endDate}">
 					<td>扣罚比例</td>
 					<td><input name="projectPunishRate" id="projectPunishRate"
-						type="text" placeholder="请输入字典ID" class="easyui-validatebox"
+						type="text" placeholder="请输入扣罚比例" class="easyui-validatebox"
 						value="${projectRegHead.projectPunishRate}">
 					<td>扣罚原因</td>
 					<td><input name="punishReason" id="punishReason" type="text"
-						placeholder="请输入字典ID" class="easyui-validatebox" value="${projectRegHead.punishReason}">
+						placeholder="请输入扣罚原因" class="easyui-validatebox" value="${projectRegHead.punishReason}">
 						<td>业务室</td>
 					<td><input name="businessRoom" id="businessRoom" type="text"
-						placeholder="请输入字典ID" class="easyui-validatebox" value="${projectRegHead.businessRoom}">
+						placeholder="请输入业务室" class="easyui-validatebox" value="${projectRegHead.businessRoom}">
 				</tr>
 				<tr>
 					<td>经理</td>
 					<td><input name="manager" id="manager" type="text"
-						placeholder="请输入字典ID" class="easyui-validatebox" value="${projectRegHead.manager}">
+						placeholder="请输入经理" class="easyui-validatebox" value="${projectRegHead.manager}">
 					<td>档案室</td>
 					<td><input name="recordRoom" id="recordRoom" type="text"
-						placeholder="请输入字典ID" class="easyui-validatebox" value="${projectRegHead.recordRoom}">
+						placeholder="请输入档案室" class="easyui-validatebox" value="${projectRegHead.recordRoom}">
 				</tr>
 				<tr>
 					<td>填表人</td>
 					<td><input name="fillPerson" id="fillPerson" type="text"
-						placeholder="请输入字典ID" class="easyui-validatebox" value="${projectRegHead.fillPerson}">
+						placeholder="请输入填表人" class="easyui-validatebox" value="${projectRegHead.fillPerson}">
 					<td>记录室</td>
 					<td><input name="projectGroupLeader" id="projectGroupLeader"
-						type="text" placeholder="请输入字典ID" class="easyui-validatebox"
+						type="text" placeholder="请输入记录室" class="easyui-validatebox"
 						value="${projectRegHead.projectGroupLeader}">
 					<td>部门领导</td>
 					<td><input name="departmentCharger" id="departmentCharger"
-						type="text" placeholder="请输入字典ID" class="easyui-validatebox"
+						type="text" placeholder="请输入部门领导" class="easyui-validatebox"
 						value="${projectRegHead.departmentCharger}">
 				</tr>
 			</table>
@@ -235,13 +235,13 @@
 					    <th field="projectRegId" hidden="true"></th>
 					    <th field="projectId" hidden="true"></th>
 	                    <th field="deductDate" width="100" editor="{type:'datebox'}">时间</th>
-		                <th field="deductPerson" width="80" editor="{type:'text'}">提成</th>
-		                <th field="deduct" width="80" editor="{type:'text'}">经手人</th>
-		                <th field="costDate" width="80" editor="{type:'datebox',options:{required:true,editable:'fasle'}}">时间</th>
-		                <th field="costPerson" width="100" editor="{type:'text'}">费用</th>
-		                <th field="cost" width="100" editor="{type:'text'}">经手人</th>
+		                <th field="deduct" width="80" editor="{type:'numberbox',options:{precision:2,required:true}}">提成</th>
+		                <th field="deductPerson" width="80" editor="{type:'text'}">经手人</th>
+		                <th field="costDate" width="100" editor="{type:'datebox',options:{required:true,editable:'fasle'}}">时间</th>
+		                <th field="cost" width="100" editor="{type:'numberbox',options:{precision:2,required:true}}">费用</th>
+		                <th field="costPerson" width="100" editor="{type:'text'}">经手人</th>
 		                <th field="rewardsDate" width="100" editor="{type:'datebox',options:{required:true,editable:'fasle'}}" >时间</th>
-		                <th field="rewards" width="100" editor="{type:'text'}">奖励</th>
+		                <th field="rewards" width="100" editor="{type:'numberbox',options:{precision:2,required:true}}">奖励</th>
 		                <th field="rewardsPerson" width="100" editor="{type:'text'}">受款人</th>
                      </tr>
 				 </thead>	

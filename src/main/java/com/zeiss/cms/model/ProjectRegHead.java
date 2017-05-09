@@ -40,7 +40,7 @@ public class ProjectRegHead extends Model<ProjectRegHead> {
      * 
      */
     @TableField(value="project_type")
-    private Integer projectType;
+    private String projectType;
     /**
      * 
      */
@@ -90,7 +90,7 @@ public class ProjectRegHead extends Model<ProjectRegHead> {
    
 
 	@TableField(value="business_type")
-    private Integer businessType;
+    private String businessType;
     /**
      * 
      */
@@ -100,7 +100,7 @@ public class ProjectRegHead extends Model<ProjectRegHead> {
      * 
      */
     @TableField(value="is_contract")
-    private Integer isContract;
+    private String isContract;
     /**
      * 
      */
@@ -186,11 +186,11 @@ public class ProjectRegHead extends Model<ProjectRegHead> {
         this.projectName = projectName;
     }
 
-    public Integer getProjectType() {
+    public String getProjectType() {
         return projectType;
     }
 
-    public void setProjectType(Integer projectType) {
+    public void setProjectType(String projectType) {
         this.projectType = projectType;
     }
 
@@ -258,11 +258,11 @@ public class ProjectRegHead extends Model<ProjectRegHead> {
         this.workDetail = workDetail;
     }
 
-    public Integer getBusinessType() {
+    public String getBusinessType() {
         return businessType;
     }
 
-    public void setBusinessType(Integer businessType) {
+    public void setBusinessType(String businessType) {
         this.businessType = businessType;
     }
 
@@ -274,11 +274,11 @@ public class ProjectRegHead extends Model<ProjectRegHead> {
         this.aproveDepartment = aproveDepartment;
     }
 
-    public Integer getIsContract() {
+    public String getIsContract() {
         return isContract;
     }
 
-    public void setIsContract(Integer isContract) {
+    public void setIsContract(String isContract) {
         this.isContract = isContract;
     }
 

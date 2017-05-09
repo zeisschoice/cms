@@ -49,4 +49,12 @@ public class TestTask {
 		logger.debug(xx);
 		logger.debug(new Date());
 	}
+	
+	@Scheduled(cron = "0/5 * * * * ?")
+	public void testTask() {
+	
+		logger.info("============testTask================"+new Date());
+		
+		
+	}
 }
